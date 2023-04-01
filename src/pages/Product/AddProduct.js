@@ -90,8 +90,8 @@ const AddProduct = () => {
     });
 
     const onSubmit = (data) => {
-        alert(JSON.stringify(data))
-        //addProduct(JSON.stringify(data), user?.accessToken, dispatch, navigate, axiosJwt)
+        //alert(JSON.stringify(data))
+        addProduct(JSON.stringify(data), user?.accessToken, dispatch, navigate, axiosJwt)
     };
 
     const handleChange = (e) => {

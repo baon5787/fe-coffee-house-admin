@@ -1,32 +1,61 @@
 import Tippy from '@tippyjs/react/headless'
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { ArrowIcon } from '../Icons'
-import Menu from './Menu'
+import React, { useRef, useState } from 'react'
+import PropTypes from 'prop-types'
+import { ArrowIcon } from '../icons';
+import Menu from './Menu';
 
-const Actions = ({ deleteMess, editProduct }) => {
+const Actions = ({ onEditOrEnableClick, onDeleteOrDisenableClick, title }) => {
+
+    const [isOpen, setOpen] = useState(false);
 
     const renderResult = (attrs) => (
-        <Menu attrs={attrs} tabIndex={"-1"} deleteMess={deleteMess} editProduct={editProduct} />
+        <Menu attrs={attrs} tabIndex={"-1"}
+            onEditOrEnableClick={onEditOrEnableClick}
+            onDeleteOrDisenableClick={onDeleteOrDisenableClick}
+            title={title}
+        />
     );
+
+    const ref = useRef();
+
+    const handleOnClick = (e) => {
+        const current = ref.current;
+        if (current === null || current === undefined) {
+            return window.removeEventListener("click", handleOnClick);
+        }
+        if (!ref.current.contains(e.target) && isOpen) {
+            setOpen(false)
+            return window.removeEventListener("click", handleOnClick);
+        }
+    }
+
+    window.addEventListener("click", handleOnClick);
 
     return (
         <>
             <Tippy
                 interactive
-                trigger={'click '}
                 placement="bottom-end"
                 render={renderResult}
+                visible={isOpen}
             >
-                <Link className='btn btn-sm btn-light btn-active-light-primary'>
+                <div className='btn btn-sm btn-light btn-active-light-primary'
+                    onClick={() => setOpen(true)}
+                    ref={ref}
+                >
                     Actions
                     <span className='svg-icon svg-icon-5 m-0'>
                         <ArrowIcon size={24} />
                     </span>
-                </Link>
+                </div>
             </Tippy>
         </>
     )
+}
+
+Actions.propTypes = {
+    onEditOrEnableClick: PropTypes.func.isRequired,
+    onDeleteOrDisenableClick: PropTypes.func.isRequired,
 }
 
 export default Actions;

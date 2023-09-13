@@ -1,0 +1,26 @@
+.on {
+    opacity: var(--bs-scrolltop-opacity-on);
+    animation: animation-scrolltop 0.4s ease-out 1;
+    display: flex;
+}
+
+.on:hover {
+    transition: color 0.2s ease;
+    opacity: var(--bs-scrolltop-opacity-hover);
+}
+
+.scroll {
+    animation-duration: 2s;
+}
+
+
+
+@keyframes animation-scrolltop {
+    from {
+        margin-top: -15px;
+    }
+
+    to {
+        height: 0px;
+    }
+}

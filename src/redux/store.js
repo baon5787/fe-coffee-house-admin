@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import authReducer from './authSlice';
-import productReducer from './productSlice';
-import statusReducer from './statusSlice';
-import sizeReducer from './sizeSlice';
+import {
+    sizeReducer, statusReducer, productReducer,
+    authReducer, categoryReducer, warehouseReducer,
+    filtersReducer, dimensionsReducer, couponReducer,
+    couponStatusReducer, orderReducer, orderStatusReducer,
+    deliveryOrderReducer, userReducer, genderReducer,
+    provinceReducer
+} from './slice';
 
 import {
     persistStore,
@@ -21,13 +25,30 @@ const persistConfig = {
     key: 'root',
     version: 1,
     storage,
+    blacklist: [
+        "warehouse", "product", "category", "dimensions",
+        "size", "coupon", "order", "deliveryOrder", "user"
+    ]
 };
+
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    products: productReducer,
+    filter: filtersReducer,
+    gender: genderReducer,
     status: statusReducer,
-    size: sizeReducer
+    couponStatus: couponStatusReducer,
+    orderStatus: orderStatusReducer,
+    dimensions: dimensionsReducer,
+    province: provinceReducer,
+    user: userReducer,
+    product: productReducer,
+    category: categoryReducer,
+    warehouse: warehouseReducer,
+    size: sizeReducer,
+    coupon: couponReducer,
+    order: orderReducer,
+    deliveryOrder: deliveryOrderReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -37,6 +58,7 @@ export const store = configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
+            immutableCheck: false,
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },

@@ -1,13 +1,13 @@
-import { loginStart, loginSucces, loginFailed, logoutStart, logoutSucces, logoutFailed } from "~/redux/authSlice"
-import { instance } from '~/createInstance'
+import { loginFailed, loginStart, loginSucces, logoutFailed, logoutStart, logoutSucces } from '~/redux/slice/AuthSlice';
+import { axiosClient } from './AxiosClient';
 
 export const loginUser = async (user, dispatch, navigate) => {
     dispatch(loginStart());
     try {
-        const res = instance.post('/api/admin/auth/login', user, { withCredentials: true });
+        const res = axiosClient.post('auth/login', user, { withCredentials: true });
         console.log((await res).data);
         dispatch((loginSucces((await res).data)));
-        navigate("/");
+        navigate("/products");
     } catch (error) {
         dispatch(loginFailed())
     }
@@ -16,7 +16,7 @@ export const loginUser = async (user, dispatch, navigate) => {
 export const logOut = async (dispatch, navigate, accesToken, axiosJwt) => {
     dispatch(logoutStart());
     try {
-        await axiosJwt.post("/api/admin/auth/logout", {
+        await axiosJwt.post("auth/logout", {
             headers: { 'Authorization': `Bearer ${accesToken}` },
         });
         dispatch(logoutSucces());

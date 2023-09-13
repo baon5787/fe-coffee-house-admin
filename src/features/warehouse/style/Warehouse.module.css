@@ -1,0 +1,27 @@
+@media screen and (min-width: 575.98px) {
+    .warehouse tr {
+        display: grid;
+        grid-template-columns: 10% 30% 30% 15% 15%;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 575.98px) {
+
+    .warehouse td:nth-child(2),
+    .warehouse th:nth-child(2) {
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        min-width: 150px;
+    }
+
+    .warehouse th:nth-child(2) {
+        background-color: var(--bs-body-bg);
+    }
+
+    .warehouse td:nth-child(2) {
+        background-color: var(--bs-body-bg);
+    }
+}

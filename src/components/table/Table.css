@@ -1,0 +1,2879 @@
+table {
+    caption-side: bottom;
+    border-collapse: collapse;
+}
+
+.table {
+    --bs-table-color: var(--bs-body-color);
+    --bs-table-bg: transparent;
+    --bs-table-border-color: var(--bs-border-color);
+    --bs-table-accent-bg: transparent;
+    --bs-table-striped-color: var(--bs-body-color);
+    --bs-table-striped-bg: rgba(var(--bs-gray-100-rgb), 0.75);
+    --bs-table-active-color: var(--bs-body-color);
+    --bs-table-active-bg: var(--bs-gray-100);
+    --bs-table-hover-color: var(--bs-body-color);
+    --bs-table-hover-bg: var(--bs-gray-100);
+    width: 100%;
+    margin-bottom: 1rem;
+    color: var(--bs-table-color);
+    vertical-align: top;
+    border-color: var(--bs-table-border-color);
+}
+
+.table> :not(caption)>*>* {
+    padding: 0.75rem 0.75rem;
+    background-color: var(--bs-table-bg);
+    border-bottom-width: 1px;
+    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+}
+
+.table>tbody {
+    vertical-align: inherit;
+}
+
+.table>thead {
+    vertical-align: bottom;
+}
+
+.table-group-divider {
+    border-top: 2px solid currentcolor;
+}
+
+.table-sm> :not(caption)>*>* {
+    padding: 0.5rem 0.5rem;
+}
+
+.table-bordered> :not(caption)>* {
+    border-width: 1px 0;
+}
+
+.table-bordered> :not(caption)>*>* {
+    border-width: 0 1px;
+}
+
+.table-borderless> :not(caption)>*>* {
+    border-bottom-width: 0;
+}
+
+.table-borderless> :not(:first-child) {
+    border-top-width: 0;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-accent-bg: var(--bs-table-striped-bg);
+    color: var(--bs-table-striped-color);
+}
+
+.table-striped-columns> :not(caption)>tr> :nth-child(even) {
+    --bs-table-accent-bg: var(--bs-table-striped-bg);
+    color: var(--bs-table-striped-color);
+}
+
+.table-active {
+    --bs-table-accent-bg: var(--bs-table-active-bg);
+    color: var(--bs-table-active-color);
+}
+
+.table-hover>tbody>tr:hover>* {
+    --bs-table-accent-bg: var(--bs-table-hover-bg);
+    color: var(--bs-table-hover-color);
+}
+
+.table-primary {
+    --bs-table-color: #000000;
+    --bs-table-bg: #ccf0ff;
+    --bs-table-border-color: #b8d8e6;
+    --bs-table-striped-bg: #c2e4f2;
+    --bs-table-striped-color: #000000;
+    --bs-table-active-bg: #b8d8e6;
+    --bs-table-active-color: #000000;
+    --bs-table-hover-bg: #bddeec;
+    --bs-table-hover-color: #000000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color);
+}
+
+.table-secondary {
+    --bs-table-color: #000000;
+    --bs-table-bg: #f9f9fb;
+    --bs-table-border-color: #e0e0e2;
+    --bs-table-striped-bg: #ededee;
+    --bs-table-striped-color: #000000;
+    --bs-table-active-bg: #e0e0e2;
+    --bs-table-active-color: #000000;
+    --bs-table-hover-bg: #e6e6e8;
+    --bs-table-hover-color: #000000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color);
+}
+
+.table-success {
+    --bs-table-color: #000000;
+    --bs-table-bg: #dcf5e7;
+    --bs-table-border-color: #c6ddd0;
+    --bs-table-striped-bg: #d1e9db;
+    --bs-table-striped-color: #000000;
+    --bs-table-active-bg: #c6ddd0;
+    --bs-table-active-color: #000000;
+    --bs-table-hover-bg: #cce3d6;
+    --bs-table-hover-color: #000000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color);
+}
+
+.table-info {
+    --bs-table-color: #000000;
+    --bs-table-bg: #e3d7fb;
+    --bs-table-border-color: #ccc2e2;
+    --bs-table-striped-bg: #d8ccee;
+    --bs-table-striped-color: #000000;
+    --bs-table-active-bg: #ccc2e2;
+    --bs-table-active-color: #000000;
+    --bs-table-hover-bg: #d2c7e8;
+    --bs-table-hover-color: #000000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color);
+}
+
+.table-warning {
+    --bs-table-color: #000000;
+    --bs-table-bg: #fff4cc;
+    --bs-table-border-color: #e6dcb8;
+    --bs-table-striped-bg: #f2e8c2;
+    --bs-table-striped-color: #000000;
+    --bs-table-active-bg: #e6dcb8;
+    --bs-table-active-color: #000000;
+    --bs-table-hover-bg: #ece2bd;
+    --bs-table-hover-color: #000000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color);
+}
+
+.table-danger {
+    --bs-table-color: #000000;
+    --bs-table-bg: #fcd9e2;
+    --bs-table-border-color: #e3c3cb;
+    --bs-table-striped-bg: #efced7;
+    --bs-table-striped-color: #000000;
+    --bs-table-active-bg: #e3c3cb;
+    --bs-table-active-color: #000000;
+    --bs-table-hover-bg: #e9c9d1;
+    --bs-table-hover-color: #000000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color);
+}
+
+.table-light {
+    --bs-table-color: #000000;
+    --bs-table-bg: #F9F9F9;
+    --bs-table-border-color: #e0e0e0;
+    --bs-table-striped-bg: #ededed;
+    --bs-table-striped-color: #000000;
+    --bs-table-active-bg: #e0e0e0;
+    --bs-table-active-color: #000000;
+    --bs-table-hover-bg: #e6e6e6;
+    --bs-table-hover-color: #000000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color);
+}
+
+.table-dark {
+    --bs-table-color: #FFFFFF;
+    --bs-table-bg: #181C32;
+    --bs-table-border-color: #2f3347;
+    --bs-table-striped-bg: #24273c;
+    --bs-table-striped-color: #FFFFFF;
+    --bs-table-active-bg: #2f3347;
+    --bs-table-active-color: #FFFFFF;
+    --bs-table-hover-bg: #292d41;
+    --bs-table-hover-color: #FFFFFF;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color);
+}
+
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 575.98px) {
+    .table-responsive-sm {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .table-responsive-md {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .table-responsive-lg {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .table-responsive-xl {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 1399.98px) {
+    .table-responsive-xxl {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+table.dataTable>thead>tr>td:not(.sorting_disabled),
+table.dataTable>thead>tr>th:not(.sorting_disabled) {
+    padding-right: 0;
+}
+
+table.dataTable thead>tr>th.sorting,
+table.dataTable thead>tr>th.sorting_asc,
+table.dataTable thead>tr>th.sorting_desc,
+table.dataTable thead>tr>th.sorting_asc_disabled,
+table.dataTable thead>tr>th.sorting_desc_disabled,
+table.dataTable thead>tr>td.sorting,
+table.dataTable thead>tr>td.sorting_asc,
+table.dataTable thead>tr>td.sorting_desc,
+table.dataTable thead>tr>td.sorting_asc_disabled,
+table.dataTable thead>tr>td.sorting_desc_disabled {
+    cursor: pointer;
+    position: relative;
+    padding-right: 26px;
+}
+
+table.dataTable>thead .sorting_asc,
+table.dataTable>thead .sorting_desc {
+    vertical-align: middle;
+}
+
+table.dataTable thead>tr>th.sorting:after,
+table.dataTable thead>tr>th.sorting_asc:after,
+table.dataTable thead>tr>th.sorting_desc:after,
+table.dataTable thead>tr>th.sorting_asc_disabled:after,
+table.dataTable thead>tr>th.sorting_desc_disabled:after,
+table.dataTable thead>tr>td.sorting:after,
+table.dataTable thead>tr>td.sorting_asc:after,
+table.dataTable thead>tr>td.sorting_desc:after,
+table.dataTable thead>tr>td.sorting_asc_disabled:after,
+table.dataTable thead>tr>td.sorting_desc_disabled:after {
+    top: 50%;
+    content: "▼";
+    content: "▼" /"";
+}
+
+table.dataTable thead>tr>th.sorting:after,
+table.dataTable thead>tr>th.sorting_asc:after,
+table.dataTable thead>tr>th.sorting_desc:after,
+table.dataTable thead>tr>th.sorting_asc_disabled:after,
+table.dataTable thead>tr>th.sorting_desc_disabled:after,
+table.dataTable thead>tr>td.sorting:after,
+table.dataTable thead>tr>td.sorting_asc:after,
+table.dataTable thead>tr>td.sorting_desc:after,
+table.dataTable thead>tr>td.sorting_asc_disabled:after,
+table.dataTable thead>tr>td.sorting_desc_disabled:after {
+    position: absolute;
+    display: block;
+    opacity: 0.125;
+    right: 10px;
+    line-height: 9px;
+    font-size: 0.8em;
+}
+
+table.dataTable>thead .sorting_asc:after {
+    opacity: 1;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    background-color: var(--bs-text-muted);
+    mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='var%28--bs-text-muted%29'%3e%3cpath d='M3.23571 2.72011L4.97917 4.46358C5.15176 4.63618 5.43158 4.63617 5.60417 4.46358C5.77676 4.29099 5.77676 4.01118 5.60417 3.83861L3.29463 1.52904C3.13192 1.36629 2.86809 1.36629 2.70538 1.52904L0.395812 3.83861C0.22325 4.01117 0.22325 4.29099 0.395812 4.46358C0.568437 4.63617 0.84825 4.63617 1.02081 4.46358L2.76429 2.72011C2.89446 2.58994 3.10554 2.58994 3.23571 2.72011Z'/%3e%3c/svg%3e");
+}
+
+table.dataTable>thead .sorting_desc:after {
+    opacity: 1;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    background-color: var(--bs-text-muted);
+    mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='var%28--bs-text-muted%29'%3e%3cpath d='M2.76429 3.27989L1.02083 1.53642C0.848244 1.36382 0.568419 1.36383 0.395831 1.53642C0.223244 1.70901 0.223244 1.98882 0.395831 2.16139L2.70537 4.47096C2.86808 4.63371 3.13191 4.63371 3.29462 4.47096L5.60419 2.16139C5.77675 1.98883 5.77675 1.70901 5.60419 1.53642C5.43156 1.36383 5.15175 1.36383 4.97919 1.53642L3.23571 3.27989C3.10554 3.41006 2.89446 3.41006 2.76429 3.27989Z'/%3e%3c/svg%3e");
+}
+
+
+table.dataTable>thead .sorting_asc:after,
+table.dataTable>thead .sorting_desc:after {
+    position: relative !important;
+    opacity: 1 !important;
+    display: inline-block !important;
+    width: 0.75rem;
+    height: 0.75rem;
+    content: " " !important;
+    bottom: auto;
+    right: auto !important;
+    left: auto;
+    margin-left: 0.5rem;
+}
+
+.table:not(.table-bordered)> :not(:first-child) {
+    border-color: transparent;
+    border-width: 0;
+    border-style: none;
+}
+
+.table:not(.table-bordered)> :not(:last-child)> :last-child>* {
+    border-bottom-color: inherit;
+}
+
+.table:not(.table-bordered) tr,
+.table:not(.table-bordered) th,
+.table:not(.table-bordered) td {
+    border-color: inherit;
+    border-width: inherit;
+    border-style: inherit;
+    text-transform: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+    height: inherit;
+    min-height: inherit;
+}
+
+.table:not(.table-bordered) tr:first-child,
+.table:not(.table-bordered) th:first-child,
+.table:not(.table-bordered) td:first-child {
+    padding-left: 0;
+}
+
+.table:not(.table-bordered) tr:last-child,
+.table:not(.table-bordered) th:last-child,
+.table:not(.table-bordered) td:last-child {
+    padding-right: 0;
+}
+
+.table:not(.table-bordered) tfoot tr:last-child,
+.table:not(.table-bordered) tbody tr:last-child {
+    border-bottom: 0 !important;
+}
+
+.table:not(.table-bordered) tfoot tr:last-child th,
+.table:not(.table-bordered) tfoot tr:last-child td,
+.table:not(.table-bordered) tbody tr:last-child th,
+.table:not(.table-bordered) tbody tr:last-child td {
+    border-bottom: 0 !important;
+}
+
+.table:not(.table-bordered) tfoot th,
+.table:not(.table-bordered) tfoot td {
+    border-top: inherit;
+}
+
+.table:not(.table-bordered).table-rounded {
+    border-radius: 1.15rem;
+    border-spacing: 0;
+    border-collapse: separate;
+}
+
+.table:not(.table-bordered).table-flush tr,
+.table:not(.table-bordered).table-flush th,
+.table:not(.table-bordered).table-flush td {
+    padding: inherit;
+}
+
+.table:not(.table-bordered).table-row-bordered tr {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--bs-border-color);
+}
+
+.table:not(.table-bordered).table-row-bordered tfoot th,
+.table:not(.table-bordered).table-row-bordered tfoot td {
+    border-top-width: 1px !important;
+}
+
+.table:not(.table-bordered).table-row-dashed tr {
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-bottom-color: var(--bs-border-color);
+}
+
+.table:not(.table-bordered).table-row-dashed tfoot th,
+.table:not(.table-bordered).table-row-dashed tfoot td {
+    border-top-width: 1px !important;
+}
+
+.table:not(.table-bordered).table-row-gray-100 tr {
+    border-bottom-color: var(--bs-gray-100);
+}
+
+.table:not(.table-bordered).table-row-gray-200 tr {
+    border-bottom-color: var(--bs-gray-200);
+}
+
+.table:not(.table-bordered).table-row-gray-300 tr {
+    border-bottom-color: var(--bs-gray-300);
+}
+
+.table:not(.table-bordered).table-row-gray-400 tr {
+    border-bottom-color: var(--bs-gray-400);
+}
+
+.table:not(.table-bordered).table-row-gray-500 tr {
+    border-bottom-color: var(--bs-gray-500);
+}
+
+.table:not(.table-bordered).table-row-gray-600 tr {
+    border-bottom-color: var(--bs-gray-600);
+}
+
+.table:not(.table-bordered).table-row-gray-700 tr {
+    border-bottom-color: var(--bs-gray-700);
+}
+
+.table:not(.table-bordered).table-row-gray-800 tr {
+    border-bottom-color: var(--bs-gray-800);
+}
+
+.table:not(.table-bordered).table-row-gray-900 tr {
+    border-bottom-color: var(--bs-gray-900);
+}
+
+.table-row-dashed th,
+.table-row-dashed td {
+    border-bottom-width: 0 !important;
+}
+
+.table-layout-fixed {
+    table-layout: fixed;
+}
+
+.table-sort:after {
+    opacity: 0;
+}
+
+.table-sort,
+.table-sort-asc,
+.table-sort-desc {
+    vertical-align: middle;
+}
+
+.table-sort:after,
+.table-sort-asc:after,
+.table-sort-desc:after {
+    position: relative;
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    content: " ";
+    bottom: auto;
+    right: auto;
+    left: auto;
+    margin-left: 0.5rem;
+}
+
+.table-sort-asc:after {
+    opacity: 1;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    background-color: var(--bs-text-muted);
+    -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='var%28--bs-text-muted%29'%3e%3cpath d='M3.23571 2.72011L4.97917 4.46358C5.15176 4.63618 5.43158 4.63617 5.60417 4.46358C5.77676 4.29099 5.77676 4.01118 5.60417 3.83861L3.29463 1.52904C3.13192 1.36629 2.86809 1.36629 2.70538 1.52904L0.395812 3.83861C0.22325 4.01117 0.22325 4.29099 0.395812 4.46358C0.568437 4.63617 0.84825 4.63617 1.02081 4.46358L2.76429 2.72011C2.89446 2.58994 3.10554 2.58994 3.23571 2.72011Z'/%3e%3c/svg%3e");
+    mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='var%28--bs-text-muted%29'%3e%3cpath d='M3.23571 2.72011L4.97917 4.46358C5.15176 4.63618 5.43158 4.63617 5.60417 4.46358C5.77676 4.29099 5.77676 4.01118 5.60417 3.83861L3.29463 1.52904C3.13192 1.36629 2.86809 1.36629 2.70538 1.52904L0.395812 3.83861C0.22325 4.01117 0.22325 4.29099 0.395812 4.46358C0.568437 4.63617 0.84825 4.63617 1.02081 4.46358L2.76429 2.72011C2.89446 2.58994 3.10554 2.58994 3.23571 2.72011Z'/%3e%3c/svg%3e");
+}
+
+.table-sort-desc:after {
+    opacity: 1;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    background-color: var(--bs-text-muted);
+    -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='var%28--bs-text-muted%29'%3e%3cpath d='M2.76429 3.27989L1.02083 1.53642C0.848244 1.36382 0.568419 1.36383 0.395831 1.53642C0.223244 1.70901 0.223244 1.98882 0.395831 2.16139L2.70537 4.47096C2.86808 4.63371 3.13191 4.63371 3.29462 4.47096L5.60419 2.16139C5.77675 1.98883 5.77675 1.70901 5.60419 1.53642C5.43156 1.36383 5.15175 1.36383 4.97919 1.53642L3.23571 3.27989C3.10554 3.41006 2.89446 3.41006 2.76429 3.27989Z'/%3e%3c/svg%3e");
+    mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='var%28--bs-text-muted%29'%3e%3cpath d='M2.76429 3.27989L1.02083 1.53642C0.848244 1.36382 0.568419 1.36383 0.395831 1.53642C0.223244 1.70901 0.223244 1.98882 0.395831 2.16139L2.70537 4.47096C2.86808 4.63371 3.13191 4.63371 3.29462 4.47096L5.60419 2.16139C5.77675 1.98883 5.77675 1.70901 5.60419 1.53642C5.43156 1.36383 5.15175 1.36383 4.97919 1.53642L3.23571 3.27989C3.10554 3.41006 2.89446 3.41006 2.76429 3.27989Z'/%3e%3c/svg%3e");
+}
+
+.table-loading-message {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 1.15rem;
+    box-shadow: var(--bs-table-loading-message-box-shadow);
+    background-color: var(--bs-table-loading-message-bg);
+    color: var(--bs-table-loading-message-color);
+    font-weight: 600;
+    margin: 0 !important;
+    width: auto;
+    padding: 0.85rem 2rem !important;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.table-loading {
+    position: relative;
+}
+
+.table-loading .table-loading-message {
+    display: block;
+}
+
+.table.g-0 th,
+.table.g-0 td {
+    padding: 0rem;
+}
+
+.table.g-0 th.dtr-control,
+.table.g-0 td.dtr-control {
+    padding-left: 0rem !important;
+}
+
+.table.gy-0 th,
+.table.gy-0 td {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+}
+
+.table.gx-0 th,
+.table.gx-0 td {
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+
+.table.gx-0 th.dtr-control,
+.table.gx-0 td.dtr-control {
+    padding-left: 0rem !important;
+}
+
+.table.gs-0 th:first-child,
+.table.gs-0 td:first-child {
+    padding-left: 0rem;
+}
+
+.table.gs-0 th:last-child,
+.table.gs-0 td:last-child {
+    padding-right: 0rem;
+}
+
+.table.gs-0 th.dtr-control:first-child,
+.table.gs-0 td.dtr-control:first-child {
+    padding-left: 0rem !important;
+}
+
+.table.g-1 th,
+.table.g-1 td {
+    padding: 0.25rem;
+}
+
+.table.g-1 th.dtr-control,
+.table.g-1 td.dtr-control {
+    padding-left: 0.25rem !important;
+}
+
+.table.gy-1 th,
+.table.gy-1 td {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.table.gx-1 th,
+.table.gx-1 td {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
+
+.table.gx-1 th.dtr-control,
+.table.gx-1 td.dtr-control {
+    padding-left: 0.25rem !important;
+}
+
+.table.gs-1 th:first-child,
+.table.gs-1 td:first-child {
+    padding-left: 0.25rem;
+}
+
+.table.gs-1 th:last-child,
+.table.gs-1 td:last-child {
+    padding-right: 0.25rem;
+}
+
+.table.gs-1 th.dtr-control:first-child,
+.table.gs-1 td.dtr-control:first-child {
+    padding-left: 0.25rem !important;
+}
+
+.table.g-2 th,
+.table.g-2 td {
+    padding: 0.5rem;
+}
+
+.table.g-2 th.dtr-control,
+.table.g-2 td.dtr-control {
+    padding-left: 0.5rem !important;
+}
+
+.table.gy-2 th,
+.table.gy-2 td {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.table.gx-2 th,
+.table.gx-2 td {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.table.gx-2 th.dtr-control,
+.table.gx-2 td.dtr-control {
+    padding-left: 0.5rem !important;
+}
+
+.table.gs-2 th:first-child,
+.table.gs-2 td:first-child {
+    padding-left: 0.5rem;
+}
+
+.table.gs-2 th:last-child,
+.table.gs-2 td:last-child {
+    padding-right: 0.5rem;
+}
+
+.table.gs-2 th.dtr-control:first-child,
+.table.gs-2 td.dtr-control:first-child {
+    padding-left: 0.5rem !important;
+}
+
+.table.g-3 th,
+.table.g-3 td {
+    padding: 0.75rem;
+}
+
+.table.g-3 th.dtr-control,
+.table.g-3 td.dtr-control {
+    padding-left: 0.75rem !important;
+}
+
+.table.gy-3 th,
+.table.gy-3 td {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.table.gx-3 th,
+.table.gx-3 td {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+.table.gx-3 th.dtr-control,
+.table.gx-3 td.dtr-control {
+    padding-left: 0.75rem !important;
+}
+
+.table.gs-3 th:first-child,
+.table.gs-3 td:first-child {
+    padding-left: 0.75rem;
+}
+
+.table.gs-3 th:last-child,
+.table.gs-3 td:last-child {
+    padding-right: 0.75rem;
+}
+
+.table.gs-3 th.dtr-control:first-child,
+.table.gs-3 td.dtr-control:first-child {
+    padding-left: 0.75rem !important;
+}
+
+.table.g-4 th,
+.table.g-4 td {
+    padding: 1rem;
+}
+
+.table.g-4 th.dtr-control,
+.table.g-4 td.dtr-control {
+    padding-left: 1rem !important;
+}
+
+.table.gy-4 th,
+.table.gy-4 td {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.table.gx-4 th,
+.table.gx-4 td {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.table.gx-4 th.dtr-control,
+.table.gx-4 td.dtr-control {
+    padding-left: 1rem !important;
+}
+
+.table.gs-4 th:first-child,
+.table.gs-4 td:first-child {
+    padding-left: 1rem;
+}
+
+.table.gs-4 th:last-child,
+.table.gs-4 td:last-child {
+    padding-right: 1rem;
+}
+
+.table.gs-4 th.dtr-control:first-child,
+.table.gs-4 td.dtr-control:first-child {
+    padding-left: 1rem !important;
+}
+
+.table.g-5 th,
+.table.g-5 td {
+    padding: 1.25rem;
+}
+
+.table.g-5 th.dtr-control,
+.table.g-5 td.dtr-control {
+    padding-left: 1.25rem !important;
+}
+
+.table.gy-5 th,
+.table.gy-5 td {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+.table.gx-5 th,
+.table.gx-5 td {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+.table.gx-5 th.dtr-control,
+.table.gx-5 td.dtr-control {
+    padding-left: 1.25rem !important;
+}
+
+.table.gs-5 th:first-child,
+.table.gs-5 td:first-child {
+    padding-left: 1.25rem;
+}
+
+.table.gs-5 th:last-child,
+.table.gs-5 td:last-child {
+    padding-right: 1.25rem;
+}
+
+.table.gs-5 th.dtr-control:first-child,
+.table.gs-5 td.dtr-control:first-child {
+    padding-left: 1.25rem !important;
+}
+
+.table.g-6 th,
+.table.g-6 td {
+    padding: 1.5rem;
+}
+
+.table.g-6 th.dtr-control,
+.table.g-6 td.dtr-control {
+    padding-left: 1.5rem !important;
+}
+
+.table.gy-6 th,
+.table.gy-6 td {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.table.gx-6 th,
+.table.gx-6 td {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.table.gx-6 th.dtr-control,
+.table.gx-6 td.dtr-control {
+    padding-left: 1.5rem !important;
+}
+
+.table.gs-6 th:first-child,
+.table.gs-6 td:first-child {
+    padding-left: 1.5rem;
+}
+
+.table.gs-6 th:last-child,
+.table.gs-6 td:last-child {
+    padding-right: 1.5rem;
+}
+
+.table.gs-6 th.dtr-control:first-child,
+.table.gs-6 td.dtr-control:first-child {
+    padding-left: 1.5rem !important;
+}
+
+.table.g-7 th,
+.table.g-7 td {
+    padding: 1.75rem;
+}
+
+.table.g-7 th.dtr-control,
+.table.g-7 td.dtr-control {
+    padding-left: 1.75rem !important;
+}
+
+.table.gy-7 th,
+.table.gy-7 td {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+}
+
+.table.gx-7 th,
+.table.gx-7 td {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+}
+
+.table.gx-7 th.dtr-control,
+.table.gx-7 td.dtr-control {
+    padding-left: 1.75rem !important;
+}
+
+.table.gs-7 th:first-child,
+.table.gs-7 td:first-child {
+    padding-left: 1.75rem;
+}
+
+.table.gs-7 th:last-child,
+.table.gs-7 td:last-child {
+    padding-right: 1.75rem;
+}
+
+.table.gs-7 th.dtr-control:first-child,
+.table.gs-7 td.dtr-control:first-child {
+    padding-left: 1.75rem !important;
+}
+
+.table.g-8 th,
+.table.g-8 td {
+    padding: 2rem;
+}
+
+.table.g-8 th.dtr-control,
+.table.g-8 td.dtr-control {
+    padding-left: 2rem !important;
+}
+
+.table.gy-8 th,
+.table.gy-8 td {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.table.gx-8 th,
+.table.gx-8 td {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.table.gx-8 th.dtr-control,
+.table.gx-8 td.dtr-control {
+    padding-left: 2rem !important;
+}
+
+.table.gs-8 th:first-child,
+.table.gs-8 td:first-child {
+    padding-left: 2rem;
+}
+
+.table.gs-8 th:last-child,
+.table.gs-8 td:last-child {
+    padding-right: 2rem;
+}
+
+.table.gs-8 th.dtr-control:first-child,
+.table.gs-8 td.dtr-control:first-child {
+    padding-left: 2rem !important;
+}
+
+.table.g-9 th,
+.table.g-9 td {
+    padding: 2.25rem;
+}
+
+.table.g-9 th.dtr-control,
+.table.g-9 td.dtr-control {
+    padding-left: 2.25rem !important;
+}
+
+.table.gy-9 th,
+.table.gy-9 td {
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+}
+
+.table.gx-9 th,
+.table.gx-9 td {
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+}
+
+.table.gx-9 th.dtr-control,
+.table.gx-9 td.dtr-control {
+    padding-left: 2.25rem !important;
+}
+
+.table.gs-9 th:first-child,
+.table.gs-9 td:first-child {
+    padding-left: 2.25rem;
+}
+
+.table.gs-9 th:last-child,
+.table.gs-9 td:last-child {
+    padding-right: 2.25rem;
+}
+
+.table.gs-9 th.dtr-control:first-child,
+.table.gs-9 td.dtr-control:first-child {
+    padding-left: 2.25rem !important;
+}
+
+.table.g-10 th,
+.table.g-10 td {
+    padding: 2.5rem;
+}
+
+.table.g-10 th.dtr-control,
+.table.g-10 td.dtr-control {
+    padding-left: 2.5rem !important;
+}
+
+.table.gy-10 th,
+.table.gy-10 td {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.table.gx-10 th,
+.table.gx-10 td {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+.table.gx-10 th.dtr-control,
+.table.gx-10 td.dtr-control {
+    padding-left: 2.5rem !important;
+}
+
+.table.gs-10 th:first-child,
+.table.gs-10 td:first-child {
+    padding-left: 2.5rem;
+}
+
+.table.gs-10 th:last-child,
+.table.gs-10 td:last-child {
+    padding-right: 2.5rem;
+}
+
+.table.gs-10 th.dtr-control:first-child,
+.table.gs-10 td.dtr-control:first-child {
+    padding-left: 2.5rem !important;
+}
+
+@media (min-width: 576px) {
+
+    .table.g-sm-0 th,
+    .table.g-sm-0 td {
+        padding: 0rem;
+    }
+
+    .table.g-sm-0 th.dtr-control,
+    .table.g-sm-0 td.dtr-control {
+        padding-left: 0rem !important;
+    }
+
+    .table.gy-sm-0 th,
+    .table.gy-sm-0 td {
+        padding-top: 0rem;
+        padding-bottom: 0rem;
+    }
+
+    .table.gx-sm-0 th,
+    .table.gx-sm-0 td {
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    .table.gx-sm-0 th.dtr-control,
+    .table.gx-sm-0 td.dtr-control {
+        padding-left: 0rem !important;
+    }
+
+    .table.gs-sm-0 th:first-child,
+    .table.gs-sm-0 td:first-child {
+        padding-left: 0rem;
+    }
+
+    .table.gs-sm-0 th:last-child,
+    .table.gs-sm-0 td:last-child {
+        padding-right: 0rem;
+    }
+
+    .table.gs-sm-0 th.dtr-control:first-child,
+    .table.gs-sm-0 td.dtr-control:first-child {
+        padding-left: 0rem !important;
+    }
+
+    .table.g-sm-1 th,
+    .table.g-sm-1 td {
+        padding: 0.25rem;
+    }
+
+    .table.g-sm-1 th.dtr-control,
+    .table.g-sm-1 td.dtr-control {
+        padding-left: 0.25rem !important;
+    }
+
+    .table.gy-sm-1 th,
+    .table.gy-sm-1 td {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+
+    .table.gx-sm-1 th,
+    .table.gx-sm-1 td {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+
+    .table.gx-sm-1 th.dtr-control,
+    .table.gx-sm-1 td.dtr-control {
+        padding-left: 0.25rem !important;
+    }
+
+    .table.gs-sm-1 th:first-child,
+    .table.gs-sm-1 td:first-child {
+        padding-left: 0.25rem;
+    }
+
+    .table.gs-sm-1 th:last-child,
+    .table.gs-sm-1 td:last-child {
+        padding-right: 0.25rem;
+    }
+
+    .table.gs-sm-1 th.dtr-control:first-child,
+    .table.gs-sm-1 td.dtr-control:first-child {
+        padding-left: 0.25rem !important;
+    }
+
+    .table.g-sm-2 th,
+    .table.g-sm-2 td {
+        padding: 0.5rem;
+    }
+
+    .table.g-sm-2 th.dtr-control,
+    .table.g-sm-2 td.dtr-control {
+        padding-left: 0.5rem !important;
+    }
+
+    .table.gy-sm-2 th,
+    .table.gy-sm-2 td {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .table.gx-sm-2 th,
+    .table.gx-sm-2 td {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .table.gx-sm-2 th.dtr-control,
+    .table.gx-sm-2 td.dtr-control {
+        padding-left: 0.5rem !important;
+    }
+
+    .table.gs-sm-2 th:first-child,
+    .table.gs-sm-2 td:first-child {
+        padding-left: 0.5rem;
+    }
+
+    .table.gs-sm-2 th:last-child,
+    .table.gs-sm-2 td:last-child {
+        padding-right: 0.5rem;
+    }
+
+    .table.gs-sm-2 th.dtr-control:first-child,
+    .table.gs-sm-2 td.dtr-control:first-child {
+        padding-left: 0.5rem !important;
+    }
+
+    .table.g-sm-3 th,
+    .table.g-sm-3 td {
+        padding: 0.75rem;
+    }
+
+    .table.g-sm-3 th.dtr-control,
+    .table.g-sm-3 td.dtr-control {
+        padding-left: 0.75rem !important;
+    }
+
+    .table.gy-sm-3 th,
+    .table.gy-sm-3 td {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .table.gx-sm-3 th,
+    .table.gx-sm-3 td {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .table.gx-sm-3 th.dtr-control,
+    .table.gx-sm-3 td.dtr-control {
+        padding-left: 0.75rem !important;
+    }
+
+    .table.gs-sm-3 th:first-child,
+    .table.gs-sm-3 td:first-child {
+        padding-left: 0.75rem;
+    }
+
+    .table.gs-sm-3 th:last-child,
+    .table.gs-sm-3 td:last-child {
+        padding-right: 0.75rem;
+    }
+
+    .table.gs-sm-3 th.dtr-control:first-child,
+    .table.gs-sm-3 td.dtr-control:first-child {
+        padding-left: 0.75rem !important;
+    }
+
+    .table.g-sm-4 th,
+    .table.g-sm-4 td {
+        padding: 1rem;
+    }
+
+    .table.g-sm-4 th.dtr-control,
+    .table.g-sm-4 td.dtr-control {
+        padding-left: 1rem !important;
+    }
+
+    .table.gy-sm-4 th,
+    .table.gy-sm-4 td {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .table.gx-sm-4 th,
+    .table.gx-sm-4 td {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .table.gx-sm-4 th.dtr-control,
+    .table.gx-sm-4 td.dtr-control {
+        padding-left: 1rem !important;
+    }
+
+    .table.gs-sm-4 th:first-child,
+    .table.gs-sm-4 td:first-child {
+        padding-left: 1rem;
+    }
+
+    .table.gs-sm-4 th:last-child,
+    .table.gs-sm-4 td:last-child {
+        padding-right: 1rem;
+    }
+
+    .table.gs-sm-4 th.dtr-control:first-child,
+    .table.gs-sm-4 td.dtr-control:first-child {
+        padding-left: 1rem !important;
+    }
+
+    .table.g-sm-5 th,
+    .table.g-sm-5 td {
+        padding: 1.25rem;
+    }
+
+    .table.g-sm-5 th.dtr-control,
+    .table.g-sm-5 td.dtr-control {
+        padding-left: 1.25rem !important;
+    }
+
+    .table.gy-sm-5 th,
+    .table.gy-sm-5 td {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+    }
+
+    .table.gx-sm-5 th,
+    .table.gx-sm-5 td {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .table.gx-sm-5 th.dtr-control,
+    .table.gx-sm-5 td.dtr-control {
+        padding-left: 1.25rem !important;
+    }
+
+    .table.gs-sm-5 th:first-child,
+    .table.gs-sm-5 td:first-child {
+        padding-left: 1.25rem;
+    }
+
+    .table.gs-sm-5 th:last-child,
+    .table.gs-sm-5 td:last-child {
+        padding-right: 1.25rem;
+    }
+
+    .table.gs-sm-5 th.dtr-control:first-child,
+    .table.gs-sm-5 td.dtr-control:first-child {
+        padding-left: 1.25rem !important;
+    }
+
+    .table.g-sm-6 th,
+    .table.g-sm-6 td {
+        padding: 1.5rem;
+    }
+
+    .table.g-sm-6 th.dtr-control,
+    .table.g-sm-6 td.dtr-control {
+        padding-left: 1.5rem !important;
+    }
+
+    .table.gy-sm-6 th,
+    .table.gy-sm-6 td {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .table.gx-sm-6 th,
+    .table.gx-sm-6 td {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .table.gx-sm-6 th.dtr-control,
+    .table.gx-sm-6 td.dtr-control {
+        padding-left: 1.5rem !important;
+    }
+
+    .table.gs-sm-6 th:first-child,
+    .table.gs-sm-6 td:first-child {
+        padding-left: 1.5rem;
+    }
+
+    .table.gs-sm-6 th:last-child,
+    .table.gs-sm-6 td:last-child {
+        padding-right: 1.5rem;
+    }
+
+    .table.gs-sm-6 th.dtr-control:first-child,
+    .table.gs-sm-6 td.dtr-control:first-child {
+        padding-left: 1.5rem !important;
+    }
+
+    .table.g-sm-7 th,
+    .table.g-sm-7 td {
+        padding: 1.75rem;
+    }
+
+    .table.g-sm-7 th.dtr-control,
+    .table.g-sm-7 td.dtr-control {
+        padding-left: 1.75rem !important;
+    }
+
+    .table.gy-sm-7 th,
+    .table.gy-sm-7 td {
+        padding-top: 1.75rem;
+        padding-bottom: 1.75rem;
+    }
+
+    .table.gx-sm-7 th,
+    .table.gx-sm-7 td {
+        padding-left: 1.75rem;
+        padding-right: 1.75rem;
+    }
+
+    .table.gx-sm-7 th.dtr-control,
+    .table.gx-sm-7 td.dtr-control {
+        padding-left: 1.75rem !important;
+    }
+
+    .table.gs-sm-7 th:first-child,
+    .table.gs-sm-7 td:first-child {
+        padding-left: 1.75rem;
+    }
+
+    .table.gs-sm-7 th:last-child,
+    .table.gs-sm-7 td:last-child {
+        padding-right: 1.75rem;
+    }
+
+    .table.gs-sm-7 th.dtr-control:first-child,
+    .table.gs-sm-7 td.dtr-control:first-child {
+        padding-left: 1.75rem !important;
+    }
+
+    .table.g-sm-8 th,
+    .table.g-sm-8 td {
+        padding: 2rem;
+    }
+
+    .table.g-sm-8 th.dtr-control,
+    .table.g-sm-8 td.dtr-control {
+        padding-left: 2rem !important;
+    }
+
+    .table.gy-sm-8 th,
+    .table.gy-sm-8 td {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .table.gx-sm-8 th,
+    .table.gx-sm-8 td {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .table.gx-sm-8 th.dtr-control,
+    .table.gx-sm-8 td.dtr-control {
+        padding-left: 2rem !important;
+    }
+
+    .table.gs-sm-8 th:first-child,
+    .table.gs-sm-8 td:first-child {
+        padding-left: 2rem;
+    }
+
+    .table.gs-sm-8 th:last-child,
+    .table.gs-sm-8 td:last-child {
+        padding-right: 2rem;
+    }
+
+    .table.gs-sm-8 th.dtr-control:first-child,
+    .table.gs-sm-8 td.dtr-control:first-child {
+        padding-left: 2rem !important;
+    }
+
+    .table.g-sm-9 th,
+    .table.g-sm-9 td {
+        padding: 2.25rem;
+    }
+
+    .table.g-sm-9 th.dtr-control,
+    .table.g-sm-9 td.dtr-control {
+        padding-left: 2.25rem !important;
+    }
+
+    .table.gy-sm-9 th,
+    .table.gy-sm-9 td {
+        padding-top: 2.25rem;
+        padding-bottom: 2.25rem;
+    }
+
+    .table.gx-sm-9 th,
+    .table.gx-sm-9 td {
+        padding-left: 2.25rem;
+        padding-right: 2.25rem;
+    }
+
+    .table.gx-sm-9 th.dtr-control,
+    .table.gx-sm-9 td.dtr-control {
+        padding-left: 2.25rem !important;
+    }
+
+    .table.gs-sm-9 th:first-child,
+    .table.gs-sm-9 td:first-child {
+        padding-left: 2.25rem;
+    }
+
+    .table.gs-sm-9 th:last-child,
+    .table.gs-sm-9 td:last-child {
+        padding-right: 2.25rem;
+    }
+
+    .table.gs-sm-9 th.dtr-control:first-child,
+    .table.gs-sm-9 td.dtr-control:first-child {
+        padding-left: 2.25rem !important;
+    }
+
+    .table.g-sm-10 th,
+    .table.g-sm-10 td {
+        padding: 2.5rem;
+    }
+
+    .table.g-sm-10 th.dtr-control,
+    .table.g-sm-10 td.dtr-control {
+        padding-left: 2.5rem !important;
+    }
+
+    .table.gy-sm-10 th,
+    .table.gy-sm-10 td {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .table.gx-sm-10 th,
+    .table.gx-sm-10 td {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
+    .table.gx-sm-10 th.dtr-control,
+    .table.gx-sm-10 td.dtr-control {
+        padding-left: 2.5rem !important;
+    }
+
+    .table.gs-sm-10 th:first-child,
+    .table.gs-sm-10 td:first-child {
+        padding-left: 2.5rem;
+    }
+
+    .table.gs-sm-10 th:last-child,
+    .table.gs-sm-10 td:last-child {
+        padding-right: 2.5rem;
+    }
+
+    .table.gs-sm-10 th.dtr-control:first-child,
+    .table.gs-sm-10 td.dtr-control:first-child {
+        padding-left: 2.5rem !important;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .table.g-md-0 th,
+    .table.g-md-0 td {
+        padding: 0rem;
+    }
+
+    .table.g-md-0 th.dtr-control,
+    .table.g-md-0 td.dtr-control {
+        padding-left: 0rem !important;
+    }
+
+    .table.gy-md-0 th,
+    .table.gy-md-0 td {
+        padding-top: 0rem;
+        padding-bottom: 0rem;
+    }
+
+    .table.gx-md-0 th,
+    .table.gx-md-0 td {
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    .table.gx-md-0 th.dtr-control,
+    .table.gx-md-0 td.dtr-control {
+        padding-left: 0rem !important;
+    }
+
+    .table.gs-md-0 th:first-child,
+    .table.gs-md-0 td:first-child {
+        padding-left: 0rem;
+    }
+
+    .table.gs-md-0 th:last-child,
+    .table.gs-md-0 td:last-child {
+        padding-right: 0rem;
+    }
+
+    .table.gs-md-0 th.dtr-control:first-child,
+    .table.gs-md-0 td.dtr-control:first-child {
+        padding-left: 0rem !important;
+    }
+
+    .table.g-md-1 th,
+    .table.g-md-1 td {
+        padding: 0.25rem;
+    }
+
+    .table.g-md-1 th.dtr-control,
+    .table.g-md-1 td.dtr-control {
+        padding-left: 0.25rem !important;
+    }
+
+    .table.gy-md-1 th,
+    .table.gy-md-1 td {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+
+    .table.gx-md-1 th,
+    .table.gx-md-1 td {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+
+    .table.gx-md-1 th.dtr-control,
+    .table.gx-md-1 td.dtr-control {
+        padding-left: 0.25rem !important;
+    }
+
+    .table.gs-md-1 th:first-child,
+    .table.gs-md-1 td:first-child {
+        padding-left: 0.25rem;
+    }
+
+    .table.gs-md-1 th:last-child,
+    .table.gs-md-1 td:last-child {
+        padding-right: 0.25rem;
+    }
+
+    .table.gs-md-1 th.dtr-control:first-child,
+    .table.gs-md-1 td.dtr-control:first-child {
+        padding-left: 0.25rem !important;
+    }
+
+    .table.g-md-2 th,
+    .table.g-md-2 td {
+        padding: 0.5rem;
+    }
+
+    .table.g-md-2 th.dtr-control,
+    .table.g-md-2 td.dtr-control {
+        padding-left: 0.5rem !important;
+    }
+
+    .table.gy-md-2 th,
+    .table.gy-md-2 td {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .table.gx-md-2 th,
+    .table.gx-md-2 td {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .table.gx-md-2 th.dtr-control,
+    .table.gx-md-2 td.dtr-control {
+        padding-left: 0.5rem !important;
+    }
+
+    .table.gs-md-2 th:first-child,
+    .table.gs-md-2 td:first-child {
+        padding-left: 0.5rem;
+    }
+
+    .table.gs-md-2 th:last-child,
+    .table.gs-md-2 td:last-child {
+        padding-right: 0.5rem;
+    }
+
+    .table.gs-md-2 th.dtr-control:first-child,
+    .table.gs-md-2 td.dtr-control:first-child {
+        padding-left: 0.5rem !important;
+    }
+
+    .table.g-md-3 th,
+    .table.g-md-3 td {
+        padding: 0.75rem;
+    }
+
+    .table.g-md-3 th.dtr-control,
+    .table.g-md-3 td.dtr-control {
+        padding-left: 0.75rem !important;
+    }
+
+    .table.gy-md-3 th,
+    .table.gy-md-3 td {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .table.gx-md-3 th,
+    .table.gx-md-3 td {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .table.gx-md-3 th.dtr-control,
+    .table.gx-md-3 td.dtr-control {
+        padding-left: 0.75rem !important;
+    }
+
+    .table.gs-md-3 th:first-child,
+    .table.gs-md-3 td:first-child {
+        padding-left: 0.75rem;
+    }
+
+    .table.gs-md-3 th:last-child,
+    .table.gs-md-3 td:last-child {
+        padding-right: 0.75rem;
+    }
+
+    .table.gs-md-3 th.dtr-control:first-child,
+    .table.gs-md-3 td.dtr-control:first-child {
+        padding-left: 0.75rem !important;
+    }
+
+    .table.g-md-4 th,
+    .table.g-md-4 td {
+        padding: 1rem;
+    }
+
+    .table.g-md-4 th.dtr-control,
+    .table.g-md-4 td.dtr-control {
+        padding-left: 1rem !important;
+    }
+
+    .table.gy-md-4 th,
+    .table.gy-md-4 td {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .table.gx-md-4 th,
+    .table.gx-md-4 td {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .table.gx-md-4 th.dtr-control,
+    .table.gx-md-4 td.dtr-control {
+        padding-left: 1rem !important;
+    }
+
+    .table.gs-md-4 th:first-child,
+    .table.gs-md-4 td:first-child {
+        padding-left: 1rem;
+    }
+
+    .table.gs-md-4 th:last-child,
+    .table.gs-md-4 td:last-child {
+        padding-right: 1rem;
+    }
+
+    .table.gs-md-4 th.dtr-control:first-child,
+    .table.gs-md-4 td.dtr-control:first-child {
+        padding-left: 1rem !important;
+    }
+
+    .table.g-md-5 th,
+    .table.g-md-5 td {
+        padding: 1.25rem;
+    }
+
+    .table.g-md-5 th.dtr-control,
+    .table.g-md-5 td.dtr-control {
+        padding-left: 1.25rem !important;
+    }
+
+    .table.gy-md-5 th,
+    .table.gy-md-5 td {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+    }
+
+    .table.gx-md-5 th,
+    .table.gx-md-5 td {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .table.gx-md-5 th.dtr-control,
+    .table.gx-md-5 td.dtr-control {
+        padding-left: 1.25rem !important;
+    }
+
+    .table.gs-md-5 th:first-child,
+    .table.gs-md-5 td:first-child {
+        padding-left: 1.25rem;
+    }
+
+    .table.gs-md-5 th:last-child,
+    .table.gs-md-5 td:last-child {
+        padding-right: 1.25rem;
+    }
+
+    .table.gs-md-5 th.dtr-control:first-child,
+    .table.gs-md-5 td.dtr-control:first-child {
+        padding-left: 1.25rem !important;
+    }
+
+    .table.g-md-6 th,
+    .table.g-md-6 td {
+        padding: 1.5rem;
+    }
+
+    .table.g-md-6 th.dtr-control,
+    .table.g-md-6 td.dtr-control {
+        padding-left: 1.5rem !important;
+    }
+
+    .table.gy-md-6 th,
+    .table.gy-md-6 td {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .table.gx-md-6 th,
+    .table.gx-md-6 td {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .table.gx-md-6 th.dtr-control,
+    .table.gx-md-6 td.dtr-control {
+        padding-left: 1.5rem !important;
+    }
+
+    .table.gs-md-6 th:first-child,
+    .table.gs-md-6 td:first-child {
+        padding-left: 1.5rem;
+    }
+
+    .table.gs-md-6 th:last-child,
+    .table.gs-md-6 td:last-child {
+        padding-right: 1.5rem;
+    }
+
+    .table.gs-md-6 th.dtr-control:first-child,
+    .table.gs-md-6 td.dtr-control:first-child {
+        padding-left: 1.5rem !important;
+    }
+
+    .table.g-md-7 th,
+    .table.g-md-7 td {
+        padding: 1.75rem;
+    }
+
+    .table.g-md-7 th.dtr-control,
+    .table.g-md-7 td.dtr-control {
+        padding-left: 1.75rem !important;
+    }
+
+    .table.gy-md-7 th,
+    .table.gy-md-7 td {
+        padding-top: 1.75rem;
+        padding-bottom: 1.75rem;
+    }
+
+    .table.gx-md-7 th,
+    .table.gx-md-7 td {
+        padding-left: 1.75rem;
+        padding-right: 1.75rem;
+    }
+
+    .table.gx-md-7 th.dtr-control,
+    .table.gx-md-7 td.dtr-control {
+        padding-left: 1.75rem !important;
+    }
+
+    .table.gs-md-7 th:first-child,
+    .table.gs-md-7 td:first-child {
+        padding-left: 1.75rem;
+    }
+
+    .table.gs-md-7 th:last-child,
+    .table.gs-md-7 td:last-child {
+        padding-right: 1.75rem;
+    }
+
+    .table.gs-md-7 th.dtr-control:first-child,
+    .table.gs-md-7 td.dtr-control:first-child {
+        padding-left: 1.75rem !important;
+    }
+
+    .table.g-md-8 th,
+    .table.g-md-8 td {
+        padding: 2rem;
+    }
+
+    .table.g-md-8 th.dtr-control,
+    .table.g-md-8 td.dtr-control {
+        padding-left: 2rem !important;
+    }
+
+    .table.gy-md-8 th,
+    .table.gy-md-8 td {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .table.gx-md-8 th,
+    .table.gx-md-8 td {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .table.gx-md-8 th.dtr-control,
+    .table.gx-md-8 td.dtr-control {
+        padding-left: 2rem !important;
+    }
+
+    .table.gs-md-8 th:first-child,
+    .table.gs-md-8 td:first-child {
+        padding-left: 2rem;
+    }
+
+    .table.gs-md-8 th:last-child,
+    .table.gs-md-8 td:last-child {
+        padding-right: 2rem;
+    }
+
+    .table.gs-md-8 th.dtr-control:first-child,
+    .table.gs-md-8 td.dtr-control:first-child {
+        padding-left: 2rem !important;
+    }
+
+    .table.g-md-9 th,
+    .table.g-md-9 td {
+        padding: 2.25rem;
+    }
+
+    .table.g-md-9 th.dtr-control,
+    .table.g-md-9 td.dtr-control {
+        padding-left: 2.25rem !important;
+    }
+
+    .table.gy-md-9 th,
+    .table.gy-md-9 td {
+        padding-top: 2.25rem;
+        padding-bottom: 2.25rem;
+    }
+
+    .table.gx-md-9 th,
+    .table.gx-md-9 td {
+        padding-left: 2.25rem;
+        padding-right: 2.25rem;
+    }
+
+    .table.gx-md-9 th.dtr-control,
+    .table.gx-md-9 td.dtr-control {
+        padding-left: 2.25rem !important;
+    }
+
+    .table.gs-md-9 th:first-child,
+    .table.gs-md-9 td:first-child {
+        padding-left: 2.25rem;
+    }
+
+    .table.gs-md-9 th:last-child,
+    .table.gs-md-9 td:last-child {
+        padding-right: 2.25rem;
+    }
+
+    .table.gs-md-9 th.dtr-control:first-child,
+    .table.gs-md-9 td.dtr-control:first-child {
+        padding-left: 2.25rem !important;
+    }
+
+    .table.g-md-10 th,
+    .table.g-md-10 td {
+        padding: 2.5rem;
+    }
+
+    .table.g-md-10 th.dtr-control,
+    .table.g-md-10 td.dtr-control {
+        padding-left: 2.5rem !important;
+    }
+
+    .table.gy-md-10 th,
+    .table.gy-md-10 td {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .table.gx-md-10 th,
+    .table.gx-md-10 td {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
+    .table.gx-md-10 th.dtr-control,
+    .table.gx-md-10 td.dtr-control {
+        padding-left: 2.5rem !important;
+    }
+
+    .table.gs-md-10 th:first-child,
+    .table.gs-md-10 td:first-child {
+        padding-left: 2.5rem;
+    }
+
+    .table.gs-md-10 th:last-child,
+    .table.gs-md-10 td:last-child {
+        padding-right: 2.5rem;
+    }
+
+    .table.gs-md-10 th.dtr-control:first-child,
+    .table.gs-md-10 td.dtr-control:first-child {
+        padding-left: 2.5rem !important;
+    }
+}
+
+
+@media (min-width: 992px) {
+
+    .table.g-lg-0 th,
+    .table.g-lg-0 td {
+        padding: 0rem;
+    }
+
+    .table.g-lg-0 th.dtr-control,
+    .table.g-lg-0 td.dtr-control {
+        padding-left: 0rem !important;
+    }
+
+    .table.gy-lg-0 th,
+    .table.gy-lg-0 td {
+        padding-top: 0rem;
+        padding-bottom: 0rem;
+    }
+
+    .table.gx-lg-0 th,
+    .table.gx-lg-0 td {
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    .table.gx-lg-0 th.dtr-control,
+    .table.gx-lg-0 td.dtr-control {
+        padding-left: 0rem !important;
+    }
+
+    .table.gs-lg-0 th:first-child,
+    .table.gs-lg-0 td:first-child {
+        padding-left: 0rem;
+    }
+
+    .table.gs-lg-0 th:last-child,
+    .table.gs-lg-0 td:last-child {
+        padding-right: 0rem;
+    }
+
+    .table.gs-lg-0 th.dtr-control:first-child,
+    .table.gs-lg-0 td.dtr-control:first-child {
+        padding-left: 0rem !important;
+    }
+
+    .table.g-lg-1 th,
+    .table.g-lg-1 td {
+        padding: 0.25rem;
+    }
+
+    .table.g-lg-1 th.dtr-control,
+    .table.g-lg-1 td.dtr-control {
+        padding-left: 0.25rem !important;
+    }
+
+    .table.gy-lg-1 th,
+    .table.gy-lg-1 td {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+
+    .table.gx-lg-1 th,
+    .table.gx-lg-1 td {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+
+    .table.gx-lg-1 th.dtr-control,
+    .table.gx-lg-1 td.dtr-control {
+        padding-left: 0.25rem !important;
+    }
+
+    .table.gs-lg-1 th:first-child,
+    .table.gs-lg-1 td:first-child {
+        padding-left: 0.25rem;
+    }
+
+    .table.gs-lg-1 th:last-child,
+    .table.gs-lg-1 td:last-child {
+        padding-right: 0.25rem;
+    }
+
+    .table.gs-lg-1 th.dtr-control:first-child,
+    .table.gs-lg-1 td.dtr-control:first-child {
+        padding-left: 0.25rem !important;
+    }
+
+    .table.g-lg-2 th,
+    .table.g-lg-2 td {
+        padding: 0.5rem;
+    }
+
+    .table.g-lg-2 th.dtr-control,
+    .table.g-lg-2 td.dtr-control {
+        padding-left: 0.5rem !important;
+    }
+
+    .table.gy-lg-2 th,
+    .table.gy-lg-2 td {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .table.gx-lg-2 th,
+    .table.gx-lg-2 td {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .table.gx-lg-2 th.dtr-control,
+    .table.gx-lg-2 td.dtr-control {
+        padding-left: 0.5rem !important;
+    }
+
+    .table.gs-lg-2 th:first-child,
+    .table.gs-lg-2 td:first-child {
+        padding-left: 0.5rem;
+    }
+
+    .table.gs-lg-2 th:last-child,
+    .table.gs-lg-2 td:last-child {
+        padding-right: 0.5rem;
+    }
+
+    .table.gs-lg-2 th.dtr-control:first-child,
+    .table.gs-lg-2 td.dtr-control:first-child {
+        padding-left: 0.5rem !important;
+    }
+
+    .table.g-lg-3 th,
+    .table.g-lg-3 td {
+        padding: 0.75rem;
+    }
+
+    .table.g-lg-3 th.dtr-control,
+    .table.g-lg-3 td.dtr-control {
+        padding-left: 0.75rem !important;
+    }
+
+    .table.gy-lg-3 th,
+    .table.gy-lg-3 td {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .table.gx-lg-3 th,
+    .table.gx-lg-3 td {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .table.gx-lg-3 th.dtr-control,
+    .table.gx-lg-3 td.dtr-control {
+        padding-left: 0.75rem !important;
+    }
+
+    .table.gs-lg-3 th:first-child,
+    .table.gs-lg-3 td:first-child {
+        padding-left: 0.75rem;
+    }
+
+    .table.gs-lg-3 th:last-child,
+    .table.gs-lg-3 td:last-child {
+        padding-right: 0.75rem;
+    }
+
+    .table.gs-lg-3 th.dtr-control:first-child,
+    .table.gs-lg-3 td.dtr-control:first-child {
+        padding-left: 0.75rem !important;
+    }
+
+    .table.g-lg-4 th,
+    .table.g-lg-4 td {
+        padding: 1rem;
+    }
+
+    .table.g-lg-4 th.dtr-control,
+    .table.g-lg-4 td.dtr-control {
+        padding-left: 1rem !important;
+    }
+
+    .table.gy-lg-4 th,
+    .table.gy-lg-4 td {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .table.gx-lg-4 th,
+    .table.gx-lg-4 td {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .table.gx-lg-4 th.dtr-control,
+    .table.gx-lg-4 td.dtr-control {
+        padding-left: 1rem !important;
+    }
+
+    .table.gs-lg-4 th:first-child,
+    .table.gs-lg-4 td:first-child {
+        padding-left: 1rem;
+    }
+
+    .table.gs-lg-4 th:last-child,
+    .table.gs-lg-4 td:last-child {
+        padding-right: 1rem;
+    }
+
+    .table.gs-lg-4 th.dtr-control:first-child,
+    .table.gs-lg-4 td.dtr-control:first-child {
+        padding-left: 1rem !important;
+    }
+
+    .table.g-lg-5 th,
+    .table.g-lg-5 td {
+        padding: 1.25rem;
+    }
+
+    .table.g-lg-5 th.dtr-control,
+    .table.g-lg-5 td.dtr-control {
+        padding-left: 1.25rem !important;
+    }
+
+    .table.gy-lg-5 th,
+    .table.gy-lg-5 td {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+    }
+
+    .table.gx-lg-5 th,
+    .table.gx-lg-5 td {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .table.gx-lg-5 th.dtr-control,
+    .table.gx-lg-5 td.dtr-control {
+        padding-left: 1.25rem !important;
+    }
+
+    .table.gs-lg-5 th:first-child,
+    .table.gs-lg-5 td:first-child {
+        padding-left: 1.25rem;
+    }
+
+    .table.gs-lg-5 th:last-child,
+    .table.gs-lg-5 td:last-child {
+        padding-right: 1.25rem;
+    }
+
+    .table.gs-lg-5 th.dtr-control:first-child,
+    .table.gs-lg-5 td.dtr-control:first-child {
+        padding-left: 1.25rem !important;
+    }
+
+    .table.g-lg-6 th,
+    .table.g-lg-6 td {
+        padding: 1.5rem;
+    }
+
+    .table.g-lg-6 th.dtr-control,
+    .table.g-lg-6 td.dtr-control {
+        padding-left: 1.5rem !important;
+    }
+
+    .table.gy-lg-6 th,
+    .table.gy-lg-6 td {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .table.gx-lg-6 th,
+    .table.gx-lg-6 td {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .table.gx-lg-6 th.dtr-control,
+    .table.gx-lg-6 td.dtr-control {
+        padding-left: 1.5rem !important;
+    }
+
+    .table.gs-lg-6 th:first-child,
+    .table.gs-lg-6 td:first-child {
+        padding-left: 1.5rem;
+    }
+
+    .table.gs-lg-6 th:last-child,
+    .table.gs-lg-6 td:last-child {
+        padding-right: 1.5rem;
+    }
+
+    .table.gs-lg-6 th.dtr-control:first-child,
+    .table.gs-lg-6 td.dtr-control:first-child {
+        padding-left: 1.5rem !important;
+    }
+
+    .table.g-lg-7 th,
+    .table.g-lg-7 td {
+        padding: 1.75rem;
+    }
+
+    .table.g-lg-7 th.dtr-control,
+    .table.g-lg-7 td.dtr-control {
+        padding-left: 1.75rem !important;
+    }
+
+    .table.gy-lg-7 th,
+    .table.gy-lg-7 td {
+        padding-top: 1.75rem;
+        padding-bottom: 1.75rem;
+    }
+
+    .table.gx-lg-7 th,
+    .table.gx-lg-7 td {
+        padding-left: 1.75rem;
+        padding-right: 1.75rem;
+    }
+
+    .table.gx-lg-7 th.dtr-control,
+    .table.gx-lg-7 td.dtr-control {
+        padding-left: 1.75rem !important;
+    }
+
+    .table.gs-lg-7 th:first-child,
+    .table.gs-lg-7 td:first-child {
+        padding-left: 1.75rem;
+    }
+
+    .table.gs-lg-7 th:last-child,
+    .table.gs-lg-7 td:last-child {
+        padding-right: 1.75rem;
+    }
+
+    .table.gs-lg-7 th.dtr-control:first-child,
+    .table.gs-lg-7 td.dtr-control:first-child {
+        padding-left: 1.75rem !important;
+    }
+
+    .table.g-lg-8 th,
+    .table.g-lg-8 td {
+        padding: 2rem;
+    }
+
+    .table.g-lg-8 th.dtr-control,
+    .table.g-lg-8 td.dtr-control {
+        padding-left: 2rem !important;
+    }
+
+    .table.gy-lg-8 th,
+    .table.gy-lg-8 td {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .table.gx-lg-8 th,
+    .table.gx-lg-8 td {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .table.gx-lg-8 th.dtr-control,
+    .table.gx-lg-8 td.dtr-control {
+        padding-left: 2rem !important;
+    }
+
+    .table.gs-lg-8 th:first-child,
+    .table.gs-lg-8 td:first-child {
+        padding-left: 2rem;
+    }
+
+    .table.gs-lg-8 th:last-child,
+    .table.gs-lg-8 td:last-child {
+        padding-right: 2rem;
+    }
+
+    .table.gs-lg-8 th.dtr-control:first-child,
+    .table.gs-lg-8 td.dtr-control:first-child {
+        padding-left: 2rem !important;
+    }
+
+    .table.g-lg-9 th,
+    .table.g-lg-9 td {
+        padding: 2.25rem;
+    }
+
+    .table.g-lg-9 th.dtr-control,
+    .table.g-lg-9 td.dtr-control {
+        padding-left: 2.25rem !important;
+    }
+
+    .table.gy-lg-9 th,
+    .table.gy-lg-9 td {
+        padding-top: 2.25rem;
+        padding-bottom: 2.25rem;
+    }
+
+    .table.gx-lg-9 th,
+    .table.gx-lg-9 td {
+        padding-left: 2.25rem;
+        padding-right: 2.25rem;
+    }
+
+    .table.gx-lg-9 th.dtr-control,
+    .table.gx-lg-9 td.dtr-control {
+        padding-left: 2.25rem !important;
+    }
+
+    .table.gs-lg-9 th:first-child,
+    .table.gs-lg-9 td:first-child {
+        padding-left: 2.25rem;
+    }
+
+    .table.gs-lg-9 th:last-child,
+    .table.gs-lg-9 td:last-child {
+        padding-right: 2.25rem;
+    }
+
+    .table.gs-lg-9 th.dtr-control:first-child,
+    .table.gs-lg-9 td.dtr-control:first-child {
+        padding-left: 2.25rem !important;
+    }
+
+    .table.g-lg-10 th,
+    .table.g-lg-10 td {
+        padding: 2.5rem;
+    }
+
+    .table.g-lg-10 th.dtr-control,
+    .table.g-lg-10 td.dtr-control {
+        padding-left: 2.5rem !important;
+    }
+
+    .table.gy-lg-10 th,
+    .table.gy-lg-10 td {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .table.gx-lg-10 th,
+    .table.gx-lg-10 td {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
+    .table.gx-lg-10 th.dtr-control,
+    .table.gx-lg-10 td.dtr-control {
+        padding-left: 2.5rem !important;
+    }
+
+    .table.gs-lg-10 th:first-child,
+    .table.gs-lg-10 td:first-child {
+        padding-left: 2.5rem;
+    }
+
+    .table.gs-lg-10 th:last-child,
+    .table.gs-lg-10 td:last-child {
+        padding-right: 2.5rem;
+    }
+
+    .table.gs-lg-10 th.dtr-control:first-child,
+    .table.gs-lg-10 td.dtr-control:first-child {
+        padding-left: 2.5rem !important;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .table.g-xl-0 th,
+    .table.g-xl-0 td {
+        padding: 0rem;
+    }
+
+    .table.g-xl-0 th.dtr-control,
+    .table.g-xl-0 td.dtr-control {
+        padding-left: 0rem !important;
+    }
+
+    .table.gy-xl-0 th,
+    .table.gy-xl-0 td {
+        padding-top: 0rem;
+        padding-bottom: 0rem;
+    }
+
+    .table.gx-xl-0 th,
+    .table.gx-xl-0 td {
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    .table.gx-xl-0 th.dtr-control,
+    .table.gx-xl-0 td.dtr-control {
+        padding-left: 0rem !important;
+    }
+
+    .table.gs-xl-0 th:first-child,
+    .table.gs-xl-0 td:first-child {
+        padding-left: 0rem;
+    }
+
+    .table.gs-xl-0 th:last-child,
+    .table.gs-xl-0 td:last-child {
+        padding-right: 0rem;
+    }
+
+    .table.gs-xl-0 th.dtr-control:first-child,
+    .table.gs-xl-0 td.dtr-control:first-child {
+        padding-left: 0rem !important;
+    }
+
+    .table.g-xl-1 th,
+    .table.g-xl-1 td {
+        padding: 0.25rem;
+    }
+
+    .table.g-xl-1 th.dtr-control,
+    .table.g-xl-1 td.dtr-control {
+        padding-left: 0.25rem !important;
+    }
+
+    .table.gy-xl-1 th,
+    .table.gy-xl-1 td {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+
+    .table.gx-xl-1 th,
+    .table.gx-xl-1 td {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+
+    .table.gx-xl-1 th.dtr-control,
+    .table.gx-xl-1 td.dtr-control {
+        padding-left: 0.25rem !important;
+    }
+
+    .table.gs-xl-1 th:first-child,
+    .table.gs-xl-1 td:first-child {
+        padding-left: 0.25rem;
+    }
+
+    .table.gs-xl-1 th:last-child,
+    .table.gs-xl-1 td:last-child {
+        padding-right: 0.25rem;
+    }
+
+    .table.gs-xl-1 th.dtr-control:first-child,
+    .table.gs-xl-1 td.dtr-control:first-child {
+        padding-left: 0.25rem !important;
+    }
+
+    .table.g-xl-2 th,
+    .table.g-xl-2 td {
+        padding: 0.5rem;
+    }
+
+    .table.g-xl-2 th.dtr-control,
+    .table.g-xl-2 td.dtr-control {
+        padding-left: 0.5rem !important;
+    }
+
+    .table.gy-xl-2 th,
+    .table.gy-xl-2 td {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .table.gx-xl-2 th,
+    .table.gx-xl-2 td {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .table.gx-xl-2 th.dtr-control,
+    .table.gx-xl-2 td.dtr-control {
+        padding-left: 0.5rem !important;
+    }
+
+    .table.gs-xl-2 th:first-child,
+    .table.gs-xl-2 td:first-child {
+        padding-left: 0.5rem;
+    }
+
+    .table.gs-xl-2 th:last-child,
+    .table.gs-xl-2 td:last-child {
+        padding-right: 0.5rem;
+    }
+
+    .table.gs-xl-2 th.dtr-control:first-child,
+    .table.gs-xl-2 td.dtr-control:first-child {
+        padding-left: 0.5rem !important;
+    }
+
+    .table.g-xl-3 th,
+    .table.g-xl-3 td {
+        padding: 0.75rem;
+    }
+
+    .table.g-xl-3 th.dtr-control,
+    .table.g-xl-3 td.dtr-control {
+        padding-left: 0.75rem !important;
+    }
+
+    .table.gy-xl-3 th,
+    .table.gy-xl-3 td {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .table.gx-xl-3 th,
+    .table.gx-xl-3 td {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .table.gx-xl-3 th.dtr-control,
+    .table.gx-xl-3 td.dtr-control {
+        padding-left: 0.75rem !important;
+    }
+
+    .table.gs-xl-3 th:first-child,
+    .table.gs-xl-3 td:first-child {
+        padding-left: 0.75rem;
+    }
+
+    .table.gs-xl-3 th:last-child,
+    .table.gs-xl-3 td:last-child {
+        padding-right: 0.75rem;
+    }
+
+    .table.gs-xl-3 th.dtr-control:first-child,
+    .table.gs-xl-3 td.dtr-control:first-child {
+        padding-left: 0.75rem !important;
+    }
+
+    .table.g-xl-4 th,
+    .table.g-xl-4 td {
+        padding: 1rem;
+    }
+
+    .table.g-xl-4 th.dtr-control,
+    .table.g-xl-4 td.dtr-control {
+        padding-left: 1rem !important;
+    }
+
+    .table.gy-xl-4 th,
+    .table.gy-xl-4 td {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .table.gx-xl-4 th,
+    .table.gx-xl-4 td {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .table.gx-xl-4 th.dtr-control,
+    .table.gx-xl-4 td.dtr-control {
+        padding-left: 1rem !important;
+    }
+
+    .table.gs-xl-4 th:first-child,
+    .table.gs-xl-4 td:first-child {
+        padding-left: 1rem;
+    }
+
+    .table.gs-xl-4 th:last-child,
+    .table.gs-xl-4 td:last-child {
+        padding-right: 1rem;
+    }
+
+    .table.gs-xl-4 th.dtr-control:first-child,
+    .table.gs-xl-4 td.dtr-control:first-child {
+        padding-left: 1rem !important;
+    }
+
+    .table.g-xl-5 th,
+    .table.g-xl-5 td {
+        padding: 1.25rem;
+    }
+
+    .table.g-xl-5 th.dtr-control,
+    .table.g-xl-5 td.dtr-control {
+        padding-left: 1.25rem !important;
+    }
+
+    .table.gy-xl-5 th,
+    .table.gy-xl-5 td {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+    }
+
+    .table.gx-xl-5 th,
+    .table.gx-xl-5 td {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .table.gx-xl-5 th.dtr-control,
+    .table.gx-xl-5 td.dtr-control {
+        padding-left: 1.25rem !important;
+    }
+
+    .table.gs-xl-5 th:first-child,
+    .table.gs-xl-5 td:first-child {
+        padding-left: 1.25rem;
+    }
+
+    .table.gs-xl-5 th:last-child,
+    .table.gs-xl-5 td:last-child {
+        padding-right: 1.25rem;
+    }
+
+    .table.gs-xl-5 th.dtr-control:first-child,
+    .table.gs-xl-5 td.dtr-control:first-child {
+        padding-left: 1.25rem !important;
+    }
+
+    .table.g-xl-6 th,
+    .table.g-xl-6 td {
+        padding: 1.5rem;
+    }
+
+    .table.g-xl-6 th.dtr-control,
+    .table.g-xl-6 td.dtr-control {
+        padding-left: 1.5rem !important;
+    }
+
+    .table.gy-xl-6 th,
+    .table.gy-xl-6 td {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .table.gx-xl-6 th,
+    .table.gx-xl-6 td {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .table.gx-xl-6 th.dtr-control,
+    .table.gx-xl-6 td.dtr-control {
+        padding-left: 1.5rem !important;
+    }
+
+    .table.gs-xl-6 th:first-child,
+    .table.gs-xl-6 td:first-child {
+        padding-left: 1.5rem;
+    }
+
+    .table.gs-xl-6 th:last-child,
+    .table.gs-xl-6 td:last-child {
+        padding-right: 1.5rem;
+    }
+
+    .table.gs-xl-6 th.dtr-control:first-child,
+    .table.gs-xl-6 td.dtr-control:first-child {
+        padding-left: 1.5rem !important;
+    }
+
+    .table.g-xl-7 th,
+    .table.g-xl-7 td {
+        padding: 1.75rem;
+    }
+
+    .table.g-xl-7 th.dtr-control,
+    .table.g-xl-7 td.dtr-control {
+        padding-left: 1.75rem !important;
+    }
+
+    .table.gy-xl-7 th,
+    .table.gy-xl-7 td {
+        padding-top: 1.75rem;
+        padding-bottom: 1.75rem;
+    }
+
+    .table.gx-xl-7 th,
+    .table.gx-xl-7 td {
+        padding-left: 1.75rem;
+        padding-right: 1.75rem;
+    }
+
+    .table.gx-xl-7 th.dtr-control,
+    .table.gx-xl-7 td.dtr-control {
+        padding-left: 1.75rem !important;
+    }
+
+    .table.gs-xl-7 th:first-child,
+    .table.gs-xl-7 td:first-child {
+        padding-left: 1.75rem;
+    }
+
+    .table.gs-xl-7 th:last-child,
+    .table.gs-xl-7 td:last-child {
+        padding-right: 1.75rem;
+    }
+
+    .table.gs-xl-7 th.dtr-control:first-child,
+    .table.gs-xl-7 td.dtr-control:first-child {
+        padding-left: 1.75rem !important;
+    }
+
+    .table.g-xl-8 th,
+    .table.g-xl-8 td {
+        padding: 2rem;
+    }
+
+    .table.g-xl-8 th.dtr-control,
+    .table.g-xl-8 td.dtr-control {
+        padding-left: 2rem !important;
+    }
+
+    .table.gy-xl-8 th,
+    .table.gy-xl-8 td {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .table.gx-xl-8 th,
+    .table.gx-xl-8 td {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .table.gx-xl-8 th.dtr-control,
+    .table.gx-xl-8 td.dtr-control {
+        padding-left: 2rem !important;
+    }
+
+    .table.gs-xl-8 th:first-child,
+    .table.gs-xl-8 td:first-child {
+        padding-left: 2rem;
+    }
+
+    .table.gs-xl-8 th:last-child,
+    .table.gs-xl-8 td:last-child {
+        padding-right: 2rem;
+    }
+
+    .table.gs-xl-8 th.dtr-control:first-child,
+    .table.gs-xl-8 td.dtr-control:first-child {
+        padding-left: 2rem !important;
+    }
+
+    .table.g-xl-9 th,
+    .table.g-xl-9 td {
+        padding: 2.25rem;
+    }
+
+    .table.g-xl-9 th.dtr-control,
+    .table.g-xl-9 td.dtr-control {
+        padding-left: 2.25rem !important;
+    }
+
+    .table.gy-xl-9 th,
+    .table.gy-xl-9 td {
+        padding-top: 2.25rem;
+        padding-bottom: 2.25rem;
+    }
+
+    .table.gx-xl-9 th,
+    .table.gx-xl-9 td {
+        padding-left: 2.25rem;
+        padding-right: 2.25rem;
+    }
+
+    .table.gx-xl-9 th.dtr-control,
+    .table.gx-xl-9 td.dtr-control {
+        padding-left: 2.25rem !important;
+    }
+
+    .table.gs-xl-9 th:first-child,
+    .table.gs-xl-9 td:first-child {
+        padding-left: 2.25rem;
+    }
+
+    .table.gs-xl-9 th:last-child,
+    .table.gs-xl-9 td:last-child {
+        padding-right: 2.25rem;
+    }
+
+    .table.gs-xl-9 th.dtr-control:first-child,
+    .table.gs-xl-9 td.dtr-control:first-child {
+        padding-left: 2.25rem !important;
+    }
+
+    .table.g-xl-10 th,
+    .table.g-xl-10 td {
+        padding: 2.5rem;
+    }
+
+    .table.g-xl-10 th.dtr-control,
+    .table.g-xl-10 td.dtr-control {
+        padding-left: 2.5rem !important;
+    }
+
+    .table.gy-xl-10 th,
+    .table.gy-xl-10 td {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .table.gx-xl-10 th,
+    .table.gx-xl-10 td {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
+    .table.gx-xl-10 th.dtr-control,
+    .table.gx-xl-10 td.dtr-control {
+        padding-left: 2.5rem !important;
+    }
+
+    .table.gs-xl-10 th:first-child,
+    .table.gs-xl-10 td:first-child {
+        padding-left: 2.5rem;
+    }
+
+    .table.gs-xl-10 th:last-child,
+    .table.gs-xl-10 td:last-child {
+        padding-right: 2.5rem;
+    }
+
+    .table.gs-xl-10 th.dtr-control:first-child,
+    .table.gs-xl-10 td.dtr-control:first-child {
+        padding-left: 2.5rem !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .table-responsive::-webkit-scrollbar {
+        width: var(--bs-scrollbar-size);
+        height: var(--bs-scrollbar-size);
+    }
+
+    .table-responsive::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    .table-responsive::-webkit-scrollbar-thumb {
+        border-radius: var(--bs-scrollbar-size);
+        background-color: var(--bs-scrollbar-color);
+    }
+
+    .table-responsive::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
+
+    .table-responsive:hover::-webkit-scrollbar-thumb {
+        background-color: var(--bs-scrollbar-hover-color);
+    }
+
+    .table-responsive:hover::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
+}

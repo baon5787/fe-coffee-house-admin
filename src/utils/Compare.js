@@ -1,0 +1,14 @@
+export const isEqual = (object, newObject) => {
+    const objKeys = Object.keys(object);
+    const objNewKeys = Object.keys(newObject);
+
+    if (objKeys?.length !== objNewKeys?.length) {
+        return false;
+    }
+
+    for (let key of objKeys) {
+        if (object[key] !== newObject[key]) return false;
+    }
+
+    return true;
+}

@@ -1,0 +1,35 @@
+.image {
+    background-image: url('../../../images/files/blank-image.svg');
+}
+
+[data-bs-theme="dark"] .image {
+    background-image: url('../../../images/files/blank-image-dark.svg');
+}
+
+@media screen and (min-width: 575.98px) {
+    .products tr {
+        display: grid;
+        grid-template-columns: 5% 10% 35% 15% 10% 14% 11%;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 575.98px) {
+
+    .products td:nth-child(2),
+    .products th:nth-child(2) {
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        min-width: 100px;
+    }
+
+    .products th:nth-child(2) {
+        background-color: var(--bs-body-bg);
+    }
+
+    .products td:nth-child(2) {
+        background-color: var(--bs-body-bg);
+    }
+}

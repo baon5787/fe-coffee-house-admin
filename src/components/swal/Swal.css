@@ -1,0 +1,38 @@
+.swal2-popup {
+    background-color: var(--bs-body-bg);
+    padding: 2rem;
+    border-radius: 1.15rem;
+}
+
+.swal2-icon.swal2-warning {
+    border-color: var(--bs-warning);
+    color: var(--bs-warning);
+}
+
+.swal2-container .swal2-html-container {
+    max-height: 200px;
+    overflow: auto;
+}
+
+.swal2-popup .swal2-html-container,
+.swal2-popup .swal2-content {
+    font-weight: normal;
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    color: var(--bs-gray-800);
+}
+
+.btn.btn-danger {
+    color: var(--bs-danger-inverse);
+    border-color: var(--bs-danger);
+    background-color: var(--bs-danger);
+}
+
+.btn {
+    --bs-btn-color: var(--bs-body-color);
+    outline: none !important;
+}
+
+.swal2-popup .btn {
+    margin: 15px 5px 0;
+}

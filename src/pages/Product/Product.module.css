@@ -1,7 +1,0 @@
-.image {
-    background-image: url('../../images/files/blank-image.svg');
-}
-
-[data-bs-theme="dark"] .image {
-    background-image: url('../../images/files/blank-image-dark.svg');
-}

@@ -1,0 +1,7 @@
+@media screen and (min-width: 575.98px) {
+    .coupons tr {
+        display: grid;
+        grid-template-columns: 2% 6% 17% 9% 9% 8% 9% 10% 10% 9% 11%;
+        align-items: center;
+    }
+}

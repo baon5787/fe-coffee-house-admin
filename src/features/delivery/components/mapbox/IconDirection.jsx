@@ -1,5 +1,6 @@
 import React from 'react'
-import { LeftDirectionIcon, RightDirectionIcon, StraightIcon } from '~/components/icons';
+import { LeftDirectionIcon, RightDirectionIcon, StraightIcon } from '~/components/icons/Icons';
+
 
 const IconDirection = ({ title }) => {
     return (

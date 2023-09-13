@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { CardHeader } from '~/components/card'
-import { PaymentMethodIcon, PhoneIcon } from '~/components/icons'
+import React, { useEffect, useState } from 'react';
+import { CardHeader } from '~/components/card';
 import '../style/delivery.css';
 import {
     getListStateTranstionOrder,
@@ -28,6 +27,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays, faCircleUser, faTruckFast } from '@fortawesome/free-solid-svg-icons'
 import { OrderItemList } from '~/components/table';
 import { isEmptyArray, isStateOrderStatus, isStatePaymentStatus } from '~/utils/CheckValue';
+import { PaymentMethodIcon, PhoneIcon } from '~/components/icons/Icons';
 
 const DeliveryOrderDetails = () => {
 

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { RemoveIcon } from '../icons';
 import FlatpickrRange from '../flatpickr/FlatpickrRange';
 import { useDispatch, useSelector } from 'react-redux';
 import { defaultSearchDateRangeChange, searchDateRangeChange } from '~/redux/slice/FiltersSlice';
 import { searchTimeEndedSelector, searchTimeStartSelector } from '~/redux/selectors';
+import { RemoveIcon } from '../icons/Icons';
 
 const SearchDateRange = () => {
 

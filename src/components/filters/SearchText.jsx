@@ -4,7 +4,7 @@ import useDebounce from '~/hooks/useDebounce';
 import { searchTextSelector } from '~/redux/selectors';
 import { defaultSearchTextChange, searchTextChange } from '~/redux/slice/FiltersSlice';
 import PropTypes from 'prop-types';
-import { SearchIcon } from '../icons';
+import { SearchIcon } from '../icons/Icons';
 
 const SearchText = ({ placeholder }) => {
 

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
-import { ArrowIcon } from '../icons';
 import Tippy from '@tippyjs/react';
+import { ArrowIcon } from '../icons/Icons';
 
 const Action = ({ onEditOrEnableClick, onDeleteOrDisenableClick, title }) => {
     const [isOpen, setOpen] = useState(false);

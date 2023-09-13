@@ -1,6 +1,6 @@
 import React from 'react'
-import { CloseIcon } from '../icons';
 import PropTypes from 'prop-types'
+import { CloseIcon } from '../icons/Icons'
 
 const ModalHeader = ({ onClose, title }) => {
     return (

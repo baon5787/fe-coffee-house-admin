@@ -8,8 +8,8 @@ import PageTitle from './pagetitle';
 import { useOutletContext } from 'react-router-dom';
 import { toggleMenu } from '~/redux/slice/DimensionsSlice';
 import PropTypes from 'prop-types';
-import { ScrollTopIcon } from '../icons';
 import style from './style/Scroll.module.css';
+import { ScrollTopIcon } from '../icons/Icons';
 
 const Wrapper = ({ children, titlePage }) => {
 

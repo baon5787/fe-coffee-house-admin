@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { Card, CardHeader } from '~/components/card';
-import { OrderStatusIcon, PaymentMethodIcon, PaymentStatusIcon, PhoneIcon } from '~/components/icons';
 import { getOrderDetailsByCode } from '../services/ApiOrder';
 import { createAxios } from '~/api/AxiosClient';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +10,7 @@ import { formatDateTime } from '~/utils/HandleTable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays, faCircleUser, faTruck } from '@fortawesome/free-solid-svg-icons'
 import { OrderItemList } from '~/components/table';
+import { OrderStatusIcon, PaymentMethodIcon, PaymentStatusIcon, PhoneIcon } from '~/components/icons/Icons';
 
 const OrderDetails = () => {
 

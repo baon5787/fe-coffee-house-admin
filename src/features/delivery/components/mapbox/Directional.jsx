@@ -2,8 +2,8 @@ import React from 'react'
 import { CardHeader } from '~/components/card';
 import { THE_COFFEE_HOUSE } from '~/constants/AppConstant';
 import Guide from './Guide';
-import { DestinationIcon, StartIcon } from '~/components/icons';
 import IconDirection from './IconDirection';
+import { DestinationIcon, StartIcon } from '~/components/icons/Icons';
 
 const Directional = ({ guide, onMouseOutPoint, onClickPoint, onMouseMovePoint }) => {
 

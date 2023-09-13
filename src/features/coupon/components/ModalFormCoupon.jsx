@@ -1,5 +1,4 @@
 import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
-import { CloseIcon } from '~/components/icons';
 import { Modal } from '~/components/modal'
 import { useBlur, useModal, useParam } from '~/hooks';
 import { useForm } from 'react-hook-form';
@@ -26,6 +25,7 @@ import Input from '~/components/form/Input';
 import Errors from '~/components/form/Errors';
 import InputDate from '~/components/form/InputDate';
 import Selection from '~/components/form/Selection';
+import { CloseIcon } from '~/components/icons/Icons';
 
 const ModalFormCoupon = (props, ref) => {
 

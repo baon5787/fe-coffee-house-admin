@@ -1,9 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Errors, FormCollapse, InputGroup, Label, Textarea } from '~/components/form';
 import Selects from '~/components/select';
 import { getOptionSelect, getValueString } from '~/utils/HandleValue';
 import { getSelectDistrict, getSelectWard } from '~/api/ApiSelect';
+import FormCollapse from '~/components/form/FormCollapse';
+import InputGroup from '~/components/form/InputGroup';
+import Label from '~/components/form/Label';
+import Errors from '~/components/form/Errors';
+import Textarea from '~/components/form/Textarea';
 
 const FormAddress = (props) => {
 

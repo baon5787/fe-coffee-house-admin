@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Errors, FormCollapse, Input, InputGroup, InputImage, Label } from '~/components/form'
 import styles from '../style/User.module.css';
 import PropTypes from 'prop-types'
 import {
@@ -10,6 +9,12 @@ import {
 import Selects from '~/components/select';
 import { EMPTY_ARRAY, FEBRUARY, MAX_MONTH, MIN_DATE, MONTH } from '~/constants/AppConstant';
 import { isEmptyArray } from '~/utils/CheckValue';
+import FormCollapse from '~/components/form/FormCollapse';
+import InputGroup from '~/components/form/InputGroup';
+import Label from '~/components/form/Label';
+import InputImage from '~/components/form/InputImage';
+import Errors from '~/components/form/Errors';
+import Input from '~/components/form/Input';
 
 
 const FormUserDetails = ({ register, getValues, errors, setValue, setError, onBlur, allGender }) => {

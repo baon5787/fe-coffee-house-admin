@@ -9,7 +9,6 @@ import { getCheckBoxSizes } from '~/api/ApiCheckBox';
 import { getSelectSubCategories } from '~/api/ApiSelect';
 import { addProduct, getProductByCode, updateProduct } from '../services/ApiProduct';
 import { useBlur } from '~/hooks';
-import { Errors, Header, Input, InputGroup, InputImage, Label, Selection, Textarea } from '~/components/form';
 import { Card } from '~/components/card';
 import styles from '../style/Product.module.css';
 import { useSelector } from 'react-redux';
@@ -19,6 +18,14 @@ import ListCheckBoxSize from './ListCheckBoxSize';
 import { isParam } from '~/utils/CheckValue';
 import { getValueNumber, getValueString } from '~/utils/HandleValue';
 import { Forbidden } from '~/components/error';
+import Header from '~/components/form/Header';
+import InputGroup from '~/components/form/InputGroup';
+import Label from '~/components/form/Label';
+import Input from '~/components/form/Input';
+import Errors from '~/components/form/Errors';
+import Textarea from '~/components/form/Textarea';
+import InputImage from '~/components/form/InputImage';
+import Selection from '~/components/form/Selection';
 
 
 const FormProduct = () => {

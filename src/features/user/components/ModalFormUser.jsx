@@ -2,7 +2,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
 import { createPortal } from 'react-dom';
 import { useForm } from 'react-hook-form';
-import { Errors, FormCollapse, Input, InputGroup, InputPassword, Label, ListCheckBox } from '~/components/form';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from '~/components/modal';
 import { useBlur, useModal } from '~/hooks';
 import UserValidation, { InitialUserValuesAdd } from '../validation/UserValidation';
@@ -17,6 +16,13 @@ import { getValueString } from '~/utils/HandleValue';
 import { createUser } from '../services/ApiUser';
 import { getCheckBoxRoles } from '~/api/ApiCheckBox';
 import { isEmptyArray } from '~/utils/CheckValue';
+import FormCollapse from '~/components/form/FormCollapse';
+import InputGroup from '~/components/form/InputGroup';
+import Label from '~/components/form/Label';
+import Input from '~/components/form/Input';
+import Errors from '~/components/form/Errors';
+import InputPassword from '~/components/form/InputPassword';
+import ListCheckBox from '~/components/form/CheckBox/ListCheckBox';
 
 const ModalFormUser = (props, ref) => {
 
@@ -99,7 +105,7 @@ const ModalFormUser = (props, ref) => {
         }));
         formData.append("image", data.image);
 
-        const title = await createUser(formData, accessToken, dispatch, axiosJwt, setError);
+        createUser(formData, accessToken, dispatch, axiosJwt, setError);
 
         // outputData(title, handleCloseModal);
     };

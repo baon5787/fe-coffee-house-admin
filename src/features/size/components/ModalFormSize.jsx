@@ -2,7 +2,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useForm } from 'react-hook-form';
-import { Errors, Input, InputGroup, Label } from '~/components/form'
 import { Modal, ModalBody, ModalFooter, ModalHeader } from '~/components/modal'
 import SizeValidation, { InitialSizeAdd, InitialSizeUpdate } from '../validation/SizeValidation'
 import { useBlur, useModal, useParam } from '~/hooks'
@@ -12,6 +11,10 @@ import useJwt from '~/hooks/useJwt';
 import { useSelector } from 'react-redux';
 import { loadingSizeSelector } from '~/redux/selectors';
 import Loading from '~/components/loading';
+import InputGroup from '~/components/form/InputGroup';
+import Label from '~/components/form/Label';
+import Input from '~/components/form/Input';
+import Errors from '~/components/form/Errors';
 
 const ModalFormSize = (props, ref) => {
 

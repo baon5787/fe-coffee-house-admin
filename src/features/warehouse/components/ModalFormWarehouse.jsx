@@ -3,7 +3,6 @@ import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'rea
 import { createPortal } from 'react-dom'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
-import { Errors, Input, InputGroup, Label } from '~/components/form'
 import Loading from '~/components/loading'
 import { Modal, ModalBody, ModalFooter, ModalHeader } from '~/components/modal'
 import Selects from '~/components/select'
@@ -15,6 +14,10 @@ import WarehouseValidation, { InitialWarehouseUpdate } from '../validation/Wareh
 import { isValueNumber, isValueString } from '~/utils/CheckValue'
 import { getWarehouseByProductIdAndSizeId, updateWarehouse } from '../services/ApiWarehouse'
 import { DEFAULT_INDEX } from '~/constants/AppConstant'
+import InputGroup from '~/components/form/InputGroup'
+import Label from '~/components/form/Label'
+import Errors from '~/components/form/Errors'
+import Input from '~/components/form/Input'
 
 const ModalFormWarehouse = (props, ref) => {
 

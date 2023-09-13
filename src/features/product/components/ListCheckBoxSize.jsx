@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react'
-import { CheckBox } from '~/components/form';
+import CheckBox from '~/components/form/CheckBox/CheckBox';
 import { MIN_LENGTH } from '~/constants/AppConstant';
 import { isEmptyArray } from '~/utils/CheckValue';
 

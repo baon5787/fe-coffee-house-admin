@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css';
-import { BrowserRouter, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Login } from './pages';
 // import { CategoryRoutes, CouponRoutes, OrderRoutes, ProductRoutes, SizeRoutes, DeliveryRoutes, UserRoutes, WarehouseRoutes } from './pages';
 
 const App = () => {
@@ -9,8 +10,8 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          {/* <Route path="login" element={<Login />}></Route>
-          <Route path="/" element={<DefaultLayout />}>
+          <Route path="login" element={<Login />}></Route>
+          {/* <Route path="/" element={<DefaultLayout />}>
             <Route element={<RequireAuth />}>
               <Route path={PATH.PRODUCTS + PATH.CHILDREN} element={<ProductRoutes />} />
               {/* <Route path='/:sku' element={<AddEditProduct />} />
@@ -26,7 +27,7 @@ const App = () => {
           />
           <Route path={PATH.USER + PATH.CHILDREN} element={<UserRoutes />} />
         </Route>
-      </Route> */}
+        </Route>*/}
         </Routes >
       </BrowserRouter >
     </>

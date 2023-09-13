@@ -7,3 +7,5 @@ export { default as OrderRoutes } from './order/index';
 export { default as DeliveryRoutes } from './delivery/index';
 export { default as UserRoutes } from './user/index';
 export { default as WarehouseRoutes } from './warehouse/index';
+
+export { default as Login } from './auth/Login'

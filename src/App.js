@@ -18,7 +18,7 @@ const App = () => {
             <Route element={<RequireAuth />}>
               <Route path={PATH.PRODUCTS + PATH.CHILDREN} element={<ProductRoutes />} />
               {/* <Route path='/:sku' element={<AddEditProduct />} />
-                  <Route path={PATH.DISENABLE} element={<DisenableProduct />} /> */}
+                  <Route path={PATH.DISENABLE} element={<DisenableProduct />} /> 
           <Route path={PATH.WAREHOUSES + PATH.CHILDREN} element={<WarehouseRoutes />} />
           <Route path={PATH.CATEGORIES + PATH.CHILDREN} element={<CategoryRoutes />} />
           <Route path={PATH.SIZES + PATH.CHILDREN} element={<SizeRoutes />} />
@@ -31,7 +31,7 @@ const App = () => {
           <Route path={PATH.USER + PATH.CHILDREN} element={<UserRoutes />} />
         </Route>
       </Route> */}
-    </Routes >
+        </Routes >
       </BrowserRouter >
     </>
   );

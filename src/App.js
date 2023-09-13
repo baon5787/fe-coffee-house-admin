@@ -14,8 +14,8 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/" element={<DefaultLayout />}>
-            <Route element={<RequireAuth />}>
+          <Route element={<RequireAuth />}>
+            <Route path="/" element={<DefaultLayout />}>
               <Route path={PATH.PRODUCTS + PATH.CHILDREN} element={<ProductRoutes />} />
               <Route path={PATH.WAREHOUSES + PATH.CHILDREN} element={<WarehouseRoutes />} />
               <Route path={PATH.CATEGORIES + PATH.CHILDREN} element={<CategoryRoutes />} />

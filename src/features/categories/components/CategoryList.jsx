@@ -2,7 +2,6 @@ import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import queryString from 'query-string';
-import { Actions } from '~/components/actions';
 import { ALL, CATEGORY_SORT_FIELD, DEFAULT_INDEX, OPTION_LIMIT, OPTION_PAGE } from '~/constants/AppConstant';
 import { categoriesSelector, errorCategorySelector, titleErrorCategorySelector } from '~/redux/selectors';
 import {
@@ -30,6 +29,7 @@ import { isFilter, isObjectOneValue, isValueUndefined } from '~/utils/CheckValue
 import { Forbidden } from '~/components/error';
 import { updateFilters } from '~/redux/slice/FiltersSlice';
 import { getAction } from '~/utils/HandleAction';
+import Action from '~/components/action';
 
 const CategoryList = ({ option, onUpdate }) => {
 
@@ -293,7 +293,7 @@ const CategoryList = ({ option, onUpdate }) => {
                                         }
                                     </td>
                                     <td className='text-end'>
-                                        <Actions
+                                        <Action
                                             title={getTitleAction(option)}
                                             onEditOrEnableClick={() => handleEditOrEnableClick(category?.code)}
                                             onDeleteOrDisenableClick={() => handleDeleteOrDisenableClick(category?.code)}

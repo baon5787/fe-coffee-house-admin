@@ -7,7 +7,6 @@ import useTable from '~/hooks/useTable';
 import { couponSelector, couponStatusSelector } from '~/redux/selectors';
 import { getCoupons, getDisenableCouponByCode, getDisenableCoupons, getEnableCouponByCode, getSearchCoupons, getSearchDisenableCoupons } from '../services/ApiCoupon';
 import { checkDataAndFilter, formatDate, getClassNameStatus, getCouponCondition, getCouponPrice, getCouponTypeName, getTitleAction, getValueByStatus, isLengthChecked, ordinalNumbers } from '~/utils/HandleTable';
-import { Actions } from '~/components/actions';
 import styles from '../style/Coupon.module.css';
 import { Limit, Pagination } from '~/components/filters';
 import { CheckBox } from '~/components/table';
@@ -17,6 +16,7 @@ import { success, warning } from '~/components/swal/Swal';
 import { warningTitle } from '~/utils/StringConcatention';
 import { disenable, enable, updateData } from '~/helper/AppString';
 import { isObjectOneValue } from '~/utils/CheckValue';
+import Action from '~/components/action';
 
 const CouponList = ({ option, onUpdate }) => {
 
@@ -213,7 +213,7 @@ const CouponList = ({ option, onUpdate }) => {
                                                 </td>
                                                 <td>{coupon?.couponCategory}</td>
                                                 <td className='text-end'>
-                                                    <Actions
+                                                    <Action
                                                         title={getTitleAction(option)}
                                                         onEditOrEnableClick={() => handleEditOrEnableClick(coupon?.code)}
                                                         onDeleteOrDisenableClick={() => handleDeleteOrDisenableClick(coupon?.code)}

@@ -4,7 +4,6 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import queryString from 'query-string';
 import styles from '../style/Product.module.css';
-import { Actions } from '~/components/actions';
 import { CheckBox, LimitAndPagination, Table, Tbody, Thead } from '~/components/table';
 import { errorProductSelector, productsSelector, titleErrorProductSelector } from '~/redux/selectors';
 import {
@@ -27,6 +26,7 @@ import { getSortDir } from '~/utils/HandleValue';
 import useTable from '~/hooks/useTable';
 import { isFilter, isObjectOneValue } from '~/utils/CheckValue';
 import { Forbidden } from '~/components/error';
+import Action from '~/components/action';
 
 
 const ProductList = ({ option }) => {
@@ -268,7 +268,7 @@ const ProductList = ({ option }) => {
                                             </div>
                                         </td>
                                         <td className='text-end'>
-                                            <Actions
+                                            <Action
                                                 title={getTitleAction(option)}
                                                 onEditOrEnableClick={() => handleEditOrEnableClick(product?.sku)}
                                                 onDeleteOrDisenableClick={() => handleDeleteOrDisenableClick(product?.sku)}

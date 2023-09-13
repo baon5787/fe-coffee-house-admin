@@ -8,12 +8,12 @@ import { usersSelector } from '~/redux/selectors';
 import { getSearchUsers, getUsers } from '../services/ApiUser';
 import { formatDateTime, getTitleAction, isLengthChecked } from '~/utils/HandleTable';
 import style from '../style/User.module.css'
-import { Actions } from '~/components/actions';
 import { CheckBox, LimitAndPagination, Table, Tbody, Thead } from '~/components/table';
 import { deleteChangeSelectUsers } from '~/redux/slice/UserSlice';
 import { getSortDir } from '~/utils/HandleValue';
 import { SortName } from '~/components/filters';
 import { isFilter } from '~/utils/CheckValue';
+import Action from '~/components/action';
 
 
 const UserList = ({ option }) => {
@@ -152,7 +152,7 @@ const UserList = ({ option }) => {
                                         <span className='fw-bold'>{user?.rolesName?.join(', ')}</span>
                                     </td>
                                     <td className='text-end'>
-                                        <Actions
+                                        <Action
                                             title={getTitleAction(option)}
                                             onEditOrEnableClick={() => handleEditOrEnableClick(user?.email)}
                                             onDeleteOrDisenableClick={() => handleDeleteOrDisenableClick(user?.email)}

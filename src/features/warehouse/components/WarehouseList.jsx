@@ -14,11 +14,11 @@ import { Forbidden } from '~/components/error';
 import { LimitAndPagination, Table, Tbody, Thead } from '~/components/table';
 import style from '../style/Warehouse.module.css'
 import { SortName } from '~/components/filters';
-import { Actions } from '~/components/actions';
 import { getTitleDeleteWarehouse, warningTitle } from '~/utils/StringConcatention';
 import Swal from 'sweetalert2';
 import { success, warning } from '~/components/swal/Swal';
 import { erase } from '~/helper/AppString';
+import Action from '~/components/action';
 
 const WarehouseList = ({ onUpdate }) => {
 
@@ -156,7 +156,7 @@ const WarehouseList = ({ onUpdate }) => {
                                 <td>{warehouse.sizeName}</td>
                                 <td>{warehouse.quantity}</td>
                                 <td className='text-end'>
-                                    <Actions
+                                    <Action
                                         title={"Edit"}
                                         onEditOrEnableClick={() => handleEdit({
                                             productId: warehouse.productId,

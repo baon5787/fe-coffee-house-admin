@@ -6,7 +6,6 @@ import { deleteProductSize, getProductsSizes, getSearchProductsSizes } from '../
 import { useSelector } from 'react-redux';
 import { errorProductSizeSelector, productSizeSelector, titleErrorProductSizeSelector } from '~/redux/selectors';
 import { isUpdateData, ordinalNumbers } from '~/utils/HandleTable';
-import { Actions } from '~/components/actions';
 import { DEFAULT_INDEX, OPTION_LIMIT, PRODUCT_SIZE_SORT_FIELD } from '~/constants/AppConstant';
 import style from '../style/ProductSize.module.css'
 import { isFilter, isObjectOneValue } from '~/utils/CheckValue';
@@ -19,6 +18,7 @@ import { success, warning } from '~/components/swal/Swal';
 import { LimitAndPagination, Table, Tbody, Thead } from '~/components/table';
 import { getSortDir } from '~/utils/HandleValue';
 import { SortName } from '~/components/filters';
+import Action from '~/components/action';
 
 const ProductSizeList = ({ onUpdate }) => {
 
@@ -159,7 +159,7 @@ const ProductSizeList = ({ onUpdate }) => {
                                     <td>{productSize.sizeName}</td>
                                     <td>{productSize.quantity}</td>
                                     <td className='text-end'>
-                                        <Actions
+                                        <Action
                                             title={"Edit"}
                                             onEditOrEnableClick={() => handleEdit({
                                                 productId: productSize.productId,

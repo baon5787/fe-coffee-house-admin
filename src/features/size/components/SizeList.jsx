@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 import { getErrorSize, sizesSelector } from '~/redux/selectors';
 import { conversionNumberToVND, ordinalNumbers, isLengthChecked, getTitleAction, isUpdateData } from '~/utils/HandleTable';
 import { ALL, DEFAULT_INDEX, OPTION_LIMIT, OPTION_PAGE, SIZE_SORT_FIELD } from '~/constants/AppConstant';
-import { Actions } from '~/components/actions';
 import { SortName } from '~/components/filters';
 import { deleteSize, getDisenableSizeByCode, getDisenableSizes, getEnableSizeByCode, getSearchDisenableSizes, getSearchSizes, getSizes } from '../services/ApiSize';
 import { getSortDir } from '~/utils/HandleValue';
@@ -18,6 +17,7 @@ import { isEmptyArray, isFilter, isObjectOneValue } from '~/utils/CheckValue';
 import { Forbidden } from '~/components/error';
 import { updateFilters } from '~/redux/slice/FiltersSlice';
 import { getAction } from '~/utils/HandleAction';
+import Action from '~/components/action';
 
 const SizeList = ({ option, onUpdate }) => {
 
@@ -230,7 +230,7 @@ const SizeList = ({ option, onUpdate }) => {
                                     <td>{size?.code}</td>
                                     <td>{conversionNumberToVND(size?.price)}</td>
                                     <td className='text-end'>
-                                        <Actions
+                                        <Action
                                             onEditOrEnableClick={() => handleEditOrEnableClick(size?.code)}
                                             onDeleteOrDisenableClick={() => handleDeleteOrDisenableClick(size?.code)}
                                             title={getTitleAction(option)}

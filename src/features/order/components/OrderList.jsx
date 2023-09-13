@@ -6,9 +6,9 @@ import { orderSelector } from '~/redux/selectors';
 import { getOrders, getSearchOrders } from '../services/ApiOrder';
 import queryString from 'query-string';
 import { conversionNumberToVND, formatDateTime, ordinalNumbers } from '~/utils/HandleTable';
-import { Actions } from '~/components/actions';
 import { Limit, Pagination } from '~/components/filters';
 import { OPTION_LIMIT } from '~/constants/AppConstant';
+import Action from '~/components/action';
 
 const OrderList = () => {
 
@@ -110,7 +110,7 @@ const OrderList = () => {
                                                     <span className='fw-bold'>{formatDateTime(order?.dateComplete)}</span>
                                                 </td>
                                                 <td>
-                                                    <Actions
+                                                    <Action
                                                         onEditOrEnableClick={() => handleView(order?.paymentCode)}
                                                         onDeleteOrDisenableClick={() => handleDelete(order?.paymentCode)}
                                                         title={'View'}

@@ -1,10 +1,6 @@
 import React from 'react'
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { DefaultLayout } from './layouts';
-import RequireAuth from './components/RequireAuth';
-import Login from './pages/auth';
-import { PATH } from './constants/Paths';
+import { BrowserRouter, Routes } from 'react-router-dom';
 // import { CategoryRoutes, CouponRoutes, OrderRoutes, ProductRoutes, SizeRoutes, DeliveryRoutes, UserRoutes, WarehouseRoutes } from './pages';
 
 const App = () => {

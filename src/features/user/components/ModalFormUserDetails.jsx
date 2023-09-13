@@ -95,7 +95,7 @@ const ModalFormUserDetails = ({ isShowing, hide, userDetails, setUserDetails, al
         }));
         formData.append("image", data.image);
 
-        const title = await updateUser(userDetails?.email, formData, accessToken, dispatch,
+        updateUser(userDetails?.email, formData, accessToken, dispatch,
             axiosJwt, setUserDetails, setError);
         // outputData(title, hide);
     };

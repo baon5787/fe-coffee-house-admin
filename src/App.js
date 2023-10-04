@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Login } from './pages';
 import { CategoryRoutes, CouponRoutes, OrderRoutes, ProductRoutes, SizeRoutes, DeliveryRoutes, UserRoutes, WarehouseRoutes } from './pages';
-import { AuthLayout, DefaultLayout } from './layouts';
+import { DefaultLayout } from './layouts';
 import RequireAuth from './components/RequireAuth';
 import { PATH } from './constants/Paths';
 import './App.scss';

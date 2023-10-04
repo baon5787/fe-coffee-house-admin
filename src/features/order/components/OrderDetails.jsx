@@ -5,7 +5,7 @@ import { getOrderDetailsByCode } from '../services/ApiOrder';
 import { createAxios } from '~/api/AxiosClient';
 import { useDispatch, useSelector } from 'react-redux';
 import { userSelector } from '~/redux/selectors';
-import { loginSucces } from '~/redux/slice/AuthSlice';
+import { loginSuccess } from '~/redux/slice/AuthSlice';
 import { formatDateTime } from '~/utils/HandleTable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays, faCircleUser, faTruck } from '@fortawesome/free-solid-svg-icons'
@@ -22,7 +22,7 @@ const OrderDetails = () => {
 
     const navigate = useNavigate();
 
-    let axiosJwt = createAxios(user, dispatch, loginSucces, navigate);
+    let axiosJwt = createAxios(user, dispatch, loginSuccess, navigate);
 
     const [orderDetail, setOrderDetail] = useState(null);
 

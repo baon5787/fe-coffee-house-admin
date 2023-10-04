@@ -1,6 +1,6 @@
 import axios from "axios"
 import jwt_decode from "jwt-decode";
-import { loginSucces } from "~/redux/slice/AuthSlice";
+import { loginSuccess } from "~/redux/slice/AuthSlice";
 
 export const headers = (accesToken) => {
     return {
@@ -48,7 +48,7 @@ const refreshToken = async (navigate) => {
         });
         return res.data;
     } catch (error) {
-        loginSucces();
+        loginSuccess();
         navigate("/login");
         console.log(error);
     }

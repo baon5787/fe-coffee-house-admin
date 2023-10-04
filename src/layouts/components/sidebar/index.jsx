@@ -7,6 +7,7 @@ import { Menu, MenuItem } from "./components";
 import { CATEGORY, COUPON, DELIVERY, ORDER, PRODUCT, SIZE, USER, WAREHOUSE } from "~/constants/MenuItemSideBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import './_aside.scss';
 
 
 const Sidebar = (props, ref) => {

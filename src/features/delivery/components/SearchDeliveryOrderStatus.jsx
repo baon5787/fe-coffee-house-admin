@@ -7,7 +7,7 @@ import Selects from '~/components/select';
 import { DEFAULT_STATUS, OPTION_PAGE, ORDER_STATUS } from '~/constants/AppConstant';
 import { ERROR } from '~/constants/Paths';
 import { orderStatusSelector, searchStatusSelector, userSelector } from '~/redux/selectors';
-import { loginSucces } from '~/redux/slice/AuthSlice';
+import { loginSuccess } from '~/redux/slice/AuthSlice';
 import { defaultSearchStatusChange, searchStatusChange } from '~/redux/slice/FiltersSlice';
 import { isEmptyArray } from '~/utils/CheckValue';
 import { sortSelect } from '~/utils/HandleTable';
@@ -25,7 +25,7 @@ const SearchDeliveryOrderStatus = ({ option }) => {
 
     const navigate = useNavigate();
 
-    let axiosJwt = createAxios(user, dispatch, loginSucces, navigate);
+    let axiosJwt = createAxios(user, dispatch, loginSuccess, navigate);
 
     const [allOrderStatus, setAllOrderStatus] = useState([]);
 

@@ -1,0 +1,219 @@
+//
+// General form controls (plus a few specific high-level interventions)
+//
+
+.form-control {
+    padding: $input-padding-x $input-padding-y;
+    background-clip: padding-box;
+    @include make-form();
+
+    &[type="file"] {
+        overflow: hidden;
+
+        &:not(:disabled):not([readonly]) {
+            cursor: pointer;
+        }
+    }
+
+    &:focus {
+        color: $input-focus-color;
+        background-color: $input-focus-bg;
+        border-color: $input-focus-border-color;
+        outline: 0;
+    }
+
+    &::-webkit-date-and-time-value {
+        min-width: 85px;
+        height: 1.5em;
+        margin: 0;
+    }
+
+    &::-webkit-datetime-edit {
+        display: block;
+        padding: 0;
+    }
+
+    &::placeholder {
+        color: $input-placeholder-color;
+        opacity: 1;
+    }
+
+    &:disabled {
+        @include make-form-disabled();
+        opacity: 1;
+    }
+
+    &::file-selector-button {
+        padding: $input-padding-x $input-padding-y;
+        margin: (-$input-padding-x) (-$input-padding-y);
+        margin-inline-end: $input-padding-y;
+        color: $form-file-button-color;
+        background-color: $form-file-button-bg;
+        pointer-events: none;
+        border-color: inherit;
+        border-style: solid;
+        border-width: 0;
+        border-inline-end-width: $input-padding-y;
+        border-radius: 0; // stylelint-disable-line property-disallowed-list
+        @include transition($btn-transition);
+    }
+
+    &:hover:not(:disabled):not([readonly])::file-selector-button {
+        background-color: $form-file-button-hover-bg;
+    }
+
+    &.form-control-solid {
+        background-color: $form-control-solid-bg-color;
+        border-color: $form-control-solid-border-color;
+        color: $form-control-solid-color;
+        transition: $form-control-solid-transition;
+
+        &::placeholder {
+            color: var(--#{$prefix}gray-500);
+        }
+
+        &::-moz-placeholder {
+            color: var(--#{$prefix}gray-500);
+            opacity: 1;
+        }
+
+        .dropdown.show > &,
+        &.active,
+        &.focus,
+        &:active,
+        &:focus {
+            background-color: var(--#{$prefix}gray-200);
+            border-color: var(--#{$prefix}gray-200);
+            color: $form-control-solid-color;
+            transition: $form-control-solid-transition;
+        }
+    }
+
+    &.form-control-transparent {
+        background-color: $form-control-transparent-bg-color;
+        border-color: $form-control-transparent-border-color;
+
+        .dropdown.show > &,
+        &.active,
+        &.focus,
+        &:active,
+        &:focus {
+            background-color: $form-control-transparent-bg-color;
+            border-color: $form-control-transparent-border-color;
+        }
+    }
+
+    &.form-control-flush {
+        border: 0;
+        background-color: $form-control-flush-bg-color;
+        outline: 0 !important;
+        box-shadow: none;
+        border-radius: 0;
+    }
+}
+
+.form-control-plaintext {
+    display: block;
+    width: 100%;
+    padding: $input-padding-x 0;
+    margin-bottom: 0;
+    line-height: $input-line-height;
+    color: $input-plaintext-color;
+    background-color: transparent;
+    border: solid transparent;
+    border-width: $border-width 0;
+
+    &:focus {
+        outline: 0;
+    }
+
+    &.form-control-sm,
+    &.form-control-lg {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+// Form control sizing
+
+.form-control-sm {
+    min-height: $input-height-sm;
+    padding: $input-padding-y-sm $input-padding-x-sm;
+    @include make-form-sm();
+
+    &::file-selector-button {
+        padding: $input-padding-y-sm $input-padding-x-sm;
+        margin: (-$input-padding-y-sm) (-$input-padding-x-sm);
+        margin-inline-end: $input-padding-x-sm;
+    }
+}
+
+.form-control-lg {
+    min-height: $input-height-lg;
+    padding: $input-padding-y-lg $input-padding-x-lg;
+    @include make-form-lg();
+
+    &::file-selector-button {
+        padding: $input-padding-y-lg $input-padding-x-lg;
+        margin: (-$input-padding-y-lg) (-$input-padding-x-lg);
+        margin-inline-end: $input-padding-x-lg;
+    }
+}
+
+// Make sure textareas don't shrink too much when resized
+textarea {
+    resize: vertical;
+    &.form-control {
+        min-height: $input-height;
+    }
+
+    &.form-control-sm {
+        min-height: $input-height-sm;
+    }
+
+    &.form-control-lg {
+        min-height: $input-height-lg;
+    }
+}
+
+.form-control-color {
+    width: $form-color-width;
+    height: $input-height;
+    padding: $input-padding-x;
+
+    &:not(:disabled):not([readonly]) {
+        cursor: pointer;
+    }
+
+    &::-moz-color-swatch,
+    &::-webkit-color-swatch {
+        border: 0 !important;
+        @include border-radius($input-border-radius);
+    }
+
+    &.form-control-sm {
+        height: $input-height-sm;
+    }
+
+    &.form-control-lg {
+        height: $input-height-lg;
+    }
+}
+
+.form-control-solid-bg {
+    background-color: var(--#{$prefix}gray-100);
+}
+
+.form-control-plaintext {
+    color: var(--#{$prefix}gray-700);
+}
+
+@include media-prefers-reduced-motion() {
+    .form-control {
+        transition: none;
+
+        &::file-selector-button {
+            transition: none;
+        }
+    }
+}

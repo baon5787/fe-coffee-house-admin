@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getOptionSelect } from '~/utils/HandleValue';
 import { useNavigate } from 'react-router-dom';
 import { createAxios } from '~/api/AxiosClient';
-import { loginSucces } from '~/redux/slice/AuthSlice';
+import { loginSuccess } from '~/redux/slice/AuthSlice';
 import { getSelectCouponCategories, getSelectCouponStatues, getSelectCouponTypes, getSelectProducts } from '~/api/ApiSelect';
 import { DEFAULT_INDEX, END_DAY } from '~/constants/AppConstant';
 import CouponValidation, { InitialCouponAdd, InitialCouponUpdate } from '../validation/CouponValidation';
@@ -52,7 +52,7 @@ const ModalFormCoupon = (props, ref) => {
 
     const navigate = useNavigate();
 
-    let axiosJwt = createAxios(user, dispatch, loginSucces, navigate);
+    let axiosJwt = createAxios(user, dispatch, loginSuccess, navigate);
 
     const [allCouponCategory, setAllCouponCategory] = useState([]);
 

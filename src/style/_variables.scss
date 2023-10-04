@@ -1,0 +1,2265 @@
+// Color system
+
+// scss-docs-start cutomer-color
+$floral-white: #fefaf4 !default;
+$english-violet: #523f69 !default; //rgb(82, 63, 105)
+$indepdence: #464e5f !default; // rgb(70, 78, 95)
+$columbia-blue: #ced5e1 !default; // rgb(206,213,225)
+$sea-blue: #006b99 !default;
+$dark-gunmetal: #1e1e2d !default;
+$dark-tangerine: #ffad0f !default;
+$eerie-black: #151521 !default;
+$lemon-chiffon: #fff3cd !default;
+$chinese-white: #e0e0e0 !default;
+$platinum: #e8e8e8 !default;
+$celadon-green: #78829d !default;
+$light-silver: #d2d7dd !default;
+$arsenic: #3f4254 !default;
+$gainsboro: #d6d6e4 !default;
+$independence: #4d4d6a !default;
+// scss-docs-end cutomer-color
+
+// scss-docs-start gray-color-variables
+$white: #fff !default;
+$gray-100: #f9f9f9 !default;
+$gray-200: #f1f1f2 !default;
+$gray-300: #dbdfe9 !default;
+$gray-400: #b5b5c3 !default;
+$gray-500: #99a1b7 !default;
+$gray-600: #78829d !default;
+$gray-700: #4b5675 !default;
+$gray-800: #252f4a !default;
+$gray-900: #071437 !default;
+$black: #000 !default;
+// scss-docs-end gray-color-variables
+
+// scss-docs-start color-variables
+$blue: #0d6efd !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #d63384 !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #198754 !default;
+$teal: #20c997 !default;
+$cyan: #0dcaf0 !default;
+$black: #000000 !default;
+$white: #ffffff !default;
+$gray: #78829d !default;
+$gray-dark: #252f4a !default;
+// scss-docs-end color-variables
+
+// scss-docs-start theme-variables
+$light: $gray-100 !default;
+$primary: #00b2ff !default;
+$secondary: $gray-300 !default;
+$success: #50cd89 !default;
+$info: #7239ea !default;
+$warning: #ffc700 !default;
+$danger: #f1416c !default;
+$dark: $gray-900 !default;
+// scss-docs-end theme-variables
+
+// scss-docs-start theme-text-variables
+$primary-text: #0a58ca !default;
+$success-text: #146c43 !default;
+$info-text: #087990 !default;
+$warning-text: #997404 !default;
+$danger-text: #b02a37 !default;
+$secondary-text: $gray-600 !default;
+$light-text: $gray-600 !default;
+$dark-text: $gray-700 !default;
+// scss-docs-end theme-text-variables
+
+// scss-docs-start theme-text-emphasis-variables
+$primary-text-emphasis: #004766 !default;
+$secondary-text-emphasis: #58595d !default;
+$success-text-emphasis: #205237 !default;
+$info-text-emphasis: #2e175e !default;
+$warning-text-emphasis: #665000 !default;
+$danger-text-emphasis: #601a2b !default;
+$light-text-emphasis: $gray-700 !default;
+$dark-text-emphasis: $gray-700 !default;
+// scss-docs-end theme-text-emphasis-variables
+
+// scss-docs-start theme-colors-bg-subtle-variables
+$primary-bg-subtle: #ccf0ff !default;
+$secondary-bg-subtle: #f8f9fb !default;
+$success-bg-subtle: #dcf5e7 !default;
+$info-bg-subtle: #e3d7fb !default;
+$warning-bg-subtle: #fff4cc !default;
+$danger-bg-subtle: #fcd9e2 !default;
+$light-bg-subtle: #fcfcfc !default;
+$dark-bg-subtle: $gray-400 !default;
+// scss-docs-end theme-bg-subtle-variables
+
+// scss-docs-start theme-border-subtle-variables
+$primary-border-subtle: #99e0ff !default;
+$secondary-border-subtle: #f1f2f6 !default;
+$success-border-subtle: #b9ebd0 !default;
+$info-border-subtle: #c7b0f7 !default;
+$warning-border-subtle: #ffe999 !default;
+$danger-border-subtle: #f9b3c4 !default;
+$light-border-subtle: $gray-200 !default;
+$dark-border-subtle: $gray-500 !default;
+// scss-docs-end theme-border-subtle-variables
+
+// scss-docs-start theme-active-variables
+$primary-active: #0098da;
+$secondary-active: $gray-400 !default;
+$light-active: $gray-200 !default;
+$success-active: #47be7d !default;
+$info-active: #5014d0 !default;
+$warning-active: #f1bc00 !default;
+$danger-active: #d9214e !default;
+$dark-active: #050f29 !default;
+// scss-docs-end theme-active-variables
+
+// scss-docs-start theme-light-variables
+$primary-light: #f1faff !default;
+$secondary-light: $gray-100 !default;
+$success-light: #e8fff3 !default;
+$info-light: #f8f5ff !default;
+$warning-light: #fff8dd !default;
+$danger-light: #fff5f8 !default;
+$dark-light: $gray-200 !default;
+// scss-docs-end theme-light-variables
+
+// scss-docs-start theme-inverse-variables
+$primary-inverse: $white !default;
+$secondary-inverse: $gray-700 !default;
+$light-inverse: $gray-600 !default;
+$success-inverse: $white !default;
+$info-inverse: $white !default;
+$warning-inverse: $white !default;
+$danger-inverse: $white !default;
+$dark-inverse: $white !default;
+// scss-docs-end theme-inverse-variables
+
+// scss-docs-start theme-inverse-variables
+$primary-inverse: $white !default;
+$secondary-inverse: $gray-700 !default;
+$light-inverse: $gray-600 !default;
+$success-inverse: $white !default;
+$info-inverse: $white !default;
+$warning-inverse: $white !default;
+$danger-inverse: $white !default;
+$dark-inverse: $white !default;
+// scss-docs-end theme-inverse-variables
+
+// scss-docs-start theme-inverse-variables
+$text-white: $white !default;
+$text-primary: $primary !default;
+$text-secondary: $secondary !default;
+$text-light: $gray-100 !default;
+$text-success: $success !default;
+$text-info: $info !default;
+$text-warning: $warning !default;
+$text-danger: $danger !default;
+$text-dark: $gray-900 !default;
+$text-muted: $gray-500 !default;
+// scss-docs-end theme-inverse-variables
+
+$min-contrast-ratio: 4.5 !default;
+
+// Customize the light and dark text colors for use in our color contrast function.
+$color-contrast-dark: $black !default;
+$color-contrast-light: $white !default;
+
+// Characters which are escaped by the escape-svg function
+$escaped-characters: (("<", "%3c"), (">", "%3e"), ("#", "%23"), ("(", "%28"), (")", "%29")) !default;
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-grid-classes: true !default;
+
+$enable-important-utilities: true !default;
+
+$enable-negative-margins: true !default;
+
+$enable-flex-classes: true !default;
+
+$enable-border-radius-classes: true !default;
+
+$enable-dark-mode: true !default;
+
+$enable-transitions: true !default;
+
+$enable-reduced-motion: true !default;
+
+$enable-rounded: true !default;
+
+$enable-shadows: false !default;
+
+$color-mode-type: data !default; // `data` or `media-query`
+
+$enable-important-utilities: true !default;
+
+// Prefix for :root CSS variables
+
+$variable-prefix: bs- !default;
+$prefix: $variable-prefix !default;
+
+//Breakpoints
+
+// scss-docs-start breakpoints
+$breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+) !default;
+// scss-docs-end breakpoints
+
+//Cutomer variables
+
+$min: 0 !default;
+$align-max: 20 !default;
+
+// Gradient
+// scss-docs-start variable-gradient
+$gradient: linear-gradient(180deg, rgba($white, 0.15), rgba($white, 0)) !default;
+// scss-docs-end variable-gradient
+
+// Spacing
+// scss-docs-start spacer-variables-maps
+$spacer: 0.25rem !default;
+$spacers: map-loop-spacers($min, $align-max, $spacer) !default;
+// scss-docs-end spacer-variables-maps
+
+// Position
+// scss-docs-start position-map
+$position-values: (
+    0: 0,
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%
+) !default;
+// scss-docs-end position-map
+
+// Links
+//
+// Style anchor elements.
+
+$link-color: $primary !default;
+$link-decoration: none;
+$link-shade-percentage: 20% !default;
+$link-hover-color: $primary-active !default;
+$link-hover-decoration: none !default;
+
+$link-focus-shadow-rgb: shade-color($link-color, 15%) !default;
+
+$stretched-link-pseudo-element: after !default;
+$stretched-link-z-index: 1 !default;
+
+// Icon links
+// scss-docs-start icon-link-variables
+$icon-link-gap: 0.375rem !default;
+$icon-link-underline-offset: 0.25em !default;
+$icon-link-icon-size: 1em !default;
+$icon-link-icon-transition: 0.2s ease-in-out transform !default;
+$icon-link-icon-transform: translate3d(0.25em, 0, 0) !default;
+// scss-docs-end icon-link-variables
+
+//Symbol
+// scss-docs-start symbol-variables
+$symbol-width: 50px !default;
+$symbol-height: 50px !default;
+$symbol-border-radius: 1.15rem !default;
+$symbol-border-color: rgba(var(--#{$prefix}body-bg), 0.5) !default;
+
+$symbol-2by3-width: 75px !default;
+$symbol-2by3-height: $symbol-height !default;
+
+$symbol-label-color: var(--#{$prefix}gray-800) !default;
+$symbol-label-bg: var(--#{$prefix}gray-100) !default;
+$symbol-label-font-weight: 500 !default;
+$symbol-label-border-radius: $symbol-border-radius !default;
+$symbol-label-border: 2px solid var(--#{$prefix}symbol-border-color) !default;
+
+$symbol-badge-transform: translateX(-50%) translateY(-50%) !default;
+
+$symbol-group-margin-left: 10px !default;
+$symbol-group-transition: all 0.3s ease !default;
+
+$symbol-badge-border: 2px solid var(--#{$prefix}body-bg) !default;
+// scss-docs-end symbol-variables
+
+// scss-docs-end symbols-map
+$symbol-min: 20 !default;
+$symbol-max: 200 !default;
+$symbols: list-symbol($symbol-min, $symbol-max) !default;
+// scss-docs-end symbols-map
+
+//Scrolltop
+// scss-docs-start scrolltop-variables
+$scrolltop-opacity: 0 !default;
+$scrolltop-opacity-on: 0.3 !default;
+$scrolltop-opacity-hover: 1 !default;
+$scrolltop-box-shadow: var(--#{$prefix}box-shadow) !default;
+$scrolltop-bg-color: var(--#{$prefix}primary) !default;
+$scrolltop-icon-color: var(--#{$prefix}primary-inverse) !default;
+$scrolltop-width: 36px !default;
+$scrolltop-height: 36px !default;
+$scrolltop-bottom: 50px !default;
+$scrolltop-right: 20px !default;
+$scrolltop-transition: color 0.2s ease !default;
+$scrolltop-border-radius: 1.15rem !default;
+$scrolltop-animation: animation-scrolltop 0.4s ease-out 1 !default;
+
+$scrolltop-i-font-size: 1.3rem !default;
+
+$scrolltop-width-lg: 30px !default;
+$scrolltop-height-lg: 30px !default;
+$scrolltop-bottom-lg: 30px !default;
+$scrolltop-right-lg: 15px !default;
+// scss-docs-start scrolltop-variables
+
+//Scrollbar
+// scss-docs-start scrollbar-variables
+$scrollbar-color: $gray-200 !default;
+$scrollbar-hover-color: $gray-300 !default;
+// scss-docs-end scrollbar-variables
+
+//Scroll
+// scss-docs-start Scroll-variables
+$scroll-padding: var(--#{$prefix}scrollbar-size) !default;
+// scss-docs-end Scroll-variables
+
+//Drawer
+// scss-docs-start drawer-variables
+$drawer-box-shadow: 0px 1px 9px -3px rgba($black, 0.05);
+$drawer-bg-color: $white !default;
+$drawer-overlay-bg-color: rgba($black, 0.2);
+// scss-docs-end drawer-variables
+
+//Engage
+// scss-docs-start engage-variables
+$engage-btn-bg: $white !default;
+$engage-btn-box-shadow: 0px 0px 22px $chinese-white !default;
+$engage-btn-border-color: $platinum !default;
+$engage-btn-color: $gray-dark !default;
+$engage-btn-icon-color: $gray !default;
+// scss-docs-end engage-variables
+
+//Ribbon
+// scss-docs-start ribbon-variables
+$ribbon-label-box-shadow: 0px -1px 5px 0px rgba($gray-900, 0.1);
+$ribbon-label-bg: $primary !default;
+$ribbon-label-border-color: $sea-blue !default;
+$ribbon-clip-bg: $gray-900 !default;
+// scss-docs-end ribbon-variables
+
+//Rating
+// scss-docs-start rating-variables
+$rating-color-default: $gray-400 !default;
+$rating-color-active: $dark-tangerine !default;
+// scss-docs-end rating-variables
+
+//Content
+//scss-docs-start content-variables
+$content-bg-color: $floral-white !default;
+//scss-docs-end content-variables
+
+//Page
+//scss-docs-start page-variables
+$page-bg: $floral-white !default;
+$page-auth-bg: $white !default;
+//scss-docs-end page-variables
+
+//Header
+//scss-docs-start header-variables
+$header-desktop-fixed-bg-color: $white !default;
+$header-desktop-fixed-box-shadow: 0px 10px 30px 0px rgba($english-violet, 0.08);
+$header-tablet-and-mobile-fixed-bg-color: $white !default;
+$header-tablet-and-mobile-fixed-box-shadow: 0px 10px 30px 0px rgba($english-violet, 0.08);
+//scss-docs-end page-variables
+
+//Aside
+//scss-docs-start aside-variables
+$aside-bg-color: $white !default;
+$aside-box-shadow: 0px 0px 80px 50px rgba($columbia-blue, 0.05);
+$aside-minimized-hover-box-shadow: 5px 0px 10px rgba($indepdence, 0.05);
+//scss-docs-start aside-variables
+
+//Overlay
+//scss-docs-start overlay-variables
+$overlay-bg: rgba($black, 0.05);
+$blockui-overlay-bg: rgba($black, 0.05);
+//scss-docs-start overlay-variables
+
+// Paragraphs
+//
+// Style p element.
+$paragraph-margin-bottom: 1rem !default;
+
+// Grid containers
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px
+) !default;
+
+// Grid columns
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 2.5rem !default;
+$grid-row-columns: 6 !default;
+
+//Offset
+$offset-max: $grid-columns - 1 !default;
+
+// Container padding
+
+$container-padding-x: $grid-gutter-width * 0.6 !default;
+
+// Components
+// Define common padding and border radius sizes and more.
+// scss-docs-start border-variables
+$border-width: 1px !default;
+$max-border: 5 !default;
+$border-widths: map-loop-spacers($min, $max-border, $border-width) !default;
+$border-style: solid !default;
+$border-color: $gray-200 !default;
+$border-dashed-color: $gray-300 !default;
+$border-color-translucent: rgba($black, 0.175) !default;
+// scss-docs-end border-variables
+
+// scss-docs-start borders
+$borders: (
+    null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+    0: 0
+) !default;
+// scss-docs-end borders
+
+// scss-docs-start border-radius-variables
+$border-radius: 1.15rem !default;
+$border-radius-sm: 0.425rem !default;
+$border-radius-lg: 1.5rem !default;
+$border-radius-xl: 2rem !default;
+$border-radius-xxl: 2rem !default;
+$border-radius-2xl: var(--#{$prefix}border-radius-xxl);
+$border-radius-pill: 50rem !default;
+// scss-docs-end border-radius-variables
+
+// scss-docs-start border-radiuses
+$border-radiuses: (
+    null: var(--#{$prefix}border-radius),
+    0: 0,
+    1: var(--#{$prefix}border-radius-sm),
+    2: var(--#{$prefix}border-radius),
+    3: var(--#{$prefix}border-radius-lg),
+    4: var(--#{$prefix}border-radius-xl),
+    5: var(--#{$prefix}border-radius-xxl),
+    circle: 50%,
+    pill: var(--#{$prefix}border-radius-pill)
+) !default;
+// scss-docs-end border-radiuses
+
+// scss-docs-start box-shadow-variables
+$box-shadow: 0 0.5rem 1.5rem 0.5rem rgba($black, 0.075) !default;
+$box-shadow-sm: 0 0.1rem 1rem 0.25rem rgba($black, 0.05) !default;
+$box-shadow-xs: 0 0.1rem 0.75rem 0.25rem rgba($black, 0.05) !default;
+$box-shadow-lg: 0 1rem 2rem 1rem rgba($black, 0.1) !default;
+$box-shadow-inset: inset 0 1px 2px rgba($black, 0.075) !default;
+// scss-docs-end box-shadow-variables
+
+// scss-docs-start box-shadows
+$shadows: (
+    null: var(--#{$prefix}box-shadow),
+    sm: var(--#{$prefix}box-shadow-sm),
+    lg: var(--#{$prefix}box-shadow-lg),
+    xs: var(--#{$prefix}box-shadow-xs),
+    none: none
+);
+// scss-docs-end box-shadows
+
+// scss-docs-start component-variables
+$component-active-color: $white !default;
+$component-active-bg: $primary !default;
+$component-hover-bg: $gray-100 !default;
+// scss-docs-end component-variables
+
+// scss-docs-start focus-ring-variables
+$focus-ring-width: 0.25rem !default;
+$focus-ring-opacity: 0.25 !default;
+$focus-ring-color: rgba($primary, $focus-ring-opacity) !default;
+$focus-ring-blur: 0 !default;
+$focus-ring-box-shadow: 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color !default;
+// scss-docs-end focus-ring-variables
+
+// scss-docs-start caret-variables
+$caret-width: 0.3em !default;
+$caret-vertical-align: $caret-width * 0.85 !default;
+$caret-spacing: $caret-width * 0.85 !default;
+// scss-docs-end caret-variables
+
+$transition-base: all 0.2s ease-in-out !default;
+$transition-fade: opacity 0.15s linear !default;
+// scss-docs-start collapse-transition
+$transition-collapse: height 0.35s ease !default;
+$transition-collapse-width: width 0.35s ease !default;
+// scss-docs-end collapse-transition
+
+// stylelint-disable function-disallowed-list
+// scss-docs-start aspect-ratios
+$aspect-ratios: (
+    "1x1": 100%,
+    "4x3": calc(3 / 4 * 100%),
+    "16x9": calc(9 / 16 * 100%),
+    "21x9": calc(9 / 21 * 100%)
+) !default;
+// scss-docs-end aspect-ratios
+// stylelint-enable function-disallowed-list
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// scss-docs-start font-variables
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif: Inter, Helvetica, "sans-serif" !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+// stylelint-enable value-keyword-case
+$font-family-base: var(--#{$prefix}font-sans-serif) !default;
+$font-family-code: var(--#{$prefix}font-monospace) !default;
+
+// $font-size-root affects the value of `rem`, which is used for as well font sizes, paddings, and margins
+// $font-size-base affects the font size of the body text
+$font-size-base: 1rem !default;
+$font-size-sm: $font-size-base * 0.875 !default;
+$font-size-lg: $font-size-base * 1.25 !default;
+
+$font-weight-lighter: lighter !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 500 !default;
+$font-weight-bold: 600 !default;
+$font-weight-bolder: 700 !default;
+$font-weight-base: bolder !default;
+
+$line-height-base: 1.5 !default;
+$line-height-sm: 1.25 !default;
+$line-height-lg: 1.75 !default;
+$line-height-xl: 2 !default;
+$line-height-xxl: 2.25 !default;
+// scss-docs-end font-variables
+
+// scss-docs-start headings-variables
+$headings-font-size: (
+    h1: calc(1.3rem + 0.6vw),
+    h2: calc(1.275rem + 0.3vw),
+    h3: calc(1.26rem + 0.12vw),
+    h4: 1.25rem,
+    h5: 1.15rem,
+    h6: 1.075rem
+) !default;
+
+$min-w-headings-font-size: (
+    h1: 1.75rem,
+    h2: 1.5rem,
+    h3: 1.35rem
+) !default;
+// scss-docs-start headings-variables
+
+// scss-docs-start headings-variables
+$headings-font-family: null !default;
+$headings-font-style: null !default;
+$headings-font-weight: 600 !default;
+$headings-line-height: 1.2 !default;
+$headings-color: $gray-900 !default;
+$headings-margin-bottom: $spacer * 2 !default;
+// scss-docs-end headings-variables
+
+// scss-docs-start type-variables
+$lead-font-size: $font-size-base * 1.25 !default;
+$lead-font-weight: 300 !default;
+// scss-docs-end type-variables
+
+// scss-docs-start font-sizes
+$fs-forms: x qx hx tx;
+$font-size-max: 7 !default;
+$font-sizes-base: (
+    1: calc(1.3rem + 0.6vw),
+    2: calc(1.275rem + 0.3vw),
+    3: calc(1.26rem + 0.12vw),
+    4: 1.25rem,
+    5: 1.15rem,
+    6: 1.075rem,
+    7: 0.95rem,
+    8: 0.85rem,
+    9: 0.75rem,
+    10: 0.5rem,
+    sm: 0.95rem,
+    base: 1rem,
+    lg: 1.075rem,
+    fluid: 100%
+) !default;
+
+$min-lg-font-sizes-base: (
+    1: 1.75rem,
+    2: 1.5rem,
+    3: 1.35rem
+);
+
+$font-sizes: map-merge($font-sizes-base, fs-form($font-size-max, $fs-forms));
+
+$min-lg-font-sizes: map-merge($min-lg-font-sizes-base, min-fs-form($font-size-max, $fs-forms));
+
+$fs-form: (
+    x: 0rem,
+    qx: $spacer * 1,
+    hx: $spacer * 2,
+    tx: $spacer * 3
+) !default;
+// scss-docs-end font-sizes
+
+// scss-docs-start display-headings
+$display-font-sizes: (
+    1: calc(1.625rem + 4.5vw),
+    2: calc(1.575rem + 3.9vw),
+    3: calc(1.525rem + 3.3vw),
+    4: calc(1.475rem + 2.7vw),
+    5: calc(1.425rem + 2.1vw),
+    6: calc(1.375rem + 1.5vw)
+) !default;
+
+$min-w-display-font-sizes: (
+    1: 5rem,
+    2: 4.5rem,
+    3: 4rem,
+    4: 3.5rem,
+    5: 3rem,
+    6: 2.5rem
+) !default;
+
+$display-font-weight: $font-weight-bolder !default;
+$display-line-height: $headings-line-height !default;
+// scss-docs-end display-headings
+
+// scss-docs-start type-variables
+
+// scss-docs-end type-variables
+
+// scss-docs-start scrollbar-variables
+$scrollbar-size: 5px;
+$scrollbar-overlay-space: 7px;
+$scrollbar-overlay-size: 19px;
+// scss-docs-end scrollbar-variables
+
+// scss-docs-start gutters
+$gutter-max: 10 !default;
+$gutters: map-loop-spacers($min, $gutter-max, $spacer);
+// scss-docs-end gutters
+
+// scss-docs-start tooltip-variables
+$tooltip-box-shadow: 0px 0px 30px rgba($black, 0.15);
+// scss-docs-start tooltip-variables
+
+// scss-docs-start letters
+$letters: (
+    1: 0.1rem,
+    2: 0.115rem,
+    3: 0.125rem,
+    4: 0.25rem,
+    5: 0.5rem
+) !default;
+// scss-docs-end letters
+
+// scss-docs-start opacitys
+$opacitys: (
+    0: 0,
+    5: 0.05,
+    10: 0.1,
+    15: 0.15,
+    20: 0.2,
+    25: 0.25,
+    50: 0.5,
+    75: 0.75,
+    100: 1
+) !default;
+
+$opacitys-base: (
+    10: 0.1,
+    25: 0.25,
+    50: 0.5,
+    75: 0.75,
+    100: 1
+) !default;
+// scss-docs-end opacitys
+
+// scss-docs-start flex-variables
+$start: start;
+$center: center;
+$between: space-between;
+$around: space-around;
+$baseline: baseline;
+$stretch: stretch;
+$evenly: space-evenly;
+// scss-docs-end flex-variables
+
+// scss-docs-start flexs
+$flexs: (
+    "column-auto": none,
+    "column-fluid": 1 0 auto,
+    "row-auto": 0 0 auto,
+    "root": 1,
+    "row-fluid": 1 auto
+) !default;
+// scss-docs-end flexs
+
+// scss-docs-start flex-aligns
+$flex-aligns: (
+    "start": $start,
+    "center": $center,
+    "end": flex-end,
+    "stack": space-between
+) !default;
+// scss-docs-end flex-aligns
+
+// scss-docs-start flex-contents
+$flex-contents: (
+    start: flex-start,
+    end: flex-end,
+    center: center
+) !default;
+// scss-docs-end flex-contents
+
+// scss-docs-start flex-contents
+$flex-contents: (
+    start: flex-start,
+    end: flex-end,
+    center: center
+) !default;
+// scss-docs-end flex-contents
+
+// scss-docs-start justify-contents
+$justify-content: (
+    between: $between,
+    around: $around,
+    evenly: $evenly
+);
+$justify-contents: map-merge($flex-contents, $justify-content);
+// scss-docs-end justify-contents
+
+// scss-docs-start align-items
+$align-item: (
+    baseline: $baseline,
+    stretch: $stretch
+);
+$align-items: map-merge($flex-contents, $align-item);
+// scss-docs-end align-items
+
+// scss-docs-start align-contents
+$align-content: (
+    between: $between,
+    around: $around,
+    stretch: $stretch
+);
+$align-contents: map-merge($flex-contents, $align-content);
+// scss-docs-end align-contents
+
+// scss-docs-start align-selfs
+$align-self: map-merge(
+    $align-item,
+    (
+        auto: auto
+    )
+);
+$align-selfs: map-merge($flex-contents, $align-self);
+// scss-docs-end align-selfs
+
+// scss-docs-start $text-aligns
+$text-aligns: (
+    start: left,
+    end: right,
+    center: center
+) !default;
+// scss-docs-end $text-aligns
+
+// scss-docs-start sizings
+$percent-sizing: (
+    unset: unset,
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%,
+    auto: auto
+);
+$pxs: map-merge($percent-sizing, get-map-sizing(1000)) !default;
+// scss-docs-end sizings
+
+// scss-docs-start positions
+$positions: (
+    static: static,
+    relative: relative,
+    absolute: absolute,
+    fixed: fixed,
+    sticky: sticky
+) !default;
+// scss-docs-end positions
+
+// scss-docs-start overflows
+$overflows: (
+    auto: auto,
+    hidden: hidden,
+    visible: visible,
+    scroll: scroll
+) !default;
+// scss-docs-end overflows
+
+// scss-docs-start object-fits
+$object-fits: (
+    contain: contain,
+    cover: cover,
+    fill: fill,
+    scale: scale-down,
+    none: none
+) !default;
+// scss-docs-end object-fits
+
+// scss-docs-start floats
+$floats: (
+    start: left,
+    end: right,
+    none: none
+) !default;
+// scss-docs-end floats
+
+// scss-docs-start orders
+$order-max: 5;
+$order-spacer: 1;
+$orders: map-merge(
+    map-loop-spacers($order-spacer, $order-max, $order-spacer),
+    (
+        first: -1,
+        last: 6
+    )
+) !default;
+// scss-docs-end orders
+
+// Body
+// Settings for the `<body>` element.
+
+// scss-docs-start body-variables
+$body-color: $gray-900 !default;
+$body-bg: $white !default;
+$body-font-size: 13px !default;
+$body-font-weight: $font-weight-normal !default;
+$body-font-family: $font-family-sans-serif !default;
+
+$body-secondary-color: rgba($body-color, 0.75) !default;
+$body-secondary-bg: $gray-200 !default;
+
+$body-tertiary-color: rgba($body-color, 0.5) !default;
+$body-tertiary-bg: $gray-100 !default;
+
+$body-emphasis-color: $black !default;
+
+// scss-docs-end body-variables
+
+$small-font-size: 0.875rem !default;
+$sub-sup-font-size: 0.75em !default;
+
+$initialism-font-size: $small-font-size !default;
+
+$blockquote-margin-y: 1rem !default;
+$blockquote-font-size: $font-size-base * 1.25 !default;
+$blockquote-footer-color: $celadon-green !default;
+$blockquote-footer-font-size: $small-font-size !default;
+
+$mark-padding: 0.1875em !default;
+
+// scss-docs-start hr-variables
+$hr-margin-y: $spacer !default;
+$hr-color: inherit !default;
+$hr-border-color: null !default;
+$hr-border-width: var(--#{$prefix}border-width) !default;
+$hr-opacity: 0.25 !default;
+// scss-docs-end hr-variables
+
+// scss-docs-start vr-variables
+$vr-border-width: var(--#{$prefix}border-width) !default;
+// scss-docs-end vr-variables
+
+$legend-margin-bottom: 0.5rem !default;
+$legend-font-size: add(1.275rem, 0.3vw) !default;
+
+$dt-font-weight: $font-weight-bold !default;
+
+$list-inline-padding: 0.5rem !default;
+
+// Tables
+// Customizes the `.table` component with basic values, each used across all table variations.
+
+// scss-docs-start table-variables
+$table-cell-padding-y: 0.75rem !default;
+$table-cell-padding-x: 0.75rem !default;
+$table-cell-padding-y-sm: 0.5rem !default;
+$table-cell-padding-x-sm: 0.5rem !default;
+
+$table-cell-vertical-align: top !default;
+
+$table-color: var(--#{$prefix}body-color) !default;
+$table-bg: transparent !default;
+$table-accent-bg: $table-bg !default;
+
+$table-striped-color: $table-color !default;
+$table-striped-bg-factor: 0.05 !default;
+$table-striped-bg: rgba(var(--#{$prefix}gray-100-rgb), $table-striped-bg-factor) !default;
+
+$table-active-color: $table-color !default;
+$table-active-bg-factor: 0.1 !default;
+$table-active-bg: var(--#{$prefix}gray-100) !default;
+
+$table-hover-color: $table-color !default;
+$table-hover-bg: var(--#{$prefix}gray-100) !default;
+$table-hover-bg-factor: 0.075 !default;
+
+$table-loading-message-box-shadow: 0px 0px 50px 0px rgba($english-violet, 0.15);
+$table-striped-bg: rgba(var(--#{$prefix}gray-100), 0.75) !default;
+
+$table-border-factor: 0.1 !default;
+$table-border-color: var(--#{$prefix}border-color) !default;
+$table-border-width: 1px !default;
+
+$table-striped-order: odd !default;
+$table-striped-columns-order: even !default;
+
+$table-group-separator-color: currentcolor !default;
+
+$table-caption-color: $gray-500 !default;
+
+$table-row-border-bottom-width: 1px !default;
+$table-row-tfoot-border-top-width: 1px !default;
+$table-row-border-bottom-color: var(--#{$prefix}border-color) !default;
+
+$table-row-bordered: solid !default;
+$table-row-dashed: dashed !default;
+
+$table-rounded-border-radius: 1.15rem !default;
+$table-rounded-first-child-border-radius: 6px !default;
+$table-rounded-last-child-border-radius: 6px !default;
+
+$table-sort-width: 0.75rem !default;
+$table-sort-height: 0.75rem !default;
+$table-sort-margin-left: 0.5rem !default;
+
+$table-sort-asc-bg-color: var(--#{$prefix}text-muted) !default;
+$table-sort-asc-icon: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='#{$table-sort-asc-bg-color}'><path d='M3.23571 2.72011L4.97917 4.46358C5.15176 4.63618 5.43158 4.63617 5.60417 4.46358C5.77676 4.29099 5.77676 4.01118 5.60417 3.83861L3.29463 1.52904C3.13192 1.36629 2.86809 1.36629 2.70538 1.52904L0.395812 3.83861C0.22325 4.01117 0.22325 4.29099 0.395812 4.46358C0.568437 4.63617 0.84825 4.63617 1.02081 4.46358L2.76429 2.72011C2.89446 2.58994 3.10554 2.58994 3.23571 2.72011Z'/></svg>") !default;
+
+$table-sort-desc-bg-color: var(--#{$prefix}text-muted) !default;
+$table-sort-desc-icon: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='#{$table-sort-asc-bg-color}'><path d='M2.76429 3.27989L1.02083 1.53642C0.848244 1.36382 0.568419 1.36383 0.395831 1.53642C0.223244 1.70901 0.223244 1.98882 0.395831 2.16139L2.70537 4.47096C2.86808 4.63371 3.13191 4.63371 3.29462 4.47096L5.60419 2.16139C5.77675 1.98883 5.77675 1.70901 5.60419 1.53642C5.43156 1.36383 5.15175 1.36383 4.97919 1.53642L3.23571 3.27989C3.10554 3.41006 2.89446 3.41006 2.76429 3.27989Z'/></svg>") !default;
+
+$table-g-max: 10 !default;
+
+$table-loading-message-padding-y: 0.85rem !default;
+$table-loading-message-padding-x: 2rem !default;
+$table-loading-message-font-weight: $font-weight-bold !default;
+$table-loading-message-bg-color: var(--#{$prefix}body-bg) !default;
+$table-loading-message-color: var(--#{$prefix}gray-700) !default;
+$table-loading-message-border-radius: 1.15rem !default;
+$table-loading-message-transform: translateX(-50%) translateY(-50%) !default;
+// scss-docs-end table-variables
+
+$table-bg-scale: -80% !default;
+// scss-docs-start table-loop
+$table-variants: (
+    "primary": shift-color($primary, $table-bg-scale),
+    "secondary": shift-color($secondary, $table-bg-scale),
+    "success": shift-color($success, $table-bg-scale),
+    "info": shift-color($info, $table-bg-scale),
+    "warning": shift-color($warning, $table-bg-scale),
+    "danger": shift-color($danger, $table-bg-scale),
+    "light": $light,
+    "dark": $dark
+) !default;
+// scss-docs-end table-loop
+
+// Buttons + Forms
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+
+// scss-docs-start input-btn-variables
+$input-btn-padding-y: 1rem !default;
+$input-btn-padding-x: 0.75rem !default;
+$input-btn-line-height: $line-height-base !default;
+
+$input-btn-padding-x-sm: 0.75rem !default;
+$input-btn-padding-y-sm: 0.55rem !default;
+$input-btn-font-size-sm: 0.95rem !default;
+
+$input-btn-padding-x-lg: 0.825rem !default;
+$input-btn-padding-y-lg: 1.5rem !default;
+$input-btn-font-size-lg: 1.15rem !default;
+$input-btn-border-radius-sm: 3rem !default;
+
+$input-btn-font-size: 1.1rem !default;
+
+$input-btn-height-lg: 1.65rem !default;
+$input-btn-height-sm: 1.1rem !default;
+
+$input-btn-focus-width: $focus-ring-width !default;
+$input-btn-focus-blur: $focus-ring-blur !default;
+$input-btn-focus-color-opacity: $focus-ring-opacity !default;
+
+$input-btn-focus-box-shadow: $focus-ring-box-shadow !default;
+
+$input-transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out !default;
+
+$input-btn-border-width: 1px !default;
+$input-btn-border-radius: 2.5rem !default;
+
+$input-btn-box-shadow: false !default;
+
+$form-color-width: 3rem !default;
+// scss-docs-end input-btn-variables
+
+// Buttons
+// For each of Bootstrap's buttons, define text, background, and border color.
+
+// scss-docs-start btn-variables
+$btn-color: var(--#{$prefix}body-color) !default;
+$btn-padding-y: 0.775rem !default;
+$btn-padding-x: $input-btn-padding-x * 2 !default;
+$btn-font-size: $input-btn-font-size !default;
+$btn-line-height: $input-btn-line-height !default;
+
+$btn-font-size-i: 1rem !default;
+$btn-padding-y-i: 0.35rem !default;
+
+$btn-icon-size: 1.5em !default;
+
+$btn-border-width: $input-btn-border-width !default;
+
+$btn-border-radius: $input-btn-border-radius * 0.8 !default;
+
+$btn-font-weight: $font-weight-medium !default;
+$btn-box-shadow:
+    inset 0 1px 0 rgba($white, 0.15),
+    0 1px 1px rgba($black, 0.075) !default;
+$btn-focus-width: $input-btn-focus-width !default;
+$btn-disabled-opacity: 0.65 !default;
+
+$btn-active-box-shadow: inset 0 3px 5px rgba($black, 0.125) !default;
+
+$btn-transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out !default;
+
+$btn-hover-bg-shade-amount: 15% !default;
+$btn-hover-border-shade-amount: 20% !default;
+$btn-hover-border-tint-amount: 10% !default;
+
+$btn-active-bg-shade-amount: 20% !default;
+$btn-active-border-shade-amount: 25% !default;
+$btn-hover-bg-tint-amount: 15% !default;
+$btn-active-bg-tint-amount: 20% !default;
+$btn-active-border-tint-amount: 10% !default;
+
+$btn-padding-y-lg: 0.825rem !default;
+$btn-padding-x-lg: 1.75rem !default;
+$btn-font-size-lg: $input-btn-font-size-lg !default;
+
+$btn-padding-y-sm: 0.55rem !default;
+$btn-padding-x-sm: 1.25rem !default;
+$btn-font-size-sm: $input-btn-font-size-sm !default;
+
+$btn-border-radius-sm: 2.5rem !default;
+$btn-border-radius-lg: 3rem !default;
+
+$btn-link-color: var(--#{$prefix}link-color) !default;
+$btn-link-hover-color: var(--#{$prefix}link-hover-color) !default;
+$btn-link-disabled-color: var(--#{$prefix}gray-600) !default;
+// scss-docs-end btn-variables
+
+// Forms
+
+// scss-docs-start form-text-variables
+$form-text-margin-top: 0.5rem !default;
+$form-text-font-size: 0.95 !default;
+$form-text-color: var(--#{$prefix}text-muted) !default;
+// scss-docs-end form-text-variables
+
+// scss-docs-start form-label-variables
+$form-label-margin-bottom: 0.5rem !default;
+$form-label-font-size: 1.05rem !default;
+$form-label-font-weight: $font-weight-medium !default;
+$form-label-color: var(--#{$prefix}gray-800) !default;
+// scss-docs-end form-label-variables
+
+// scss-docs-start form-input-variables
+$input-padding-y: $input-btn-padding-y !default;
+$input-padding-x: $input-btn-padding-x !default;
+$input-font-size: $input-btn-font-size !default;
+$input-font-weight: $font-weight-medium !default;
+$input-line-height: $input-btn-line-height !default;
+
+$input-padding-x-sm: $input-btn-padding-x-sm !default;
+$input-padding-y-sm: $input-btn-padding-y-sm !default;
+$input-font-size-sm: $input-btn-font-size-sm !default;
+
+$input-padding-x-lg: $input-btn-padding-x-lg !default;
+$input-padding-y-lg: $input-btn-padding-y-lg !default;
+$input-font-size-lg: $input-btn-font-size-lg !default;
+
+$input-bg: var(--#{$prefix}body-bg) !default;
+$input-disabled-color: var(--#{$prefix}gray-500) !default;
+$input-disabled-bg: var(--#{$prefix}gray-200) !default;
+$input-disabled-border-color: var(--#{$prefix}gray-300) !default;
+
+$input-color: var(--#{$prefix}gray-700) !default;
+$input-border-color: var(--#{$prefix}gray-300) !default;
+$input-border-width: $input-btn-border-width !default;
+$input-box-shadow: $box-shadow-inset !default;
+
+$input-border-radius: $input-btn-border-radius !default;
+$input-border-radius-sm: $border-radius-xl !default;
+$input-border-radius-lg: $input-btn-border-radius-sm !default;
+
+$input-focus-bg: $input-bg !default;
+$input-focus-color: $input-color !default;
+$input-focus-border-color: var(--#{$prefix}gray-400) !default;
+$input-focus-box-shadow: $input-btn-focus-box-shadow !default;
+$input-focus-width: $input-btn-focus-width !default;
+
+$input-placeholder-color: var(--#{$prefix}gray-500) !default;
+$input-plaintext-color: var(--#{$prefix}gray-700) !default;
+
+$input-height-border: $input-border-width * 2 !default;
+
+$input-height: add(($input-line-height * 1em), add($input-padding-y * 1.55, $input-height-border, false)) !default;
+$input-height-sm: add(($input-line-height * 1em), add($input-padding-y * 1.1, $input-height-border, false)) !default;
+$input-height-lg: add(($input-line-height * 1em), add($input-padding-y * 1.65, $input-height-border, false)) !default;
+
+$input-height-inner: add($input-line-height * 1em, $input-padding-y * 1.55) !default;
+$input-height-inner-half: add($input-line-height * 0.5em, ($input-padding-y * 0.775)) !default;
+$input-height-inner-quarter: add($input-line-height * 0.25em, ($input-padding-y * 0.3875)) !default;
+
+$input-solid-bg: var(--#{$prefix}gray-100) !default;
+$input-solid-bg-focus: var(--#{$prefix}gray-200) !default;
+$input-solid-placeholder-color: var(--#{$prefix}gray-500) !default;
+// scss-docs-end form-input-variables
+
+// scss-docs-start form-check-variables
+$form-control-solid-color: var(--#{$prefix}gray-700) !default;
+$form-control-solid-bg-color: var(--#{$prefix}gray-100) !default;
+$form-control-solid-border-color: var(--#{$prefix}gray-100) !default;
+$form-control-solid-transition: color 0.2s ease !default;
+
+$form-control-transparent-bg-color: transparent !default;
+$form-control-transparent-border-color: transparent !default;
+
+$form-control-flush-bg-color: transparent !default;
+// scss-docs-start form-check-variables
+
+// scss-docs-start form-check-variables
+$form-check-input-width: 1.75rem !default;
+$form-check-min-height: $font-size-base * $line-height-base !default;
+$form-check-padding-start: $form-check-input-width + 0.5rem !default;
+$form-check-margin-bottom: 0.125rem !default;
+
+$form-check-height-sm: 1.55rem !default;
+$form-check-width-sm: 1.55rem !default;
+
+$form-check-height-lg: 2.25rem !default;
+$form-check-width-lg: 2.25rem !default;
+
+$form-check-input-active-filter: brightness(90%) !default;
+
+$form-check-input-bg: transparent !default;
+$form-check-input-border: var(--#{$prefix}border-width) solid var(--#{$prefix}gray-300) !default;
+$form-check-input-border-radius: 0.45em !default;
+$form-check-radio-border-radius: 50% !default;
+$form-check-input-focus-border: $input-focus-border-color !default;
+$form-check-label-color: var(--#{$prefix}gray-500) !default;
+$form-check-input-checkbox-bg: $primary !default;
+$form-check-input-margin: 0 !default;
+
+$form-check-input-checked-color: $component-active-color !default;
+$form-check-input-checked-bg-color: $component-active-bg !default;
+$form-check-input-checked-border-color: $form-check-input-checked-bg-color !default;
+$form-check-input-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 11' width='13' height='11' fill='none'><path d='M11.0426 1.02893C11.3258 0.695792 11.8254 0.655283 12.1585 0.938451C12.4917 1.22162 12.5322 1.72124 12.249 2.05437L5.51985 9.97104C5.23224 10.3094 4.72261 10.3451 4.3907 10.05L0.828197 6.88335C0.50141 6.59288 0.471975 6.09249 0.762452 5.7657C1.05293 5.43891 1.55332 5.40948 1.88011 5.69995L4.83765 8.32889L11.0426 1.02893Z' fill='#{$form-check-input-checked-color}'/></svg>") !default;
+$form-check-radio-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$form-check-input-checked-color}'/></svg>") !default;
+
+$form-check-input-indeterminate-color: $component-active-color !default;
+$form-check-input-indeterminate-bg-color: $component-active-bg !default;
+$form-check-input-indeterminate-border-color: $form-check-input-indeterminate-bg-color !default;
+$form-check-input-indeterminate-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-indeterminate-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>") !default;
+
+$form-check-input-disabled-opacity: 0.5 !default;
+$form-check-label-disabled-opacity: $form-check-input-disabled-opacity !default;
+
+$form-check-image-disabled-opacity: 0.65 !default;
+
+$form-check-wrapper-border-radius: 1.5rem !default;
+$form-check-wrapper-border: 2px solid transparent !default;
+$form-check-wrapper-border-color: var(--#{$prefix}primary) !default;
+$form-check-wrapper-transition: all 0.2s ease-in-out !default;
+$form-check-wrapper-margin-bottom: 0.75rem !default;
+
+$form-check-rounded-border-radius: $form-check-wrapper-border-radius !default;
+
+$form-check-label-font-weight: $font-weight-bold !default;
+$form-check-label-margin-left: 0.5rem !default;
+
+$form-check-custom-margin: 0 !default;
+$form-check-custom-padding-left: 0 !default;
+$form-check-label-margin-left: 0.55rem !default;
+
+$form-check-inline-margin-end: 1rem !default;
+$form-check-inline-margin-right: 1rem !default;
+// scss-docs-end form-check-variables
+
+// scss-docs-start form-switch-variables
+$form-switch-color: rgba($black, 0.25) !default;
+$form-switch-width: 3.25rem !default;
+$form-switch-padding-start: $form-switch-width + 0.5rem !default;
+$form-switch-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color}'/></svg>") !default;
+$form-switch-border-radius: $form-switch-width !default;
+$form-switch-transition: background-position 0.15s ease-in-out !default;
+
+$form-switch-height: 2.25rem !default;
+
+$form-switch-height-lg: 2.75rem !default;
+$form-switch-width-lg: 3.75rem !default;
+$form-switch-height-sm: 1.5rem !default;
+$form-switch-width-sm: 2.5rem !default;
+
+$form-switch-focus-color: $form-switch-color !default;
+$form-switch-focus-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-focus-color}'/></svg>") !default;
+
+$form-switch-checked-color: $component-active-color !default;
+$form-switch-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-checked-color}'/></svg>") !default;
+$form-switch-checked-bg-position: right center !default;
+// scss-docs-end form-switch-variables
+
+// scss-docs-start input-group-variables
+$input-group-addon-padding-y: $input-padding-y !default;
+$input-group-addon-padding-x: $input-padding-x !default;
+$input-group-addon-font-weight: $input-font-weight !default;
+$input-group-addon-color: $input-color !default;
+$input-group-addon-bg: var(--#{$prefix}gray-100) !default;
+$input-group-addon-border-color: $input-border-color !default;
+
+$input-group-solid-border-radius: 2.5rem !default;
+$input-group-border-radius-sm: 2rem !default;
+$input-group-border-radius-lg: 3rem !default;
+// scss-docs-end input-group-variables
+
+// scss-docs-start form-select-variables
+$form-select-padding-y: $input-padding-y !default;
+$form-select-padding-x: $input-padding-x !default;
+$form-select-indicator-padding: $form-select-padding-y * 3 !default;
+$form-select-bg-position: right $form-select-padding-y center !default;
+$form-select-bg-size: 16px 12px !default;
+$form-select-color: $input-color !default;
+
+$form-select-focus-border-color: $input-focus-border-color !default;
+$form-select-focus-box-shadow: 0 0 0 0.25rem rgba(var(--#{$prefix}component-active-bg), 0.25) !default;
+
+$form-select-solid-transition: color 0.2s ease !default;
+
+$form-select-padding-y-sm: $input-padding-y-sm !default;
+$form-select-padding-x-sm: $input-padding-x-sm !default;
+
+$form-select-padding-y-lg: $input-padding-y-lg !default;
+$form-select-padding-x-lg: $input-padding-x-lg !default;
+
+$form-select-indicator-color: $celadon-green !default;
+$form-select-indicator: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='#{$form-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !default;
+
+$form-select-feedback-icon-padding-end: $form-select-padding-x * 3 + $form-select-indicator-padding + $spacer !default;
+$form-select-feedback-icon-position: center right $form-select-indicator-padding !default;
+$form-select-feedback-icon-size: $input-height-inner-half $input-height-inner-half !default;
+// scss-docs-end form-select-variables
+
+// scss-docs-start form-range-variables
+$form-range-track-width: 100% !default;
+$form-range-track-height: 0.5rem !default;
+$form-range-track-cursor: pointer !default;
+$form-range-track-bg: var(--#{$prefix}gray-300) !default;
+$form-range-track-border-radius: $border-radius !default;
+$form-range-track-box-shadow: $box-shadow-inset !default;
+
+$form-range-thumb-width: 1rem !default;
+$form-range-thumb-height: $form-range-thumb-width !default;
+$form-range-thumb-focus-box-shadow: (0 0 0 1px $body-bg, $input-focus-box-shadow) !default;
+$form-range-thumb-bg: $component-active-bg !default;
+$form-range-thumb-border: 0 !default;
+$form-range-thumb-border-radius: 1rem !default;
+$form-range-thumb-box-shadow: 0 0.1rem 0.25rem rgba($black, 0.1) !default;
+$form-range-thumb-active-bg: #b3e8ff !default;
+$form-range-thumb-disabled-bg: var(--#{$prefix}gray-500) !default;
+$form-range-thumb-transition:
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out !default;
+// scss-docs-end form-range-variables
+
+// scss-docs-start form-floating-variables
+$form-floating-height: add(3.75rem, $input-height-border) !default;
+$form-floating-line-height: 1.25 !default;
+$form-floating-padding-x: 1rem !default;
+$form-floating-padding-y: $input-padding-y !default;
+$form-floating-input-padding-t: 1.85rem !default;
+$form-floating-input-padding-b: 0.625rem !default;
+$form-floating-label-height: 1.5em !default;
+$form-floating-label-opacity: 0.65 !default;
+$form-floating-label-transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem) !default;
+$form-floating-transition:
+    opacity 0.1s ease-in-out,
+    transform 0.1s ease-in-out !default;
+
+$form-floating-label-disabled-color: $gray-600 !default;
+// scss-docs-end form-floating-variables
+
+// Form validation
+
+// scss-docs-start form-feedback-variables
+$form-feedback-margin-top: $form-text-margin-top !default;
+$form-feedback-font-size: $form-text-font-size !default;
+$form-feedback-valid-color: $success !default;
+$form-feedback-invalid-color: $danger !default;
+
+$form-feedback-icon-valid-color: $form-feedback-valid-color !default;
+$form-feedback-icon-valid: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color}' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>") !default;
+$form-feedback-icon-invalid-color: $form-feedback-invalid-color !default;
+$form-feedback-icon-invalid: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{$form-feedback-icon-invalid-color}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-icon-invalid-color}' stroke='none'/></svg>") !default;
+// scss-docs-end form-feedback-variables
+
+// scss-docs-start form-validation-colors
+$form-valid-color: $form-feedback-valid-color !default;
+$form-valid-border-color: $form-feedback-valid-color !default;
+$form-invalid-color: $form-feedback-invalid-color !default;
+$form-invalid-border-color: $form-feedback-invalid-color !default;
+// scss-docs-end form-validation-colors
+
+// scss-docs-start form-file-variables
+$form-file-button-color: $input-color !default;
+$form-file-button-bg: var(--#{$prefix}gray-100) !default;
+$form-file-button-hover-bg: shade-color($gray-100, 5%) !default;
+// scss-docs-end form-file-variables
+
+// scss-docs-start form-validation-states
+$form-validation-states: (
+    "valid": (
+        "color": var(--#{$prefix}form-valid-color),
+        "icon": $form-feedback-icon-valid,
+        "tooltip-color": #fff,
+        "tooltip-bg-color": var(--#{$prefix}success),
+        "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width
+            rgba(var(--#{$prefix}success-rgb), $input-btn-focus-color-opacity),
+        "border-color": var(--#{$prefix}form-valid-border-color)
+    ),
+    "invalid": (
+        "color": var(--#{$prefix}form-invalid-color),
+        "icon": $form-feedback-icon-invalid,
+        "tooltip-color": #fff,
+        "tooltip-bg-color": var(--#{$prefix}danger),
+        "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width
+            rgba(var(--#{$prefix}danger-rgb), $input-btn-focus-color-opacity),
+        "border-color": var(--#{$prefix}form-invalid-border-color)
+    )
+) !default;
+// scss-docs-end form-validation-states
+
+// Z-index master list
+
+// scss-docs-start zindex-stack
+$zindex-dropdown: 1000 !default;
+$zindex-modal: 1055 !default;
+$zindex-modal-backdrop: 1050 !default;
+$zindex-offcanvas-backdrop: 1040 !default;
+$zindex-offcanvas: 1045 !default;
+$zindex-popover: 1070 !default;
+$zindex-toast: 1090 !default;
+$zindex-tooltip: 1080 !default;
+$zindex-fixed: 1030 !default;
+$zindex-sticky: 1020 !default;
+$zindex-scrolltop: 105 !default;
+// scss-docs-end zindex-stack
+
+// scss-docs-start zindex-stack
+
+// scss-docs-end zindex-stack
+
+// scss-docs-start zindex-levels-map
+$zindex-levels: (
+    n2: -2,
+    n1: -1,
+    0: 0,
+    1: 1,
+    2: 2,
+    3: 3
+) !default;
+// scss-docs-end zindex-levels-map
+
+// Navs
+
+// scss-docs-start nav-variables
+$nav-link-padding-y: 0.5rem !default;
+$nav-link-padding-x: 1rem !default;
+$nav-link-color: var(--#{$prefix}link-color) !default;
+$nav-link-transition: color 0.15s ease-in-out !default;
+$nav-link-hover-color: var(--#{$prefix}link-hover-color) !default;
+$nav-link-disabled-color: var(--#{$prefix}secondary-color) !default;
+$nav-link-focus-box-shadow: $focus-ring-box-shadow !default;
+
+$nav-tabs-border-color: var(--#{$prefix}border-color) !default;
+$nav-tabs-border-width: var(--#{$prefix}border-width) !default;
+$nav-tabs-border-radius: var(--#{$prefix}border-radius) !default;
+$nav-tabs-link-hover-border-color: var(--#{$prefix}secondary-bg) var(--#{$prefix}secondary-bg) $nav-tabs-border-color !default;
+$nav-tabs-link-active-color: var(--#{$prefix}emphasis-color) !default;
+$nav-tabs-link-active-bg: var(--#{$prefix}body-bg) !default;
+$nav-tabs-link-active-border-color: var(--#{$prefix}border-color) var(--#{$prefix}border-color) $nav-tabs-link-active-bg !default;
+
+$nav-pills-border-radius: var(--#{$prefix}border-radius) !default;
+$nav-pills-link-active-color: $white !default;
+$nav-pills-link-active-bg: $primary !default;
+$nav-pills-margin-right: 0.5rem !default;
+
+$nav-underline-gap: 1rem !default;
+$nav-underline-border-width: 0.125rem !default;
+$nav-underline-link-active-color: var(--#{$prefix}emphasis-color) !default;
+
+$nav-stretch-padding: 0 !default;
+
+$nav-group-border-radius: $border-radius !default;
+$nav-group-padding: 0.35rem !default;
+$nav-group-background-color: var(--#{$prefix}gray-100) !default;
+$nav-group-border: $border-width solid var(--#{$prefix}border-color) !default;
+
+$nav-line-tabs-border-bottom-width: $border-width !default;
+$nav-line-tabs-border-bottom-style: solid !default;
+$nav-line-tabs-border-bottom-color: var(--#{$prefix}border-color) !default;
+$nav-line-tabs-border-bottom: $border-width solid transparent !default;
+$nav-line-tabs-border: 0 !default;
+$nav-line-tabs-color: var(--#{$prefix}gray-500) !default;
+$nav-line-tabs-transition: color 0.2s ease !default;
+// scss-docs-end nav-variables
+
+// Navbar
+
+// scss-docs-start navbar-variables
+$navbar-padding-y: $spacer * 2 !default;
+$navbar-padding-x: null !default;
+
+$navbar-brand-font-size: 1.075rem !default;
+$navbar-nav-link-padding-x: 0.5rem !default;
+
+$nav-link-height: $font-size-base * $line-height-base + $nav-link-padding-y * 2 !default;
+$navbar-brand-height: $navbar-brand-font-size * $line-height-base !default;
+$navbar-brand-padding-y: ($nav-link-height - $navbar-brand-height) * 0.5 !default;
+$navbar-brand-margin-end: 1rem !default;
+
+$navbar-toggler-padding-y: 0.25rem !default;
+$navbar-toggler-padding-x: 0.75rem !default;
+$navbar-toggler-font-size: $navbar-brand-font-size !default;
+$navbar-toggler-border-radius: $btn-border-radius !default;
+$navbar-toggler-focus-width: $btn-focus-width !default;
+$navbar-toggler-transition: box-shadow 0.15s ease-in-out !default;
+
+$navbar-light-color: rgba(var(--#{$prefix}emphasis-color-rgb), 0.65) !default;
+$navbar-light-hover-color: rgba(var(--#{$prefix}emphasis-color-rgb), 0.8) !default;
+$navbar-light-active-color: rgba(var(--#{$prefix}emphasis-color-rgb), 1) !default;
+$navbar-light-disabled-color: rgba(var(--#{$prefix}emphasis-color-rgb), 0.3) !default;
+$navbar-light-icon-color: rgba($body-color, 0.75) !default;
+$navbar-light-toggler-icon-bg: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-icon-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+$navbar-light-toggler-border-color: rgba(var(--#{$prefix}emphasis-color-rgb), 0.15) !default;
+$navbar-light-brand-color: $navbar-light-active-color !default;
+$navbar-light-brand-hover-color: $navbar-light-active-color !default;
+// scss-docs-end navbar-variables
+
+// Dropdowns
+// Dropdown menu container and contents.
+
+// scss-docs-start dropdown-variables
+$dropdown-min-width: 10rem !default;
+$dropdown-padding-x: 0 !default;
+$dropdown-padding-y: 0.5rem !default;
+$dropdown-spacer: 0.125rem !default;
+$dropdown-font-size: $font-size-base !default;
+$dropdown-color: var(--#{$prefix}body-color) !default;
+$dropdown-bg: var(--#{$prefix}body-bg) !default;
+$dropdown-border-color: var(--#{$prefix}border-color-translucent) !default;
+$dropdown-border-radius: $border-radius !default;
+$dropdown-border-width: 0rem !default;
+$dropdown-inner-border-radius: calc(#{$dropdown-border-radius} - #{$dropdown-border-width}) !default;
+
+$dropdown-divider-bg: var(--#{$prefix}gray-100) !default;
+$dropdown-divider-margin-y: $spacer * 2 !default;
+$dropdown-box-shadow: 0px 0px 50px 0px rgba($english-violet, 0.15);
+
+$dropdown-link-color: var(--#{$prefix}gray-900) !default;
+$dropdown-link-hover-color: $dropdown-link-color !default;
+$dropdown-link-hover-bg: var(--#{$prefix}tertiary-bg) !default;
+
+$dropdown-link-active-color: var(--#{$prefix}component-hover-color) !default;
+$dropdown-link-active-bg: var(--#{$prefix}component-hover-bg) !default;
+
+$dropdown-link-disabled-color: var(--#{$prefix}gray-500) !default;
+
+$dropdown-item-padding-y: $spacer * 2.6 !default;
+$dropdown-item-padding-x: $spacer * 3.4 !default;
+
+$dropdown-header-color: var(--#{$prefix}gray-600) !default;
+$dropdown-header-padding-x: $dropdown-item-padding-x !default;
+$dropdown-header-padding-y: $dropdown-padding-y !default;
+// scss-docs-end dropdown-variables
+
+// scss-docs-start dropdown-dark-variables
+$dropdown-dark-color: $gray-300 !default;
+$dropdown-dark-bg: $gray-800 !default;
+$dropdown-dark-border-color: $dropdown-border-color !default;
+$dropdown-dark-divider-bg: $dropdown-divider-bg !default;
+$dropdown-dark-box-shadow: null !default;
+$dropdown-dark-link-color: $dropdown-dark-color !default;
+$dropdown-dark-link-hover-color: $white !default;
+$dropdown-dark-link-hover-bg: rgba($white, 0.15) !default;
+$dropdown-dark-link-active-color: $dropdown-link-active-color !default;
+$dropdown-dark-link-active-bg: $dropdown-link-active-bg !default;
+$dropdown-dark-link-disabled-color: $gray-500 !default;
+$dropdown-dark-header-color: $gray-500 !default;
+// scss-docs-end dropdown-dark-variables
+
+// Pagination
+
+// scss-docs-start pagination-variables
+$pagination-padding-y: 0.375rem !default;
+$pagination-padding-x: 0.75rem !default;
+$pagination-padding-y-sm: 0.25rem !default;
+$pagination-padding-x-sm: 0.5rem !default;
+$pagination-padding-y-lg: 0.75rem !default;
+$pagination-padding-x-lg: 1.5rem !default;
+
+$pagination-height: 2.5rem !default;
+$pagination-min-width: 2.5rem !default;
+$pagination-height-next-previous: 0.875rem !default;
+
+$pagination-font-size: 1.075rem !default;
+$pagination-font-size-i: 0.85rem !default;
+$pagination-font-size-lg: $pagination-font-size !default;
+$pagination-font-size-sm: 0.95rem !default;
+$pagination-font-weight: $font-weight-medium !default;
+
+$pagination-color: var(--#{$prefix}gray-700) !default;
+$pagination-bg: transparent !default;
+$pagination-border-radius: $border-radius-xl !default;
+$pagination-border-width: 0 !default;
+$pagination-margin-start: calc(#{$pagination-border-width} * -1) !default;
+$pagination-border-color: transparent !default;
+$pagination-border: $border-width solid var(--#{$prefix}border-color) !default;
+
+$pagination-focus-color: var(--#{$prefix}component-hover-color) !default;
+$pagination-focus-bg: var(--#{$prefix}component-hover-bg) !default;
+$pagination-focus-box-shadow: none !default;
+$pagination-focus-outline: 0 !default;
+
+$pagination-hover-color: var(--#{$prefix}component-hover-color) !default;
+$pagination-hover-bg: var(--#{$prefix}component-hover-bg) !default;
+$pagination-hover-border-color: transparent !default;
+
+$pagination-active-color: var(--#{$prefix}component-active-color) !default;
+$pagination-active-bg: var(--#{$prefix}component-active-bg) !default;
+$pagination-active-border-color: transparent !default;
+
+$pagination-disabled-color: var(--#{$prefix}gray-400) !default;
+$pagination-disabled-bg: transparent !default;
+$pagination-disabled-border-color: transparent !default;
+
+$pagination-transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out !default;
+
+$pagination-border-radius-sm: var(--#{$prefix}border-radius-sm) !default;
+$pagination-border-radius-lg: var(--#{$prefix}border-radius-lg) !default;
+
+$pagination-previous-background-color: var(--#{$prefix}gray-700) !default;
+$pagination-previous-icon: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='#{$pagination-previous-background-color}'><path d='M2.72011 2.76429L4.46358 1.02083C4.63618 0.848244 4.63617 0.568419 4.46358 0.395831C4.29099 0.223244 4.01118 0.223244 3.83861 0.395831L1.52904 2.70537C1.36629 2.86808 1.36629 3.13191 1.52904 3.29462L3.83861 5.60419C4.01117 5.77675 4.29099 5.77675 4.46358 5.60419C4.63617 5.43156 4.63617 5.15175 4.46358 4.97919L2.72011 3.23571C2.58994 3.10554 2.58994 2.89446 2.72011 2.76429Z'/></svg>") !default;
+
+$pagination-previous-focus-background-color: var(--#{$prefix}pagination-focus-color) !default;
+$pagination-previous-focus-icon: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='#{$pagination-previous-focus-background-color}'><path d='M2.72011 2.76429L4.46358 1.02083C4.63618 0.848244 4.63617 0.568419 4.46358 0.395831C4.29099 0.223244 4.01118 0.223244 3.83861 0.395831L1.52904 2.70537C1.36629 2.86808 1.36629 3.13191 1.52904 3.29462L3.83861 5.60419C4.01117 5.77675 4.29099 5.77675 4.46358 5.60419C4.63617 5.43156 4.63617 5.15175 4.46358 4.97919L2.72011 3.23571C2.58994 3.10554 2.58994 2.89446 2.72011 2.76429Z'/></svg>") !default;
+
+$pagination-previous-hover-background-color: var(--#{$prefix}pagination-hover-color) !default;
+$pagination-previous-hover-icon: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='#{$pagination-previous-hover-background-color}'><path d='M2.72011 2.76429L4.46358 1.02083C4.63618 0.848244 4.63617 0.568419 4.46358 0.395831C4.29099 0.223244 4.01118 0.223244 3.83861 0.395831L1.52904 2.70537C1.36629 2.86808 1.36629 3.13191 1.52904 3.29462L3.83861 5.60419C4.01117 5.77675 4.29099 5.77675 4.46358 5.60419C4.63617 5.43156 4.63617 5.15175 4.46358 4.97919L2.72011 3.23571C2.58994 3.10554 2.58994 2.89446 2.72011 2.76429Z'/></svg>") !default;
+
+$pagination-previous-active-background-color: var(--#{$prefix}pagination-active-color) !default;
+$pagination-previous-active-icon: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='#{$pagination-previous-active-background-color}'><path d='M2.72011 2.76429L4.46358 1.02083C4.63618 0.848244 4.63617 0.568419 4.46358 0.395831C4.29099 0.223244 4.01118 0.223244 3.83861 0.395831L1.52904 2.70537C1.36629 2.86808 1.36629 3.13191 1.52904 3.29462L3.83861 5.60419C4.01117 5.77675 4.29099 5.77675 4.46358 5.60419C4.63617 5.43156 4.63617 5.15175 4.46358 4.97919L2.72011 3.23571C2.58994 3.10554 2.58994 2.89446 2.72011 2.76429Z'/></svg>") !default;
+
+$pagination-previous-disabled-background-color: var(--#{$prefix}pagination-disabled-color) !default;
+$pagination-previous-disabled-icon: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='#{$pagination-previous-disabled-background-color}'><path d='M2.72011 2.76429L4.46358 1.02083C4.63618 0.848244 4.63617 0.568419 4.46358 0.395831C4.29099 0.223244 4.01118 0.223244 3.83861 0.395831L1.52904 2.70537C1.36629 2.86808 1.36629 3.13191 1.52904 3.29462L3.83861 5.60419C4.01117 5.77675 4.29099 5.77675 4.46358 5.60419C4.63617 5.43156 4.63617 5.15175 4.46358 4.97919L2.72011 3.23571C2.58994 3.10554 2.58994 2.89446 2.72011 2.76429Z'/></svg>") !default;
+
+$pagination-next-background-color: var(--#{$prefix}pagination-focus-color) !default;
+$pagination-next-icon: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='#{$pagination-next-background-color}'><path d='M3.27989 3.23571L1.53642 4.97917C1.36382 5.15176 1.36383 5.43158 1.53642 5.60417C1.70901 5.77676 1.98882 5.77676 2.16139 5.60417L4.47096 3.29463C4.63371 3.13192 4.63371 2.86809 4.47096 2.70538L2.16139 0.395812C1.98883 0.22325 1.70901 0.22325 1.53642 0.395812C1.36383 0.568437 1.36383 0.84825 1.53642 1.02081L3.27989 2.76429C3.41006 2.89446 3.41006 3.10554 3.27989 3.23571Z'/></svg>") !default;
+
+$pagination-next-focus-background-color: var(--#{$prefix}pagination-focus-color) !default;
+$pagination-next-focus-icon: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='#{$pagination-next-focus-background-color}'><path d='M3.27989 3.23571L1.53642 4.97917C1.36382 5.15176 1.36383 5.43158 1.53642 5.60417C1.70901 5.77676 1.98882 5.77676 2.16139 5.60417L4.47096 3.29463C4.63371 3.13192 4.63371 2.86809 4.47096 2.70538L2.16139 0.395812C1.98883 0.22325 1.70901 0.22325 1.53642 0.395812C1.36383 0.568437 1.36383 0.84825 1.53642 1.02081L3.27989 2.76429C3.41006 2.89446 3.41006 3.10554 3.27989 3.23571Z'/></svg>") !default;
+
+$pagination-next-hover-background-color: var(--#{$prefix}pagination-hover-color) !default;
+$pagination-next-hover-icon: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='#{$pagination-next-hover-background-color}'><path d='M3.27989 3.23571L1.53642 4.97917C1.36382 5.15176 1.36383 5.43158 1.53642 5.60417C1.70901 5.77676 1.98882 5.77676 2.16139 5.60417L4.47096 3.29463C4.63371 3.13192 4.63371 2.86809 4.47096 2.70538L2.16139 0.395812C1.98883 0.22325 1.70901 0.22325 1.53642 0.395812C1.36383 0.568437 1.36383 0.84825 1.53642 1.02081L3.27989 2.76429C3.41006 2.89446 3.41006 3.10554 3.27989 3.23571Z'/></svg>") !default;
+
+$pagination-next-active-background-color: var(--#{$prefix}pagination-active-color) !default;
+$pagination-next-active-icon: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='#{$pagination-next-active-background-color}'><path d='M3.27989 3.23571L1.53642 4.97917C1.36382 5.15176 1.36383 5.43158 1.53642 5.60417C1.70901 5.77676 1.98882 5.77676 2.16139 5.60417L4.47096 3.29463C4.63371 3.13192 4.63371 2.86809 4.47096 2.70538L2.16139 0.395812C1.98883 0.22325 1.70901 0.22325 1.53642 0.395812C1.36383 0.568437 1.36383 0.84825 1.53642 1.02081L3.27989 2.76429C3.41006 2.89446 3.41006 3.10554 3.27989 3.23571Z'/></svg>") !default;
+
+$pagination-next-disabled-background-color: var(--#{$prefix}pagination-disabled-color) !default;
+$pagination-next-disabled-icon: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='#{$pagination-next-disabled-background-color}'><path d='M3.27989 3.23571L1.53642 4.97917C1.36382 5.15176 1.36383 5.43158 1.53642 5.60417C1.70901 5.77676 1.98882 5.77676 2.16139 5.60417L4.47096 3.29463C4.63371 3.13192 4.63371 2.86809 4.47096 2.70538L2.16139 0.395812C1.98883 0.22325 1.70901 0.22325 1.53642 0.395812C1.36383 0.568437 1.36383 0.84825 1.53642 1.02081L3.27989 2.76429C3.41006 2.89446 3.41006 3.10554 3.27989 3.23571Z'/></svg>") !default;
+// scss-docs-end pagination-variables
+
+// Placeholders
+
+// scss-docs-start placeholders
+$placeholder-opacity-max: 0.5 !default;
+$placeholder-opacity-min: 0.2 !default;
+// scss-docs-end placeholders
+
+// Cards
+// scss-docs-start card-variables
+$card-spacer-y: 1rem !default;
+$card-spacer-x: 1rem !default;
+$card-title-spacer-y: $spacer * 0.5 !default;
+$card-border-width: $border-width !default;
+$card-border-color: var(--#{$prefix}border-color) !default;
+$card-border-radius: $border-radius !default;
+$card-box-shadow: 0px 0px 30px rgba($light-silver, 0.08) !default;
+$card-inner-border-radius: subtract($card-border-radius, $card-border-width) !default;
+$card-bg: var(--#{$prefix}body-bg) !default;
+
+$card-cap-padding-y: $card-spacer-y * 0.5 !default;
+$card-cap-padding-x: $card-spacer-x !default;
+$card-cap-bg: transparent !default;
+
+$card-img-overlay-padding: $card-cap-padding-x !default;
+$card-group-margin: $card-cap-padding-x * 0.75 !default;
+
+$card-box-shadow: none !default;
+
+$card-header-padding-y: 0 !default;
+$card-header-padding-x: $card-spacer-x * 2.25 !default;
+$card-header-min-height: 70px !default;
+$card-header-color: var(--#{$prefix}card-cap-color) !default;
+$card-header-bg-color: var(--#{$prefix}card-cap-bg) !default;
+$card-header-border-bottom: 1px solid var(--#{$prefix}card-border-color) !default;
+
+$card-header-not-padding: $card-spacer-y * 0.5 !default;
+
+$card-title-margin: $card-cap-padding-x * 0.5 !default;
+
+$card-icon-margin-right: $card-cap-padding-x * 0.75 !default;
+$card-icon-font-size: 1.25rem !default;
+$card-icon-color: var(--#{$prefix}gray-600) !default;
+$card-icon-line-height: 0 !default;
+
+$card-icon-svg-height: 24px !default;
+$card-icon-svg-width: 24px !default;
+
+$card-label-font-weight: $font-weight-medium !default;
+$card-label-font-size: 1.275rem !default;
+$card-label-color: var(--#{$prefix}text-dark) !default;
+$card-label-margin: 0.75rem !default;
+
+$card-title-small-color: var(--#{$prefix}text-muted) !default;
+$card-title-small-font-size: $font-size-base !default;
+
+$card-toolbar-margin: 0.5rem !default;
+
+$card-body-padding-y: $card-spacer-y * 2 !default;
+$card-body-padding-x: $card-spacer-y * 2.25 !default;
+$card-body-color: var(--#{$prefix}card-color) !default;
+
+$card-footer-padding-y: $card-spacer-y * 2 !default;
+$card-footer-padding-x: $card-spacer-y * 2.25 !default;
+$card-footer-color: var(--#{$prefix}card-cap-color) !default;
+$card-footer-bg-color: var(--#{$prefix}card-cap-bg) !default;
+$card-footer-border-top: 1px solid var(--#{$prefix}card-border-color) !default;
+
+$card-dashed-border: 1px dashed var(--#{$prefix}border-dashed-color) !default;
+
+$card-bordered-border: 1px solid var(--#{$prefix}border-color) !default;
+
+$card-shadow-box-shadow: var(--#{$prefix}card-box-shadow) !default;
+$card-shadow-border: 0 !default;
+
+$card-p-padding-y: $card-spacer-y * 2 !default;
+$card-p-padding-x: $card-spacer-x * 2.25 !default;
+
+$card-rounded-border-radius: 1.15rem !default;
+// scss-docs-end card-variables
+
+// Accordion
+
+// scss-docs-start accordion-variables
+$accordion-padding-y: 1.5rem !default;
+$accordion-padding-x: 1.5rem !default;
+$accordion-color: var(--#{$prefix}body-color) !default;
+$accordion-bg: var(--#{$prefix}body-bg) !default;
+$accordion-border-width: var(--#{$prefix}border-width) !default;
+$accordion-border-color: var(--#{$prefix}border-color) !default;
+$accordion-border-radius: $border-radius !default;
+$accordion-inner-border-radius: subtract($accordion-border-radius, $accordion-border-width) !default;
+
+$accordion-body-padding-y: $accordion-padding-y !default;
+$accordion-body-padding-x: $accordion-padding-x !default;
+
+$accordion-button-padding-y: $accordion-padding-y !default;
+$accordion-button-padding-x: $accordion-padding-x !default;
+$accordion-button-color: var(--#{$prefix}body-color) !default;
+$accordion-button-bg: var(--#{$prefix}body-bg) !default;
+$accordion-transition:
+    $btn-transition,
+    border-radius 0.15s ease !default;
+
+$accordion-button-active-bg: var(--#{$prefix}primary) !default;
+$accordion-button-active-color: var(--#{$prefix}gray-100) !default;
+
+$accordion-button-focus-border-color: var(--#{$prefix}border-color) !default;
+$accordion-button-focus-box-shadow: none !default;
+
+$accordion-icon-width: 1.15rem !default;
+$accordion-icon-color: $gray-900 !default;
+$accordion-icon-active-color: $primary !default;
+$accordion-icon-transition: transform 0.2s ease-in-out !default;
+$accordion-icon-transform: rotate(-180deg) !default;
+
+$accordion-button-icon: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+$accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-active-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+// scss-docs-end accordion-variables
+
+// scss-docs-end accordion-icon-map
+$accordion-icons: toggle collapse !default;
+// scss-docs-end accordion-icon-map
+
+// Tooltips
+
+// scss-docs-start tooltip-variables
+$tooltip-font-size: $font-size-base !default;
+$tooltip-max-width: 200px !default;
+$tooltip-color: var(--#{$prefix}gray-800) !default;
+$tooltip-bg: var(--#{$prefix}body-bg) !default;
+$tooltip-border-radius: $border-radius !default;
+$tooltip-padding-y: $spacer * 3 !default;
+$tooltip-padding-x: $spacer * 4 !default;
+$tooltip-opacity: 1 !default;
+$tooltip-margin: 0 !default;
+
+$tooltip-arrow-width: 0.8rem !default;
+$tooltip-arrow-height: 0.4rem !default;
+
+$tooltip-inverse-color: var(--#{$prefix}dark-inverse) !default;
+$tooltip-inverse-bg: var(--#{$prefix}dark) !default;
+// scss-docs-end tooltip-variables
+
+// scss-docs-start tooltip-feedback-variables
+$form-feedback-tooltip-padding-y: $tooltip-padding-y !default;
+$form-feedback-tooltip-padding-x: $tooltip-padding-x !default;
+$form-feedback-tooltip-font-size: $tooltip-font-size !default;
+$form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
+// scss-docs-end tooltip-feedback-variables
+
+// Popovers
+
+// scss-docs-start popover-variables
+$popover-font-size: $font-size-base !default;
+$popover-bg: $white !default;
+$popover-max-width: 276px !default;
+$popover-border-width: var(--#{$prefix}border-width) !default;
+$popover-border-color: $popover-bg !default;
+$popover-border-radius: $border-radius !default;
+$popover-inner-border-radius: $popover-border-radius !default;
+$popover-box-shadow: 0px 0px 50px 0px rgba($english-violet, 0.15) !default;
+
+$popover-header-padding-y: $spacer * 4 !default;
+$popover-header-padding-x: $spacer * 5 !default;
+$popover-header-font-size: $font-size-base !default;
+$popover-header-bg: $white !default;
+$popover-header-color: var(--#{$prefix}gray-800) !default;
+$popover-header-border-color: $gray-200 !default;
+$popover-header-font-size: $font-size-base !default;
+$popover-header-font-weight: $font-weight-medium !default;
+$popover-header-border-bottom: 1px solid var(--#{$prefix}popover-header-border-color) !default;
+
+$popover-dismiss-size: 1.25rem !default;
+$popover-dismiss-top: 0.85rem !default;
+$popover-dismiss-right: 0.85rem !default;
+$popover-dismiss-bg-color: var(--#{$prefix}gray-500) !default;
+$popover-dismiss-icon-bg: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$popover-dismiss-bg-color}'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>") !default;
+
+$popover-body-color: var(--#{$prefix}gray-800) !default;
+$popover-body-padding-y: $popover-header-padding-x !default;
+$popover-body-padding-x: $popover-header-padding-x !default;
+
+$popover-inverse-bg: var(--bs-gray-900) !default;
+$popover-inverse-border-color: var(--bs-gray-900) !default;
+$popover-inverse-box-shadow: 0px 0px 30px rgba($black, 0.3) !default;
+$popover-inverse-header-color: var(--bs-gray-200) !default;
+$popover-inverse-header-bg: var(--bs-gray-900) !default;
+$popover-inverse-header-border-color: var(--bs-gray-800) !default;
+$popover-inverse-body-color: var(--bs-gray-400) !default;
+
+$popover-arrow-width: 1rem !default;
+$popover-arrow-height: 0.5rem !default;
+// scss-docs-end popover-variables
+
+// Toasts
+
+// scss-docs-start toast-variables
+$toast-max-width: 350px !default;
+$toast-padding-x: 0.75rem !default;
+$toast-padding-y: 0.5rem !default;
+$toast-font-size: 0.875rem !default;
+$toast-color: var(--#{$prefix}gray-700) !default;
+$toast-background-color: var(--#{$prefix}body-bg) !default;
+$toast-border-width: var(--#{$prefix}border-width) !default;
+$toast-border-color: transparent !default;
+$toast-border-radius: var(--#{$prefix}border-radius) !default;
+$toast-box-shadow: var(--#{$prefix}box-shadow) !default;
+$toast-spacing: $container-padding-x !default;
+
+$toast-header-color: $toast-color !default;
+$toast-header-background-color: $toast-background-color !default;
+$toast-header-border-color: var(--#{$prefix}border-color) !default;
+// scss-docs-end toast-variables
+
+// Badges
+
+// scss-docs-start badge-variables
+$badge-font-size: 0.85rem !default;
+$badge-font-weight: $font-weight-bold !default;
+$badge-color: var(--#{$prefix}body-color) !default;
+$badge-padding-y: 0.325rem !default;
+$badge-padding-x: 0.5rem !default;
+$badge-border-radius: 0.425rem !default;
+// scss-docs-end badge-variables
+
+// Modals
+
+// scss-docs-start modal-variables
+$modal-inner-padding: $spacer * 7 !default;
+
+$modal-footer-margin-between: 0.5rem !default;
+
+$modal-dialog-margin: 0.5rem !default;
+$modal-dialog-margin-y-sm-up: 1.75rem !default;
+
+$modal-title-line-height: $line-height-base !default;
+
+$modal-content-bg: var(--#{$prefix}body-bg) !default;
+$modal-content-border-color: var(--#{$prefix}border-color-translucent) !default;
+$modal-content-border-width: 0 !default;
+$modal-content-border-radius: $border-radius !default;
+$modal-content-inner-border-radius: $modal-content-border-radius !default;
+$modal-content-box-shadow-xs: 0 0.25rem 0.5rem rgba($black, 0.1) !default;
+$modal-content-box-shadow-sm-up: 0 0.5rem 1rem rgba($black, 0.1) !default;
+
+$modal-backdrop-bg: $black !default;
+$modal-backdrop-opacity: 0.4 !default;
+
+$modal-header-border-color: var(--#{$prefix}border-color) !default;
+$modal-header-border-width: 1px !default;
+$modal-header-padding-y: $modal-inner-padding !default;
+$modal-header-padding-x: $modal-inner-padding !default;
+$modal-header-padding: $modal-header-padding-y $modal-header-padding-x !default;
+
+$modal-footer-border-color: $modal-header-border-color !default;
+$modal-footer-border-width: $modal-header-border-width !default;
+
+$modal-sm: 300px !default;
+$modal-md: 500px !default;
+$modal-lg: 800px !default;
+$modal-xl: 1140px !default;
+
+$modal-fade-transform: translate(0, -50px) !default;
+$modal-show-transform: none !default;
+$modal-transition: transform 0.3s ease-out !default;
+$modal-scale-transform: scale(1.02) !default;
+// scss-docs-end modal-variables
+
+// Alerts
+// Define alert colors, border radius, and padding.
+// scss-docs-start alert-variables
+$alert-padding-y: 1rem !default;
+$alert-padding-x: 1rem !default;
+$alert-margin-bottom: 1rem !default;
+$alert-border-radius: var(--#{$prefix}border-radius) !default;
+$alert-link-font-weight: $font-weight-bold !default;
+$alert-border-width: var(--#{$prefix}border-width) !default;
+$alert-dismissible-padding-r: $alert-padding-x * 3 !default; // 3x covers width of x plus default padding on either side
+// scss-docs-end alert-variables
+
+// Progress bars
+
+// scss-docs-start progress-variables
+$progress-height: 1rem !default;
+$progress-font-size: $font-size-base * 0.75 !default;
+$progress-bg: var(--#{$prefix}gray-100) !default;
+$progress-border-radius: 6px !default;
+$progress-box-shadow: none !default;
+
+$progress-vertical-border-radius: 1.15rem !default;
+$progress-vertical-margin-right: 1rem !default;
+$progress-vertical-last-child-margin-right: 0 !default;
+
+$progress-bar-border-radius: $progress-vertical-border-radius !default;
+$progress-bar-width: 8px !default;
+$progress-bar-color: $white !default;
+$progress-bar-bg: $primary !default;
+$progress-bar-animation-timing: 1s linear infinite !default;
+$progress-bar-transition: width 0.6s ease !default;
+// scss-docs-end progress-variables
+
+// List group
+
+// scss-docs-start list-group-variables
+$list-group-color: var(--#{$prefix}gray-900) !default;
+$list-group-bg: $white !default;
+$list-group-border-color: rgba($black, 0.125) !default;
+$list-group-border-width: var(--#{$prefix}border-width) !default;
+$list-group-border-radius: var(--#{$prefix}border-radius) !default;
+
+$list-group-item-padding-y: $spacer * 2 !default;
+$list-group-item-padding-x: $spacer * 4 !default;
+
+$list-group-hover-bg: var(--#{$prefix}gray-100) !default;
+$list-group-active-color: var(--#{$prefix}component-active-color) !default;
+$list-group-active-bg: var(--#{$prefix}component-active-bg) !default;
+$list-group-active-border-color: $list-group-active-bg !default;
+
+$list-group-disabled-color: var(--#{$prefix}gray-600) !default;
+$list-group-disabled-bg: $white !default;
+
+$list-group-action-color: var(--#{$prefix}gray-700) !default;
+$list-group-action-hover-color: $list-group-action-color !default;
+
+$list-group-action-active-color: var(--#{$prefix}body-color) !default;
+$list-group-action-active-bg: var(--#{$prefix}gray-200) !default;
+// scss-docs-end list-group-variables
+
+// Image thumbnails
+
+// scss-docs-start thumbnail-variables
+$thumbnail-padding: 0.25rem !default;
+$thumbnail-bg: var(--#{$prefix}body-bg) !default;
+$thumbnail-border-width: var(--#{$prefix}border-width) !default;
+$thumbnail-border-color: var(--#{$prefix}border-color) !default;
+$thumbnail-border-radius: var(--#{$prefix}border-radius) !default;
+$thumbnail-box-shadow: var(--#{$prefix}box-shadow-sm) !default;
+// scss-docs-end thumbnail-variables
+
+// Image input
+// scss-docs-start image-input-variables
+$image-input-border-radius: 1.15rem !default;
+$image-input-transform: translate(-50%, -50%) !default;
+
+$image-input-action-change-left: 100% !default;
+$image-input-action-change-top: 0 !default;
+$image-input-action-change-transform: translate(-100%, 0) !default;
+
+$image-input-action-cancel-left: 100% !default;
+$image-input-action-cancel-top: 100% !default;
+$image-input-action-cancel-transform: translate(-100%, -100%) !default;
+
+$image-input-wrapper-size: 120px !default;
+$image-input-wrapper-border-radius: $image-input-border-radius !default;
+
+$image-input-outline-border: 3px solid var(--#{$prefix}body-bg) !default;
+$image-input-outline-box-shadow: var(--#{$prefix}box-shadow) !default;
+// scss-docs-start image-input-variables
+
+// Figures
+
+// scss-docs-start figure-variables
+$figure-caption-font-size: 0.875em !default;
+$figure-caption-color: var(--#{$prefix}gray-600) !default;
+// scss-docs-end figure-variables
+
+// Breadcrumbs
+
+// scss-docs-start breadcrumb-variables
+$breadcrumb-padding-y: 0 !default;
+$breadcrumb-padding-x: 0 !default;
+$breadcrumb-item-padding-x: 0.5rem !default;
+$breadcrumb-margin-bottom: 1rem !default;
+$breadcrumb-divider-color: var(--#{$prefix}gray-600) !default;
+$breadcrumb-active-color: var(--#{$prefix}primary) !default;
+$breadcrumb-divider: quote("/") !default;
+$breadcrumb-divider-flipped: $breadcrumb-divider !default;
+// scss-docs-end breadcrumb-variables
+
+// Carousel
+
+// scss-docs-start carousel-variables
+$carousel-control-color: $white !default;
+$carousel-control-width: 15% !default;
+$carousel-control-opacity: 0.5 !default;
+$carousel-control-hover-opacity: 0.9 !default;
+$carousel-control-transition: opacity 0.15s ease !default;
+
+$carousel-indicator-width: 30px !default;
+$carousel-indicator-height: 3px !default;
+$carousel-indicator-spacer: 3px !default;
+$carousel-indicator-opacity: 0.5 !default;
+$carousel-indicator-hit-area-height: 10px !default;
+$carousel-indicator-active-bg: $white !default;
+$carousel-indicator-active-opacity: 1 !default;
+$carousel-indicator-transition: opacity 0.6s ease !default;
+
+$carousel-caption-width: 70% !default;
+$carousel-caption-color: $white !default;
+$carousel-caption-padding-y: 1.25rem !default;
+$carousel-caption-spacer: 1.25rem !default;
+
+$carousel-control-icon-width: 2rem !default;
+
+$carousel-control-prev-icon-bg: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$carousel-control-color}'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/></svg>") !default;
+$carousel-control-next-icon-bg: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$carousel-control-color}'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/></svg>") !default;
+
+$carousel-transition-duration: 0.6s !default;
+$carousel-transition: transform $carousel-transition-duration ease-in-out !default;
+
+$carousel-custom-transition: all 0.3s ease !default;
+$carousel-custom-border-radius: 50% !default;
+$carousel-custom-background-color: var(--#{$prefix}gray-200) !default;
+
+$carousel-custom-height-li: 13px !default;
+$carousel-custom-width-li: $carousel-custom-height-li !default;
+
+$carousel-custom-height-li-after: 9px !default;
+$carousel-custom-width-li-after: $carousel-custom-height-li-after !default;
+
+$carousel-indicators-bullet-height: 6px !default;
+$carousel-indicators-bullet-width: 6px !default;
+$carousel-indicators-bullet-border-radius: 6px !default;
+// scss-docs-end carousel-variables
+
+// scss-docs-start carousel-dark-variables
+$carousel-dark-indicator-active-bg: $black !default;
+$carousel-dark-caption-color: $black !default;
+$carousel-dark-control-icon-filter: invert(1) grayscale(100) !default;
+// scss-docs-end carousel-dark-variables
+
+// Spinners
+
+// scss-docs-start spinner-variables
+$spinner-width: 2rem !default;
+$spinner-height: $spinner-width !default;
+$spinner-vertical-align: -0.125em !default;
+$spinner-border-width: 0.185rem !default;
+$spinner-animation-speed: 0.65s !default;
+
+$spinner-width-sm: 1rem !default;
+$spinner-height-sm: $spinner-width-sm !default;
+$spinner-border-width-sm: 0.145em !default;
+// scss-docs-end spinner-variables
+
+// Close
+
+// scss-docs-start close-variables
+$btn-close-width: 0.75rem !default;
+$btn-close-height: $btn-close-width !default;
+$btn-close-padding-x: 0.25em !default;
+$btn-close-padding-y: $btn-close-padding-x !default;
+$btn-close-color: $black !default;
+$btn-close-bg: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/></svg>") !default;
+$btn-close-focus-shadow: none !default;
+$btn-close-opacity: 0.5 !default;
+$btn-close-hover-opacity: 0.75 !default;
+$btn-close-focus-opacity: 1 !default;
+$btn-close-disabled-opacity: 0.25 !default;
+$btn-close-border-radius: 1.15rem !default;
+$btn-close-white-filter: invert(1) grayscale(100%) brightness(200%) !default;
+// scss-docs-end close-variables
+
+// Offcanvas
+
+// scss-docs-start offcanvas-variables
+$offcanvas-padding-y: $modal-inner-padding !default;
+$offcanvas-padding-x: $modal-inner-padding !default;
+$offcanvas-horizontal-width: 400px !default;
+$offcanvas-vertical-height: 30vh !default;
+$offcanvas-transition-duration: 0.3s !default;
+$offcanvas-border-color: $modal-content-border-color !default;
+$offcanvas-border-width: $modal-content-border-width !default;
+$offcanvas-title-line-height: $modal-title-line-height !default;
+$offcanvas-bg-color: var(--#{$prefix}body-bg) !default;
+$offcanvas-color: var(--#{$prefix}body-color) !default;
+$offcanvas-box-shadow: $modal-content-box-shadow-xs !default;
+$offcanvas-backdrop-bg: $modal-backdrop-bg !default;
+$offcanvas-backdrop-opacity: $modal-backdrop-opacity !default;
+// scss-docs-end offcanvas-variables
+
+//Menu
+
+// scss-docs-start menu-variables
+
+$menu-dropdown-box-shadow: 0px 0px 50px 0px rgba($english-violet, 0.15);
+$menu-dropdown-bg-color: var(--#{$prefix}body-bg) !default;
+$menu-heading-color: $gray-500 !default;
+
+$menu-item-transition: color 0.2s ease !default;
+
+$menu-padding-y: 0.15rem !default;
+$menu-padding-x: 0 !default;
+$menu-margin-right: 0.5rem !default;
+
+$menu-link-padding-y: 0.65rem !default;
+$menu-link-padding-x: 1rem !default;
+$menu-link-color-hover: $primary !default;
+$menu-link-bg-color-hover: $gray-100 !default;
+
+$menu-content-padding-y: $menu-link-padding-y !default;
+$menu-content-padding-x: $menu-link-padding-x !default;
+
+$menu-icon-width: 2rem !default;
+$menu-icon-margin-right: $menu-margin-right !default;
+
+$menu-bullet-width: 1.25rem !default;
+$menu-bullet-margin-right: $menu-margin-right !default;
+
+$menu-badge-margin-right: $menu-margin-right !default;
+
+$menu-arrow-width: 9px !default;
+$menu-arrow-margin-right: 5px !default;
+$menu-arrow-bg-color: var(--#{$prefix}text-muted) !default;
+$menu-arrow-transform: 90deg !default;
+$menu-arrow-image-previous: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='#{$menu-arrow-bg-color}'><path d='M2.72011 2.76429L4.46358 1.02083C4.63618 0.848244 4.63617 0.568419 4.46358 0.395831C4.29099 0.223244 4.01118 0.223244 3.83861 0.395831L1.52904 2.70537C1.36629 2.86808 1.36629 3.13191 1.52904 3.29462L3.83861 5.60419C4.01117 5.77675 4.29099 5.77675 4.46358 5.60419C4.63617 5.43156 4.63617 5.15175 4.46358 4.97919L2.72011 3.23571C2.58994 3.10554 2.58994 2.89446 2.72011 2.76429Z'/></svg>") !default;
+$menu-arrow-image-next: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6' fill='#{$menu-arrow-bg-color}'><path d='M3.27989 3.23571L1.53642 4.97917C1.36382 5.15176 1.36383 5.43158 1.53642 5.60417C1.70901 5.77676 1.98882 5.77676 2.16139 5.60417L4.47096 3.29463C4.63371 3.13192 4.63371 2.86809 4.47096 2.70538L2.16139 0.395812C1.98883 0.22325 1.70901 0.22325 1.53642 0.395812C1.36383 0.568437 1.36383 0.84825 1.53642 1.02081L3.27989 2.76429C3.41006 2.89446 3.41006 3.10554 3.27989 3.23571Z'/></svg>") !default;
+$menu-arrow-transition: transform 0.3s ease;
+
+$menu-sub-dropdown-border-radius: $border-radius !default;
+$menu-sub-dropdown-bg-color: var(--#{$prefix}menu-dropdown-bg-color) !default;
+$menu-sub-dropdown-box-shadow: var(--#{$prefix}menu-dropdown-box-shadow) !default;
+$menu-sub-dropdown-animation:
+    menu-sub-dropdown-animation-fade-in 0.3s ease 1,
+    menu-sub-dropdown-animation-move-up 0.3s ease 1 !default;
+// scss-docs-end menu-variables
+
+// scss-docs-start show-menu
+$menu-all: "all";
+$menu-icon: "icon";
+$menu-title: "title";
+$menu-bullet: "bullet";
+$menu-arrow: "arrow";
+// scss-docs-end show-menu
+
+$menu-pseudos-bg-color: (
+    null: (),
+    "-primary": (
+        "color-link": var(--#{$prefix}primary-inverse),
+        "color": var(--#{$prefix}primary-inverse),
+        "bg": var(--#{$prefix}primary)
+    ),
+    "-light-primary": (
+        "color-link": var(--#{$prefix}primary),
+        "color": var(--#{$prefix}primary),
+        "bg": var(--#{$prefix}primary-light)
+    )
+) !default;
+
+$menu-pseudos-color: (
+    "color": (
+        show: $menu-all
+    ),
+    "primary": (
+        color-link: var(--#{$prefix}primary),
+        color: var(--#{$prefix}primary),
+        show: $menu-all
+    ),
+    "dark": (
+        color-link: var(--#{$prefix}dark),
+        color: var(--#{$prefix}dark),
+        show: $menu-all
+    ),
+    "title-primary": (
+        color-link: var(--#{$prefix}primary),
+        color: var(--#{$prefix}primary),
+        show: $menu-title
+    ),
+    "icon-primary": (
+        color: var(--#{$prefix}primary),
+        show: $menu-icon
+    ),
+    "bullet-primary": (
+        color: var(--#{$prefix}primary),
+        show: $menu-bullet
+    ),
+    "arrow-primary": (
+        color: var(--#{$prefix}primary),
+        show: $menu-arrow
+    )
+) !default;
+
+//Svg
+// scss-docs-start svg-variables
+$svg-base-width: 24px !default;
+$svg-base-height: 24px !default;
+
+$svg-icon-color: var(--#{$prefix}text-muted) !default;
+$svg-icon-size: 1.15rem !default;
+// scss-docs-end svg-variables
+
+// scss-docs-start svg-icon-map
+$svg-icon-max: 7 !default;
+$svg-icon-size-base: (
+    1: 1.75rem,
+    2: 1.5rem,
+    3: 1.35rem,
+    4: 1.25rem,
+    5: 1.15rem,
+    6: 1.075rem,
+    7: 0.95rem,
+    8: 0.85rem,
+    9: 0.75rem,
+    10: 0.5rem,
+    sm: 0.95rem,
+    base: 1rem,
+    lg: 1.075rem,
+    fluid: 100%
+) !default;
+$svg-icon-sizes: map-merge($svg-icon-size-base, min-fs-form($svg-icon-max, $fs-forms));
+// scss-docs-end svg-icon-map
+
+//Separator
+
+// scss-docs-start separator-variables
+$separator-border-bottom: $border-width solid var(--#{$prefix}border-color) !default;
+$separator-margin: 1.25rem !default;
+// scss-docs-end separator-variables
+
+// Code
+$code-color: $gray-800 !default;
+$code-bg: $gray-100 !default;
+$code-border-color: $gray-300 !default;
+
+$code-font-size: $small-font-size !default;
+
+//Kbd
+$kbd-padding-y: 0.1875rem !default;
+$kbd-padding-x: 0.375rem !default;
+$kbd-font-size: $code-font-size !default;
+$kbd-color: var(--#{$prefix}body-bg) !default;
+$kbd-bg: var(--#{$prefix}body-color) !default;
+
+//Highlight
+$highlight-bg: $lemon-chiffon !default;
+
+//Bullet
+$bullet-bg-color: var(--#{$prefix}gray-400);
+
+//Text
+$text-transition: color 0.2s ease !default;

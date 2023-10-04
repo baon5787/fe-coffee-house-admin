@@ -1,0 +1,41 @@
+$prefix-flex: flex;
+
+@mixin make-flex-equal() {
+    flex-grow: 1;
+    flex-basis: 0;
+    flex-shrink: 0;
+}
+
+@mixin make-flex($breakpoints: $breakpoints) {
+    @each $breakpoint in map-keys($breakpoints) {
+        $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+            @if ($infix == "") {
+                .flex-equal {
+                    @include make-flex-equal();
+                }
+            }
+
+            @each $key, $value in $flexs {
+                .flex#{$infix}-#{$key} {
+                    flex: #{$value};
+                    @if ($key == "row-fluid") {
+                        min-width: 0;
+                    }
+                }
+            }
+
+            @each $key, $value in $flex-aligns {
+                .flex#{$infix}-#{$key} {
+                    justify-content: #{$value};
+                    @if ($key == "stack") {
+                        align-items: center;
+                    } @else {
+                        align-items: #{$value};
+                    }
+                }
+            }
+        }
+    }
+}

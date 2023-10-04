@@ -1,0 +1,3 @@
+@if $enable-flex-classes {
+    @include make-flex();
+}

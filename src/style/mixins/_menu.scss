@@ -1,0 +1,386 @@
+@mixin menu($infix) {
+    .menu-item {
+        &.menu#{$infix}-accordion {
+            .menu-arrow:after {
+                content: "";
+                transform: rotateZ($menu-arrow-transform * -1);
+                transform: rotateZ($menu-arrow-transform);
+                transition: $menu-arrow-transition;
+            }
+
+            &.show:not(.hiding),
+            &.showing {
+                &:not(.menu-dropdown) {
+                    > .menu-link {
+                        .menu-arrow:after {
+                            content: "";
+                            transform: rotateZ($menu-arrow-transform);
+                            transform: rotateZ($menu-arrow-transform * -1);
+                            transition: $menu-arrow-transition;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .menu-sub#{$infix}-dropdown {
+        display: none;
+        border-radius: $menu-sub-dropdown-border-radius;
+        background-color: $menu-sub-dropdown-bg-color;
+        box-shadow: $menu-sub-dropdown-box-shadow;
+        z-index: 107;
+    }
+
+    .menu-sub#{$infix}-dropdown.menu.show,
+    .menu-sub#{$infix}-dropdown.show[data-popper-placement],
+    .show.menu-dropdown > .menu-sub#{$infix}-dropdown {
+        display: flex;
+        will-change: transform;
+        animation: $menu-sub-dropdown-animation;
+    }
+
+    .menu-sub#{$infix}-accordion {
+        display: none;
+    }
+
+    .menu-sub#{$infix}-accordion.show,
+    .show:not(.menu-dropdown) > .menu-sub#{$infix}-accordion {
+        display: flex;
+    }
+
+    .menu-sub#{$infix}-indention {
+        .menu-sub:not([data-popper-placement]) {
+            margin-left: 1rem;
+        }
+
+        .menu-item {
+            .menu-item {
+                .menu-link {
+                    &.active {
+                        margin-right: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .menu#{$infix}-inline {
+        display: flex;
+    }
+
+    .menu#{$infix}-fit {
+        > .menu-item {
+            > .menu-content,
+            > .menu-link {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+        }
+    }
+
+    .menu#{$infix}-column {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu#{$infix}-row {
+        flex-direction: row;
+
+        > .menu-item {
+            display: flex;
+            align-items: center;
+
+            > .menu-link {
+                .menu-arrow:after {
+                    transform: rotateZ($menu-arrow-transform * -1);
+                    transform: rotateZ($menu-arrow-transform);
+                    transition: $menu-arrow-transition;
+                }
+            }
+        }
+    }
+
+    .menu#{$infix}-rounded {
+        .menu-link {
+            border-radius: 1.15rem;
+        }
+    }
+
+    .menu#{$infix}-pill {
+        .menu-link {
+            border-radius: 50px;
+        }
+    }
+
+    .menu#{$infix}-rounded-0 {
+        .menu-link {
+            border-radius: 0 !important;
+        }
+    }
+}
+
+@mixin menu-themes($color) {
+    .menu-#{$color} {
+        .menu-item {
+            .menu-link {
+                color: var(--#{$prefix}#{$color});
+
+                .menu-title {
+                    color: var(--#{$prefix}#{$color});
+                }
+
+                .menu-icon,
+                .menu-icon .svg-icon,
+                .menu-icon i {
+                    color: var(--#{$prefix}#{$color});
+                }
+
+                .menu-bullet {
+                    .bullet {
+                        background-color: var(--#{$prefix}#{$color});
+                    }
+                }
+
+                .menu-arrow:after {
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                    background-color: var(--#{$prefix}#{$color});
+                    mask-image: #{svg-url-with-replaced-fill(
+                            $menu-arrow-image-previous,
+                            $menu-arrow-bg-color,
+                            var(--#{$prefix}#{$color})
+                        )};
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                    background-color: var(--bs-white);
+                    mask-image: #{svg-url-with-replaced-fill(
+                            $menu-arrow-image-next,
+                            $menu-arrow-bg-color,
+                            var(--#{$prefix}#{$color})
+                        )};
+                }
+            }
+        }
+    }
+
+    .menu-title-#{$color} {
+        .menu-item {
+            .menu-link {
+                color: var(--#{$prefix}text-#{$color});
+
+                .menu-title {
+                    color: var(--#{$prefix}text-#{$color});
+                }
+
+                .menu-icon,
+                .menu-icon .svg-icon,
+                .menu-icon i {
+                    color: var(--#{$prefix}text-#{$color});
+                }
+
+                .menu-bullet {
+                    .bullet {
+                        background-color: var(--#{$prefix}text-#{$color});
+                    }
+                }
+
+                .menu-arrow:after {
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                    background-color: var(--#{$prefix}#{$color});
+                    mask-image: #{svg-url-with-replaced-fill(
+                            $menu-arrow-image-previous,
+                            $menu-arrow-bg-color,
+                            var(--#{$prefix}text-#{$color})
+                        )};
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                    background-color: var(--#{$prefix}#{$color});
+                    mask-image: #{svg-url-with-replaced-fill(
+                            $menu-arrow-image-next,
+                            $menu-arrow-bg-color,
+                            var(--#{$prefix}text-#{$color})
+                        )};
+                }
+            }
+        }
+    }
+}
+
+@mixin menu-link($color-link, $color, $show) {
+    transition: $menu-item-transition;
+    // background-color: $color;
+    color: $color-link;
+
+    @if ($show == $menu-all or $show == $menu-title) {
+        .menu-title {
+            color: $color;
+        }
+    }
+
+    @if ($show == $menu-all or $show == $menu-icon) {
+        .menu-icon,
+        .menu-icon .svg-icon,
+        .menu-icon i {
+            color: $color;
+        }
+    }
+
+    @if ($show == $menu-all or $show == $menu-bullet) {
+        .menu-bullet {
+            .bullet {
+                background-color: $color;
+            }
+        }
+    }
+
+    @if ($show == $menu-all or $show == $menu-arrow) {
+        .menu-arrow:after {
+            content: "";
+            mask-repeat: no-repeat;
+            mask-position: center;
+            background-color: $color;
+            mask-image: #{svg-url-with-replaced-fill($menu-arrow-image-previous, $menu-arrow-bg-color, $color)};
+            mask-repeat: no-repeat;
+            mask-position: center;
+            mask-image: #{svg-url-with-replaced-fill($menu-arrow-image-next, $menu-arrow-bg-color, $color)};
+        }
+    }
+}
+
+@mixin menu-hover($show, $color-class, $color-link: null, $color: null, $bg: null) {
+    .menu-hover#{$color-class} {
+        .menu-item {
+            &.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here),
+            &:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) {
+                background-color: $bg;
+                @include menu-link($color-link, $color, $show);
+            }
+        }
+    }
+}
+
+@mixin menu-here($show, $color-class, $color-link: null, $color: null, $bg: null) {
+    .menu-here#{$color-class} {
+        .menu-item {
+            &.here {
+                > .menu-link {
+                    background-color: $bg;
+                    @include menu-link($color-link, $color, $show);
+                }
+            }
+        }
+    }
+}
+
+@mixin menu-show($show, $color-class, $color-link: null, $color: null, $bg: null) {
+    .menu-show#{$color-class} {
+        .menu-item {
+            &.show > {
+                .menu-link {
+                    background-color: $bg;
+                    @include menu-link($color-link, $color, $show);
+                }
+            }
+        }
+    }
+}
+
+@mixin menu-active($show, $color-class, $color-link: null, $color: null, $bg: null) {
+    .menu-active#{$color-class} {
+        .menu-item {
+            .menu-link {
+                &.active {
+                    background-color: $bg;
+                    @include menu-link($color-link, $color, $show);
+                }
+            }
+        }
+    }
+}
+
+@mixin menu-state-pseudo(
+    $show,
+    $color-class: null,
+    $color-link: null,
+    $color: null,
+    $bg-hover: null,
+    $bg-here: null,
+    $bg-show: null,
+    $bg-active: null,
+    $color-hover: if($color, $color, var(--#{$prefix}menu-link-color-hover)),
+    $color-here: if($color, $color, var(--#{$prefix}menu-link-color-here)),
+    $color-show: if($color, $color, var(--#{$prefix}menu-link-color-show)),
+    $color-active: if($color, $color, var(--#{$prefix}menu-link-color-active)),
+    $color-link-hover: if($color or $color-link, $color-link, var(--#{$prefix}menu-link-color-hover)),
+    $color-link-here: if($color or $color-link, $color-link, var(--#{$prefix}menu-link-color-here)),
+    $color-link-show: if($color or $color-link, $color-link, var(--#{$prefix}menu-link-color-show)),
+    $color-link-active: if($color or $color-link, $color-link, var(--#{$prefix}menu-link-color-active))
+) {
+    .menu-state#{$color-class} {
+        .menu-item {
+            &.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here),
+            &:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) {
+                background-color: $bg-hover;
+                @include menu-link($color-link-hover, $color-hover, $show);
+            }
+
+            &.here {
+                > .menu-link {
+                    background-color: $bg-here;
+                    @include menu-link($color-link-here, $color-here, $show);
+                }
+            }
+
+            &.show {
+                > .menu-link {
+                    background-color: $bg-show;
+                    @include menu-link($color-link-show, $color-show, $show);
+                }
+            }
+
+            .menu-link {
+                &.active {
+                    background-color: $bg-active;
+                    @include menu-link($color-link-active, $color-active, $show);
+                }
+            }
+        }
+    }
+}
+
+@mixin menu-state-pseudo-bg(
+    $show,
+    $color-link: null,
+    $color: null,
+    $bg: null,
+    $color-class: null,
+    $bg-hover: if($bg and $color-class, $bg, var(--#{$prefix}menu-link-color-hover)),
+    $bg-here: if($bg and $color-class, $bg, var(--#{$prefix}menu-link-color-here)),
+    $bg-show: if($bg and $color-class, $bg, var(--#{$prefix}menu-link-color-show)),
+    $bg-active: if($bg and $color-class, $bg, var(--#{$prefix}menu-link-color-active)),
+    $color-hover: if($color and $color-class, $color, var(--#{$prefix}menu-link-color-hover)),
+    $color-here: if($color and $color-class, $color, var(--#{$prefix}menu-link-color-here)),
+    $color-show: if($color and $color-class, $color, var(--#{$prefix}menu-link-color-show)),
+    $color-active: if($color and $color-class, $color, var(--#{$prefix}menu-link-color-active))
+) {
+    @include menu-hover($menu-all, "-bg#{$color-class}", $color-hover, $color-hover, $bg-hover);
+
+    @include menu-here($menu-all, "-bg#{$color-class}", $color-here, $color-here, $bg-here);
+
+    @include menu-show($menu-all, "-bg#{$color-class}", $color-show, $color-show, $bg-show);
+
+    @include menu-active($menu-all, "-bg#{$color-class}", $color-active, $color-active, $bg-active);
+
+    @include menu-state-pseudo(
+        $menu-all,
+        "-bg#{$color-class}",
+        $color-link,
+        $color,
+        $bg-hover,
+        $bg-here,
+        $bg-show,
+        $bg-active
+    );
+}

@@ -1,0 +1,122 @@
+.form-select {
+    @include make-form();
+    --#{$prefix}form-select-bg-img: #{escape-svg($form-select-indicator)};
+    padding: $form-select-padding-x $form-select-indicator-padding $form-select-padding-x $form-select-padding-y;
+    background-image: var(--#{$prefix}form-select-bg-img), var(--#{$prefix}form-select-bg-icon, none);
+    background-repeat: no-repeat;
+    background-position: $form-select-bg-position;
+    background-size: $form-select-bg-size;
+
+    &:focus {
+        border-color: $form-select-focus-border-color;
+        outline: 0;
+    }
+
+    &[multiple],
+    &[size]:not([size="1"]) {
+        padding-right: $form-select-padding-x;
+        background-image: none;
+    }
+
+    &:disabled {
+        @include make-form-disabled();
+    }
+
+    &:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 $form-select-color;
+    }
+}
+
+.form-select {
+    appearance: none;
+
+    &:focus {
+        border-color: $form-select-focus-border-color;
+        box-shadow: $form-select-focus-box-shadow;
+    }
+
+    &:-moz-focusring {
+        text-shadow: 0 0 0 var(--#{$prefix}gray-700);
+    }
+
+    &.form-select-solid {
+        background-color: var(--#{$prefix}gray-100);
+        border-color: var(--#{$prefix}gray-100);
+        color: $form-select-color;
+        transition: $form-select-solid-transition;
+
+        &::placeholder {
+            color: var(--#{$prefix}gray-500);
+        }
+
+        &::-moz-placeholder {
+            color: var(--#{$prefix}gray-500);
+            opacity: 1;
+        }
+
+        .dropdown.show > &,
+        &.active,
+        &.focus,
+        &:active,
+        &:focus {
+            background-color: var(--#{$prefix}gray-200);
+            border-color: var(--#{$prefix}gray-200) !important;
+            color: $form-select-color;
+            transition: $form-select-solid-transition;
+        }
+    }
+
+    &.form-select-transparent {
+        background-color: transparent;
+        border-color: transparent;
+        color: $form-select-color;
+
+        &::placeholder {
+            color: var(--#{$prefix}gray-500);
+        }
+
+        ::-moz-placeholder {
+            color: var(--#{$prefix}gray-500);
+            opacity: 1;
+        }
+
+        .dropdown.show > &,
+        &.active,
+        &.focus,
+        &:active,
+        &:focus {
+            background-color: transparent;
+            border-color: transparent !important;
+            color: $form-select-color;
+        }
+    }
+}
+
+.form-select-sm {
+    padding-top: $form-select-padding-y-sm;
+    padding-bottom: $form-select-padding-y-sm;
+    padding-left: $form-select-padding-x-sm;
+    @include make-form-sm();
+}
+
+.form-select-lg {
+    padding-top: $form-select-padding-x-lg;
+    padding-bottom: $form-select-padding-x-lg;
+    padding-left: $form-select-padding-y-lg;
+    @include make-form-lg();
+}
+
+@if $enable-dark-mode {
+    @include color-mode(dark) {
+        .form-select {
+            --#{$prefix}form-select-bg-img: #{escape-svg($form-select-indicator-dark)};
+        }
+    }
+}
+
+@include media-prefers-reduced-motion() {
+    .form-select {
+        transition: none;
+    }
+}

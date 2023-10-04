@@ -1,0 +1,45 @@
+@mixin accordion-icon-toggle($type, $transform) {
+    @if ($type == "toggle") {
+        transform: $transform;
+    } @else {
+        .accordion-icon-on {
+            display: inline-flex;
+        }
+
+        .accordion-icon-off {
+            display: none;
+        }
+    }
+}
+
+@mixin accordion-icon-type($type) {
+    &.accordion-icon-#{$type} {
+        .accordion-icon {
+            display: flex;
+            flex-shrink: 0;
+            transition: $transition-base;
+            align-items: center;
+            justify-content: center;
+
+            @include accordion-icon-toggle($type, rotate(90deg));
+
+            .svg-icon,
+            i {
+                color: var(--#{$prefix}primary);
+            }
+        }
+
+        .collapsed {
+            .accordion-icon {
+                transition: $transition-base;
+
+                @include accordion-icon-toggle($type, rotate(0));
+
+                .svg-icon,
+                i {
+                    color: var(--#{$prefix}text-muted);
+                }
+            }
+        }
+    }
+}

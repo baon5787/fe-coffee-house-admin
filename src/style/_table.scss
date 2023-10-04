@@ -1,0 +1,299 @@
+.table {
+    // Reset needed for nesting tables
+    --#{$prefix}table-color-type: initial;
+    --#{$prefix}table-bg-type: initial;
+    --#{$prefix}table-color-state: initial;
+    --#{$prefix}table-bg-state: initial;
+    // End of reset
+
+    --#{$prefix}table-color: #{$table-color};
+    --#{$prefix}table-bg: #{$table-bg};
+    --#{$prefix}table-border-color: #{$table-border-color};
+    --#{$prefix}table-accent-bg: #{$table-accent-bg};
+    --#{$prefix}table-striped-color: #{$table-striped-color};
+    --#{$prefix}table-striped-bg: #{$table-striped-bg};
+    --#{$prefix}table-active-color: #{$table-active-color};
+    --#{$prefix}table-active-bg: #{$table-active-bg};
+    --#{$prefix}table-hover-color: #{$table-hover-color};
+    --#{$prefix}table-hover-bg: #{$table-hover-bg};
+
+    width: 100%;
+    margin-bottom: $spacer * 4;
+    vertical-align: $table-cell-vertical-align;
+    border-color: var(--#{$prefix}table-border-color);
+
+    > :not(caption) > * > * {
+        padding: $table-cell-padding-y $table-cell-padding-x;
+        color: var(--#{$prefix}table-color-state, var(--#{$prefix}table-color-type, var(--#{$prefix}table-color)));
+        background-color: var(--#{$prefix}table-bg);
+        border-bottom-width: $table-border-width;
+        box-shadow: inset 0 0 0 9999px
+            var(--#{$prefix}table-bg-state, var(--#{$prefix}table-bg-type, var(--#{$prefix}table-accent-bg)));
+    }
+
+    > tbody {
+        vertical-align: inherit;
+    }
+
+    > thead {
+        vertical-align: bottom;
+    }
+
+    &:not(.table-bordered) {
+        > :not(:first-child) {
+            border-color: transparent;
+            border-width: 0;
+            border-style: none;
+        }
+
+        > :last-child {
+            > * {
+                border-bottom-color: inherit;
+            }
+        }
+
+        td,
+        th,
+        tr {
+            border-color: inherit;
+            border-width: inherit;
+            border-style: inherit;
+            text-transform: inherit;
+            font-weight: inherit;
+            font-size: inherit;
+            color: inherit;
+            height: inherit;
+            min-height: inherit;
+
+            &:first-child {
+                padding-left: 0;
+            }
+
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+
+        tbody,
+        tfoot {
+            tr {
+                &:last-child {
+                    border-bottom: 0 !important;
+
+                    td,
+                    th {
+                        border-bottom: 0 !important;
+                    }
+                }
+            }
+        }
+
+        tfoot {
+            td,
+            th {
+                border-top: inherit;
+            }
+        }
+
+        &.table-rounded {
+            border-radius: $table-rounded-border-radius;
+            border-spacing: 0;
+            border-collapse: separate;
+        }
+
+        &.table-rows-rounded {
+            td,
+            th {
+                &:first-child {
+                    @include border-start-radius($table-rounded-first-child-border-radius);
+                }
+
+                &:last-child {
+                    @include border-end-radius($table-rounded-last-child-border-radius);
+                }
+            }
+        }
+
+        &.table-flush {
+            td,
+            th,
+            tr {
+                padding: inherit;
+            }
+        }
+
+        &.table-row-bordered {
+            @include table-row-style($table-row-bordered);
+        }
+
+        &.table-row-dashed {
+            @include table-row-style($table-row-dashed);
+        }
+
+        @each $value in map-keys($grays) {
+            &.table-row-#{$value} {
+                tr {
+                    border-bottom-color: var(--#{$prefix}#{$value});
+                }
+            }
+        }
+    }
+}
+
+.table-group-divider {
+    border-top: calc(#{$table-border-width} * 2) solid $table-group-separator-color;
+}
+
+.caption-top {
+    caption-side: top;
+}
+
+.table-sm {
+    > :not(caption) > * > * {
+        padding: $table-cell-padding-y-sm $table-cell-padding-x-sm;
+    }
+}
+
+.table-bordered {
+    > :not(caption) > * {
+        border-width: $table-border-width 0;
+
+        > * {
+            border-width: 0 $table-border-width;
+        }
+    }
+}
+
+.table-borderless {
+    > :not(caption) > * > * {
+        border-bottom-width: 0;
+    }
+
+    > :not(:first-child) {
+        border-top-width: 0;
+    }
+}
+
+.table-striped {
+    > tbody > tr:nth-of-type(#{$table-striped-order}) > * {
+        --#{$prefix}table-color-type: var(--#{$prefix}table-striped-color);
+        --#{$prefix}table-bg-type: var(--#{$prefix}table-striped-bg);
+    }
+}
+
+.table-striped-columns {
+    > :not(caption) > tr > :nth-child(#{$table-striped-columns-order}) {
+        --#{$prefix}table-color-type: var(--#{$prefix}table-striped-color);
+        --#{$prefix}table-bg-type: var(--#{$prefix}table-striped-bg);
+    }
+}
+
+.table-active {
+    --#{$prefix}table-color-state: var(--#{$prefix}table-active-color);
+    --#{$prefix}table-bg-state: var(--#{$prefix}table-active-bg);
+}
+
+.table-hover {
+    > tbody > tr:hover > * {
+        --#{$prefix}table-color-state: var(--#{$prefix}table-hover-color);
+        --#{$prefix}table-bg-state: var(--#{$prefix}table-hover-bg);
+    }
+}
+
+@each $color, $value in $table-variants {
+    @include table-variant($color, $value);
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @include media-breakpoint-down($breakpoint) {
+        .table-responsive#{$infix} {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+}
+
+.table-layout-fixed {
+    table-layout: fixed;
+}
+
+.table-sort {
+    &:after {
+        opacity: 0;
+    }
+}
+
+.table-sort,
+.table-sort-asc,
+.table-sort-desc {
+    vertical-align: middle;
+
+    &:after {
+        position: relative;
+        display: inline-block;
+        width: $table-sort-width;
+        height: $table-sort-height;
+        content: " ";
+        bottom: auto;
+        right: auto;
+        left: auto;
+        margin-left: $table-sort-margin-left;
+    }
+}
+
+.table-sort-asc {
+    &:after {
+        opacity: 1;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        background-color: $table-sort-asc-bg-color;
+        mask-image: #{escape-svg($table-sort-asc-icon)};
+    }
+}
+
+.table-sort-desc {
+    &:after {
+        opacity: 1;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        background-color: $table-sort-desc-bg-color;
+        mask-image: #{escape-svg($table-sort-desc-icon)};
+    }
+}
+
+.table-loading-message {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: $table-loading-message-border-radius;
+    box-shadow: var(--#{$prefix}table-loading-message-box-shadow);
+    background-color: $table-loading-message-bg-color;
+    color: $table-loading-message-color;
+    font-weight: $table-loading-message-font-weight;
+    margin: 0 !important;
+    width: auto;
+    padding: $table-loading-message-padding-y $table-loading-message-padding-x !important;
+    transform: $table-loading-message-transform;
+}
+
+.table-loading {
+    position: relative;
+
+    .table-loading-message {
+        display: block;
+    }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $breakpoints);
+        @for $i from 0 through $table-g-max {
+            $value: if($i == 0, 0, $spacer * $i);
+
+            @include table-g($i, $infix, $value);
+        }
+    }
+}

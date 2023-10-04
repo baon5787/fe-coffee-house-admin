@@ -1,0 +1,338 @@
+// scss-docs-start btn-variant-mixin
+@mixin button-variant(
+    $background,
+    $border,
+    $color: if($background == $dark or $background == $info, $white, $black),
+    $hover-background:
+        if(
+            $color == $color-contrast-light,
+            shade-color($background, $btn-hover-bg-shade-amount),
+            tint-color($background, $btn-hover-bg-tint-amount)
+        ),
+    $hover-border:
+        if(
+            $color == $color-contrast-light,
+            shade-color($background, $btn-hover-border-shade-amount),
+            tint-color($background, $btn-hover-border-tint-amount)
+        ),
+    $hover-color: if($background == $dark or $background == $info, $white, $black),
+    $active-background:
+        if(
+            $color == $color-contrast-light,
+            shade-color($background, $btn-active-bg-shade-amount),
+            tint-color($background, $btn-active-bg-tint-amount)
+        ),
+    $active-border:
+        if(
+            $color == $color-contrast-light,
+            shade-color($background, $btn-active-border-shade-amount),
+            tint-color($background, $btn-active-border-tint-amount)
+        ),
+    $active-color: if($background == $dark or $background == $info, $white, $black),
+    $disabled-background: $background,
+    $disabled-border: $border,
+    $disabled-color: if($background == $dark or $background == $info, $white, $black)
+) {
+    --#{$prefix}btn-color: #{$color};
+    --#{$prefix}btn-bg: #{$background};
+    --#{$prefix}btn-border-color: #{$border};
+    --#{$prefix}btn-hover-color: #{$hover-color};
+    --#{$prefix}btn-hover-bg: #{$hover-background};
+    --#{$prefix}btn-hover-border-color: #{$hover-border};
+    --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix($color, $border, 15%))};
+    --#{$prefix}btn-active-color: #{$active-color};
+    --#{$prefix}btn-active-bg: #{$active-background};
+    --#{$prefix}btn-active-border-color: #{$active-border};
+    --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
+    --#{$prefix}btn-disabled-color: #{$disabled-color};
+    --#{$prefix}btn-disabled-bg: #{$disabled-background};
+    --#{$prefix}btn-disabled-border-color: #{$disabled-border};
+}
+// scss-docs-end btn-variant-mixin
+
+@mixin button-outline-variant(
+    $color,
+    $color-hover: if($color == $dark or $color == $info, $white, $black),
+    $active-background: $color,
+    $active-border: $color,
+    $active-color: if($color == $dark or $color == $info, $white, $black)
+) {
+    --#{$prefix}btn-color: #{$color};
+    --#{$prefix}btn-border-color: #{$color};
+    --#{$prefix}btn-hover-color: #{$color-hover};
+    --#{$prefix}btn-hover-bg: #{$active-background};
+    --#{$prefix}btn-hover-border-color: #{$active-border};
+    --#{$prefix}btn-focus-shadow-rgb: #{to-rgb($color)};
+    --#{$prefix}btn-active-color: #{$active-color};
+    --#{$prefix}btn-active-bg: #{$active-background};
+    --#{$prefix}btn-active-border-color: #{$active-border};
+    --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
+    --#{$prefix}btn-disabled-color: #{$color};
+    --#{$prefix}btn-disabled-bg: transparent;
+    --#{$prefix}btn-disabled-border-color: #{$color};
+    --#{$prefix}gradient: none;
+}
+
+// scss-docs-start btn-size-mixin
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
+    --#{$prefix}btn-padding-y: #{$padding-y};
+    --#{$prefix}btn-padding-x: #{$padding-x};
+    --#{$prefix}btn-font-size: #{$font-size};
+    --#{$prefix}btn-border-radius: #{$border-radius};
+}
+// scss-docs-end btn-size-mixi
+
+@mixin btn-close-white() {
+    filter: var(--#{$prefix}btn-close-white-filter);
+}
+
+@mixin btn-theme-color($color) {
+    .btn {
+        &.btn-#{$color} {
+            color: var(--#{$prefix}#{$color}-inverse);
+            border-color: var(--#{$prefix}#{$color});
+            background-color: var(--#{$prefix}#{$color});
+
+            i,
+            .svg-icon {
+                color: var(--#{$prefix}#{$color}-inverse);
+            }
+
+            &.dropdown-toggle:after {
+                color: var(--#{$prefix}#{$color}-inverse);
+            }
+        }
+
+        @if ($color != "light") {
+            &.btn-light-#{$color} {
+                color: var(--#{$prefix}#{$color});
+                border-color: var(--#{$prefix}#{$color}-light);
+                background-color: var(--#{$prefix}#{$color}-light);
+
+                i,
+                .svg-icon {
+                    color: var(--#{$prefix}#{$color});
+                }
+
+                &.dropdown-toggle:after {
+                    color: var(--#{$prefix}#{$color});
+                }
+            }
+        }
+
+        &.btn-bg-#{$color} {
+            border-color: var(--#{$prefix}#{$color});
+            background-color: var(--#{$prefix}#{$color});
+        }
+
+        &.btn-outline {
+            &.btn-outline-#{$color} {
+                color: var(--#{$prefix}#{$color});
+                border-color: var(--#{$prefix}#{$color});
+                background-color: transparent;
+
+                i,
+                .svg-icon {
+                    color: var(--#{$prefix}#{$color});
+                }
+
+                &.dropdown-toggle:after {
+                    color: var(--#{$prefix}#{$color});
+                }
+            }
+        }
+    }
+
+    .btn-check:active + .btn.btn-#{$color},
+    .btn-check:checked + .btn.btn-#{$color},
+    .btn.btn-#{$color}.active,
+    .btn.btn-#{$color}.show,
+    .btn.btn-#{$color}:active:not(.btn-active),
+    .btn.btn-#{$color}:focus:not(.btn-active),
+    .btn.btn-#{$color}:hover:not(.btn-active),
+    .show > .btn.btn-#{$color} {
+        color: var(--#{$prefix}#{$color}-inverse);
+        border-color: var(--#{$prefix}#{$color}-active);
+        background-color: var(--#{$prefix}#{$color}-active) !important;
+
+        i,
+        .svg-icon {
+            color: var(--#{$prefix}#{$color}-inverse);
+        }
+
+        &.dropdown-toggle:after {
+            color: var(--#{$prefix}#{$color}-inverse);
+        }
+    }
+
+    .btn-check:active + .btn.btn-active-#{$color},
+    .btn-check:checked + .btn.btn-active-#{$color},
+    .btn.btn-active-#{$color}.active,
+    .btn.btn-active-#{$color}.show,
+    .btn.btn-active-#{$color}:active:not(.btn-active),
+    .btn.btn-active-#{$color}:focus:not(.btn-active),
+    .btn.btn-active-#{$color}:hover:not(.btn-active),
+    .show > .btn.btn-active-#{$color} {
+        color: var(--#{$prefix}#{$color}-inverse);
+        border-color: var(--#{$prefix}#{$color});
+        background-color: var(--#{$prefix}#{$color}) !important;
+
+        i,
+        .svg-icon {
+            color: var(--#{$prefix}#{$color}-inverse);
+        }
+
+        &.dropdown-toggle:after {
+            color: var(--#{$prefix}#{$color}-inverse);
+        }
+    }
+
+    .btn-check:active + .btn.btn-outline.btn-outline-#{$color},
+    .btn-check:checked + .btn.btn-outline.btn-outline-#{$color},
+    .btn.btn-outline.btn-outline-#{$color}.active,
+    .btn.btn-outline.btn-outline-#{$color}.show,
+    .btn.btn-outline.btn-outline-#{$color}:active:not(.btn-active),
+    .btn.btn-outline.btn-outline-#{$color}:focus:not(.btn-active),
+    .btn.btn-outline.btn-outline-#{$color}:hover:not(.btn-active),
+    .show > .btn.btn-outline.btn-outline-#{$color} {
+        color: var(--#{$prefix}#{$color}-active);
+        border-color: var(--#{$prefix}#{$color});
+        background-color: var(--#{$prefix}#{$color}-light) !important;
+
+        i,
+        .svg-icon {
+            color: var(--#{$prefix}#{$color}-active);
+        }
+
+        &.dropdown-toggle:after {
+            color: var(--#{$prefix}#{$color}-active);
+        }
+    }
+
+    @if ($color != "light") {
+        .btn-check:active + .btn.btn-light-#{$color},
+        .btn-check:checked + .btn.btn-light-#{$color},
+        .btn.btn-light-#{$color}.active,
+        .btn.btn-light-#{$color}.show,
+        .btn.btn-light-#{$color}:active:not(.btn-active),
+        .btn.btn-light-#{$color}:focus:not(.btn-active),
+        .btn.btn-light-#{$color}:hover:not(.btn-active),
+        .show > .btn.btn-light-#{$color} {
+            color: var(--#{$prefix}#{$color}-inverse);
+            border-color: var(--#{$prefix}#{$color});
+            background-color: var(--#{$prefix}#{$color}) !important;
+
+            i,
+            .svg-icon {
+                color: var(--#{$prefix}#{$color}-inverse);
+            }
+
+            &.dropdown-toggle:after {
+                color: var(--#{$prefix}#{$color}-inverse);
+            }
+        }
+
+        .btn-check:active + .btn.btn-active-light-#{$color},
+        .btn-check:checked + .btn.btn-active-light-#{$color},
+        .btn.btn-active-light-#{$color}.active,
+        .btn.btn-active-light-#{$color}.show,
+        .btn.btn-active-light-#{$color}:active:not(.btn-active),
+        .btn.btn-active-light-#{$color}:focus:not(.btn-active),
+        .btn.btn-active-light-#{$color}:hover:not(.btn-active),
+        .show > .btn.btn-active-light-#{$color} {
+            color: var(--#{$prefix}#{$color});
+            border-color: var(--#{$prefix}#{$color}-light);
+            background-color: var(--#{$prefix}#{$color}-light) !important;
+
+            i,
+            .svg-icon {
+                color: var(--#{$prefix}#{$color});
+            }
+
+            &.dropdown-toggle:after {
+                color: var(--#{$prefix}#{$color});
+            }
+        }
+    }
+}
+
+@mixin btn-text-color($color) {
+    .btn {
+        &.btn-color-#{$color} {
+            color: var(--#{$prefix}text-#{$color});
+
+            i,
+            .svg-icon {
+                color: var(--#{$prefix}text-#{$color});
+            }
+
+            &.dropdown-toggle:after {
+                color: var(--#{$prefix}text-#{$color});
+            }
+        }
+
+        &.btn-icon-#{$color} {
+            i,
+            .svg-icon {
+                color: var(--#{$prefix}text-#{$color});
+            }
+
+            &.dropdown-toggle:after {
+                color: var(--#{$prefix}text-#{$color});
+            }
+        }
+
+        &.btn-text-#{$color} {
+            color: var(--#{$prefix}text-#{$color});
+        }
+    }
+
+    .btn-check:active + .btn.btn-active-color-#{$color},
+    .btn-check:checked + .btn.btn-active-color-#{$color},
+    .btn.btn-active-color-#{$color}.active,
+    .btn.btn-active-color-#{$color}.show,
+    .btn.btn-active-color-#{$color}:active:not(.btn-active),
+    .btn.btn-active-color-#{$color}:focus:not(.btn-active),
+    .btn.btn-active-color-#{$color}:hover:not(.btn-active),
+    .show > .btn.btn-active-color-#{$color} {
+        color: var(--#{$prefix}text-#{$color});
+
+        i,
+        .svg-icon {
+            color: var(--#{$prefix}text-#{$color});
+        }
+
+        &.dropdown-toggle:after {
+            color: var(--#{$prefix}text-#{$color});
+        }
+    }
+
+    .btn-check:active + .btn.btn-active-icon-#{$color},
+    .btn-check:checked + .btn.btn-active-icon-#{$color},
+    .btn.btn-active-icon-#{$color}.active,
+    .btn.btn-active-icon-#{$color}.show,
+    .btn.btn-active-icon-#{$color}:active:not(.btn-active),
+    .btn.btn-active-icon-#{$color}:focus:not(.btn-active),
+    .btn.btn-active-icon-#{$color}:hover:not(.btn-active),
+    .show > .btn.btn-active-icon-#{$color} {
+        i,
+        .svg-icon {
+            color: var(--#{$prefix}text-#{$color});
+        }
+
+        &.dropdown-toggle:after {
+            color: var(--#{$prefix}text-#{$color});
+        }
+    }
+
+    .btn-check:active + .btn.btn-active-text-#{$color},
+    .btn-check:checked + .btn.btn-active-text-#{$color},
+    .btn.btn-active-text-#{$color}.active,
+    .btn.btn-active-text-#{$color}.show,
+    .btn.btn-active-text-#{$color}:active:not(.btn-active),
+    .btn.btn-active-text-#{$color}:focus:not(.btn-active),
+    .btn.btn-active-text-#{$color}:hover:not(.btn-active),
+    .show > .btn.btn-active-text-#{$color} {
+        color: var(--#{$prefix}text-#{$color});
+    }
+}

@@ -13,7 +13,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { userSelector } from '~/redux/selectors';
-import { loginSucces } from '~/redux/slice/AuthSlice';
+import { loginSuccess } from '~/redux/slice/AuthSlice';
 import { createAxios } from '~/api/AxiosClient';
 import { INDEX_CANCELLED, ORDER_EVENT, ORDER_STATUS, PAYMENT_STATUS, STATUS_CANCELLED } from '~/constants/AppConstant';
 import { getStateOrderName } from '~/utils/HandleValue';
@@ -49,7 +49,7 @@ const DeliveryOrderDetails = () => {
 
     const { code } = useParams();
 
-    let axiosJwt = createAxios(user, dispatch, loginSucces, navigate);
+    let axiosJwt = createAxios(user, dispatch, loginSuccess, navigate);
 
     useEffect(() => {
         const loadStateTrantion = async () => {

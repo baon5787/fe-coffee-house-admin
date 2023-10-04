@@ -1,5 +1,6 @@
 export const PATH_API = {
     PARAMS: '?',
+    LOGIN: 'auth/login',
     STATUS: '/status',
     STATUSES: '/statuses',
     SEARCH: "/search",
@@ -40,6 +41,7 @@ export const PATH_API = {
 
 export const PATH = {
     INDEX: '/',
+    LOGIN: '/login',
     NOT_FOUND: '404',
     ADD: 'add',
     SUB: 'sub',

@@ -1,0 +1,318 @@
+.menu-group {
+    display: flex;
+}
+
+.menu,
+.menu-wrapper {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.menu-inner {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.menu-sub {
+    display: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    flex-direction: column;
+}
+
+.menu-item {
+    display: block;
+    padding: $menu-padding-y $menu-padding-x;
+
+    .menu-link {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        flex: 0 0 100%;
+        padding: $menu-link-padding-y $menu-link-padding-x;
+        transition: none;
+        outline: 0 !important;
+
+        .menu-icon {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: $menu-icon-width;
+            margin-right: $menu-icon-margin-right;
+
+            i,
+            .svg-icon {
+                line-height: 1;
+            }
+        }
+
+        .menu-bullet {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: $menu-bullet-width;
+            margin-right: $menu-bullet-margin-right;
+        }
+
+        .menu-title {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .menu-badge {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            margin-left: $menu-badge-margin-right;
+        }
+
+        .menu-arrow {
+            display: flex;
+            align-items: stretch;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            margin-left: $menu-arrow-margin-right;
+            width: $menu-arrow-width;
+            height: $menu-arrow-width;
+
+            &::after {
+                display: block;
+                width: 100%;
+                content: " ";
+                will-change: transform;
+                background-size: 100% 100%;
+                mask-repeat: no-repeat;
+                mask-position: center;
+                background-color: $menu-arrow-bg-color;
+                mask-image: #{escape-svg($menu-arrow-image-previous)};
+                mask-repeat: no-repeat;
+                mask-position: center;
+                background-color: $menu-arrow-bg-color;
+                mask-image: #{escape-svg($menu-arrow-image-next)};
+            }
+        }
+    }
+
+    .menu-content {
+        padding: $menu-content-padding-y $menu-content-padding-x;
+    }
+
+    &.show {
+        .menu-link {
+            .menu-arrow:after {
+                backface-visibility: hidden;
+                transition: $menu-arrow-transition;
+            }
+        }
+    }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+    @include media-breakpoint-up($breakpoint) {
+        @include menu($infix);
+    }
+
+    @if ($infix != "") {
+        @include media-breakpoint-down($breakpoint) {
+            @include menu("#{$infix}-down");
+        }
+    }
+}
+
+@each $color in map-keys($btn-text-themes-grays) {
+    @include menu-themes($color);
+}
+
+.menu-link-indention {
+    .menu-item {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .menu-sub:not([data-popper-placement]) {
+        > .menu-inner,
+        > .menu-item {
+            > .menu-content,
+            > .menu-link {
+                padding-left: calc(1rem + 1rem);
+            }
+        }
+
+        > .menu-inner > .menu-item,
+        > .menu-item {
+            > .menu-sub:not([data-popper-placement]) {
+                > .menu-inner > .menu-item,
+                > .menu-item {
+                    > .menu-content,
+                    > .menu-link {
+                        padding-left: calc(2rem + 1rem);
+                    }
+                }
+
+                > .menu-inner > .menu-item,
+                > .menu-item {
+                    > .menu-sub:not([data-popper-placement]) {
+                        > .menu-inner > .menu-item,
+                        > .menu-item {
+                            > .menu-content,
+                            > .menu-link {
+                                padding-left: calc(2rem + 1rem);
+                            }
+                        }
+
+                        > .menu-inner > .menu-item,
+                        > .menu-item {
+                            > .menu-sub:not([data-popper-placement]) {
+                                > .menu-inner > .menu-item,
+                                > .menu-item {
+                                    > .menu-content,
+                                    > .menu-link {
+                                        padding-left: calc(4rem + 1rem);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.menu-fit {
+        .menu-sub:not([data-popper-placement]) {
+            > .menu-inner > .menu-item,
+            > .menu-item {
+                > .menu-content,
+                > .menu-link {
+                    padding-left: 1rem;
+                    padding-right: 0;
+                }
+
+                .menu-sub:not([data-popper-placement]) {
+                    > .menu-inner > .menu-item,
+                    > .menu-item {
+                        > .menu-content,
+                        > .menu-link {
+                            padding-left: calc(2rem);
+                            padding-right: 0;
+                        }
+
+                        .menu-sub:not([data-popper-placement]) {
+                            > .menu-inner > .menu-item,
+                            > .menu-item {
+                                > .menu-content,
+                                > .menu-link {
+                                    padding-left: calc(3rem);
+                                    padding-right: 0;
+                                }
+
+                                .menu-sub:not([data-popper-placement]) {
+                                    > .menu-inner > .menu-item,
+                                    > .menu-item {
+                                        > .menu-content,
+                                        > .menu-link {
+                                            padding-left: calc(4rem);
+                                            padding-right: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.menu-root-here-bg {
+    > .menu-item.here {
+        > .menu-link {
+            background-color: var(--#{$prefix}menu-link-color-here);
+            @include menu-link(var(--#{$prefix}menu-link-color-here), var(--#{$prefix}menu-link-color-here), $menu-all);
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .menu-root-here-bg-desktop {
+        > .menu-item {
+            &.here {
+                > .menu-link {
+                    background-color: var(--#{$prefix}menu-link-color-here);
+                    @include menu-link(
+                        var(--#{$prefix}menu-link-color-here),
+                        var(--#{$prefix}menu-link-bg-color-here),
+                        $menu-all
+                    );
+                }
+            }
+        }
+    }
+}
+
+@each $name, $value in $menu-pseudos-bg-color {
+    $color: map-get($value, "color");
+    $color-link: map-get($value, "color-link");
+    $bg: map-get($value, "bg");
+
+    @include menu-state-pseudo-bg($menu-all, $color-link, $color, $bg, $name);
+}
+
+@each $key, $value in $menu-pseudos-color {
+    $color: map-get($value, "color");
+    $color-link: map-get($value, "color-link");
+    $show: map-get($value, "show");
+
+    @if (
+        $key ==
+            "primary" or
+            $key ==
+            "title-primary" or
+            $key ==
+            "icon-primary" or
+            $key ==
+            "bullet-primary" or
+            $key ==
+            "arrow-primary"
+    ) {
+        @include menu-hover($show, "-#{$key}", $color-link, $color);
+
+        @include menu-here($show, "-#{$key}", $color-link, $color);
+
+        @include menu-show($show, "-#{$key}", $color-link, $color);
+
+        @include menu-active($show, "-#{$key}", $color-link, $color);
+    }
+
+    @include menu-state-pseudo($show, "-#{$key}", $color-link, $color);
+}
+
+@keyframes menu-sub-dropdown-animation-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes menu-sub-dropdown-animation-move-up {
+    from {
+        margin-top: 0.75rem;
+    }
+
+    to {
+        margin-top: 0;
+    }
+}

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createAxios } from '~/api/AxiosClient';
 import { userSelector } from '~/redux/selectors';
-import { loginSucces } from '~/redux/slice/AuthSlice';
+import { loginSuccess } from '~/redux/slice/AuthSlice';
 
 const useJwt = () => {
 
@@ -12,7 +12,7 @@ const useJwt = () => {
 
     const navigate = useNavigate();
 
-    let axiosJwt = createAxios(user, dispatch, loginSucces, navigate);
+    let axiosJwt = createAxios(user, dispatch, loginSuccess, navigate);
 
     const accessToken = user?.accessToken;
 

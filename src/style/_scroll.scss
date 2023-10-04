@@ -1,0 +1,174 @@
+.scrolltop {
+    position: fixed;
+    display: none;
+    cursor: pointer;
+    z-index: $zindex-scrolltop;
+    justify-content: center;
+    align-items: center;
+    width: $scrolltop-width;
+    height: $scrolltop-height;
+    bottom: $scrolltop-bottom;
+    right: $scrolltop-right;
+    background-color: var(--#{$prefix}scrolltop-bg-color);
+    box-shadow: var(--#{$prefix}scrolltop-box-shadow);
+    opacity: $scrolltop-opacity;
+    transition: $scrolltop-transition;
+    border-radius: $scrolltop-border-radius;
+
+    .svg-icon {
+        color: $scrolltop-icon-color;
+
+        svg {
+            height: $svg-base-height;
+            width: $svg-base-width;
+        }
+    }
+
+    > i {
+        font-size: $scrolltop-i-font-size;
+        color: var(--#{$prefix}scrolltop-icon-color);
+    }
+
+    &:hover {
+        background-color: var(--#{$prefix}scrolltop-bg-color-hover);
+
+        .svg-icon,
+        i {
+            color: var(--#{$prefix}scrolltop-icon-color-hover);
+        }
+    }
+}
+
+[data-kt-scrolltop="on"] .scrolltop {
+    opacity: var(--#{$prefix}scrolltop-opacity-on);
+    animation: $scrolltop-animation;
+    display: flex;
+
+    &:hover {
+        transition: $scrolltop-transition;
+        opacity: var(--#{$prefix}scrolltop-opacity-hover);
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    .scrolltop {
+        bottom: $scrolltop-bottom-lg;
+        right: $scrolltop-right-lg;
+        width: $scrolltop-width-lg;
+        height: $scrolltop-height-lg;
+    }
+}
+
+.hover-scroll,
+.hover-scroll-overlay,
+.scroll {
+    overflow: scroll;
+    position: relative;
+}
+
+@include media-breakpoint-down(lg) {
+    .hover-scroll,
+    .hover-scroll-overlay,
+    .scroll {
+        overflow: auto;
+    }
+}
+
+.hover-scroll-overlay-x,
+.hover-scroll-x,
+.scroll-x {
+    overflow-x: scroll;
+    position: relative;
+}
+
+@include media-breakpoint-down(lg) {
+    .hover-scroll-overlay-x,
+    .hover-scroll-x,
+    .scroll-x {
+        overflow-x: auto;
+    }
+}
+
+.hover-scroll-overlay-y,
+.hover-scroll-y,
+.scroll-y {
+    overflow-y: scroll;
+    position: relative;
+}
+
+@include media-breakpoint-down(lg) {
+    .hover-scroll-overlay-y,
+    .hover-scroll-y,
+    .scroll-y {
+        overflow-y: auto;
+    }
+}
+
+.hover-scroll,
+.hover-scroll-overlay,
+.hover-scroll-overlay-x,
+.hover-scroll-overlay-y,
+.hover-scroll-x,
+.hover-scroll-y {
+    scrollbar-color: transparent transparent;
+
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
+
+    &:hover {
+        scrollbar-color: var(--#{$prefix}scrollbar-color) transparent;
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--#{$prefix}scrollbar-color);
+        }
+
+        &::-webkit-scrollbar-corner {
+            background-color: transparent;
+        }
+    }
+}
+
+.scroll-ps {
+    padding-left: $scroll-padding !important;
+}
+
+.scroll-ms {
+    margin-left: $scroll-padding !important;
+}
+
+.scroll-mb {
+    margin-bottom: $scroll-padding !important;
+}
+
+.scroll-pe {
+    padding-right: $scroll-padding !important;
+}
+
+.scroll-me {
+    margin-right: $scroll-padding !important;
+}
+
+.scroll-px {
+    padding-left: $scroll-padding !important;
+    padding-right: $scroll-padding !important;
+}
+
+.scroll-mx {
+    margin-left: $scroll-padding !important;
+    margin-right: $scroll-padding !important;
+}
+
+@keyframes animation-scrolltop {
+    from {
+        margin-bottom: -15px;
+    }
+
+    to {
+        margin-bottom: 0;
+    }
+}

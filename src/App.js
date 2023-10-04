@@ -1,11 +1,11 @@
 import React from 'react'
-import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Login } from './pages';
 import { CategoryRoutes, CouponRoutes, OrderRoutes, ProductRoutes, SizeRoutes, DeliveryRoutes, UserRoutes, WarehouseRoutes } from './pages';
-import { DefaultLayout } from './layouts';
+import { AuthLayout, DefaultLayout } from './layouts';
 import RequireAuth from './components/RequireAuth';
 import { PATH } from './constants/Paths';
+import './App.scss';
 
 const App = () => {
 
@@ -13,9 +13,9 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<Login />}></Route>
+          <Route path={PATH.LOGIN} element={<Login />}></Route>
           <Route element={<RequireAuth />}>
-            <Route path="/" element={<DefaultLayout />}>
+            <Route path={PATH.INDEX} element={<DefaultLayout />}>
               <Route path={PATH.PRODUCTS + PATH.CHILDREN} element={<ProductRoutes />} />
               <Route path={PATH.WAREHOUSES + PATH.CHILDREN} element={<WarehouseRoutes />} />
               <Route path={PATH.CATEGORIES + PATH.CHILDREN} element={<CategoryRoutes />} />

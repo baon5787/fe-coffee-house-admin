@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { createAxios } from '~/api/AxiosClient';
 import { currentPageSelector, filtersSelector, userSelector } from '~/redux/selectors';
-import { loginSucces } from '~/redux/slice/AuthSlice';
+import { loginSuccess } from '~/redux/slice/AuthSlice';
 import { resetFiltersByPage } from '~/utils/HandleTable';
 
 const useTable = () => {
@@ -16,7 +16,7 @@ const useTable = () => {
 
     const page = useSelector(currentPageSelector);
 
-    let axiosJwt = createAxios(user, dispatch, loginSucces, navigate);
+    let axiosJwt = createAxios(user, dispatch, loginSuccess, navigate);
 
     const currentPage = useOutletContext();
 

@@ -1,0 +1,43 @@
+@mixin text-color-hover($color) {
+    transition: $text-transition;
+
+    i {
+        transition: $text-transition;
+    }
+
+    &:hover {
+        transition: $text-transition;
+        color: var(--#{$prefix}text-#{$color}) !important;
+
+        i {
+            transition: $text-transition;
+            color: var(--#{$prefix}text-#{$color}) !important;
+        }
+
+        .svg-icon {
+            color: var(--#{$prefix}text-#{$color}) !important;
+        }
+    }
+}
+
+@mixin text-color-active($color) {
+    transition: $text-transition;
+
+    i {
+        transition: $text-transition;
+    }
+
+    &.active {
+        transition: $text-transition;
+        color: var(--#{$prefix}text-#{$color}) !important;
+
+        i {
+            transition: $text-transition;
+            color: var(--#{$prefix}text-#{$color}) !important;
+        }
+
+        .svg-icon {
+            color: var(--#{$prefix}text-#{$color}) !important;
+        }
+    }
+}

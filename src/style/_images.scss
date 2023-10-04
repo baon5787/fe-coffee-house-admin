@@ -1,0 +1,127 @@
+.img-fluid {
+    @include img-fluid();
+}
+
+// Image thumbnails
+.img-thumbnail {
+    padding: $thumbnail-padding;
+    background-color: $thumbnail-bg;
+    border: $thumbnail-border-width solid $thumbnail-border-color;
+    @include border-radius($thumbnail-border-radius);
+    box-shadow: $thumbnail-box-shadow;
+
+    @include img-fluid();
+}
+
+// Image input
+.image-input {
+    position: relative;
+    display: inline-block;
+    border-radius: $image-input-border-radius;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &:not(.image-input-empty) {
+        background-image: none !important;
+    }
+
+    .image-input-wrapper {
+        width: $image-input-wrapper-size;
+        height: $image-input-wrapper-size;
+        border-radius: $image-input-border-radius;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    [data-kt-image-input-action] {
+        cursor: pointer;
+        position: absolute;
+        transform: $image-input-transform;
+    }
+
+    [data-kt-image-input-action="change"] {
+        left: $image-input-action-change-left;
+        top: $image-input-action-change-top;
+
+        input {
+            width: 0 !important;
+            height: 0 !important;
+            overflow: hidden;
+            opacity: 0;
+        }
+    }
+
+    [data-kt-image-input-action="cancel"],
+    [data-kt-image-input-action="remove"] {
+        position: absolute;
+        left: $image-input-action-cancel-left;
+        top: $image-input-action-cancel-top;
+    }
+
+    [data-kt-image-input-action="cancel"] {
+        display: none;
+    }
+
+    &.image-input-changed {
+        [data-kt-image-input-action="cancel"] {
+            display: flex;
+        }
+
+        [data-kt-image-input-action="remove"] {
+            display: none;
+        }
+    }
+
+    &.image-input-empty {
+        [data-kt-image-input-action="cancel"],
+        [data-kt-image-input-action="remove"] {
+            display: none;
+        }
+    }
+
+    &.image-input-circle {
+        border-radius: 50%;
+
+        .image-input-wrapper {
+            border-radius: 50%;
+        }
+
+        [data-kt-image-input-action="change"] {
+            left: $image-input-action-change-left;
+            top: $image-input-action-change-top;
+            transform: $image-input-action-change-transform;
+        }
+
+        [data-kt-image-input-action="cancel"],
+        [data-kt-image-input-action="remove"] {
+            left: $image-input-action-cancel-left;
+            top: $image-input-action-cancel-top;
+            transform: $image-input-action-cancel-transform;
+        }
+    }
+
+    &.image-input-outline {
+        .image-input-wrapper {
+            border: $image-input-outline-border;
+            box-shadow: $image-input-outline-box-shadow;
+        }
+    }
+}
+
+//
+// Figures
+//
+
+.figure {
+    display: inline-block;
+}
+
+.figure-img {
+    margin-bottom: $spacer * 2;
+    line-height: 1;
+}
+
+.figure-caption {
+    font-size: $figure-caption-font-size;
+    color: $figure-caption-color;
+}

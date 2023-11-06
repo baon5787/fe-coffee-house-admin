@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 import { getAction } from '~/utils/HandleAction';
 import { CheckboxTable, NotData, Tbody, Thead } from '~/components/table';
 import { getClassNameStatus, getTitleAction, isLengthChecked } from '~/utils/HandleTable';
-import { Actions } from '~/components/actions';
+import Actions from '~/components/actions/Actions';
 
 const TableCategory = ({ option, onUpdate }) => {
 

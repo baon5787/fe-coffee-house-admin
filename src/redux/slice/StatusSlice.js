@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { EMPTY_ARRAY } from "~/constants/AppConstant";
 
+
 const StatusSlice = createSlice({
     name: "status",
     initialState: {
@@ -9,29 +10,18 @@ const StatusSlice = createSlice({
         error: false
     },
     reducers: {
-        setStatus: (state) => {
+        restartStatus: (state) => {
             state.allStatus = EMPTY_ARRAY;
         },
-        getSelectStatusesStart: (state) => {
-            state.isFetching = true;
-        },
-        getSelectStatusesSucces: (state, action) => {
-            state.isFetching = false;
+        setStatusesSucces: (state, action) => {
             state.allStatus = action.payload;
-            state.error = false;
         },
-        getSelectStatusesFailed: (state) => {
-            state.isFetching = false;
-            state.error = true;
-        }
     }
 });
 
 export const {
-    getSelectStatusesStart,
-    getSelectStatusesSucces,
-    getSelectStatusesFailed,
-    setStatus,
+    restartStatus,
+    setStatusesSucces,
 } = StatusSlice.actions;
 
 export default StatusSlice.reducer;

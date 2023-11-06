@@ -1,32 +1,25 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
-import useJwt from '~/hooks/useJwt';
-import ProductValidation, { InitialValuesAdd, InitialValuesUpdate } from '../validation/ProductValidation';
 import { useParams } from 'react-router-dom';
+import { Card, CardBody, CardHeader } from '~/components/card'
+import {
+    Errors, Input, InputGroup,
+    InputImage, Label, Selection, Textarea
+} from '~/components/form'
+import useJwt from '~/hooks/useJwt';
 import useStatus from '~/hooks/useStatus';
-import { getCheckBoxSizes } from '~/api/ApiCheckBox';
+import ProductValidation, { InitialProdctAdd, InitialProductUpdate } from '../validation/ProductValidation';
+import { EMPTY_ARRAY } from '~/constants/AppConstant';
 import { getSelectSubCategories } from '~/api/ApiSelect';
+import { getCheckBoxSizes } from '~/api/ApiCheckBox';
 import { addProduct, getProductByCode, updateProduct } from '../services/ApiProduct';
-import { useBlur } from '~/hooks';
-import { Card } from '~/components/card';
-import styles from '../style/Product.module.css';
-import { useSelector } from 'react-redux';
 import { errorProductSelector, loadingProductSelector, titleErrorProductSelector } from '~/redux/selectors';
+import { useSelector } from 'react-redux';
 import Loading from '~/components/loading';
-import ListCheckBoxSize from './ListCheckBoxSize';
 import { isParam } from '~/utils/CheckValue';
-import { getValueNumber, getValueString } from '~/utils/HandleValue';
 import { Forbidden } from '~/components/error';
-import Header from '~/components/form/Header';
-import InputGroup from '~/components/form/InputGroup';
-import Label from '~/components/form/Label';
-import Input from '~/components/form/Input';
-import Errors from '~/components/form/Errors';
-import Textarea from '~/components/form/Textarea';
-import InputImage from '~/components/form/InputImage';
-import Selection from '~/components/form/Selection';
-
+import ListCheckBoxSize from './ListCheckBoxSize';
 
 const FormProduct = () => {
 
@@ -36,19 +29,19 @@ const FormProduct = () => {
 
     const msg = useSelector(titleErrorProductSelector);
 
-    const { sku } = useParams();
-
     const { accessToken, dispatch, navigate, axiosJwt } = useJwt();
 
-    const { allStatus } = useStatus(accessToken, dispatch, axiosJwt);
+    const { sku } = useParams();
 
-    const [sizes, setSizes] = useState([]);
+    const { allStatus } = useStatus();
 
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState(EMPTY_ARRAY);
 
-    const [valeSizes, setValueSizes] = useState([]);
+    const [sizes, setSizes] = useState(EMPTY_ARRAY);
 
     const [isLoadingPage, setIsLoadingPage] = useState(false);
+
+    const [valeSizes, setValueSizes] = useState(EMPTY_ARRAY);
 
     const {
         register,
@@ -60,7 +53,8 @@ const FormProduct = () => {
         control,
         formState: { errors }
     } = useForm({
-        mode: "onSubmit",
+        mode: "onBlur",
+        reValidateMode: 'onBlur',
         resolver: yupResolver(ProductValidation(accessToken, axiosJwt, dispatch, sku,
             allStatus, categories))
     });
@@ -89,31 +83,29 @@ const FormProduct = () => {
     useEffect(() => {
         const loadingCategory = async () => {
             if (!accessToken || !isLoadingPage) return;
-            const allCategory = await getSelectSubCategories(accessToken, dispatch, axiosJwt);
+            const allCategory = await getSelectSubCategories(accessToken, axiosJwt);
             if (allCategory) {
                 setCategories(allCategory);
             }
         }
         loadingCategory();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isLoadingPage])
+    }, [isLoadingPage]);
 
     const loadData = async () => {
         if (sku === null || !sku) {
-            reset(InitialValuesAdd());
+            reset(InitialProdctAdd());
             setIsLoadingPage(true)
         } else {
-            const product = await getProductByCode(sku, accessToken, dispatch, navigate, axiosJwt);
+            const product = await getProductByCode(sku, accessToken, dispatch, navigate,
+                axiosJwt);
             if (product) {
                 setIsLoadingPage(true)
                 setValueSizes(product?.sizes);
-                reset(InitialValuesUpdate(product));
+                reset(InitialProductUpdate(product));
             }
         }
     }
-
-    const { handleBlur } = useBlur(setValue);
-
 
     const onSubmit = (data) => {
         const formData = new FormData();
@@ -125,7 +117,8 @@ const FormProduct = () => {
         formData.append("image", data.image);
 
         if (isParam(sku)) {
-            updateProduct(sku, formData, accessToken, dispatch, navigate, axiosJwt, setError)
+            updateProduct(sku, formData, accessToken, dispatch, navigate, axiosJwt,
+                setError);
         } else {
             addProduct(formData, accessToken, dispatch, navigate, axiosJwt, setError);
         }
@@ -133,7 +126,7 @@ const FormProduct = () => {
 
     // Error Forbidden 403
     if (error && !(!msg.trim())) return (
-        <Card className='h-md-100'>
+        <Card className='md:h-full'>
             <Forbidden msg={msg} />
         </Card>
     )
@@ -145,131 +138,135 @@ const FormProduct = () => {
             {
                 loadingSumbit && <Loading />
             }
-            <form className='form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework'
+            <form className='flex flex-col lg:flex-row gap-7 lg:gap-10'
                 onSubmit={handleSubmit(onSubmit)}
             >
-                <div className='d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10'>
-                    <Card className='py-4'>
-                        <Header name={"Hình ảnh sản phẩm"} />
-                        <div className='card-body text-center pt-0'>
+                <div className='flex flex-col gap-7 lg:gap-10 w-full lg:w-[300px]'>
+                    <Card className={'!py-4 !border-card-none'}>
+                        <CardHeader
+                            name={'Thumbnail'}
+                            className={'!border-bottom-card-none'}
+                        />
+                        <CardBody className={'!text-center !pt-0'}>
                             <InputImage
-                                name='image'
-                                className={`image-input-outline mb-3 ${styles.image}`}
                                 setError={setError}
                                 setValue={setValue}
                                 errors={errors?.image}
+                                name='image'
                                 value={getValues('image')}
                             />
                             {errors.image && <Errors title={errors.image.message} />}
-                        </div>
+                        </CardBody>
                     </Card>
-                    <Card className='py-4'>
-                        <Header name={"Trạng thái"}>
-                            <div className='card-toolbar'>
-                                <div className='rounded-circle bg-success w-15px h-15px'></div>
-                            </div>
-                        </Header>
-                        <div className='card-body pt-0'>
-                            <Selection options={allStatus}
+                    <Card className={'!py-4 !border-card-none'}>
+                        <CardHeader
+                            name={'Trạng thái'}
+                            className={'!border-bottom-card-none'}
+                        />
+                        <CardBody className={'!text-center !pt-0'}>
+                            <Selection
+                                options={allStatus}
                                 name={"status"}
                                 control={control}
                                 value={getValues("status")}
                                 placeholder='Chọn trạng thái sản phẩm'
                                 noOptionsMessage='Không có trạng thái sản phẩm'
                             />
-                            {errors.status && <Errors title={errors.status.message} />}
-                        </div>
+                            {errors.status && <Errors
+                                title={errors.status.message}
+                                className='text-start'
+                            />}
+                        </CardBody>
                     </Card>
-                    <Card className='py-4'>
-                        <Header name={"Loại sản phẩm"} />
-                        <div className='card-body pt-0'>
-                            <Selection options={categories}
+                    <Card className={'!py-4 !border-card-none'}>
+                        <CardHeader
+                            name={'Loại sản phẩm'}
+                            className={'!border-bottom-card-none'}
+                        />
+                        <CardBody className={'!text-center !pt-0'}>
+                            <Selection
+                                options={categories}
                                 name={"category"}
                                 control={control}
                                 value={getValues("category")}
                                 placeholder='Chọn loại sản phẩm'
                                 noOptionsMessage='Không có loại sản phẩm'
                             />
-                            {errors.category && <Errors title={errors.category.message} />}
-                        </div>
+                            {errors.category && <Errors
+                                title={errors.category.message}
+                                className='text-start'
+                            />}
+                        </CardBody>
                     </Card>
                 </div>
-                <div className='d-flex flex-column flex-row-fluid gap-7 gap-lg-10'>
-                    <div className='d-flex flex-column gap-7 gap-lg-10'>
-                        <Card className='py-4'>
-                            <Header name={"Tổng quát"} />
-                            <div className='card-body pt-0'>
-                                <InputGroup className={"mb-10"}>
-                                    <Label title={'Tên sản phẩm'} />
-                                    <Input
-                                        className={'form-control mb-2'}
-                                        type={'text'}
-                                        name={'name'}
-                                        placeholder={'Vui lòng nhập tên sản phẩm'}
-                                        onBlur={handleBlur}
-                                        values={getValueString(getValues('name'))}
-                                    />
-                                    {errors.name && <Errors title={errors.name.message} />}
-                                </InputGroup>
-                                <InputGroup className={"mb-10"}>
-                                    <Label title={'Kí hiệu sản phẩm'} />
-                                    <Input
-                                        className={'form-control mb-2'}
-                                        type={'text'}
-                                        name={'sku'}
-                                        placeholder={'Vui lòng kí hiệu sản phẩm'}
-                                        onBlur={handleBlur}
-                                        values={getValueString(getValues('sku'))}
-                                    />
-                                    {errors.sku && <Errors title={errors.sku.message} />}
-                                </InputGroup>
-                                <InputGroup className={"mb-10"}>
-                                    <Label title={'Giá sản phẩm'} />
-                                    <Input
-                                        className={'form-control mb-2'}
-                                        type={'number'}
-                                        name={'price'}
-                                        placeholder={'Vui lòng nhập giá sản phẩm'}
-                                        onBlur={handleBlur}
-                                        values={getValueNumber(getValues('price'))}
-                                    />
-                                    {errors.price && <Errors title={errors.price.message} />}
-                                </InputGroup>
-                                <InputGroup className={"mb-10"}>
-                                    <Label title={'Mô tả sản phẩm'} />
-                                    <Textarea
-                                        className={'form-control-solid min-h-150px'}
-                                        placeholder={'Vui lòng nhập nội dung sản phẩm'}
-                                        name={'description'}
-                                        onBlur={handleBlur}
-                                        values={getValueString(getValues('description'))}
-                                    />
-                                    {errors.description && <Errors title={errors.description.message} />}
-                                </InputGroup>
-                            </div>
-                        </Card>
-                        <Card className='py-4'>
-                            <Header name={"Kích thước sản phẩm"} />
-                            <div className='card-body pt-0'>
-                                <div className='row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 g-9'>
-                                    <ListCheckBoxSize
-                                        options={sizes}
-                                        register={{ ...register("sizes") }}
-                                        setValue={setValue}
-                                        getValues={getValues("sizes")}
-                                        name={"sizes"}
-                                        valeSizes={valeSizes}
-                                    />
-                                </div>
-                            </div>
-                        </Card>
-                    </div>
-                    <div className='d-flex justify-content-end'>
-                        <button type="submit" className='btn btn-primary'>
-                            <span className='indicator-label'>
-                                Save Changes
-                            </span>
-                        </button>
+                <div className='flex flex-col gap-7 lg:gap-10 flex-[1_auto] min-w-0'>
+                    <Card className='py-4'>
+                        <CardHeader
+                            name={"Tổng quát"}
+                            className={'!border-bottom-card-none'}
+                        />
+                        <CardBody className={'!pt-0'}>
+                            <InputGroup className={'!mb-10'}>
+                                <Label title={'Tên sản phẩm'} />
+                                <Input
+                                    className={'form-control mb-2'}
+                                    type={'text'}
+                                    placeholder={'Vui lòng nhập tên sản phẩm'}
+                                    register={register('name')}
+                                />
+                                {errors.name && <Errors title={errors.name.message} />}
+                            </InputGroup>
+                            <InputGroup className={"mb-10"}>
+                                <Label title={'Kí hiệu sản phẩm'} />
+                                <Input
+                                    className={'form-control mb-2'}
+                                    type={'text'}
+                                    placeholder={'Vui lòng kí hiệu sản phẩm'}
+                                    register={register('sku')}
+                                />
+                                {errors.sku && <Errors title={errors.sku.message} />}
+                            </InputGroup>
+                            <InputGroup className={"mb-10"}>
+                                <Label title={'Giá sản phẩm'} />
+                                <Input
+                                    className={'form-control mb-2'}
+                                    type={'number'}
+                                    placeholder={'Vui lòng nhập giá sản phẩm'}
+                                    register={register('price')}
+                                />
+                                {errors.price && <Errors title={errors.price.message} />}
+                            </InputGroup>
+                            <InputGroup>
+                                <Label title={'Mô tả sản phẩm'} />
+                                <Textarea
+                                    className={'form-control-solid !min-h-[200px]'}
+                                    placeholder={'Vui lòng nhập nội dung sản phẩm'}
+                                    register={register('description')}
+                                />
+                                {errors.description && <Errors title={errors.description.message} />}
+                            </InputGroup>
+                        </CardBody>
+                    </Card>
+                    <Card className='py-4'>
+                        <CardHeader
+                            name={"Kích thước sản phẩm"}
+                            className={'!border-bottom-card-none'}
+                        />
+                        <CardBody className={'!pt-0'}>
+                            <ListCheckBoxSize
+                                className={'md:grid-cols-3 gap-9'}
+                                options={sizes}
+                                register={{ ...register("sizes") }}
+                                setValue={setValue}
+                                getValues={getValues("sizes")}
+                                name={"sizes"}
+                                valeSizes={valeSizes}
+                            />
+                            {errors.sizes && <Errors title={errors.sizes.message} />}
+                        </CardBody>
+                    </Card>
+                    <div className='flex justify-end'>
+                        <button className='btn btn-primary'>Save Changes</button>
                     </div>
                 </div>
             </form>
@@ -277,4 +274,4 @@ const FormProduct = () => {
     )
 }
 
-export default FormProduct;
+export default FormProduct

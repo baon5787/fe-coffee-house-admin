@@ -1,6 +1,17 @@
-export { default as CategoryList } from './components/CategoryList'
-export { default as DeleteSelectedCategory } from './components/DeleteSelectedCategory'
+import CategoryList from "./components/CategoryList";
+import TableCategory from "./components/TableCategory";
+import DeleteSelectedCategory from "./components/DeleteSelectedCategory";
+import ModalFormParentCategory from "./components/ModalFormParentCategory";
+import ModalFormSubCategory from "./components/ModalFormSubCategory";
+import CategoryLayout from "./layout";
+import useCategory from "./hooks/useCategory";
 
-export { default as ModalFormParentCategory } from './components/ModalFormParentCategory';
-export { default as ModalFormSubCategory } from './components/ModalFormSubCategory';
-export { default as CategoryLayout } from './layout/index';
+export {
+    CategoryList,
+    TableCategory,
+    CategoryLayout,
+    DeleteSelectedCategory,
+    ModalFormParentCategory,
+    ModalFormSubCategory,
+    useCategory
+}

@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
-
-export const DOTS = '...';
+import { DOTS } from '~/constants/AppConstant';
 
 const range = (start, end) => {
     let length = end - start + 1;

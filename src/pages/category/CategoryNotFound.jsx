@@ -1,14 +1,13 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
-import { NotFound } from '~/components/error';
-import { MSG_ERROR } from '~/constants/AppConstant';
-import { errorCategorySelector, titleErrorCategorySelector } from '~/redux/selectors';
+import NotFound from '~/components/notfound'
+import { MSG_ERROR } from '~/constants/AppConstant'
+import { useCategory } from '~/features/categories';
 
 const CategoryNotFound = () => {
 
-    const error = useSelector(errorCategorySelector);
+    const { error, msg } = useCategory();
 
-    const msg = useSelector(titleErrorCategorySelector);
+    console.log('a');
 
     return (
         <NotFound
@@ -17,4 +16,4 @@ const CategoryNotFound = () => {
     )
 }
 
-export default CategoryNotFound;
+export default CategoryNotFound

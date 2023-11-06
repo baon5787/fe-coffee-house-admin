@@ -1,9 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useOutletContext } from 'react-router-dom';
-import { createAxios } from '~/api/AxiosClient';
-import { currentPageSelector, filtersSelector, userSelector } from '~/redux/selectors';
-import { loginSuccess } from '~/redux/slice/AuthSlice';
-import { resetFiltersByPage } from '~/utils/HandleTable';
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useOutletContext } from "react-router-dom";
+import { createAxios } from "~/api/AxiosClient";
+import { currentPageSelector, filtersSelector, userSelector } from "~/redux/selectors";
+import { loginSuccess } from "~/redux/slice/AuthSlice";
+import { resetFiltersByPage } from "~/utils/HandleTable";
 
 const useTable = () => {
     const dispatch = useDispatch();

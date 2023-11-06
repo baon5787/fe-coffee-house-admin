@@ -1,22 +1,19 @@
-import {
-    getProductsStart, getProductsSuccess, getProductsFailed,
-    getProductBySkuStart, getProductBySkuSuccess, getProductBySkuFailed,
-    addOrUpdateProductSuccess, addOrUpdateProductStart, addOrUpdateProductFailed,
-    selectedDeleteProductsStart, selectedDeleteProductsSuccess, selectedDeleteProductsFailed,
-    getDeleteProductStart, getDeleteProductSuccess, getDeleteProductFailed,
-    getTitleSelectedDeleteProductsStart, getTitleSelectedDeleteProductsSuccess,
-    getTitleSelectedDeleteProductsFailed, resetProductError
-} from "~/redux/slice/ProductSlice";
-import { updateCurrentPage } from "~/redux/slice/FiltersSlice";
+import axios from "axios";
 import { headers, headersAndCancelToken, headersPostAndPutImage } from "~/api/AxiosClient";
 import { PATH, PATH_API } from "~/constants/Paths";
-import { setErrorForm } from "../validation/ProductValidation";
+import { updateCurrentPage } from "~/redux/slice/FiltersSlice";
 import {
-    notificationErrorByList, notificationErrorByPathVariable, notificationErrorBySearchList,
-    notificationErrorEdit,
-    notificationErrorForm, notificationSuccessForm
-} from "~/utils/Notification";
-import axios from "axios";
+    addOrUpdateProductFailed, addOrUpdateProductStart, addOrUpdateProductSuccess,
+    getDeleteProductFailed, getDeleteProductStart, getDeleteProductSuccess,
+    getProductBySkuFailed, getProductBySkuStart, getProductBySkuSuccess,
+    getProductsFailed, getProductsStart, getProductsSuccess,
+    getTitleSelectedDeleteProductsFailed, getTitleSelectedDeleteProductsStart,
+    getTitleSelectedDeleteProductsSuccess, resetProductError, selectedDeleteProductsFailed,
+    selectedDeleteProductsStart, selectedDeleteProductsSuccess
+} from "~/redux/slice/ProductSlice";
+import { notificationErrorByList, notificationErrorByPathVariable, notificationErrorBySearchList, notificationErrorEdit, notificationErrorForm, notificationSuccessForm } from "~/utils/Notification";
+import { setErrorProductForm } from "../validation/ProductValidation";
+
 
 const URL_PRODUCT = `/${PATH.PRODUCTS}`;
 const URL_PRODUCT_NOT_FOUND = `${URL_PRODUCT}/${PATH.NOT_FOUND}`;
@@ -45,11 +42,15 @@ export const addProduct = async (product, accessToken, dispatch, navigate, axios
     dispatch(addOrUpdateProductStart());
 
     try {
-        const res = await axiosJwt.post(PATH_API.PRODUCTS, product, headersPostAndPutImage(accessToken));
+        const res = await axiosJwt.post(PATH_API.PRODUCTS, product,
+            headersPostAndPutImage(accessToken));
+
         dispatch(resetProductError());
-        notificationSuccessForm(res?.data, dispatch, navigate, URL_PRODUCT, addOrUpdateProductSuccess);
+
+        notificationSuccessForm(res?.data, dispatch, navigate, URL_PRODUCT,
+            addOrUpdateProductSuccess);
     } catch (error) {
-        notificationErrorForm(error?.response, setErrorForm, setError);
+        notificationErrorForm(error?.response, setErrorProductForm, setError);
         dispatch(addOrUpdateProductFailed());
     }
 }
@@ -77,7 +78,7 @@ export const updateProduct = async (sku, product, accessToken, dispatch, navigat
         dispatch(resetProductError());
         notificationSuccessForm(res?.data, dispatch, navigate, URL_PRODUCT, addOrUpdateProductSuccess);
     } catch (error) {
-        notificationErrorForm(error?.response, setErrorForm, setError);
+        notificationErrorForm(error?.response, setErrorProductForm, setError);
         dispatch(addOrUpdateProductFailed());
     }
 }
@@ -223,5 +224,3 @@ const getSelectedDelete = async (url, axiosJwt, accessToken, dispatch, navigate)
             selectedDeleteProductsFailed);
     }
 }
-
-

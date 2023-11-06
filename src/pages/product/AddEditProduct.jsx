@@ -1,12 +1,10 @@
 import React from 'react'
-import { FormProduct } from '~/features/product';
+import { FormProduct } from '~/features/product'
 
 const AddEditProduct = () => {
     return (
-        <>
-            <FormProduct />
-        </>
+        <FormProduct />
     )
 }
 
-export default AddEditProduct;
+export default AddEditProduct

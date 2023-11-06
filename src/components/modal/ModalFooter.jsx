@@ -1,35 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { isParam } from '~/utils/CheckValue'
 
-const ModalFooter = ({ focus, loading }) => {
+const ModalFooter = ({ onClose, param }) => {
     return (
-        <div className='modal-footer flex-center'>
-            <button type="reset" className='btn btn-light me-3'
+        <div className='modal-footer justify-center'>
+            <button type="reset" className='btn btn-light'
+                onClick={() => onClose()}
             >
-                Discard
+                Hủy bỏ
             </button>
-            <button type="submit" className='btn btn-primary'
-                disabled={focus || loading}
-                data-kt-indicator={loading ? 'on' : 'off'}
-            >
-                <span className='indicator-label'>
-                    Submit
-                </span>
-                {
-                    loading && (
-                        <span className='indicator-progress'>
-                            Vui lòng chờ .....
-                            <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
-                        </span>
-                    )
-                }
+            <button type="submit" className='btn btn-primary'>
+                {isParam(param) ? 'Cập nhật' : 'Tạo'}
             </button>
         </div>
     )
 }
 
 ModalFooter.propTypes = {
-    focus: PropTypes.bool.isRequired,
+    param: PropTypes.string,
+    onClose: PropTypes.func.isRequired,
 }
 
 export default ModalFooter

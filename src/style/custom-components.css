@@ -1,0 +1,497 @@
+@tailwind components;
+
+@layer components{
+    .auth-bg{
+        @apply bg-page-auth-bg
+    }
+
+    .page{
+        @apply grid lg:grid-template-areas-layout-lg grid-template-areas-layout h-full 
+        lg:grid-cols-[280px_minmax(0,1fr)] grid-rows-[90px_1fr_40px]
+        lg:gap-x-[30px] pr-[30px] max-lg:!p-[0_15px] max-lg:grid-cols-1
+    }
+
+    .auth-page{
+        @apply !grid lg:grid-template-areas-auth-xl lg:grid-cols-auth-page
+        grid-rows-1 max-h-full grid-template-areas-auth grid-cols-1 
+        max-lg:h-full
+    }
+
+    .scroll-y{
+        @apply relative overflow-y-scroll max-lg:overflow-auto scrollbar-color-transparent
+        [&::-webkit-scrollbar-thumb]:bg-transparent [&::-webkit-scrollbar-corner]:bg-transparent
+        hover:scrollbar-color-base hover:[&::-webkit-scrollbar-thumb]:bg-red-700
+        hover:[&::-webkit-scrollbar-corner]:bg-transparent
+    }
+
+    /* Start aside css */
+
+    .aside__logo{
+        @apply flex p-[1.75rem_2.25rem_2.25rem] flex-row justify-between items-center
+        max-lg:hidden 
+    }
+
+    .aside__logo--img{
+        @apply max-h-[50px] inline-block
+    }
+
+    .aside__logo--title{
+        @apply !font-semibold !text-2 xl:!text-[1.5rem] sm:!my-0 !text-text-gray-700
+    }
+
+    .sidebar{
+        @apply px-2 lg:px-6
+    }
+
+    .drawer{
+        @apply overflow-auto z-[110] bg-drawer-bg transition-drawer fixed inset-[0_0_auto_0]
+    }
+
+    .drawer.drawer-start{
+        @apply -translate-x-full
+    }
+
+    .drawer.drawer-on{
+        @apply transition-drawer transform-none shadow-drawer
+    }
+
+    /* End aside css */
+
+    /* Start menu css */
+
+    .menu{
+        @apply flex p-0 m-0 list-style-none
+    }
+
+    .menu-column{
+        @apply flex-col w-full
+    }
+
+    .menu-item{
+        @apply block p-[0.15rem_0] [&.show>.menu-link]:text-theme-primary
+        [&.here>.menu-link]:text-theme-primary [&.here>.menu-link]:transition-color-2-ease
+    }
+
+    .menu-item .menu-link{
+        @apply cursor-pointer flex items-center p-[0.65rem_1rem] outlines-0
+        rounded-[50px] hover:text-theme-primary hover:transition-color-2-ease
+        [&.active]:text-theme-primary [&.active]:bg-menu-link-bg-active
+    }
+
+    .menu-item .menu-link .menu-arrow{
+        @apply flex items-stretch relative overflow-hidden ml-[5px] w-[9px]
+        h-[9px] after:block after:w-full after:will-change-transform 
+        after:bg-arrow after:mask-svg-arrow after:transition-transform-3-ease
+        after:rotate-90 [.here&]:after:bg-theme-primary [.show&]:after:bg-theme-primary
+        [.show&]:after:!-rotate-90
+    }
+
+    .menu-sub{
+        @apply hidden p-0 m-0 list-style-none flex-col mr-4 [&.show]:flex;
+    }
+
+    .menu-item .menu-link .menu-bullet{
+        @apply flex shrink-0 justify-center items-center w-5 mr-2
+    }
+
+    .menu-state-color{
+        @apply [&_.menu-link:hover]:text-menu-link-color-hover
+        [&_.menu-link:hover]:transition-color-2-ease 
+        [&_.menu-link.active]:text-menu-link-color-active
+        [&_.menu-link.active]:transition-color-2-ease 
+        [&_.menu-link.active]:bg-menu-link-bg-active
+    }
+
+    .menu-state-bg{
+        @apply [&_.menu-link:hover]:text-menu-link-color-hover 
+        [&_.menu-link:hover]:transition-color-2-ease
+        [&_.menu-link:hover]:bg-menu-link-bg-hover
+    }
+
+    .menu.menu-sub-dropdown{
+        @apply rounded-base bg-menu-dropdown-bg shadow-menu-dropdown flex 
+        will-change-transform animate-menu-sub-dropdown
+    }
+
+    .menu-state-bg-light-primary{
+        @apply [&_.menu-link:hover]:transition-color-2-ease [&_.menu-link:hover]:text-theme-primary
+        [&_.menu-link:hover]:bg-theme-primary-light
+    }
+
+    .bullet-dot{
+        @apply inline-block w-[4px] h-[4px] rounded-[100%] shrink-0 bg-bullet-bg
+        group-hover:bg-theme-primary group-[.active]:bg-theme-primary
+    }
+
+    /* End menu css */
+
+    /* Start card css */
+
+    .card{
+        @apply flex relative flex-col min-w-0 text-body-color break-words bg-body-bg bg-clip-border
+        border-card-none rounded-base shadow-card theme-dark:shadow-none
+    }
+
+    .card-header{
+        @apply first:rounded-card
+    }
+
+    .card .card-header{
+        @apply flex p-[0_2.25rem] min-h-[70px] flex-wrap justify-between items-stretch
+        bg-transparent border-bottom-card
+    }
+
+    .card .card-header .card-title{
+        @apply m-2 ml-0 items-center flex font-medium text-[1.275rem] text-text-theme-dark
+    }
+
+    .card .card-header .card-toolbar{
+        @apply flex items-center m-[0.5rem_0] flex-wrap
+    }
+
+    .card-body{
+        @apply flex-auto p-[1rem_1rem]
+    }
+
+    .card .card-body,
+    .card .card-footer{
+        @apply p-[2rem_2.25rem]
+    }
+
+    /* End card css */
+
+    /* Start button css */
+
+    .btn{
+        @apply inline-block text-[1.1rem] font-medium leading-[1.5] text-body-color
+        text-center align-middle cursor-pointer select-none border-btn-none rounded-[2rem]
+        bg-transparent shadow-none transition-btn outlines-0 p-btn 
+    }
+
+    .btn.btn-icon{
+        @apply inline-flex items-center justify-center p-0 w-btn-icon
+        h-btn-icon leading-[1]
+    }
+
+    .btn.btn-primary{
+        @apply bg-theme-primary border-theme-primary text-theme-primary-inverse 
+        hover:text-theme-primary-inverse hover:border-theme-primary-active 
+        hover:bg-theme-primary-active
+    }
+
+    .btn.btn-light{
+        @apply text-theme-light-inverse border-theme-light bg-theme-light
+        hover:bg-theme-light-active hover:border-theme-light-active
+    }
+
+    .btn-active-light-primary{
+        @apply hover:!text-theme-primary hover:!bg-theme-primary-light 
+        [&_svg]:hover:!text-theme-primary hover:!border-theme-primary
+    }
+
+    .btn-danger{
+        @apply text-theme-danger-inverse border-theme-danger bg-theme-danger 
+        hover:bg-theme-danger-active
+    }
+
+    /* End button css */
+
+    table.dataTable{
+        @apply !w-full !m-0 clear-both !max-w-[none] border-separate border-spacing-0
+    }
+
+    /* Start pagination css */
+
+    .pagination{
+        @apply m-[2px_0] whitespace-nowrap justify-end flex flex-wrap pl-0 list-style-none
+    }
+
+    .page-item{
+        @apply mr-2 [&:first-child_.page-link]:rounded-l-[2rem]
+    }
+
+    .page-link{
+        @apply block relative p-[0.375rem_0.75rem] text-6 bg-transparent border-pagination
+        transition-pagination text-gray-700 hover:z-[2] hover:text-component-hover-color
+        hover:bg-component-hover-bg hover:border-transparent group-[.active]:z-[3]
+        group-[.active]:text-component-active-color group-[.active]:bg-component-active-bg
+        group-[.active]:border-transparent group-[.disabled]:text-gray-400
+        group-[.disabled]:pointer-events-none group-[.disabled]:bg-transparent 
+        group-[.disabled]:border-transparent 
+    }
+
+    .page-item .page-link{
+        @apply flex justify-center items-center rounded-[2rem] h-7 min-w-[1rem]
+        font-medium cursor-pointer 
+    }
+
+    /* End pagination css */
+
+    /* Start form css */
+
+    .form-check{
+        @apply flex items-center pl-0 m-0 min-h-[1.25rem]
+    }
+
+    .form-check-input{
+        @apply w-7 h-7 mt-[0.125rem] align-top appearance-none bg-transparent bg-no-repeat
+        bg-center bg-contain border-form-check-input type-[checkbox]:rounded-[0.45rem]
+        checked:type-[checkbox]:bg-svg-checkbox checked:type-[radio]:bg-svg-radio
+        focus:outlines-0 focus:shadow-none focus:border-gray-400 checked:bg-theme-primary 
+        checked:border-theme-primary
+    }
+
+    .form-checked{
+        @apply !border-theme-primary bg-theme-primary-light text-theme-primary
+    }
+
+    .form-check .form-check-input{
+        @apply m-0 float-none shrink-0 w-[1.55rem] h-[1.55rem]
+    }
+
+    .form-check.form-check-solid .form-check-input{
+        @apply [&:not(:checked)]:bg-gray-200 type-[checkbox]:bg-checkbox border-form-check-input-none
+    }
+
+    .form-control{
+        @apply block w-[calc(100%-2rem)] p-[0.775rem_1rem] text-[1.1rem] font-medium leading-[1.5]
+        text-gray-700 appearance-none bg-body-bg bg-clip-padding border-form-control
+        rounded-[2.5rem] focus:text-gray-700 focus:bg-body-bg focus:border-gray-400
+        focus:outlines-0 placeholder:text-gray-500 placeholder:opacity-100 disabled:text-gray-500
+        disabled:bg-gray-200 disabled:border-gray-300 disabled:opacity-100
+    }
+
+    .form-control-lg{
+        @apply min-h-form-control-lg p-[0.825rem_1.5rem] text-5 rounded-[3rem]
+        w-[calc(100%-3rem)]
+    }
+
+    .form-control.form-control-solid{
+        @apply bg-gray-100 border-gray-100 text-gray-700 transition-color-2-ease
+        placeholder:text-gray-500 focus:bg-gray-200 focus:border-gray-200 focus:text-gray-700
+        focus:transition-color-2-ease
+    }
+
+    .form-label{
+        @apply mb-2 text-6 font-medium text-gray-800
+    }
+
+    .image-input{
+        @apply relative inline-block rounded-[1.15rem] bg-no-repeat bg-cover
+        [&_[data-kt-image-input-action]]:cursor-pointer
+        [&_[data-kt-image-input-action]]:absolute
+        [&_[data-kt-image-input-action]]:-translate-x-1/2
+        [&_[data-kt-image-input-action]]:-translate-y-1/2
+        [&_[data-kt-image-input-action]]:rounded-circle
+        [&_[data-kt-image-input-action=change]]:left-full
+        [&_[data-kt-image-input-action=change]]:top-0
+        [&_[data-kt-image-input-action=remove]]:left-full
+        [&_[data-kt-image-input-action=remove]]:top-full
+        [&_[data-kt-image-input-action=change]_input]:!w-0
+        [&_[data-kt-image-input-action=change]_input]:!h-0
+        [&_[data-kt-image-input-action=change]_input]:overflow-hidden
+        [&_[data-kt-image-input-action=change]_input]:opacity-0 
+        [&.image-input-empty_[data-kt-image-input-action=remove]]:hidden
+        [&.image-input-changed_[data-kt-image-input-action=remove]]:flex
+    }
+
+    .image-input-placeholder{
+        @apply theme-dark:bg-svg-img-input-dark bg-svg-img-input-light
+    }
+
+    .image-input .image-input-wrapper{
+        @apply rounded-[1.15rem] bg-no-repeat bg-cover shadow-box border-img-input
+    } 
+
+    .invalid-feedback{
+        @apply block font-normal w-full m-2 text-7 text-form-invalid
+    }
+
+    /* End form css */
+
+    /* Start modal css */
+    .modal{
+        @apply fixed top-0 left-0 z-[1055] w-full h-full overflow-x-hidden overflow-y-auto
+        outlines-0 transition-modal
+    }
+
+    .modal-dialog{
+        @apply transform-none transition-modal-dialog sm:max-w-[500px] sm:mx-auto
+        flex items-center min-h-[calc(100%-1.75rem*2)] relative w-auto m-7 pointer-events-none
+    }
+
+    .modal-content{
+        @apply relative flex flex-col w-full pointer-events-auto bg-body-bg outlines-0
+        bg-clip-padding border-modal-content rounded-[1.15rem] shadow-modal-content
+    }
+
+    .modal-header{
+        @apply flex items-center justify-between p-[1.75rem_1.75rem] border-bottom-modal-header
+        rounded-t-[1.15rem]
+    }
+
+    .modal-body{
+        @apply relative flex-auto p-7
+    }
+
+    .modal-footer{
+        @apply flex shrink-0 flex-wrap items-center justify-end p-[calc(1.75rem-0.5rem*0.5)]
+        rounded-b-[1.15rem] border-top-modal-footer [&>*]:m-1
+    }
+    /* End modal css */
+
+    /* Start select2 css */
+    .select2-control {
+        @apply !rounded-[2.5rem] !bg-text-gray-100 !p-[0.3rem_0_0.3rem_0.2rem] !border-base
+        !cursor-pointer
+    }
+
+    .select2-control .select2-control__value{
+        @apply text-[1.1rem] font-medium leading-[1.5] text-gray-500 !flex
+    }
+
+    .select2-arrow{
+        @apply !text-gray-500
+    }
+    
+    .select2-control__focused {
+        @apply !border-gray-400 !shadow-none
+    }
+
+    .select2-menu {
+        @apply border-base-none !shadow-dropdown rounded-base p-[1rem_0] !bg-dropdown-bg
+    }
+
+    .select2-value{
+        @apply !p-[0.775rem_3rem_0.775rem_1rem] !items-center 
+    }
+
+    .select2-option {
+        @apply !text-gray-700 transition-color-2-ease !cursor-pointer
+    }
+
+    .select2-option__selected,
+    .select2-option__focused {
+        @apply !bg-component-hover-bg !text-component-hover-color transition-color-2-ease
+    }
+    
+    .select2-option__selected{
+        @apply relative after:right-5 after:top-1/2 after:block after:absolute 
+        after:-translate-y-1/2 after:h-3 after:w-3 after:bg-component-hover-color 
+        after:mask-svg-success
+    }
+    /* End select2 css */
+
+    /* Start swal css */
+    .swal2-popup {
+        @apply !bg-body-bg !p-8 !rounded-base 
+    }
+
+    .swal2-icon.swal2-warning {
+        @apply !border-theme-warning !text-theme-warning
+    }
+
+    .swal2-container .swal2-html-container{
+        @apply max-h-[200px] overflow-auto
+    }
+
+    .swal2-popup .swal2-html-container,
+    .swal2-popup .swal2-content {
+        @apply text-[1.1rem] mt-6 text-gray-800
+    }
+
+    .swal2-popup .btn {
+        @apply m-[15px_5px_0]
+    }
+    /* End swal css */
+
+    /* Start toast css */
+    .colored-toast .swal2-success .swal2-success-ring {
+        @apply !top-[-0.1rem] !border-theme-success !bg-theme-white
+    }
+
+    .colored-toast .swal2-error{
+        @apply !border-theme-danger
+    }
+
+    .colored-toast .swal2-error .swal2-x-mark-line-right,
+    .colored-toast .swal2-error .swal2-x-mark-line-left{
+        @apply !bg-theme-white
+    }
+
+    .colored-toast .swal2-success .swal2-success-line-tip,
+    .colored-toast .swal2-success .swal2-success-line-long {
+        @apply !bg-theme-success !z-10
+    }
+
+    .colored-toast .swal2-title{
+        @apply !text-theme-white !text-base !font-normal
+    }
+
+    .colored-toast.swal2-popup{
+        @apply !p-[1.25rem]
+    }
+
+    .colored-toast.swal2-popup.swal2-icon-success{
+        @apply !bg-theme-success 
+    }
+    .colored-toast.swal2-popup.swal2-icon-error{
+        @apply !bg-theme-danger
+    }
+    /* End toast css */
+    
+    .fs-2{
+        @apply xl:text-[1.5rem] text-2;
+    }
+
+    .page--title{
+        @apply flex !flex-wrap !flex-col !justify-center !items-start mb-5 lg:mb-0 mr-2
+    }
+
+    .page--title__title{
+        @apply text-text-theme-dark fs-2 mt-1 mb-1 font-semibold
+    }
+
+    .breadcrumb{
+        @apply flex items-center bg-transparent p-0 m-0
+    }
+
+    .breadcrumb .breadcrumb-item{
+        @apply flex text-text-theme-muted items-center after:pl-2 after:content-['/']
+        pl-2 last:pr-0 last:after:hidden first:pl-0 
+    }
+
+    .svg-icon{
+        @apply leading-[1] text-text-theme-muted
+    }
+
+    .symbol{
+        @apply inline-block shrink-0 relative rounded-[1.15rem]
+    }
+
+    .separator{
+        @apply block h-0 border-bottom-separator
+    }
+
+    .page-loading{
+        @apply flex items-center justify-center fixed inset-0 z-[10000] flex-col
+        bg-opacity-25 bg-opacity
+    }
+
+    .spinner-border{
+        @apply inline-block w-8 h-8 align-[-0.125em] rounded-circle animate-spinner-border
+        border-spinner-border
+    }
+
+    .bage{
+        @apply inline-flex items-center p-[0.325rem_0.5rem] text-8 font-semibold leading-[1] 
+        text-body-color text-center whitespace-nowrap align-baseline rounded-[0.425rem] 
+    }
+
+    .scrolltop{
+        @apply flex fixed cursor-pointer z-[105] justify-center items-center w-[36px]
+        h-[36px] bottom-[50px] right-[20px] rounded-base opacity-30 transition-color-2-ease
+        bg-scrolltop-bg-color shadow-scrolltop animate-scrolltop [&_svg]:text-scrolltop-icon-color
+        hover:opacity-100
+    }
+}

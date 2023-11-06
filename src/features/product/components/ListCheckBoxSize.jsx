@@ -1,10 +1,16 @@
 import React, { useLayoutEffect, useState } from 'react'
-import CheckBox from '~/components/form/CheckBox/CheckBox';
-import { MIN_LENGTH } from '~/constants/AppConstant';
+import { Checkbox } from '~/components/form';
+import { ALL, EMPTY_ARRAY, MIN_LENGTH } from '~/constants/AppConstant';
 import { isEmptyArray } from '~/utils/CheckValue';
+import PropTypes from 'prop-types';
 
-const ListCheckBoxSize = ({ options = [], register, setValue, getValues, name, valeSizes }) => {
-    const [data, setData] = useState([]);
+const ListCheckBoxSize = (props) => {
+    const {
+        className, options = [], register, setValue,
+        getValues, name, valeSizes
+    } = props;
+
+    const [data, setData] = useState(EMPTY_ARRAY);
 
     useLayoutEffect(() => {
         const handleData = () => {
@@ -42,7 +48,7 @@ const ListCheckBoxSize = ({ options = [], register, setValue, getValues, name, v
     const handleChange = (e) => {
         const { value, checked } = e.target;
 
-        if (value === "ALL") {
+        if (value === ALL) {
 
             let values = [];
 
@@ -67,26 +73,37 @@ const ListCheckBoxSize = ({ options = [], register, setValue, getValues, name, v
     if (isEmptyArray(data)) return;
 
     return (
-        <>
+        <div className={`grid ${className}`}>
             {
                 data?.map((item, index) => {
                     return (
-                        <CheckBox key={index}
+                        <Checkbox key={index}
                             register={register}
                             onChange={(e) => handleChange(e)}
                             isChecked={item?.isChecked}
                             title={item?.title}
-                            value={item?.id} />
+                            value={item?.id}
+                        />
                     )
                 })
             }
-            <CheckBox title={"ALL"}
-                value={"ALL"}
+            <Checkbox
+                title={ALL}
+                value={ALL}
                 onChange={(e) => handleChange(e)}
                 isChecked={data?.filter((item) => item?.isChecked !== true).length <= MIN_LENGTH}
             />
-        </>
+        </div>
     )
+}
+
+ListCheckBoxSize.propTypes = {
+    className: PropTypes.string.isRequired,
+    options: PropTypes.array,
+    setValue: PropTypes.func,
+    getValues: PropTypes.array,
+    name: PropTypes.string,
+    valeSizes: PropTypes.array
 }
 
 export default ListCheckBoxSize

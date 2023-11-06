@@ -1,14 +1,14 @@
 import React from 'react'
-import Theme from "./components/theme";
-import User from "./components/user";
+import Theme from './theme'
+import User from './user'
 
-const Toolbar = () => {
+const ToolBar = () => {
     return (
-        <div className='d-flex align-items-center flex-shrink-0'>
-            <Theme />
-            <User />
+        <div className='flex items-center'>
+            <Theme></Theme>
+            <User></User>
         </div>
     )
 }
 
-export default Toolbar;
+export default ToolBar

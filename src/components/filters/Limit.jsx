@@ -1,31 +1,20 @@
-import React from 'react'
-import { DEFAULT_PAGINATION, MIN_LENGTH } from '~/constants/AppConstant';
-import { useDispatch, useSelector } from 'react-redux';
-import { filtersSelector } from '~/redux/selectors';
-import { limitFilterChange } from '~/redux/slice/FiltersSlice';
-import Selects from '../select';
+import React, { memo } from 'react'
 import PropTypes from 'prop-types';
+import Selects from '../selects';
+import { useDispatch } from 'react-redux';
+import { limitFilterChange } from '~/redux/slice/FiltersSlice';
+import { MIN_LENGTH } from '~/constants/AppConstant';
 
 const Limit = ({ value, options, totalPage }) => {
-
-    const filters = useSelector(filtersSelector)
 
     const dispatch = useDispatch();
 
     const handleLimitChange = (newLimit) => {
 
-        let newFilters;
-        if (filters?.page * newLimit > totalPage) {
-            newFilters = {
-                limit: newLimit,
-                page: DEFAULT_PAGINATION.PAGE,
-            }
-        } else {
-            newFilters = {
-                limit: parseInt(newLimit)
-            };
-        }
-        dispatch(limitFilterChange(newFilters));
+        dispatch(limitFilterChange({
+            newLimit: newLimit,
+            totalPage: totalPage,
+        }));
     }
 
     const defaultValue = options?.filter(option => option?.value === value);
@@ -33,19 +22,14 @@ const Limit = ({ value, options, totalPage }) => {
     if (!defaultValue || defaultValue?.length === MIN_LENGTH) return;
 
     return (
-        <>
-            <div className='col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start '>
-                <div className='dataTables_length'>
-                    <Selects
-                        options={options}
-                        defaultValue={defaultValue}
-                        onChange={(option) => {
-                            handleLimitChange(option.value);
-                        }}
-                    />
-                </div>
-            </div>
-        </>
+        <Selects
+            classContainer={'!p-[0.775rem_1rem]'}
+            options={options}
+            defaultValue={defaultValue}
+            onChange={(option) => {
+                handleLimitChange(option.value);
+            }}
+        />
     )
 }
 
@@ -55,4 +39,4 @@ Limit.propTypes = {
     totalPage: PropTypes.number,
 }
 
-export default Limit;
+export default memo(Limit)

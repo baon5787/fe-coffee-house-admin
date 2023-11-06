@@ -1,26 +1,30 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
-import { useBlur, useModal, useParam } from '~/hooks';
-import SubCategoryValidation, { InitialValuesAdd, InitialValuesUpdate } from '../validation/SubCategoryValidation';
+import { createPortal } from 'react-dom'
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { loadingCategorySelector } from '~/redux/selectors';
-import { DEFAULT_INDEX } from '~/constants/AppConstant';
+import useJwt from '~/hooks/useJwt';
+import useModal from '~/hooks/useModal';
+import useParam from '~/hooks/useParam';
+import useStatus from '~/hooks/useStatus';
+import {
+    addSubCategory,
+    getSubCategoryByCode, updateSubCategory
+} from '../services/ApiCategories';
+import { DEFAULT_INDEX, EMPTY_ARRAY } from '~/constants/AppConstant';
 import { getSelectParentCategories } from '~/api/ApiSelect';
-import { addSubCategory, getSubCategoryByCode, updateSubCategory } from '../services/ApiCategories';
-import { createPortal } from 'react-dom';
+import { isObjectOneValue, isParam } from '~/utils/CheckValue';
+import SubCategoryValidation, { InitialSubCategoryAdd, InitialSubCategoryUpdate } from '../validation/SubCategoryValidation';
 import Loading from '~/components/loading';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from '~/components/modal';
-import useJwt from '~/hooks/useJwt';
-import useStatus from '~/hooks/useStatus';
-import { isObjectOneValue, isParam } from '~/utils/CheckValue';
-import InputGroup from '~/components/form/InputGroup';
-import Label from '~/components/form/Label';
-import Input from '~/components/form/Input';
-import Errors from '~/components/form/Errors';
-import Selection from '~/components/form/Selection';
+import { getTitleForm } from '~/utils/HandleValue';
+import { Errors, Input, InputGroup, Label, Selection } from '~/components/form';
+
 
 const ModalFormSubCategory = (props, ref) => {
+
+    const loadingSumbit = useSelector(loadingCategorySelector);
 
     const { showing, openModal, closeModal } = useModal();
 
@@ -37,21 +41,19 @@ const ModalFormSubCategory = (props, ref) => {
         }
     }));
 
-    const loadingSumbit = useSelector(loadingCategorySelector);
-
     const { accessToken, dispatch, navigate, axiosJwt } = useJwt();
 
-    const { allStatus } = useStatus(accessToken, dispatch, axiosJwt);
-
-    const [parents, setParents] = useState([]);
+    const { allStatus } = useStatus();
 
     const [isLoading, setIsLoading] = useState(false);
 
+    const [parents, setParents] = useState(EMPTY_ARRAY);
+
     const {
+        register,
         handleSubmit,
         getValues,
         setError,
-        setValue,
         reset,
         control,
         formState: { errors }
@@ -63,17 +65,19 @@ const ModalFormSubCategory = (props, ref) => {
 
     useEffect(() => {
         const handleLoad = async () => {
-
             if (!showing) return;
 
-            const allParent = await getSelectParentCategories(accessToken, dispatch, axiosJwt)
-            setParents(allParent);
+            const allParent = await getSelectParentCategories(accessToken, axiosJwt,
+                handleCloseModal);
 
-            loadData();
+            if (allParent) {
+                setParents(allParent);
+                loadData();
+            }
         }
         handleLoad();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [param])
+    }, [param]);
 
     const loadData = async () => {
 
@@ -81,16 +85,14 @@ const ModalFormSubCategory = (props, ref) => {
             const data = await getSubCategoryByCode(param, accessToken, dispatch, navigate,
                 axiosJwt, handleCloseModal);
             if (data) {
-                reset(InitialValuesUpdate(data));
+                reset(InitialSubCategoryUpdate(data));
                 setIsLoading(true);
             }
         } else {
-            reset(InitialValuesAdd());
+            reset(InitialSubCategoryAdd());
             setIsLoading(true);
         }
     }
-
-    const { handleBlur } = useBlur(setValue);
 
     const onSubmit = (data) => {
 
@@ -99,12 +101,14 @@ const ModalFormSubCategory = (props, ref) => {
             throw new Error('Vui lòng chọn lại loại sản phẩm cha');
         }
 
+        const parentName = parent[DEFAULT_INDEX]?.label;
+
         if (isParam(param)) {
             updateSubCategory(param, data, accessToken, dispatch, axiosJwt, setError,
-                parent[DEFAULT_INDEX]?.label, handleCloseModal);
+                parentName, handleCloseModal);
         } else {
-            addSubCategory(data, accessToken, dispatch, axiosJwt, setError,
-                parent[DEFAULT_INDEX]?.label, handleCloseModal);
+            addSubCategory(data, accessToken, dispatch, axiosJwt, setError, parentName,
+                handleCloseModal);
         }
     }
 
@@ -116,70 +120,80 @@ const ModalFormSubCategory = (props, ref) => {
 
     if (!showing || !isLoading) return;
 
-    console.log(showing);
-
     return createPortal(
         <>
             {
                 loadingSumbit && <Loading />
             }
             <Modal>
-                <form className='form' onSubmit={handleSubmit(onSubmit)}>
+                <form className='flex-col' onSubmit={handleSubmit(onSubmit)}>
                     <ModalHeader
-                        title={isParam(param) ? 'Update Sub Category' : 'Add Sub Category'}
+                        title={`${getTitleForm(param)} danh mục con`}
                         onClose={handleCloseModal}
                     />
                     <ModalBody>
-                        <InputGroup className={'mb-7'} >
-                            <Label className={'fs-6 mb-2'} title={'Name'} />
+                        <InputGroup className={'!mb-7'}>
+                            <Label title={'Tên sản phẩm'}
+                                className='text-6 mb-2'
+                            />
                             <Input
                                 className={'form-control form-control-solid mb-3 mb-lg-0'}
                                 type={'text'}
-                                name={'name'}
-                                placeholder={'Name Sub Category'}
-                                onBlur={handleBlur}
-                                values={getValues("name") ? getValues("name") : ""}
+                                placeholder={'Vui lòng nhập tên loại sản phẩm chính'}
+                                register={register('name')}
                             />
                             {errors.name && <Errors title={errors.name.message} />}
                         </InputGroup>
-                        <InputGroup className={'mb-7'} >
-                            <Label className={'fs-6 mb-2'} title={'Code'} />
+                        <InputGroup className={'!mb-7'}>
+                            <Label title={'Tên sản phẩm'}
+                                className='text-6 mb-2'
+                            />
                             <Input
                                 className={'form-control form-control-solid mb-3 mb-lg-0'}
                                 type={'text'}
-                                name={'code'}
-                                placeholder={'Code Sub Category'}
-                                onBlur={handleBlur}
-                                values={getValues("code") ? getValues("code") : ""}
+                                placeholder={'Vui lòng nhập mã loại sản phẩm chính'}
+                                register={register('code')}
                             />
                             {errors.code && <Errors title={errors.code.message} />}
                         </InputGroup>
-                        <InputGroup className={'mb-7'} >
-                            <Label className={'fs-6 mb-2'} title={'Status'} />
-                            <Selection options={allStatus}
-                                name={"status"}
+                        <InputGroup className={'!mb-7'}>
+                            <Label title={'Trạng thái loại sản phẩm'}
+                                className='text-6 mb-2'
+                            />
+                            <Selection
+                                options={allStatus}
+                                name={'status'}
                                 control={control}
                                 value={getValues("status")}
-                                placeholder='Chọn trạng thái sản phẩm'
-                                noOptionsMessage='Không có trạng thái sản phẩm'
+                                placeholder='Chọn trạng thái loại sản phẩm'
+                                noOptionsMessage='Không có trạng thái loại sản phẩm'
                             />
-                            {errors.status && <Errors title={errors.status.message} />}
+                            {errors.status && <Errors
+                                title={errors.status.message}
+                                className='text-start'
+                            />}
                         </InputGroup>
-                        <InputGroup className={'mb-7'} >
-                            <Label className={'fs-6 mb-2'} title={'Parent Category'} />
-                            <Selection options={parents}
-                                name={"parent"}
+                        <InputGroup>
+                            <Label title={'Trạng thái loại sản phẩm'}
+                                className='text-6 mb-2'
+                            />
+                            <Selection
+                                options={parents}
+                                name={'parent'}
                                 control={control}
-                                value={getValues("parent")}
+                                value={getValues("status")}
                                 placeholder='Chọn danh mục cha'
                                 noOptionsMessage='Không có danh mục cha'
                             />
-                            {errors.parent && <Errors title={errors.parent.message} />}
+                            {errors.parent && <Errors
+                                title={errors.parent.message}
+                                className='text-start'
+                            />}
                         </InputGroup>
                     </ModalBody>
                     <ModalFooter
-                        focus={false}
-                        loading={false}
+                        onClose={handleCloseModal}
+                        param={param}
                     />
                 </form>
             </Modal>
@@ -188,4 +202,4 @@ const ModalFormSubCategory = (props, ref) => {
     )
 }
 
-export default forwardRef(ModalFormSubCategory);
+export default forwardRef(ModalFormSubCategory)

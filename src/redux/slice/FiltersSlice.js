@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { DEFAULT_FILTERS, DEFAULT_PAGINATION } from "~/constants/AppConstant";
+import { DEFAULT_FILTERS } from "~/constants/AppConstant";
 import { isFilter } from "~/utils/CheckValue";
 import { isEqual } from "~/utils/Compare";
 
@@ -20,7 +20,22 @@ const FiltersSlice = createSlice({
             state.filters = action.payload;
         },
         limitFilterChange: (state, action) => {
-            state.filters = { ...state.filters, ...action.payload };
+
+            const { newLimit, totalPage } = action.payload;
+
+            let newFilters;
+            if (state.filters?.page * newLimit > totalPage) {
+                newFilters = {
+                    limit: newLimit,
+                    page: DEFAULT_FILTERS.page,
+                }
+            } else {
+                newFilters = {
+                    limit: parseInt(newLimit)
+                };
+            }
+
+            state.filters = { ...state.filters, ...newFilters };
         },
         pageFilterChange: (state, action) => {
             state.filters = { ...state.filters, page: action.payload };
@@ -32,7 +47,7 @@ const FiltersSlice = createSlice({
         setFiltersDefault: (state) => {
             state.filters = {
                 limit: state.filters?.limit,
-                page: DEFAULT_PAGINATION.PAGE,
+                page: DEFAULT_FILTERS.page,
             }
         },
         resetFiltersAddData: (state) => {
@@ -49,14 +64,14 @@ const FiltersSlice = createSlice({
             if (!isEqual(state.filters, newFilters)) {
                 state.filters = {
                     ...newFilters,
-                    page: DEFAULT_PAGINATION.PAGE,
+                    page: DEFAULT_FILTERS.page,
                 }
             }
         },
         searchStatusChange: (state, action) => {
             const newFilters = {
                 ...state.filters,
-                page: DEFAULT_PAGINATION.PAGE,
+                page: DEFAULT_FILTERS.page,
                 status: action.payload,
             }
             if (!isEqual(state.filters, newFilters)) {
@@ -69,7 +84,7 @@ const FiltersSlice = createSlice({
 
             const newFilters = {
                 ...state.filters,
-                page: DEFAULT_PAGINATION.PAGE,
+                page: DEFAULT_FILTERS.page,
                 time_start: time_start,
                 time_ended: time_ended,
             }
@@ -84,19 +99,19 @@ const FiltersSlice = createSlice({
             }
         },
         defaultSearchTextChange: (state) => {
-            const newFilters = { ...state.filters, page: DEFAULT_PAGINATION.PAGE };
+            const newFilters = { ...state.filters, page: DEFAULT_FILTERS.page };
             delete newFilters['title_like'];
             state.filters = newFilters;
         },
         defaultSearchStatusChange: (state) => {
             if (state.filters?.status) {
-                const newFilters = { ...state.filters, page: DEFAULT_PAGINATION.PAGE };
+                const newFilters = { ...state.filters, page: DEFAULT_FILTERS.page };
                 delete newFilters["status"];
                 state.filters = newFilters;
             }
         },
         defaultSearchDateRangeChange: (state) => {
-            const newFilters = { ...state.filters, page: DEFAULT_PAGINATION.PAGE };
+            const newFilters = { ...state.filters, page: DEFAULT_FILTERS.page };
             delete newFilters["time_start"];
             delete newFilters["time_ended"];
             state.filters = newFilters;
@@ -122,4 +137,4 @@ export const {
     defaultSearchDateRangeChange,
 } = FiltersSlice.actions;
 
-export default FiltersSlice.reducer;	
+export default FiltersSlice.reducer;

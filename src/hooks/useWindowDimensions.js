@@ -1,18 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { MAX_INNERWIDTH } from "~/constants/AppConstant";
 import { isDimensionsSelector } from "~/redux/selectors";
 import { updateIsDimensions } from "~/redux/slice/DimensionsSlice";
 
-const MAX_INNERWIDTH = 991;
-
 const useWindowDimensions = () => {
-
     const isDimensions = useSelector(isDimensionsSelector);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        function handleResize() {
+        const handleResize = () => {
             if (window.innerWidth >= MAX_INNERWIDTH) {
                 dispatch(updateIsDimensions(false));
             }
@@ -29,4 +27,4 @@ const useWindowDimensions = () => {
     return isDimensions;
 }
 
-export default useWindowDimensions;
+export default useWindowDimensions

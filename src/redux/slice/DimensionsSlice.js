@@ -1,23 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const DimensionsSlice = createSlice({
     name: "dimensions",
     initialState: {
         isDimensions: window.innerWidth < 991,
-        isSideBar: false,
+        isAside: false,
     },
     reducers: {
         updateIsDimensions: (state, action) => {
             if (state.isDimensions !== action.payload) {
                 state.isDimensions = action.payload
             }
-
-            if (state.isSideBar) {
-                state.isSideBar = !state.isSideBar
-            }
         },
         toggleMenu: (state) => {
-            state.isSideBar = !state.isSideBar
+            state.isAside = !state.isAside
         },
     }
 });

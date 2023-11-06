@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { createAxios } from '~/api/AxiosClient';
-import { userSelector } from '~/redux/selectors';
-import { loginSuccess } from '~/redux/slice/AuthSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { createAxios } from "~/api/AxiosClient";
+import { userSelector } from "~/redux/selectors";
+import { loginSuccess } from "~/redux/slice/AuthSlice";
 
 const useJwt = () => {
 

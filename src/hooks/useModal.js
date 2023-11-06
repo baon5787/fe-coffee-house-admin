@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-
 const useModal = () => {
-
     const [showing, setShowing] = useState(false);
 
     const openModal = () => setShowing(true);
@@ -16,4 +14,4 @@ const useModal = () => {
     }
 }
 
-export default useModal;
+export default useModal

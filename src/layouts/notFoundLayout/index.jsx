@@ -1,14 +1,13 @@
 import React from 'react'
-import { Outlet, useLocation } from 'react-router-dom';
-import Wrapper from '~/components/wrapper';
+import { Outlet } from 'react-router-dom'
+import Wrapper from '~/components/wrapper'
 
 const NotFoundLayout = () => {
-    const location = useLocation();
     return (
         <Wrapper>
-            <Outlet context={location.pathname} />
+            <Outlet />
         </Wrapper>
     )
 }
 
-export default NotFoundLayout;
+export default NotFoundLayout

@@ -1,34 +1,20 @@
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { TfiMenu } from 'react-icons/tfi'
-import logos from '~/images/logos';
-import { useDispatch } from 'react-redux';
-import { toggleMenu } from '~/redux/slice/DimensionsSlice';
+import logos from '~/assets/image/logos'
 
-const LogoBar = () => {
-
-    const dispatch = useDispatch();
-
-    const handleOpenMenu = () => {
-        dispatch(toggleMenu());
-    }
+const LogoBar = ({ iconMenuRef }) => {
 
     return (
-        <>
-            <div className='d-flex d-lg-none align-items-center flex-grow-1'>
-                <div className='btn btn-icon btn-circle btn-active-light-primary ms-n2 me-1'
-                    onClick={() => handleOpenMenu()}
-                >
-                    <span className='svg-icon svg-icon-2x'>
-                        <TfiMenu></TfiMenu>
-                    </span>
-                </div>
-                <Link to={'/'} className='d-lg-none'>
-                    <img alt="Logo" src={logos.logo} className='max-h-40px' />
-                </Link>
+        <div className='flex items-center grow'>
+            <div className='btn btn-icon rounded-circle -ml-2 mr-1 btn-active-light-primary'
+                ref={iconMenuRef}
+            >
+                <FontAwesomeIcon icon={faBars} className='text-1 text-text-theme-muted' />
             </div>
-        </>
+            <img src={logos.img} alt="logo" className='max-h-[40px]' />
+        </div>
     )
 }
 
-export default LogoBar;
+export default LogoBar

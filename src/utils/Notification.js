@@ -1,6 +1,6 @@
+import { swalMixinError, swalMixinSuccess } from "~/components/swal/Swal";
 import { HTTP_STATUS, MSG_ERROR } from "~/constants/AppConstant";
 import { isValueFunction, isValueObject, isValueString } from "./CheckValue";
-import { swalMixinError, swalMixinSuccess } from "~/components/swal/Swal";
 import { getTitleErrorParam } from "./HandleValue";
 
 export const notificationErrorForm = (res, setErrorForm, setError) => {

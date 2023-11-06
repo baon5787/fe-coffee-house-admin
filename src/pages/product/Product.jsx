@@ -1,62 +1,61 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { Card } from '~/components/card';
-import { SearchStatus, SearchText } from '~/components/filters';
-import { OPTION_PAGE } from '~/constants/AppConstant';
-import { PATH } from '~/constants/Paths';
-import { DeleteSelectedProduct, ProductList } from '~/features/product';
-import { errorProductSelector, isSelectedProductsSelector, titleErrorProductSelector } from '~/redux/selectors';
-import { resetFilters } from '~/redux/slice/FiltersSlice';
+import useBase from '~/hooks/useBase'
+import { resetFilters } from '~/redux/slice/FiltersSlice'
+import { Card, CardBody, CardHeader, CardToolbar } from '~/components/card'
+import { SearchStatus, SearchText } from '~/components/filters'
+import { OPTION_PAGE } from '~/constants/AppConstant'
+import { PATH } from '~/constants/Paths'
+import {
+    DeleteSelectedProduct, ProductList, TableProduct, useProduct
+} from '~/features/product'
 
 const Product = () => {
 
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const { dispatch, navigate } = useBase();
+
+    const { error, msg, isSelected } = useProduct();
 
     const handleAddProduct = () => {
         dispatch(resetFilters());
         navigate(PATH.ADD);
     }
 
-    const isSelected = useSelector(isSelectedProductsSelector);
-
-    const error = useSelector(errorProductSelector);
-
-    const msg = useSelector(titleErrorProductSelector);
-
     return (
-        <>
-            <Card
-                className={!error || !msg.trim() ? '' : 'h-md-100'}
-            >
-                {
-                    !error || !msg.trim() ? (
-                        <div className='card-header align-items-center py-5 gap-2 gap-md-5'>
-                            <SearchText
-                                placeholder={"Search Product Name"}
-                            />
-                            {
-                                isSelected ? (
-                                    <DeleteSelectedProduct option={OPTION_PAGE.ENABLED} />
-                                ) : (
-                                    <div className='card-toolbar flex-row-fluid justify-content-end gap-5'>
-                                        <SearchStatus />
-                                        <div className='btn btn-primary' onClick={() => handleAddProduct()}>
-                                            Add Product
-                                        </div>
-                                    </div>
-                                )
-                            }
-                        </div>
-                    ) : ''
-                }
+        <Card
+            className={!error || !msg.trim() ? '' : 'md:h-full'}
+        >
+            <CardHeader className={'!text-center !py-5 md:gap-5 gap-2 !border-bottom-card-none'}>
+                <SearchText
+                    placeholder='Search Product Name'
+                />
+                <CardToolbar className={'gap-5 justify-end flex-[1_auto] min-w-0'}>
+                    {
+                        isSelected
+                            ? (<DeleteSelectedProduct
+                                option={OPTION_PAGE.ENABLED}
+                            />)
+                            : (
+                                <>
+                                    <SearchStatus />
+                                    <button className='btn btn-primary'
+                                        onClick={() => handleAddProduct()}
+                                    >
+                                        Add Product
+                                    </button>
+                                </>
+                            )
+                    }
+                </CardToolbar>
+            </CardHeader>
+            <CardBody className={'!pt-0'}>
                 <ProductList
                     option={OPTION_PAGE.ENABLED}
-                />
-            </Card>
-        </>
+                >
+                    <TableProduct option={OPTION_PAGE.ENABLED} />
+                </ProductList>
+            </CardBody>
+        </Card>
     )
 }
 
-export default Product;
+export default Product

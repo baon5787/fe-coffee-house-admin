@@ -1,18 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types';
 
 const Thead = ({ children }) => {
     return (
         <thead>
-            <tr className='text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0'>
+            <tr className='text-start text-text-gray-400 font-semibold text-7 uppercase'>
                 {children}
             </tr>
         </thead>
     )
 }
 
-Thead.propTypes = {
-    children: PropTypes.array.isRequired,
-}
-
-export default Thead;
+export default Thead

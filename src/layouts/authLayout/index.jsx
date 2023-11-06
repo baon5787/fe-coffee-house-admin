@@ -1,43 +1,27 @@
-import React from 'react'
-import logos from '~/images/logos';
-import illustrations from '~/images/illustrations';
+import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom';
+import auths from '~/assets/image/auths';
 
 const AuthLayout = () => {
+    useEffect(() => {
+        document.body.classList.add('auth-bg');
+        document.getElementById('root').removeAttribute("class")
+        document.getElementById('root').classList.add('auth-page')
+    }, [])
+
     return (
-        <div className='d-flex flex-column flex-lg-row flex-column-fluid'>
-            <div className='d-flex flex-column flex-lg-row-auto w-xl-600px bg-primary positon-xl-relative'>
-                <div className='d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y'>
-                    <div className='d-flex flex-row-fluid flex-column flex-center text-center p-10 pt-lg-20'>
-                        <div className='py-9 mb-10'>
-                            <img
-                                alt="Logo" src={logos.logo}
-                                className='h-70px'
-                            />
-                        </div>
-                        <h1 className='fw-bold fs-2qx pb-5 pb-md-10 text-white'>Welcome to Rider</h1>
-                        <p className='text-white fw-semibold fs-2'>
-                            Discover Simply Amazing Admin Dashboard <br />
-                            With The Stunning Design System
-                        </p>
-                        <div className='d-flex flex-row-auto flex-center"'>
-                            <img
-                                src={illustrations.dozzy} alt=""
-                                className='h-200px h-lg-350px mb-10'
-                            />
-                        </div>
-                    </div>
+        <>
+            <div className='grid-area-aside relative hidden lg:flex justify-center items-center m-[2rem_0_2rem_2rem] bg-auth-bg rounded-[1.125rem]'>
+                <img src={auths.img} alt="" className='max-h-[65%] h-auto' />
+                <img src={auths.shapeLight} alt="" className='absolute w-full bottom-0 left-0 h-[35%]' />
+            </div>
+            <div className='grid-area-body xl:grid flex items-center p-4 sm:p-12'>
+                <div className='w-[400px] mx-auto'>
+                    <Outlet />
                 </div>
             </div>
-            <div className='d-flex flex-column flex-lg-row-fluid py-10'>
-                <div className='d-flex flex-center flex-column flex-column-fluid'>
-                    <div className='w-lg-500px p-10 p-lg-15 mx-auto'>
-                        <Outlet />
-                    </div>
-                </div>
-            </div>
-        </div>
+        </>
     )
 }
 
-export default AuthLayout;
+export default AuthLayout

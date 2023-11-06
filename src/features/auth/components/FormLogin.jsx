@@ -1,84 +1,85 @@
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
+import { Errors, Input, InputGroup, InputPassword, Label } from '~/components/form'
+import useBase from '~/hooks/useBase'
+import LoginValidation from '../validation/LoginValidation'
 import { yupResolver } from '@hookform/resolvers/yup';
-import React from 'react'
-import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { loginUser } from '~/api/ApiAuth';
-import Errors from '~/components/form/Errors';
-import Input from '~/components/form/Input';
-import InputGroup from '~/components/form/InputGroup';
-import InputPassword from '~/components/form/InputPassword';
-import Label from '~/components/form/Label';
-import { useBlur } from '~/hooks';
-import { getValueString } from '~/utils/HandleValue';
-import LoginValidation from '../validation/LoginValidation';
+import { loginUser } from '../services/ApiAuth'
+import { isValueUndefined } from '~/utils/CheckValue'
 
 const FormLogin = () => {
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const { dispatch, navigate } = useBase();
+
+    const [titleError, setTitleError] = useState();
 
     const {
         handleSubmit,
-        setValue,
-        getValues,
+        register,
+        setError,
         formState: { errors }
     } = useForm({
-        mode: "onSubmit",
+        mode: "onBlur",
+        reValidateMode: 'onBlur',
         resolver: yupResolver(LoginValidation())
     });
 
-    const { handleBlur } = useBlur(setValue);
+    const onSubmit = (data) => {
+        loginUser(data, dispatch, navigate, setError, setTitleError);
+    }
 
-    const onSubmit = async (data) => {
-        console.log(JSON.stringify(data));
-        loginUser(data, dispatch, navigate);
-    };
 
     return (
-        <form
-            className='form w-100 fv-plugins-bootstrap5 fv-plugins-framework'
+        <form className='w-full'
             onSubmit={handleSubmit(onSubmit)}
         >
-            <div className='text-center mb-10'>
-                <h1 className='text-dark mb-3'>Sign In to Rider HTML Pro</h1>
-            </div>
-            <InputGroup className={"mb-10"}>
-                <Label title={'Tên sản phẩm'} />
-                <Input
-                    className={'form-control mb-2'}
-                    type={'text'}
-                    name={'email'}
-                    placeholder={'Vui lòng nhập tên sản phẩm'}
-                    onBlur={handleBlur}
-                    values={getValueString(getValues('email'))}
+            {
+                !isValueUndefined(titleError) && !(!titleError.trim()) && (
+                    <p className='invalid-feedback flex justify-center text-4 mb-5'>
+                        {titleError}
+                    </p>
+                )
+            }
+            <InputGroup className={'!mb-10'}>
+                <Label
+                    title={'Tên sản phẩm'}
+                    className={'text-6 font-semibold text-text-theme-dark'}
                 />
-                {errors.name && <Errors title={errors.name.message} />}
+                <Input
+                    className={'form-control-lg form-control-solid mb-2'}
+                    type={'email'}
+                    placeholder={'Vui lòng nhập tên sản phẩm'}
+                    register={register('email')}
+                    autoComplete='off'
+                />
+                {errors.email && <Errors title={errors.email.message} />}
             </InputGroup>
-
-            <InputGroup className={'mb-7'} >
-                <div className='d-flex flex-stack mb-2'>
-                    <label className='form-label fw-bold text-dark fs-6 mb-0'>Password</label>
-                    <Link
-                        to='password-reset' className='link-primary fs-6 fw-bold'
-                    >Forgot Password ?</Link>
+            <InputGroup className={'!mb-10'}>
+                <div className='flex items-center justify-between mb-2'>
+                    <Label title={'Tên sản phẩm'}
+                        className={'text-text-theme-dark font-semibold text-6'}
+                    />
+                    <Link className='font-semibold text-6 text-theme-primary decoration-theme-primary hover:text-link-hover-color hover:decoration-link-hover-color-rgb'>
+                        Forgot Password ?
+                    </Link>
                 </div>
                 <InputPassword
-                    className={'form-control mb-2'}
-                    name={'password'}
-                    placeholder={'Vui lòng nhập tên sản phẩm'}
-                    onBlur={handleBlur}
-                    values={getValueString(getValues('password'))}
+                    className={'form-control form-control-solid form-control-lg mb-2'}
+                    placeholder={'Vui lòng nhập password'}
+                    register={register('password')}
+                    autoComplete='off'
                 />
                 {errors.password && <Errors title={errors.password.message} />}
             </InputGroup>
             <div className='text-center'>
-                <button type="submit" className='btn btn-lg btn-primary w-100 mb-5'>
-                    <span className='indicator-label'>Continue</span>
+                <button className='btn btn-primary w-[calc(100%-calc(3rem+2px))]'
+                >
+                    Continue
                 </button>
             </div>
         </form>
     )
 }
 
-export default FormLogin;
+export default FormLogin

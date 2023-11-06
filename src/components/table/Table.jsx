@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import './Table.css';
 
 const Table = ({ className, children }) => {
     return (
-        <div className='table-responsive'>
-            <table className={`table align-middle table-row-dashed fs-6 gy-5 ${className}`}>
+        <div className='overflow-x-auto'>
+            <table className={`${className ? className : null}`}>
                 {children}
             </table>
         </div>
@@ -13,8 +12,7 @@ const Table = ({ className, children }) => {
 }
 
 Table.propTypes = {
-    className: PropTypes.string.isRequired,
-    children: PropTypes.array.isRequired,
+    className: PropTypes.string,
 }
 
-export default Table;
+export default Table

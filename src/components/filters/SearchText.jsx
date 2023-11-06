@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import useDebounce from '~/hooks/useDebounce';
-import { searchTextSelector } from '~/redux/selectors';
-import { defaultSearchTextChange, searchTextChange } from '~/redux/slice/FiltersSlice';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types';
-import { SearchIcon } from '../icons/Icons';
+import useDebounce from '~/hooks/useDebounce'
+import { Input } from '../form'
+import { defaultSearchTextChange, searchTextChange } from '~/redux/slice/FiltersSlice'
+import { searchTextSelector } from '~/redux/selectors'
+
 
 const SearchText = ({ placeholder }) => {
 
@@ -45,22 +48,19 @@ const SearchText = ({ placeholder }) => {
         setTitleLike(e.target.value);
     }
 
+
     return (
-        <>
-            <div className='card-title'>
-                <div className='d-flex align-items-center position-relative my-1'>
-                    <span className='svg-icon svg-icon-3 position-absolute ms-4'>
-                        <SearchIcon size={18} />
-                    </span>
-                    <input className='form-control form-control-solid w-250px ps-15'
-                        type="text"
-                        placeholder={placeholder}
-                        onChange={(e) => handleSearchText(e)}
-                        value={titleLike}
-                    />
-                </div>
+        <div className='card-title'>
+            <div className='flex relative items-center my-1'>
+                <FontAwesomeIcon icon={faMagnifyingGlass} className='svg-icon absolute ml-4 lg:w-search-lg lg:h-search-lg w-search h-search' />
+                <Input className={'form-control form-control-solid !w-[250px] pl-12'}
+                    type="text"
+                    placeholder={placeholder}
+                    onChange={(e) => handleSearchText(e)}
+                    value={titleLike}
+                />
             </div>
-        </>
+        </div>
     )
 }
 
@@ -68,4 +68,4 @@ SearchText.propTypes = {
     placeholder: PropTypes.string.isRequired,
 }
 
-export default SearchText;
+export default SearchText

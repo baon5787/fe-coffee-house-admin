@@ -1,48 +1,47 @@
 import { useState } from 'react';
 import * as Yup from 'yup';
-import { productMatchName, productMatchSku } from '../services/ApiCheckMatch';
-import { MATCH, MAX_SIZE, MIN_LENGTH } from '~/constants/AppConstant';
+import { DEFAULT_INDEX, MATCH, MAX_SIZE, MIN_LENGTH } from "~/constants/AppConstant"
+import { productMatchName, productMatchSku } from '../services/ApiProductMatch';
 
-export const setErrorForm = (data, setError) => {
+export const setErrorProductForm = (data, setError) => {
 
     data?.image && setError('image', {
-        type: "customer",
+        type: "product",
         message: data?.image
     })
 
     data?.name && setError('name', {
-        type: "customer",
+        type: "product",
         message: data?.name
     })
 
     data?.sku && setError('sku', {
-        type: "customer",
+        type: "product",
         message: data?.sku
     })
 
     data?.price && setError('price', {
-        type: "customer",
+        type: "product",
         message: data?.price
     })
 
     data?.description && setError('description', {
-        type: "customer",
+        type: "product",
         message: data?.description
     })
 
     data?.status && setError('status', {
-        type: "customer",
+        type: "product",
         message: data?.status
     })
 
     data?.category && setError('status', {
-        type: "customer",
+        type: "product",
         message: data?.category
     })
-
 }
 
-export const InitialValuesAdd = () => {
+export const InitialProdctAdd = () => {
     return {
         image: "",
         name: "",
@@ -55,7 +54,7 @@ export const InitialValuesAdd = () => {
     }
 }
 
-export const InitialValuesUpdate = (product) => {
+export const InitialProductUpdate = (product) => {
     return {
         image: product?.imageUrl ? product?.imageUrl : "",
         name: product?.name,
@@ -67,7 +66,6 @@ export const InitialValuesUpdate = (product) => {
         sizes: product?.sizes
     }
 }
-
 
 const ProductValidation = (accessToken, axiosJwt, dispatch, params, allStatus, categories) => {
 
@@ -86,13 +84,13 @@ const ProductValidation = (accessToken, axiosJwt, dispatch, params, allStatus, c
                         return true;
                     }
 
-                    if (value.length <= 0) {
+                    if (value.length <= MIN_LENGTH) {
                         return ctx.createError({ message: 'Vui lòng chọn hình ảnh sản phẩm' });
                     }
-                    if (value.length && value[0].size > MAX_SIZE) {
+                    if (value.length && value[DEFAULT_INDEX].size > MAX_SIZE) {
                         return ctx.createError({ message: `Kích thước tệp quá lớn (Max <= ${MAX_SIZE})` });
                     }
-                    if (value.length && !["image/jpeg", "image/png", "image/jpg"].includes(value[0].type)) {
+                    if (value.length && !["image/jpeg", "image/png", "image/jpg"].includes(value[DEFAULT_INDEX].type)) {
                         return ctx.createError({ message: 'Định dạng tệp không được hỗ trợ' });
                     }
                     return true;
@@ -120,7 +118,8 @@ const ProductValidation = (accessToken, axiosJwt, dispatch, params, allStatus, c
                             return ctx.createError({ message: message });
                         }
 
-                        const match = await productMatchName(value, params, accessToken, dispatch, axiosJwt);
+                        const match = await productMatchName(value, params, accessToken,
+                            dispatch, axiosJwt);
                         if (match === MATCH) {
                             const message = 'Tên sản phẩm đã sử dụng rồi';
                             setNameMessage(message)
@@ -160,7 +159,8 @@ const ProductValidation = (accessToken, axiosJwt, dispatch, params, allStatus, c
                             return ctx.createError({ message: message });
                         }
 
-                        const match = await productMatchSku(value, params, accessToken, dispatch, axiosJwt);
+                        const match = await productMatchSku(value, params, accessToken,
+                            dispatch, axiosJwt);
                         if (match === MATCH) {
                             const message = 'Kí hiệu sản phẩm đã sử dụng rồi';
                             setSkuMessage(message)
@@ -189,8 +189,8 @@ const ProductValidation = (accessToken, axiosJwt, dispatch, params, allStatus, c
                 name: 'is-description',
                 skipAbsent: true,
                 test(value, ctx) {
-                    if (value.match(/[`!@#$^&*%"_+=[\]{};':\\|<>/?~]/)) {
-                        return ctx.createError({ message: 'Tên sản phẩm không có một số kí tự đặt biệt' });
+                    if (value.match(/[`!@#$^&_+=[\]{};\\|<>/~]/)) {
+                        return ctx.createError({ message: 'Tên sản phẩm không có một số kí tự đặt biệt nay (!@#$^&_+=[]{};<>/\\~)' });
                     }
                     return true;
                 }

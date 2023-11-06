@@ -1,4 +1,9 @@
+import { isValueObject } from "./CheckValue";
+
 export const isEqual = (object, newObject) => {
+
+    if (!isValueObject(object) || !isValueObject(newObject)) return false;
+
     const objKeys = Object.keys(object);
     const objNewKeys = Object.keys(newObject);
 

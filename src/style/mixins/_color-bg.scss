@@ -1,8 +1,0 @@
-// @mixin bg-color-theme($color, $opacity: "default") {
-//     @if (isValue($opacity)) {
-//         --#{$prefix}bg-opacity: #{$opacity};
-//     }
-//     @if ($enbale-color != $color) {
-//         background-color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}bg-opacity, $opacity)) !important;
-//     }
-// }

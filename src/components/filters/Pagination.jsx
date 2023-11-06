@@ -1,12 +1,13 @@
+import { faAngleUp } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { DEFAULT_PAGINATION, MIN_PAGE, MIN_PAGINATION } from '~/constants/AppConstant';
-import { DOTS, usePagination } from '~/hooks/usePagination';
+import { DEFAULT_FILTERS, DOTS, MIN_PAGE, MIN_PAGINATION } from '~/constants/AppConstant';
+import { usePagination } from '~/hooks/usePagination';
 import { pageFilterChange } from '~/redux/slice/FiltersSlice';
+import PropTypes from 'prop-types';
 
-const Pagination = props => {
-
-    const { totalPage, currentPage, siblingCount = 1 } = props;
+const Pagination = ({ totalPage, currentPage, siblingCount = 1 }) => {
 
     const dispatch = useDispatch();
 
@@ -18,72 +19,68 @@ const Pagination = props => {
         siblingCount,
     });
 
-    if (currentPage === MIN_PAGE || !paginationRange || paginationRange.length < MIN_PAGINATION) {
-        return null;
+    if (currentPage === MIN_PAGE || !paginationRange ||
+        paginationRange?.length < MIN_PAGINATION) {
+        return;
     }
 
     return (
-        <>
-            <div className='col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'>
-                <div className='dataTables_paginate paging_simple_numbers'>
-                    <ul className='pagination'>
-                        {
-                            currentPage === DEFAULT_PAGINATION.PAGE ? (
-                                <li className='paginate_button page-item previous disabled'>
-                                    <div className='page-link'><i className='previous'></i></div>
-                                </li>
-                            ) : (
-                                <li className='paginate_button page-item previous bg-hover-body'>
-                                    <div className='page-link'
-                                        onClick={() => handlePageChange(currentPage - 1)}
-                                    ><i className='previous'></i></div>
-                                </li>
-                            )
-                        }
-
-                        {
-                            paginationRange.map((pageNumber, index) => {
-                                if (pageNumber === DOTS) {
-                                    return (
-                                        <li className='paginate_button page-item' key={index}>
-                                            <div className='page-link'>&#8230;</div>
-                                        </li>
-                                    );
+        <ul className='pagination'>
+            <li className={`group paginate_button page-item ${currentPage === DEFAULT_FILTERS.page ? 'disabled' : null}`}
+                onClick={() => currentPage === DEFAULT_FILTERS.page
+                    ? null
+                    : handlePageChange(currentPage - DEFAULT_FILTERS.page)
+                }
+            >
+                <span className='page-link'>
+                    <FontAwesomeIcon
+                        icon={faAngleUp}
+                        rotation={270}
+                        className='w-[0.875rem] h-[0.875rem]'
+                    />
+                </span>
+            </li>
+            {
+                paginationRange.map((pageNumber, index) => {
+                    return (
+                        <li className={`group paginate_button page-item ${pageNumber === currentPage ? 'active' : null}`}
+                            key={index}
+                            onClick={() => pageNumber === DOTS || pageNumber === currentPage
+                                ? null
+                                : handlePageChange(pageNumber)
+                            }
+                        >
+                            <span className='page-link'>
+                                {
+                                    pageNumber === DOTS ? '&#8230;' : pageNumber
                                 }
-                                if (pageNumber === currentPage) {
-                                    return (
-                                        <li className='paginate_button page-item active' key={index}>
-                                            <div className='page-link'>{pageNumber}</div>
-                                        </li>
-                                    )
-                                }
-                                return (
-                                    <li className='paginate_button page-item bg-hover-body' key={index}>
-                                        <div className='page-link'
-                                            onClick={() => handlePageChange(pageNumber)}
-                                        >{pageNumber}</div>
-                                    </li>
-                                )
-                            })
-                        }
-                        {
-                            totalPage === currentPage ? (
-                                <li className='paginate_button page-item next disabled'>
-                                    <div className='page-link'><i className='next'></i></div>
-                                </li>
-                            ) : (
-                                <li className='paginate_button page-item next bg-hover-body'>
-                                    <div className='page-link'
-                                        onClick={() => handlePageChange(currentPage + 1)}
-                                    ><i className='next'></i></div>
-                                </li>
-                            )
-                        }
-                    </ul>
-                </div>
-            </div>
-        </>
+                            </span>
+                        </li>
+                    )
+                })
+            }
+            <li className={`group paginate_button page-item ${currentPage === totalPage ? 'disabled' : null}`}
+                onClick={() => currentPage === totalPage
+                    ? null
+                    : handlePageChange(currentPage + DEFAULT_FILTERS.page)
+                }
+            >
+                <span className='page-link'>
+                    <FontAwesomeIcon
+                        icon={faAngleUp}
+                        rotation={90}
+                        className='w-[0.875rem] h-[0.875rem]'
+                    />
+                </span>
+            </li>
+        </ul>
     )
 }
 
-export default Pagination;
+Pagination.propTypes = {
+    totalPage: PropTypes.number,
+    currentPage: PropTypes.number,
+    siblingCount: PropTypes.number,
+}
+
+export default Pagination

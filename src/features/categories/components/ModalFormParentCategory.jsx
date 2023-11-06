@@ -2,25 +2,23 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
-import { useBlur, useModal, useParam } from '~/hooks';
 import useJwt from '~/hooks/useJwt';
-import useStatus from '~/hooks/useStatus';
+import useModal from '~/hooks/useModal';
+import useParam from '~/hooks/useParam';
 import { loadingCategorySelector } from '~/redux/selectors';
-import ParentCategoryValidation, { InitialValuesAdd, InitialValuesUpdate } from '../validation/ParentCategoryValidation';
+import ParentCategoryValidation, { InitialParentCategoryAdd, InitialParentCategoryUpdate } from '../validation/ParentCategoryValidation';
+import useStatus from '~/hooks/useStatus';
 import { isParam } from '~/utils/CheckValue';
 import { addParentCategory, getParentCategoryByCode, updateParentCategory } from '../services/ApiCategories';
 import { createPortal } from 'react-dom';
 import Loading from '~/components/loading';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from '~/components/modal';
-import InputGroup from '~/components/form/InputGroup';
-import Label from '~/components/form/Label';
-import Input from '~/components/form/Input';
-import { getValueString } from '~/utils/HandleValue';
-import Errors from '~/components/form/Errors';
-import Selection from '~/components/form/Selection';
+import { Errors, Input, InputGroup, Label, Selection } from '~/components/form';
+import { getTitleForm } from '~/utils/HandleValue';
 
+const ModalFormParentCategory = (props, ref) => {
 
-export const ModalFormParentCategory = (props, ref) => {
+    const loadingSumbit = useSelector(loadingCategorySelector);
 
     const { showing, openModal, closeModal } = useModal();
 
@@ -37,28 +35,26 @@ export const ModalFormParentCategory = (props, ref) => {
         }
     }));
 
-    const loadingSumbit = useSelector(loadingCategorySelector);
-
     const { accessToken, dispatch, navigate, axiosJwt } = useJwt();
 
-    const { allStatus } = useStatus(accessToken, dispatch, axiosJwt);
+    const { allStatus } = useStatus();
 
     const [isLoading, setIsLoading] = useState(false);
 
     const {
+        register,
         handleSubmit,
         getValues,
-        setValue,
         setError,
         reset,
         control,
         formState: { errors }
     } = useForm({
-        mode: "onSubmit",
+        mode: "onBlur",
+        reValidateMode: 'onBlur',
         resolver: yupResolver(ParentCategoryValidation(accessToken, axiosJwt, dispatch,
             param, allStatus)),
     });
-
 
     useEffect(() => {
         const handleLoad = () => {
@@ -73,20 +69,26 @@ export const ModalFormParentCategory = (props, ref) => {
     const loadData = async () => {
 
         if (isParam(param)) {
-            const data = await getParentCategoryByCode(param, accessToken, dispatch, navigate,
-                axiosJwt, handleCloseModal);
+            const data = await getParentCategoryByCode(param, accessToken, dispatch,
+                navigate, axiosJwt, handleCloseModal);
+            console.log(data);
             if (data) {
-                reset(InitialValuesUpdate(data));
+                console.log('a')
+                reset(InitialParentCategoryUpdate(data));
+                console.log('b')
                 setIsLoading(true);
             }
         } else {
-            reset(InitialValuesAdd());
+            reset(InitialParentCategoryAdd());
             setIsLoading(true);
         }
     }
 
-    const { handleBlur } = useBlur(setValue);
-
+    const handleCloseModal = () => {
+        setIsLoading(false);
+        closeModal();
+        resetParam();
+    }
 
     const onSubmit = (data) => {
 
@@ -94,15 +96,10 @@ export const ModalFormParentCategory = (props, ref) => {
             updateParentCategory(param, data, accessToken, dispatch, axiosJwt, setError,
                 handleCloseModal);
         } else {
-            addParentCategory(data, accessToken, dispatch, axiosJwt, setError, handleCloseModal);
+            addParentCategory(data, accessToken, dispatch, axiosJwt, setError,
+                handleCloseModal);
         }
     };
-
-    const handleCloseModal = () => {
-        setIsLoading(false);
-        closeModal();
-        resetParam();
-    }
 
     if (!showing || !isLoading) return;
 
@@ -112,51 +109,57 @@ export const ModalFormParentCategory = (props, ref) => {
                 loadingSumbit && <Loading />
             }
             <Modal>
-                <form className='form' onSubmit={handleSubmit(onSubmit)}>
+                <form className='flex-col' onSubmit={handleSubmit(onSubmit)}>
                     <ModalHeader
-                        title={isParam(param) ? 'Update Parent Category' : 'Add Parent Category'}
+                        title={`${getTitleForm(param)} danh mục cha`}
                         onClose={handleCloseModal}
                     />
                     <ModalBody>
-                        <InputGroup className={'mb-7'} >
-                            <Label className={'fs-6 mb-2'} title={'Name'} />
+                        <InputGroup className={'!mb-7'}>
+                            <Label title={'Tên sản phẩm'}
+                                className='text-6 mb-2'
+                            />
                             <Input
                                 className={'form-control form-control-solid mb-3 mb-lg-0'}
                                 type={'text'}
-                                name={'name'}
-                                placeholder={'Name Parent Category'}
-                                onBlur={handleBlur}
-                                values={getValueString(getValues("name"))}
+                                placeholder={'Vui lòng nhập tên loại sản phẩm chính'}
+                                register={register('name')}
                             />
                             {errors.name && <Errors title={errors.name.message} />}
                         </InputGroup>
-                        <InputGroup className={'mb-7'} >
-                            <Label className={'fs-6 mb-2'} title={'Code'} />
+                        <InputGroup className={'!mb-7'}>
+                            <Label title={'Tên sản phẩm'}
+                                className='text-6 mb-2'
+                            />
                             <Input
                                 className={'form-control form-control-solid mb-3 mb-lg-0'}
                                 type={'text'}
-                                name={'code'}
-                                placeholder={'Code Parent Category'}
-                                onBlur={handleBlur}
-                                values={getValueString(getValues('code'))}
+                                placeholder={'Vui lòng nhập mã loại sản phẩm chính'}
+                                register={register('code')}
                             />
                             {errors.code && <Errors title={errors.code.message} />}
                         </InputGroup>
-                        <InputGroup className={'mb-7'} >
-                            <Label className={'fs-6 mb-2'} title={'Status'} />
-                            <Selection options={allStatus}
-                                name={"status"}
+                        <InputGroup>
+                            <Label title={'Trạng thái loại sản phẩm'}
+                                className='text-6 mb-2'
+                            />
+                            <Selection
+                                options={allStatus}
+                                name={'status'}
                                 control={control}
                                 value={getValues("status")}
-                                placeholder='Chọn trạng thái sản phẩm'
-                                noOptionsMessage='Không có trạng thái sản phẩm'
+                                placeholder='Chọn trạng thái loại sản phẩm'
+                                noOptionsMessage='Không có trạng thái loại sản phẩm'
                             />
-                            {errors.status && <Errors title={errors.status.message} />}
+                            {errors.status && <Errors
+                                title={errors.status.message}
+                                className='text-start'
+                            />}
                         </InputGroup>
                     </ModalBody>
                     <ModalFooter
-                        focus={false}
-                        loading={false}
+                        onClose={handleCloseModal}
+                        param={param}
                     />
                 </form>
             </Modal>
@@ -165,4 +168,4 @@ export const ModalFormParentCategory = (props, ref) => {
     )
 }
 
-export default forwardRef(ModalFormParentCategory);
+export default forwardRef(ModalFormParentCategory)

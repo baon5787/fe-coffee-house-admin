@@ -1,11 +1,14 @@
-import { isEmptyArray } from "formik";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { getSelectStatuses } from "~/api/ApiSelect";
-import { statusSelector } from "~/redux/selectors";
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
+import { getSelectStatuses } from '~/api/ApiSelect';
+import { statusSelector } from '~/redux/selectors';
+import { isEmptyArray } from '~/utils/CheckValue';
+import useJwt from './useJwt';
 
-const useStatus = (accessToken, dispatch, axiosJwt) => {
+const useStatus = () => {
     const status = useSelector(statusSelector);
+
+    const { accessToken, dispatch, axiosJwt } = useJwt();
 
     const [allStatus, setAllStatus] = useState();
 
@@ -14,7 +17,9 @@ const useStatus = (accessToken, dispatch, axiosJwt) => {
             let statuses = status;
             if (isEmptyArray(statuses)) {
                 const data = await getSelectStatuses(accessToken, dispatch, axiosJwt);
-                statuses = data;
+                if (data !== undefined) {
+                    statuses = data;
+                }
             }
             setAllStatus(statuses)
         }
@@ -26,4 +31,4 @@ const useStatus = (accessToken, dispatch, axiosJwt) => {
     }
 }
 
-export default useStatus;
+export default useStatus

@@ -1,15 +1,9 @@
-import { useState } from "react"
+import { useState } from 'react';
 import * as Yup from 'yup';
-import { categoryMatchCode, categoryMatchName } from "../services/ApiCheckMatch";
-import { MATCH, MIN_LENGTH } from "~/constants/AppConstant";
+import { MATCH, MIN_LENGTH } from "~/constants/AppConstant"
+import { categoryMatchCode, categoryMatchName } from '../services/ApiCategoryMatch';
 
-export const EnableSubmit = (touchedFields) => {
-    const numberInput = 2;
-    return Object.keys(touchedFields)?.length >= numberInput ? false : true;
-}
-
-
-export const InitialValuesAdd = () => {
+export const InitialParentCategoryAdd = () => {
     return {
         name: "",
         code: "",
@@ -17,7 +11,7 @@ export const InitialValuesAdd = () => {
     }
 }
 
-export const InitialValuesUpdate = (category) => {
+export const InitialParentCategoryUpdate = (category) => {
     return {
         name: category?.name,
         code: category?.code,
@@ -25,7 +19,7 @@ export const InitialValuesUpdate = (category) => {
     }
 }
 
-export const setErrorParentForm = (data, setError) => {
+export const setErrorParentCategoryForm = (data, setError) => {
     data?.name && setError('name', {
         type: "category",
         message: data?.name
@@ -41,7 +35,6 @@ export const setErrorParentForm = (data, setError) => {
         message: data?.status
     })
 }
-
 
 const ParentCategoryValidation = (accessToken, axiosJwt, dispatch, params, statusAll) => {
     const [code, setCode] = useState();
@@ -72,7 +65,8 @@ const ParentCategoryValidation = (accessToken, axiosJwt, dispatch, params, statu
                             return ctx.createError({ message: message });
                         }
 
-                        const match = await categoryMatchName(value, params, accessToken, dispatch, axiosJwt);
+                        const match = await categoryMatchName(value, params, accessToken,
+                            dispatch, axiosJwt);
                         if (match === MATCH) {
                             const message = 'Tên loại sản phẩm bị trùng';
                             setNameMessage(message)
@@ -106,13 +100,15 @@ const ParentCategoryValidation = (accessToken, axiosJwt, dispatch, params, statu
                             return ctx.createError({ message: message });
                         }
 
-                        if (value.match(/[a-z0-9!@#$%^&*()_+\-=\\[\]{};':"\\|,.<>/?]/) || !value.match(/[A-z]+$/)) {
+                        if (value.match(/[a-z0-9!@#$%^&*()_+\-=\\[\]{};':"\\|,.<>/?]/)
+                            || !value.match(/[A-z]+$/)) {
                             const message = 'Mã loại sản phẩm là chữ in hoa';
                             setCodeMessage(message)
                             return ctx.createError({ message: message });
                         }
 
-                        const match = await categoryMatchCode(value, params, accessToken, dispatch, axiosJwt);
+                        const match = await categoryMatchCode(value, params, accessToken,
+                            dispatch, axiosJwt);
                         if (match === MATCH) {
                             const message = 'Mã loại sản phẩm bị trùng';
                             console.log(message);

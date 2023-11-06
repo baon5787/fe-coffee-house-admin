@@ -1,6 +1,6 @@
 import axios from "axios"
+import { loginSuccess } from "~/redux/slice/AuthSlice"
 import jwt_decode from "jwt-decode";
-import { loginSuccess } from "~/redux/slice/AuthSlice";
 
 export const headers = (accesToken) => {
     return {

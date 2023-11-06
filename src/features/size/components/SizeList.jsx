@@ -1,41 +1,35 @@
+import React, { useEffect, useLayoutEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 import queryString from 'query-string';
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import PropTypes from 'prop-types';
 import useTable from '~/hooks/useTable';
-import { useSelector } from 'react-redux';
-import { getErrorSize, sizesSelector } from '~/redux/selectors';
-import { conversionNumberToVND, ordinalNumbers, isLengthChecked, getTitleAction, isUpdateData } from '~/utils/HandleTable';
-import { ALL, DEFAULT_INDEX, OPTION_LIMIT, OPTION_PAGE, SIZE_SORT_FIELD } from '~/constants/AppConstant';
-import { SortName } from '~/components/filters';
-import { deleteSize, getDisenableSizeByCode, getDisenableSizes, getEnableSizeByCode, getSearchDisenableSizes, getSearchSizes, getSizes } from '../services/ApiSize';
-import { getSortDir } from '~/utils/HandleValue';
-import { disenable, enable, erase } from '~/helper/AppString';
-import { CheckBox, LimitAndPagination, Table, Tbody, Thead } from '~/components/table';
-import { deleteChangeSelectSizes } from '~/redux/slice/SizeSlice';
-import style from '../style/Size.module.css'
-import { isEmptyArray, isFilter, isObjectOneValue } from '~/utils/CheckValue';
-import { Forbidden } from '~/components/error';
+import {
+    errorSizeSelector, sizesSelector, titleErrorSizeSelector
+} from '~/redux/selectors';
+import {
+    getDisenableSizes, getSearchDisenableSizes, getSearchSizes, getSizes
+} from '../services/ApiSize';
 import { updateFilters } from '~/redux/slice/FiltersSlice';
-import { getAction } from '~/utils/HandleAction';
-import Action from '~/components/action';
+import { isData, isEmptyArray, isError, isFilter } from '~/utils/CheckValue';
+import { checkDataAndFilter } from '~/utils/HandleTable';
+import { OPTION_LIMIT, OPTION_PAGE } from '~/constants/AppConstant';
+import { Forbidden } from '~/components/error';
+import { LimitAndPagination } from '~/components/table';
 
-const SizeList = ({ option, onUpdate }) => {
+const SizeList = ({ option, children }) => {
 
     const allSize = useSelector(sizesSelector);
-
-    const { dispatch, navigate, accessToken, page, axiosJwt, newFilters, currentPage } = useTable();
-
-    const error = useSelector(getErrorSize);
-
-    const [sortFilterName, setSortFilterName] = useState(getSortDir(newFilters?.sortDir,
-        newFilters?.sortField, SIZE_SORT_FIELD.NAME));
-
-    const [sortFilterPrice, setSortFilterPrice] = useState(getSortDir(newFilters?.sortDir,
-        newFilters?.sortField, SIZE_SORT_FIELD.PRICE));
 
     const [errorForbidden, setErrorForbidden] = useState(false);
 
     const [filters, setFilters] = useState();
+
+    const msg = useSelector(titleErrorSizeSelector);
+
+    const error = isError(useSelector(errorSizeSelector), msg);
+
+    const { dispatch, accessToken, page, axiosJwt, newFilters, currentPage } = useTable();
 
     useEffect(() => {
         if (errorForbidden && filters) {
@@ -75,9 +69,11 @@ const SizeList = ({ option, onUpdate }) => {
 
             if (!accessToken) return;
 
-            if (allSize === null || !allSize || isEmptyArray(allSize)) return;
+            if (isData(allSize)) return;
 
-            if (isUpdateData(allSize?.sizes, allSize?.totalPage, newFilters, dispatch)) {
+            if (checkDataAndFilter(allSize?.sizes, allSize?.totalPage, newFilters,
+                dispatch)
+            ) {
                 getData(cancelToken);
             }
         }
@@ -107,149 +103,40 @@ const SizeList = ({ option, onUpdate }) => {
 
         if (option === OPTION_PAGE.DISENABLE) {
             if (isFilter(newFilters)) {
-                getSearchDisenableSizes(paramsString, accessToken, dispatch, axiosJwt, cancelToken,
-                    setErrorForbidden);
+                getSearchDisenableSizes(paramsString, accessToken, dispatch, axiosJwt,
+                    cancelToken, setErrorForbidden);
             } else {
                 setFilters(newFilters);
-                getDisenableSizes(paramsString, cancelToken, accessToken, dispatch, axiosJwt, page,
-                    currentPage);
+                getDisenableSizes(paramsString, cancelToken, accessToken, dispatch,
+                    axiosJwt, page, currentPage);
             }
         }
     }
 
-    const handleEditOrEnableClick = (code) => {
-        if (option === OPTION_PAGE.ENABLED && onUpdate) {
-            onUpdate(code);
-        }
+    if (error) return <Forbidden msg={msg} />
 
-        if (option === OPTION_PAGE.DISENABLE && !onUpdate) {
-            const size = allSize?.sizes?.filter((size) => size?.code === code);
+    console.log(allSize)
 
-            if (!isObjectOneValue(size)) return;
+    if (isEmptyArray(allSize)) return;
 
-            const title = `kích thước sản phẩm ${size[DEFAULT_INDEX]?.name}`;
-
-            getAction(getEnableSizeByCode, code, enable, title, dispatch, navigate,
-                axiosJwt, accessToken);
-        }
-
-    }
-
-    const handleDeleteOrDisenableClick = (code) => {
-
-        const size = allSize?.sizes?.filter((size) => size?.code === code);
-
-        if (!isObjectOneValue(size)) return;
-
-        const title = `kích thước sản phẩm ${size[DEFAULT_INDEX]?.name}`
-
-        if (option === OPTION_PAGE.ENABLED) {
-            getAction(getDisenableSizeByCode, code, disenable, title, dispatch, navigate,
-                axiosJwt, accessToken);
-        }
-
-        if (option === OPTION_PAGE.DISENABLE) {
-            getAction(deleteSize, code, erase, title, dispatch, navigate, axiosJwt, accessToken);
-        }
-    }
-
-    const handleChangSelected = (e) => {
-        const { value, checked } = e.target;
-
-        let newData;
-
-        if (value === ALL) {
-            newData = allSize?.sizes?.map((size) => {
-                return { ...size, isChecked: checked }
-            })
-        } else {
-            newData = allSize?.sizes?.map((size) =>
-                size?.code === value ? { ...size, isChecked: checked } : size
-            );
-        }
-        dispatch(deleteChangeSelectSizes(newData));
-    }
-
-    if (error?.isError) return <Forbidden msg={error?.msg} />
+    console.log(allSize)
 
     return (
         <>
-            <div className='card-body pt-0'>
-                <div className='dataTables_wrapper dt-bootstrap4 no-footer'>
-                    <Table className={`dataTable no-footer ${style.size}`}>
-                        <Thead>
-                            <th className='min-w-25px'>
-                                <CheckBox
-                                    value={ALL}
-                                    onChange={(e) => handleChangSelected(e)}
-                                    checked={isLengthChecked(allSize?.sizes)}
-                                />
-                            </th>
-                            <th className='min-w-25px'>Số thứ tự</th>
-                            <SortName
-                                sortDir={newFilters?.sortDir}
-                                sortField={newFilters?.sortField}
-                                sortFilter={sortFilterName}
-                                setSortFilter={setSortFilterName}
-                                name={SIZE_SORT_FIELD.NAME}
-                                className={'min-w-125px'}
-                                title={'Tên kích thước sản phẩm'}
-                            />
-                            <th className='min-w-80px'>Mã kích thước sản phẩm</th>
-                            <SortName
-                                sortDir={newFilters?.sortDir}
-                                sortField={newFilters?.sortField}
-                                sortFilter={sortFilterPrice}
-                                setSortFilter={setSortFilterPrice}
-                                name={SIZE_SORT_FIELD.PRICE}
-                                className={'min-w-125px'}
-                                title={'Giá kích thước sản phẩm'}
-                            />
-                            <th className='text-end min-w-70px sorting_disabled'>Actions</th>
-                        </Thead>
-                        <Tbody data={allSize?.sizes}>
-                            {
-                                (size, index) => <tr key={index}>
-                                    <td>
-                                        <CheckBox
-                                            value={size?.code}
-                                            checked={size?.isChecked}
-                                            onChange={(e) => handleChangSelected(e)}
-                                        />
-                                    </td>
-                                    <td>
-                                        {ordinalNumbers(index, newFilters?.limit, newFilters?.page)}
-                                    </td>
-                                    <td>
-                                        <div className="text-gray-600 text-hover-primary mb-1 bg-hover-body text-truncate"
-                                            onClick={() => handleEditOrEnableClick(size?.code)}
-                                        >
-                                            {size?.name}
-                                        </div>
-                                    </td>
-                                    <td>{size?.code}</td>
-                                    <td>{conversionNumberToVND(size?.price)}</td>
-                                    <td className='text-end'>
-                                        <Action
-                                            onEditOrEnableClick={() => handleEditOrEnableClick(size?.code)}
-                                            onDeleteOrDisenableClick={() => handleDeleteOrDisenableClick(size?.code)}
-                                            title={getTitleAction(option)}
-                                        />
-                                    </td>
-                                </tr>
-                            }
-                        </Tbody>
-                    </Table>
-                    <LimitAndPagination
-                        options={OPTION_LIMIT}
-                        value={newFilters?.limit.toString()}
-                        currentPage={newFilters?.page}
-                        totalPage={allSize?.totalPage}
-                    />
-                </div>
-            </div>
+            {children}
+            <LimitAndPagination
+                options={OPTION_LIMIT}
+                value={newFilters?.limit.toString()}
+                currentPage={newFilters?.page}
+                totalPage={allSize?.sizes}
+            />
         </>
-    )
+    );
 }
 
-export default SizeList;
+SizeList.propTypes = {
+    option: PropTypes.oneOf([OPTION_PAGE.ENABLED, OPTION_PAGE.DISENABLE]).isRequired,
+    children: PropTypes.element.isRequired,
+}
+
+export default SizeList

@@ -1,3 +1,9 @@
-export { default as DefaultLayout } from './defaultLayout';
-export { default as NotFoundLayout } from './notFoundLayout'
-export { default as AuthLayout } from './authLayout'
+import DefaultLayout from "./defaultLayout";
+import AuthLayout from "./authLayout";
+import NotFoundLayout from "./notFoundLayout";
+
+export {
+    DefaultLayout,
+    AuthLayout,
+    NotFoundLayout
+}

@@ -1,19 +1,35 @@
 import axios from "axios";
-import { headers, headersAndCancelToken, headersPostAndPut } from "~/api/AxiosClient";
 import { PATH, PATH_API } from "~/constants/Paths";
-import { addCategoryFailed, addCategoryStart, addCategorySuccess, getCategoriesFailed, getCategoriesStart, getCategoriesSuccess, getCategoryByCodeFailed, getCategoryByCodeStart, getCategoryByCodeSuccess, getDeleteCategoryByCodeFailed, getDeleteCategoryByCodeStart, getDeleteCategoryByCodeSuccess, getTitleDeleteCategoryByCodeFailed, getTitleDeleteCategoryByCodeStart, getTitleDeleteCategoryByCodeSuccess, getTitleSelectedDeleteCategoriesFailed, getTitleSelectedDeleteCategoriesStart, getTitleSelectedDeleteCategoriesSuccess, resetCategoryError, selectedDeleteCategoriesFailed, selectedDeleteCategoriesStart, selectedDeleteCategoriesSuccess, updateCategoryFailed, updateCategoryStart, updateCategorySuccess } from "~/redux/slice/CategorySlice";
 import { resetFiltersAddData, updateCurrentPage } from "~/redux/slice/FiltersSlice";
-import { notificationErrorByList, notificationErrorByPathVariable, notificationErrorBySearchList, notificationErrorEditModal, notificationErrorForm, notificationSuccessModalForm } from "~/utils/Notification";
-import { setErrorParentForm } from "../validation/ParentCategoryValidation";
-import { setErrorSubForm } from "../validation/SubCategoryValidation";
+import { headers, headersAndCancelToken, headersPostAndPut } from "~/api/AxiosClient";
+import {
+    addCategoryFailed, addCategoryStart, addCategorySuccess,
+    getCategoriesFailed, getCategoriesStart, getCategoriesSuccess,
+    getCategoryByCodeFailed, getCategoryByCodeStart, getCategoryByCodeSuccess,
+    getDeleteCategoryByCodeFailed, getDeleteCategoryByCodeStart,
+    getDeleteCategoryByCodeSuccess, getTitleDeleteCategoryByCodeFailed,
+    getTitleDeleteCategoryByCodeStart, getTitleDeleteCategoryByCodeSuccess,
+    getTitleSelectedDeleteCategoriesFailed, getTitleSelectedDeleteCategoriesStart,
+    getTitleSelectedDeleteCategoriesSuccess, selectedDeleteCategoriesStart,
+    selectedDeleteCategoriesFailed, selectedDeleteCategoriesSuccess, updateCategoryFailed,
+    updateCategoryStart, updateCategorySuccess, resetCategoryError
+} from "~/redux/slice/CategorySlice";
+import {
+    notificationErrorByList, notificationErrorByPathVariable,
+    notificationErrorBySearchList, notificationErrorEditModal,
+    notificationErrorForm, notificationSuccessModalForm
+} from "~/utils/Notification";
+import { setErrorParentCategoryForm } from "../validation/ParentCategoryValidation";
+import { setErrorSubCategoryForm } from "../validation/SubCategoryValidation";
 
+//Base URL
 const URL_CATEGORY_NOT_FOUND = `/${PATH.CATEGORIES}/${PATH.NOT_FOUND}`;
 
 // Parent Categories
 const CATEGORIES_PARENT = PATH_API.CATEGORIES + PATH_API.PARENT;
 
-export const getParentCategories = async (filters, accessToken, dispatch, axiosJwt, page, currentPage,
-    cancelToken) => {
+export const getParentCategories = async (filters, accessToken, dispatch, axiosJwt, page,
+    currentPage, cancelToken) => {
     dispatch(getCategoriesStart());
 
     const url = CATEGORIES_PARENT + '?' + filters;
@@ -37,22 +53,23 @@ export const addParentCategory = async (data, accessToken, dispatch, axiosJwt, s
 
     dispatch(addCategoryStart());
 
-    createCategory(CATEGORIES_PARENT, data, category, axiosJwt, accessToken, dispatch, setError,
-        setErrorParentForm, handleCloseModal);
+    createCategory(CATEGORIES_PARENT, data, category, axiosJwt, accessToken, dispatch,
+        setError, setErrorParentCategoryForm, handleCloseModal);
 }
 
-export const getParentCategoryByCode = async (code, accessToken, dispatch, navigate, axiosJwt,
-    handleCloseModal) => {
+export const getParentCategoryByCode = async (code, accessToken, dispatch, navigate,
+    axiosJwt, handleCloseModal) => {
 
     dispatch(getCategoryByCodeStart());
 
-    const url = CATEGORIES_PARENT + '/' + code
+    const url = CATEGORIES_PARENT + '/' + code;
 
-    getCategoryByCode(url, axiosJwt, accessToken, navigate, dispatch, handleCloseModal);
+    return getCategoryByCode(url, axiosJwt, accessToken, navigate, dispatch,
+        handleCloseModal);
 }
 
-export const updateParentCategory = async (code, data, accessToken, dispatch, axiosJwt, setError,
-    handleCloseModal) => {
+export const updateParentCategory = async (code, data, accessToken, dispatch, axiosJwt,
+    setError, handleCloseModal) => {
 
     const category = JSON.stringify(data);
 
@@ -61,10 +78,11 @@ export const updateParentCategory = async (code, data, accessToken, dispatch, ax
     const url = CATEGORIES_PARENT + '/' + code;
 
     updateCategory(code, url, data, category, axiosJwt, accessToken, dispatch, setError,
-        setErrorParentForm, handleCloseModal);
+        setErrorParentCategoryForm, handleCloseModal);
 }
 
-export const getDisenableParentCategory = async (code, accessToken, dispatch, navigate, axiosJwt) => {
+export const getDisenableParentCategory = async (code, accessToken, dispatch, navigate,
+    axiosJwt) => {
 
     dispatch(getDeleteCategoryByCodeStart());
 
@@ -73,8 +91,8 @@ export const getDisenableParentCategory = async (code, accessToken, dispatch, na
     return deleteCategory(code, url, axiosJwt, accessToken, dispatch, navigate);
 }
 
-export const getTitleDisenableSelectedParentCategories = async (codes, accessToken, dispatch,
-    navigate, axiosJwt) => {
+export const getTitleDisenableSelectedParentCategories = async (codes, accessToken,
+    dispatch, navigate, axiosJwt) => {
 
     dispatch(getTitleSelectedDeleteCategoriesStart());
 
@@ -83,8 +101,8 @@ export const getTitleDisenableSelectedParentCategories = async (codes, accessTok
     return getTitleSelectedDelete(url, axiosJwt, accessToken, dispatch, navigate);
 }
 
-export const getDisenableSelectedParentCategories = async (codes, accessToken, dispatch, navigate,
-    axiosJwt) => {
+export const getDisenableSelectedParentCategories = async (codes, accessToken, dispatch,
+    navigate, axiosJwt) => {
     dispatch(selectedDeleteCategoriesStart());
 
     const url = CATEGORIES_PARENT + PATH_API.SELECTED_DISENABLE + '/' + codes;
@@ -95,8 +113,8 @@ export const getDisenableSelectedParentCategories = async (codes, accessToken, d
 // Sub Categories
 const CATEGORIES_SUB = PATH_API.CATEGORIES + PATH_API.SUB;
 
-export const getSubCategories = (filters, accessToken, dispatch, axiosJwt, page, currentPage,
-    cancelToken) => {
+export const getSubCategories = (filters, accessToken, dispatch, axiosJwt, page,
+    currentPage, cancelToken) => {
     dispatch(getCategoriesStart());
 
     const url = CATEGORIES_SUB + '?' + filters;
@@ -104,8 +122,8 @@ export const getSubCategories = (filters, accessToken, dispatch, axiosJwt, page,
     getCategories(url, axiosJwt, accessToken, cancelToken, dispatch, page, currentPage);
 }
 
-export const getSearchSubCategories = async (filters, accessToken, dispatch, axiosJwt, cancelToken,
-    setErrorForbidden) => {
+export const getSearchSubCategories = async (filters, accessToken, dispatch, axiosJwt,
+    cancelToken, setErrorForbidden) => {
     dispatch(getCategoriesStart());
 
     const url = CATEGORIES_SUB + PATH_API.SEARCH + '?' + filters;
@@ -125,8 +143,8 @@ export const addSubCategory = async (data, accessToken, dispatch, axiosJwt, setE
         parent: parentName,
     }
 
-    createCategory(CATEGORIES_SUB, updateData, category, axiosJwt, accessToken, dispatch, setError,
-        setErrorSubForm, handleCloseModal);
+    createCategory(CATEGORIES_SUB, updateData, category, axiosJwt, accessToken, dispatch,
+        setError, setErrorSubCategoryForm, handleCloseModal);
 }
 
 export const getSubCategoryByCode = async (code, accessToken, dispatch, navigate, axiosJwt,
@@ -135,7 +153,8 @@ export const getSubCategoryByCode = async (code, accessToken, dispatch, navigate
 
     const url = CATEGORIES_SUB + '/' + code;
 
-    getCategoryByCode(url, axiosJwt, accessToken, navigate, dispatch, handleCloseModal);
+    return getCategoryByCode(url, axiosJwt, accessToken, navigate, dispatch,
+        handleCloseModal);
 }
 
 export const updateSubCategory = async (code, data, accessToken, dispatch, axiosJwt,
@@ -152,11 +171,12 @@ export const updateSubCategory = async (code, data, accessToken, dispatch, axios
         parent: parentName,
     }
 
-    updateCategory(code, url, updateData, category, axiosJwt, accessToken, dispatch, setError,
-        setErrorSubForm, handleCloseModal);
+    updateCategory(code, url, updateData, category, axiosJwt, accessToken, dispatch,
+        setError, setErrorSubCategoryForm, handleCloseModal);
 }
 
-export const getDisenableSubCategory = async (code, accessToken, dispatch, navigate, axiosJwt) => {
+export const getDisenableSubCategory = async (code, accessToken, dispatch, navigate,
+    axiosJwt) => {
 
     dispatch(getDeleteCategoryByCodeStart());
 
@@ -174,8 +194,8 @@ export const getTitleDisenableSelectedSubCategories = async (codes, accessToken,
     return getTitleSelectedDelete(url, axiosJwt, accessToken, dispatch, navigate);
 }
 
-export const getDisenableSelectedSubCategories = async (codes, accessToken, dispatch, navigate,
-    axiosJwt) => {
+export const getDisenableSelectedSubCategories = async (codes, accessToken, dispatch,
+    navigate, axiosJwt) => {
     dispatch(selectedDeleteCategoriesStart());
 
     const url = CATEGORIES_SUB + PATH_API.SELECTED_DISENABLE + '/' + codes;
@@ -183,12 +203,11 @@ export const getDisenableSelectedSubCategories = async (codes, accessToken, disp
     return getSelectedDelete(url, axiosJwt, accessToken, dispatch, navigate);
 }
 
-
 // Disenable Categories
 const CATEGORIES_DISENABLE = PATH_API.CATEGORIES + PATH_API.DISENABLE;
 
-export const getDisenableCategories = (filters, accesToken, dispatch, axiosJwt, page, currentPage,
-    cancelToken) => {
+export const getDisenableCategories = (filters, accesToken, dispatch, axiosJwt, page,
+    currentPage, cancelToken) => {
     dispatch(getCategoriesStart());
 
     const url = CATEGORIES_DISENABLE + '?' + filters;
@@ -205,7 +224,8 @@ export const getSearchDisenableCategories = async (filters, accesToken, dispatch
     getSearchCategores(url, axiosJwt, accesToken, cancelToken, dispatch, setErrorForbidden);
 }
 
-export const getEnableCategoryByCode = async (code, accessToken, dispatch, navigate, axiosJwt) => {
+export const getEnableCategoryByCode = async (code, accessToken, dispatch, navigate,
+    axiosJwt) => {
 
     dispatch(getDeleteCategoryByCodeStart());
 
@@ -214,8 +234,8 @@ export const getEnableCategoryByCode = async (code, accessToken, dispatch, navig
     return deleteCategory(code, url, axiosJwt, accessToken, dispatch, navigate);
 }
 
-export const getTitleEnableSelectedCategories = async (codes, accessToken, dispatch, navigate,
-    axiosJwt) => {
+export const getTitleEnableSelectedCategories = async (codes, accessToken, dispatch,
+    navigate, axiosJwt) => {
     dispatch(getTitleSelectedDeleteCategoriesStart());
 
     const url = CATEGORIES_DISENABLE + PATH_API.SELECTED_ENABLED + '/' + codes;
@@ -223,7 +243,8 @@ export const getTitleEnableSelectedCategories = async (codes, accessToken, dispa
     return getTitleSelectedDelete(url, axiosJwt, accessToken, dispatch, navigate);
 }
 
-export const getEnableSelectedCategories = async (codes, accessToken, dispatch, navigate, axiosJwt) => {
+export const getEnableSelectedCategories = async (codes, accessToken, dispatch, navigate,
+    axiosJwt) => {
     dispatch(selectedDeleteCategoriesStart());
 
     const url = CATEGORIES_DISENABLE + PATH_API.SELECTED_ENABLED + '/' + codes
@@ -231,16 +252,19 @@ export const getEnableSelectedCategories = async (codes, accessToken, dispatch, 
     return getSelectedDelete(url, axiosJwt, accessToken, dispatch, navigate);
 }
 
-export const getTitleDeleteCategory = async (code, accessToken, dispatch, navigate, axiosJwt) => {
+export const getTitleDeleteCategory = async (code, accessToken, dispatch, navigate,
+    axiosJwt) => {
+
     dispatch(getTitleDeleteCategoryByCodeStart())
     try {
-        const res = await axiosJwt.get(CATEGORIES_DISENABLE + '/' + code, headers(accessToken));
+        const res = await axiosJwt.get(CATEGORIES_DISENABLE + '/' + code,
+            headers(accessToken));
         dispatch(resetCategoryError());
         dispatch(getTitleDeleteCategoryByCodeSuccess());
         return res?.data;
     } catch (error) {
-        notificationErrorByPathVariable(error?.response, dispatch, navigate, URL_CATEGORY_NOT_FOUND,
-            getTitleDeleteCategoryByCodeFailed);
+        notificationErrorByPathVariable(error?.response, dispatch, navigate,
+            URL_CATEGORY_NOT_FOUND, getTitleDeleteCategoryByCodeFailed);
     }
 }
 
@@ -253,9 +277,9 @@ export const deleteCategoryByCode = async (code, accessToken, dispatch, navigate
     return deleteCategory(code, url, axiosJwt, accessToken, dispatch, navigate);
 }
 
-
 // Create function
-const getCategories = async (url, axiosJwt, accessToken, cancelToken, dispatch, page, currentPage) => {
+const getCategories = async (url, axiosJwt, accessToken, cancelToken, dispatch, page,
+    currentPage) => {
 
     try {
         const res = await axiosJwt.get(url, headersAndCancelToken(accessToken, cancelToken));
@@ -287,21 +311,8 @@ const getSearchCategores = async (url, axiosJwt, accessToken, cancelToken, dispa
     }
 }
 
-const getCategoryByCode = async (url, axiosJwt, accessToken, navigate, dispatch,
-    handleCloseModal) => {
-    try {
-        const res = await axiosJwt.get(url, headers(accessToken));
-        dispatch(resetCategoryError());
-        dispatch(getCategoryByCodeSuccess());
-        return res?.data;
-    } catch (error) {
-        notificationErrorEditModal(error?.response, dispatch, navigate, URL_CATEGORY_NOT_FOUND,
-            getCategoryByCodeFailed, handleCloseModal);
-    }
-}
-
-const createCategory = async (url, data, category, axiosJwt, accessToken, dispatch, setError,
-    setErrorForm, handleCloseModal) => {
+const createCategory = async (url, data, category, axiosJwt, accessToken, dispatch,
+    setError, setErrorForm, handleCloseModal) => {
 
     try {
         const res = await axiosJwt.post(url, category, headersPostAndPut(accessToken))
@@ -314,9 +325,22 @@ const createCategory = async (url, data, category, axiosJwt, accessToken, dispat
     }
 }
 
+const getCategoryByCode = async (url, axiosJwt, accessToken, navigate, dispatch,
+    handleCloseModal) => {
+    try {
+        const res = await axiosJwt.get(url, headers(accessToken));
+        dispatch(resetCategoryError());
+        dispatch(getCategoryByCodeSuccess());
+        console.log(res?.data);
+        return res?.data;
+    } catch (error) {
+        notificationErrorEditModal(error?.response, dispatch, navigate,
+            URL_CATEGORY_NOT_FOUND, getCategoryByCodeFailed, handleCloseModal);
+    }
+}
 
-const updateCategory = async (code, url, data, category, axiosJwt, accessToken, dispatch, setError,
-    setErrorForm, handleCloseModal) => {
+const updateCategory = async (code, url, data, category, axiosJwt, accessToken, dispatch,
+    setError, setErrorForm, handleCloseModal) => {
 
     try {
 
@@ -351,8 +375,8 @@ const getTitleSelectedDelete = async (url, axiosJwt, accessToken, dispatch, navi
         dispatch(getTitleSelectedDeleteCategoriesSuccess());
         return res.data;
     } catch (error) {
-        notificationErrorByPathVariable(error?.response, dispatch, navigate, URL_CATEGORY_NOT_FOUND,
-            getTitleSelectedDeleteCategoriesFailed);
+        notificationErrorByPathVariable(error?.response, dispatch, navigate,
+            URL_CATEGORY_NOT_FOUND, getTitleSelectedDeleteCategoriesFailed);
     }
 }
 
@@ -363,7 +387,7 @@ const getSelectedDelete = async (url, axiosJwt, accessToken, dispatch, navigate)
         dispatch(selectedDeleteCategoriesSuccess());
         return res.data;
     } catch (error) {
-        notificationErrorByPathVariable(error?.response, dispatch, navigate, URL_CATEGORY_NOT_FOUND,
-            selectedDeleteCategoriesFailed);
+        notificationErrorByPathVariable(error?.response, dispatch, navigate,
+            URL_CATEGORY_NOT_FOUND, selectedDeleteCategoriesFailed);
     }
 }

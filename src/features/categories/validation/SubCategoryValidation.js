@@ -1,9 +1,27 @@
 import { useState } from "react"
 import * as Yup from 'yup';
-import { categoryMatchCode, categoryMatchName } from "../services/ApiCheckMatch";
-import { MIN_LENGTH } from "~/constants/AppConstant";
+import { MATCH, MIN_LENGTH } from "~/constants/AppConstant";
+import { categoryMatchCode, categoryMatchName } from "../services/ApiCategoryMatch";
 
-export const setErrorSubForm = (data, setError) => {
+export const InitialSubCategoryAdd = () => {
+    return {
+        name: "",
+        code: "",
+        status: "",
+        parent: "",
+    }
+}
+
+export const InitialSubCategoryUpdate = (category) => {
+    return {
+        name: category?.name,
+        code: category?.code,
+        status: category?.status,
+        parent: category?.parent,
+    }
+}
+
+export const setErrorSubCategoryForm = (data, setError) => {
     data?.name && setError('name', {
         type: "category",
         message: data?.name
@@ -24,25 +42,6 @@ export const setErrorSubForm = (data, setError) => {
         message: data?.parent
     })
 }
-
-export const InitialValuesAdd = () => {
-    return {
-        name: "",
-        code: "",
-        status: "",
-        parent: "",
-    }
-}
-
-export const InitialValuesUpdate = (category) => {
-    return {
-        name: category?.name,
-        code: category?.code,
-        status: category?.status,
-        parent: category?.parent,
-    }
-}
-
 
 const SubCategoryValidation = (accessToken, axiosJwt, dispatch, params, statusAll, parents) => {
     const [code, setCode] = useState();
@@ -73,7 +72,9 @@ const SubCategoryValidation = (accessToken, axiosJwt, dispatch, params, statusAl
                             return ctx.createError({ message: message });
                         }
 
-                        if ((await categoryMatchName(value, params, accessToken, dispatch, axiosJwt))?.data === "Match!") {
+                        const match = await categoryMatchName(value, params, accessToken,
+                            dispatch, axiosJwt);
+                        if (match === MATCH) {
                             const message = 'Tên loại sản phẩm bị trùng';
                             setNameMessage(message)
                             return ctx.createError({ message: message });
@@ -112,7 +113,9 @@ const SubCategoryValidation = (accessToken, axiosJwt, dispatch, params, statusAl
                             return ctx.createError({ message: message });
                         }
 
-                        if ((await categoryMatchCode(value, params, accessToken, dispatch, axiosJwt))?.data === "Match!") {
+                        const match = await categoryMatchCode(value, params, accessToken,
+                            dispatch, axiosJwt);
+                        if (match === MATCH) {
                             const message = 'Mã loại sản phẩm bị trùng';
                             console.log(message);
                             setCodeMessage(message)

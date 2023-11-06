@@ -1,19 +1,17 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
-import PropTypes from 'prop-types'
-
-const Errors = ({ title }) => {
+const Errors = ({ title, className }) => {
     return (
-        <>
-            <div className='fv-plugins-message-container invalid-feedback'>
-                <div>{title}</div>
-            </div>
-        </>
+        <span className={`invalid-feedback ${className ? className : ''}`}>
+            {title}
+        </span>
     )
 }
 
 Errors.propTypes = {
-    title: PropTypes.string.isRequired
+    className: PropTypes.string,
+    title: PropTypes.string,
 }
 
-export default Errors;
+export default Errors

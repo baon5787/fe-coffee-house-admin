@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { Controller } from 'react-hook-form';
 import PropTypes from 'prop-types';
-import Selects from '../select';
+import { Controller } from 'react-hook-form';
+import { EMPTY_ARRAY } from '~/constants/AppConstant';
+import Selects from '../selects';
 
-const Selection = ({ options = [], name, control, value, placeholder, noOptionsMessage }) => {
+const Selection = (props) => {
 
-    const [defaultValue, setDefaultValue] = useState([]);
+    const {
+        options = [], name, control,
+        value, placeholder, noOptionsMessage
+    } = props;
+
+    const [defaultValue, setDefaultValue] = useState(EMPTY_ARRAY);
 
     useEffect(() => {
         setDefaultValue(options?.filter(option => option?.value === value))
@@ -13,24 +19,22 @@ const Selection = ({ options = [], name, control, value, placeholder, noOptionsM
     }, [value, options])
 
     return (
-        <>
-            <Controller
-                control={control}
-                name={name}
-                render={({ field: { onChange } }) =>
-                    <Selects
-                        options={options}
-                        value={defaultValue}
-                        onChange={(option) => {
-                            onChange(option.value);
-                            setDefaultValue(option)
-                        }}
-                        placeholder={placeholder}
-                        noOptionsMessage={() => noOptionsMessage}
-                    />
-                }
-            />
-        </>
+        <Controller
+            control={control}
+            name={name}
+            render={({ field: { onChange } }) =>
+                <Selects
+                    options={options}
+                    value={defaultValue}
+                    onChange={(option) => {
+                        onChange(option.value);
+                        setDefaultValue(option)
+                    }}
+                    placeholder={placeholder}
+                    noOptionsMessage={() => noOptionsMessage}
+                />
+            }
+        />
     )
 }
 
@@ -42,4 +46,4 @@ Selection.propTypes = {
     noOptionsMessage: PropTypes.string.isRequired
 }
 
-export default Selection;
+export default Selection

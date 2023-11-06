@@ -1,13 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
-import { NotFound } from '~/components/error';
+import NotFound from '~/components/notfound';
 import { MSG_ERROR } from '~/constants/AppConstant';
-import { errorProductSelector, titleErrorProductSelector } from '~/redux/selectors';
+import { useProduct } from '~/features/product';
 
 const ProductNotFound = () => {
-    const error = useSelector(errorProductSelector);
 
-    const msg = useSelector(titleErrorProductSelector);
+    const { error, msg } = useProduct();
 
     return (
         <NotFound
@@ -16,4 +14,4 @@ const ProductNotFound = () => {
     )
 }
 
-export default ProductNotFound;
+export default ProductNotFound

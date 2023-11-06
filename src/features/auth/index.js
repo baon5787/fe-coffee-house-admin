@@ -1,1 +1,5 @@
-export { default as FormLogin } from './components/FormLogin';
+import FormLogin from "./components/FormLogin";
+
+export {
+    FormLogin
+}

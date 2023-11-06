@@ -5,6 +5,7 @@ import { isEmptyArray } from '~/utils/CheckValue';
 import { success, warning } from '../swal/Swal';
 import { successSeletedTitle, warningSeletedTitle } from '~/utils/StringConcatention';
 
+
 const DeleteSelected = ({ listCheckBox, option, apiTitle, apiDeleteSelected }) => {
 
     const { accessToken, dispatch, navigate, axiosJwt } = useJwt();
@@ -12,7 +13,8 @@ const DeleteSelected = ({ listCheckBox, option, apiTitle, apiDeleteSelected }) =
     const handleDeleteSelected = async () => {
         if (isEmptyArray(listCheckBox)) return;
 
-        const title = await apiTitle(listCheckBox, accessToken, dispatch, navigate, axiosJwt);
+        const title = await apiTitle(listCheckBox, accessToken, dispatch, navigate,
+            axiosJwt);
 
         if (!title) return;
 
@@ -29,11 +31,16 @@ const DeleteSelected = ({ listCheckBox, option, apiTitle, apiDeleteSelected }) =
     }
 
     return (
-        <div className='d-flex justify-content-end align-items-center'>
-            <div className='fw-bold me-5'><span className='me-2'>{listCheckBox?.length}</span>Selected</div>
-            <button className='btn btn-danger' onClick={() => handleDeleteSelected()}>Delete Selected</button>
-        </div>
+        <>
+            <div className='font-semibold mr-5'>
+                <span className='mr-2'>{listCheckBox?.length}</span>
+                Selected
+            </div>
+            <button className='btn btn-danger' onClick={() => handleDeleteSelected()}>
+                Delete Selected
+            </button>
+        </>
     )
 }
 
-export default DeleteSelected;
+export default DeleteSelected

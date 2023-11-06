@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const InputGroup = ({ children, className }) => {
     return (
-        <div className={`fv-row fv-plugins-icon-container ${className}`}>
+        <div className={`relative ${className ? className : ''}`}>
             {children}
         </div>
     )
@@ -14,4 +14,4 @@ InputGroup.propTypes = {
     children: PropTypes.array.isRequired,
 }
 
-export default InputGroup;
+export default InputGroup

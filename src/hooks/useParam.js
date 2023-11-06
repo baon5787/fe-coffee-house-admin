@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const useParam = () => {
-
     const [param, setParam] = useState(null);
 
     const resetParam = () => setParam(null);
@@ -13,4 +12,4 @@ const useParam = () => {
     }
 }
 
-export default useParam;
+export default useParam

@@ -31,6 +31,8 @@ const SizeSlice = createSlice({
             state.allSize = {
                 sizes: sizes,
                 totalPage: action.payload?.totalPage,
+                limit: action.payload?.limit,
+                page: action.payload?.page,
             };
 
             state.isSelected = false;
@@ -45,7 +47,9 @@ const SizeSlice = createSlice({
         },
         getDeleteSizeByCodeSuccess: (state, action) => {
             state.isFetching = false;
-            const sizes = state?.allSize?.sizes?.filter((size) => size?.code !== action.payload);
+            const sizes = state?.allSize?.sizes?.filter(
+                (size) => size?.code !== action.payload
+            );
             state.allSize.sizes = sizes;
         },
         getDeleteSizeByCodeFailed: (state, action) => {

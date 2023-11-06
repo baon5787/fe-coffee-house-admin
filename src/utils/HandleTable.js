@@ -1,8 +1,7 @@
-import { DEFAULT_FILTERS, DEFAULT_INDEX, DEFAULT_PAGINATION, MIN_LENGTH, OPTION_PAGE, STATUS_PUBLISHED } from "~/constants/AppConstant";
-import { updateData } from "~/helper/AppString";
+import { DEFAULT_FILTERS, DEFAULT_INDEX, MIN_LENGTH, OPTION_PAGE, STATUS_PUBLISHED } from "~/constants/AppConstant";
 import { pageFilterChange } from "~/redux/slice/FiltersSlice";
 import { isEmptyArray, isValueArray, isValueFunction, isValueNumber, isValueObject } from "./CheckValue";
-;
+
 
 export const getValueByStatus = (allStatus, value) => {
     if (allStatus?.length === MIN_LENGTH || !allStatus) return;
@@ -94,7 +93,9 @@ export const getCouponCondition = (couponCategory, condition) => {
 }
 
 export const getClassNameStatus = (status) => {
-    return status === STATUS_PUBLISHED ? "badge-light-success" : "badge-light-danger";
+    return status === STATUS_PUBLISHED
+        ? 'text-theme-success bg-theme-success-light'
+        : 'text-theme-danger bg-theme-danger-light';
 };
 
 export const getTitleAction = (option) => {
@@ -107,8 +108,8 @@ export const checkDataAndFilter = (data, totalPage, filters, dispatch) => {
     const minTotalPage = 0
     if (data?.length === MIN_LENGTH && totalPage > minTotalPage) {
 
-        if (filters?.page === DEFAULT_PAGINATION.PAGE || filters?.page < totalPage) {
-            return updateData;
+        if (filters?.page === DEFAULT_FILTERS.page || filters?.page < totalPage) {
+            return true;
         }
 
         if (totalPage === filters?.page) {
@@ -117,9 +118,9 @@ export const checkDataAndFilter = (data, totalPage, filters, dispatch) => {
     }
 
     //Add item
-    if (data?.length > filters?.limit) return updateData;
+    if (data?.length > filters?.limit) return true;
 
-    return undefined;
+    return false;
 }
 
 export const isUpdateData = (data, totalPage, filters, dispatch) => {
@@ -135,7 +136,7 @@ export const isUpdateData = (data, totalPage, filters, dispatch) => {
     const minTotalPage = 0
     if (data?.length === MIN_LENGTH && totalPage > minTotalPage) {
 
-        if (filters?.page === DEFAULT_PAGINATION.PAGE || filters?.page < totalPage) {
+        if (filters?.page === DEFAULT_FILTERS.page || filters?.page < totalPage) {
             isUpdate = true;
         }
 

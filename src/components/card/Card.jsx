@@ -1,20 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-const Card = ({ children, className }) => {
+const Card = ({ className, children }) => {
     return (
-        <>
-            <div className={`card card-flush ${className}`}>
-                {children}
-            </div>
-
-        </>
+        <div className={`card ${className ? className : ''}`}>
+            {children}
+        </div>
     )
 }
 
 Card.propTypes = {
-    children: PropTypes.array.isRequired,
     className: PropTypes.string,
 }
 
-export default Card; 
+export default Card

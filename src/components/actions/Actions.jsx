@@ -1,10 +1,12 @@
-import Tippy from '@tippyjs/react/headless'
-import React, { useRef, useState } from 'react'
+import Tippy from '@tippyjs/react/headless';
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
-import { ArrowIcon } from '../icons';
-import Menu from './Menu';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import Menu from './components/Menu';
 
 const Actions = ({ onEditOrEnableClick, onDeleteOrDisenableClick, title }) => {
+    const ref = useRef();
 
     const [isOpen, setOpen] = useState(false);
 
@@ -16,46 +18,49 @@ const Actions = ({ onEditOrEnableClick, onDeleteOrDisenableClick, title }) => {
         />
     );
 
-    const ref = useRef();
+    useEffect(() => {
+        const handleClick = (e) => {
+            if (ref?.current?.contains(e.target) && !isOpen) {
+                setOpen(!isOpen)
+            }
 
-    const handleOnClick = (e) => {
-        const current = ref.current;
-        if (current === null || current === undefined) {
-            return window.removeEventListener("click", handleOnClick);
+            if (!ref?.current?.contains(e.target) && isOpen) {
+                setOpen(!isOpen)
+            }
         }
-        if (!ref.current.contains(e.target) && isOpen) {
-            setOpen(false)
-            return window.removeEventListener("click", handleOnClick);
-        }
-    }
 
-    window.addEventListener("click", handleOnClick);
+        window.addEventListener('click', handleClick);
+
+        return () => window.removeEventListener('click', handleClick);
+    }, [isOpen])
 
     return (
-        <>
-            <Tippy
-                interactive
-                placement="bottom-end"
-                render={renderResult}
-                visible={isOpen}
+        <Tippy
+            interactive
+            placement="bottom-end"
+            render={renderResult}
+            visible={isOpen}
+        >
+            <div className='btn btn-light btn-active-light-primary p-btn-sm'
+                onClick={() => setOpen(true)}
+                ref={ref}
             >
-                <div className='btn btn-sm btn-light btn-active-light-primary'
-                    onClick={() => setOpen(true)}
-                    ref={ref}
-                >
-                    Actions
-                    <span className='svg-icon svg-icon-5 m-0'>
-                        <ArrowIcon size={24} />
-                    </span>
-                </div>
-            </Tippy>
-        </>
+                Actions
+                <FontAwesomeIcon
+                    icon={faAngleUp}
+                    rotation={180}
+                    className='text-5 pr-[0.35rem] ml-1 text-theme-light-inverse'
+                />
+            </div>
+        </Tippy>
     )
 }
 
 Actions.propTypes = {
     onEditOrEnableClick: PropTypes.func.isRequired,
     onDeleteOrDisenableClick: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
 }
 
-export default Actions;
+
+export default Actions

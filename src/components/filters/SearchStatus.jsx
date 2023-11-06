@@ -1,16 +1,16 @@
+import { isEmptyArray } from 'formik';
 import React, { useEffect, useState } from 'react'
-import { DEFAULT_STATUS } from '~/constants/AppConstant';
 import { useSelector } from 'react-redux';
+import useJwt from '~/hooks/useJwt';
 import { searchStatusSelector, statusSelector } from '~/redux/selectors';
 import { defaultSearchStatusChange, searchStatusChange } from '~/redux/slice/FiltersSlice';
-import { getSelectStatuses } from '~/api/ApiSelect';
 import { sortSelect } from '~/utils/HandleTable';
-import Selects from '../select';
-import useJwt from '~/hooks/useJwt';
-import { isEmptyArray } from '~/utils/CheckValue';
+import Selects from '../selects';
+import { DEFAULT_STATUS } from '~/constants/AppConstant';
+import { getSelectStatuses } from '~/api/ApiSelect';
+import { isValueUndefined } from '~/utils/CheckValue';
 
 const SearchStatus = () => {
-
     const filters = useSelector(searchStatusSelector);
 
     const status = useSelector(statusSelector);
@@ -24,6 +24,7 @@ const SearchStatus = () => {
     useEffect(() => {
         if (isEmptyArray(status)) {
             getSelectStatuses(accessToken, dispatch, axiosJwt).then((data) => {
+                if (isValueUndefined(data)) return;
                 setAllStatus(sortSelect([...data, DEFAULT_STATUS]))
             });
         }
@@ -51,18 +52,16 @@ const SearchStatus = () => {
     if (isEmptyArray(allStatus)) return;
 
     return (
-        <>
-            <div className='w-100 mw-150px'>
-                <Selects
-                    options={allStatus}
-                    onChange={(option) => {
-                        handleSreachStatusChange(option.value);
-                    }}
-                    value={value}
-                />
-            </div>
-        </>
+        <div className='w-full max-w-[150px]'>
+            <Selects
+                options={allStatus}
+                onChange={(option) => {
+                    handleSreachStatusChange(option.value);
+                }}
+                value={value}
+            />
+        </div>
     )
 }
 
-export default SearchStatus;
+export default SearchStatus

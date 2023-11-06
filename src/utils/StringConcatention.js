@@ -1,6 +1,6 @@
-import { DEFAULT_INDEX } from "~/constants/AppConstant";
 import { warningStr } from "~/helper/AppString";
 import { isValueObject } from "./CheckValue";
+import { DEFAULT_INDEX } from "~/constants/AppConstant";
 
 export const warningSeletedTitle = (option, data) => {
     return warningStr + option + data + ' đã chọn không ?';
@@ -61,6 +61,3 @@ export const getTitleDeleteProductSize = (productSize) => {
 
     return `kích thước ${productSize?.sizeName} của sản phẩm ${productSize?.productName}`
 }
-
-
-

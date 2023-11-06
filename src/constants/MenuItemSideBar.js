@@ -1,7 +1,11 @@
-import { PATH } from "./Paths"
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { PATH } from "./Paths";
+
+export const HEIGHT_LOGO = 117;
 
 export const PRODUCT = {
     title: 'Product',
+    icon: faMagnifyingGlass,
     to: PATH.PRODUCTS,
     children: [
         {
@@ -17,6 +21,7 @@ export const PRODUCT = {
 
 export const CATEGORY = {
     title: 'Category',
+    icon: faMagnifyingGlass,
     to: PATH.CATEGORIES,
     children: [
         {
@@ -36,6 +41,7 @@ export const CATEGORY = {
 
 export const WAREHOUSE = {
     title: 'Warehouse',
+    icon: faMagnifyingGlass,
     to: PATH.WAREHOUSES,
     children: [
         {
@@ -47,6 +53,7 @@ export const WAREHOUSE = {
 
 export const SIZE = {
     title: 'Size',
+    icon: faMagnifyingGlass,
     to: PATH.SIZES,
     children: [
         {
@@ -62,6 +69,7 @@ export const SIZE = {
 
 export const COUPON = {
     title: 'Coupon',
+    icon: faMagnifyingGlass,
     to: PATH.COUPONS,
     children: [
         {
@@ -77,6 +85,7 @@ export const COUPON = {
 
 export const ORDER = {
     title: 'Order',
+    icon: faMagnifyingGlass,
     to: PATH.ORDERS,
     children: [
         {
@@ -88,6 +97,7 @@ export const ORDER = {
 
 export const DELIVERY = {
     title: 'Delivery',
+    icon: faMagnifyingGlass,
     to: PATH.DELIVERY + '/' + PATH.ORDERS,
     children: [
         {
@@ -107,6 +117,7 @@ export const DELIVERY = {
 
 export const USER = {
     title: 'User',
+    icon: faMagnifyingGlass,
     to: PATH.USER,
     children: [
         {
@@ -119,3 +130,4 @@ export const USER = {
         },
     ]
 }
+

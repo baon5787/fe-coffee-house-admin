@@ -1,7 +1,17 @@
-export { default as CheckBox } from './CheckBox';
-export { default as OrderItemList } from './OrderItemList';
-export { default as LimitAndPagination } from './LimitAndPagination';
-export { default as Table } from './Table';
-export { default as Thead } from './Thead';
-export { default as Tbody } from './Tbody';
-export { default as DeleteSelected } from './DeleteSelected';
+import Table from "./Table";
+import Thead from "./Thead";
+import Tbody from "./Tbody";
+import LimitAndPagination from "./LimitAndPagination";
+import CheckboxTable from "./CheckboxTable";
+import DeleteSelected from "./DeleteSelected";
+import NotData from "./NotData";
+
+export {
+    Table,
+    Thead,
+    Tbody,
+    LimitAndPagination,
+    CheckboxTable,
+    DeleteSelected,
+    NotData
+}

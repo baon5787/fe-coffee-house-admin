@@ -1,13 +1,14 @@
-import Swal from 'sweetalert2'
-import './Swal.css'
+import Swal from "sweetalert2"
 
 export const warning = (name) => {
     return {
         text: name,
         icon: 'warning',
         customClass: {
-            confirmButton: 'btn fw-bold btn-danger',
-            cancelButton: 'btn fw-bold btn-active-light-primary',
+            icon: 'swal2-icon',
+            popup: 'swal2-popup',
+            confirmButton: 'btn btn-primary',
+            cancelButton: 'btn btn-danger',
         },
         buttonsStyling: false,
         heightAuto: false,
@@ -23,8 +24,9 @@ export const success = (name) => {
         text: name,
         icon: 'success',
         customClass: {
-            confirmButton: 'btn fw-bold btn-danger',
-            cancelButton: 'btn fw-bold btn-active-light-primary',
+            popup: 'swal2-popup',
+            confirmButton: 'btn btn-danger',
+            cancelButton: 'btn btn-primary',
         },
         buttonsStyling: false,
         heightAuto: false,
@@ -37,8 +39,9 @@ export const error = (name) => {
         text: name,
         icon: 'error',
         customClass: {
-            confirmButton: 'btn fw-bold btn-danger',
-            cancelButton: 'btn fw-bold btn-active-light-primary',
+            popup: 'swal2-popup',
+            confirmButton: 'btn btn-danger',
+            cancelButton: 'btn btn-primary',
         },
         buttonsStyling: false,
         heightAuto: false,
@@ -50,6 +53,9 @@ export const toastOption = () => {
     return {
         toast: true,
         position: 'top',
+        customClass: {
+            popup: 'colored-toast'
+        },
         showConfirmButton: false,
         timer: 3000,
     }

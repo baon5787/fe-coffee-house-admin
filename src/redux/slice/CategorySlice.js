@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { INCREASE_TOTALPAGE, MIN_LENGTH } from "~/constants/AppConstant";
 import { getIsDeleteSelect } from "~/utils/HandleTable";
+
+const { MIN_LENGTH, DEFAULT_FILTERS, EMPTY_ARRAY } = require("~/constants/AppConstant");
 
 const updateCategory = (action, categories) => {
     const { code, data } = action.payload;
@@ -17,7 +18,7 @@ const updateCategory = (action, categories) => {
 const CategorySlice = createSlice({
     name: "category",
     initialState: {
-        allCategory: null,
+        allCategory: EMPTY_ARRAY,
         isSelected: false,
         isFetching: false,
         error: false,
@@ -60,7 +61,7 @@ const CategorySlice = createSlice({
 
             if (!state.allCategory.categories) {
                 state.allCategory.categories = [{ ...action.payload, isChecked: false }];
-                state.allCategory.totalPage = state.allCategory?.totalPage + INCREASE_TOTALPAGE;
+                state.allCategory.totalPage = state.allCategory?.totalPage + DEFAULT_FILTERS.page;
             } else {
                 state.allCategory?.categories.push({ ...action.payload, isChecked: false })
             }
@@ -106,7 +107,9 @@ const CategorySlice = createSlice({
         },
         getDeleteCategoryByCodeSuccess: (state, action) => {
             state.isFetching = false;
-            const categories = state.allCategory.categories.filter((category) => category?.code !== action.payload);
+            const categories = state.allCategory.categories.filter(
+                (category) => category?.code !== action.payload
+            );
             state.allCategory.categories = categories;
         },
         getDeleteCategoryByCodeFailed: (state, action) => {
@@ -138,7 +141,9 @@ const CategorySlice = createSlice({
         selectedDeleteCategoriesSuccess: (state) => {
             state.isFetching = false;
 
-            const categories = state.allCategory.categories.filter((category) => !category?.isChecked)
+            const categories = state.allCategory.categories.filter(
+                (category) => !category?.isChecked
+            );
 
             state.allCategory.categories = categories;
             state.isSelected = false;

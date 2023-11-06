@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencil, faXmark } from '@fortawesome/free-solid-svg-icons'
-import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import PropTypes from 'prop-types';
+import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { getValueString } from '~/utils/HandleValue';
 
-const InputImage = ({ className, setValue, setError, errors, name, value }) => {
+const InputImage = ({ setValue, setError, errors, name, value }) => {
+
     const [baseImage, setBaseImage] = useState(getValueString(value));
 
     const uploadImage = async (event) => {
@@ -37,46 +37,28 @@ const InputImage = ({ className, setValue, setError, errors, name, value }) => {
             };
         });
     };
-    return (
-        <>
-            <div className={`image-input ${className} ${baseImage !== "" ? 'image-input-changed' : 'image-input-empty'}`} >
-                <div
-                    className='image-input-wrapper w-125px h-125px'
-                    style={{ backgroundImage: `${!baseImage.trim() ? '' : `url(${baseImage})`}` }}
-                />
 
-                <label
-                    className='btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow'
-                    data-kt-image-input-action="change"
-                    title="Change avatar"
-                >
-                    <span className='svg-icon svg-icon-8'>
-                        <FontAwesomeIcon icon={faPencil} />
-                    </span>
-                    <input type='file' name={name} accept='.png, .jpg, .jpeg' onChange={(event) => uploadImage(event)} />
+    return (
+        <div className={`image-input image-input-placeholder mb-3 ${baseImage !== ""
+            ? 'image-input-changed' : 'image-input-empty'}`
+        }>
+            <div className='image-input-wrapper w-[150px] h-[150px]'
+                style={{ backgroundImage: `${!baseImage.trim() ? '' : `url(${baseImage})`}` }}
+            >
+                <label className='group btn btn-icon !border-img-input-none !bg-body-bg !w-[25px] !h-[25px] !shadow-shaw' data-kt-image-input-action="change">
+                    <FontAwesomeIcon icon={faPencil} className='text-text-theme-muted w-[0.95rem] h-[0.95rem] group-hover:text-text-theme-primary' />
+                    <input type='file' name={name} accept='.png, .jpg, .jpeg'
+                        onChange={(event) => uploadImage(event)}
+                    />
                     <input type='hidden' name="avatar_remove" />
                 </label>
-                <span
-                    className='btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow'
-                    data-kt-image-input-action='cancel'
-                    title='Cancel avatar'
+                <span className='group btn btn-icon !border-img-input-none !bg-body-bg !w-[25px] !h-[25px] !shadow-shaw' data-kt-image-input-action="remove"
                     onClick={() => removeImage()}
                 >
-                    <span className='svg-icon svg-icon-5'>
-                        <FontAwesomeIcon icon={faXmark} />
-                    </span>
-                </span>
-                <span
-                    className='btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow'
-                    data-kt-image-input-action='remove'
-                    title='Remove avatar'
-                >
-                    <span className='svg-icon svg-icon-5'>
-                        <FontAwesomeIcon icon={faTrashCan} />
-                    </span>
+                    <FontAwesomeIcon icon={faTrashCan} className='text-text-theme-muted w-[0.95rem] h-[0.95rem] group-hover:text-text-theme-primary' />
                 </span>
             </div>
-        </>
+        </div>
     )
 }
 
@@ -84,8 +66,7 @@ InputImage.propTypes = {
     baseImage: PropTypes.string,
     setValue: PropTypes.func.isRequired,
     setError: PropTypes.func.isRequired,
-    className: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
 }
 
-export default InputImage;
+export default InputImage

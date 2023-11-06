@@ -1,78 +1,55 @@
 import React, { useEffect, useRef } from 'react'
-import Header from './header';
-import Footer from './footer';
-import { useDispatch, useSelector } from 'react-redux';
-import { isSideBarSelector } from '~/redux/selectors';
-import useWindowDimensions from '~/hooks/useWindowDimensions';
+import Header from './header'
 import PageTitle from './pagetitle';
+import useWindowDimensions from '~/hooks/useWindowDimensions';
 import { useOutletContext } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '~/redux/slice/DimensionsSlice';
-import PropTypes from 'prop-types';
-import style from './style/Scroll.module.css';
-import { ScrollTopIcon } from '../icons/Icons';
+import { isAsideSelector } from '~/redux/selectors';
+
 
 const Wrapper = ({ children, titlePage }) => {
-
     const isDimensions = useWindowDimensions();
 
-    const isSideBar = useSelector(isSideBarSelector);
+    const { asideRef } = useOutletContext();
 
-    const menuRef = useRef();
+    const isAside = useSelector(isAsideSelector);
 
     const dispatch = useDispatch();
 
-    const { sidebarRef, isScroll } = useOutletContext();
+    const iconMenuRef = useRef();
 
     useEffect(() => {
-        const handleClick = (e) => {
-            if (menuRef.current.contains(e.target)) return;
+        const hanldeMenu = (e) => {
+            if (iconMenuRef?.current?.contains(e.target)) {
+                dispatch(toggleMenu())
+                return;
+            }
 
-            if (!sidebarRef.current.contains(e.target) && isSideBar && isDimensions) {
+            if (!asideRef?.current?.contains(e.target) && isAside) {
                 dispatch(toggleMenu());
                 return;
             }
         }
-        window.addEventListener('click', handleClick);
-        return () => window.removeEventListener('click', handleClick);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isSideBar])
 
-    if (!sidebarRef) return;
+        window.addEventListener('click', hanldeMenu);
+        return () => window.removeEventListener('click', hanldeMenu);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isAside])
 
     return (
         <>
-            <div className='wrapper d-flex flex-column flex-row-fluid'>
-                <Header
-                    ref={menuRef}
-                    isScroll={isScroll}
-                    className={titlePage ? 'justify-content-between' : 'justify-content-end'}
-                >
-                    {
-                        !isDimensions && titlePage && <PageTitle titlePage={titlePage} />
-                    }
-                </Header>
-                <div className={`d-flex flex-column flex-column-fluid fs-6 ${titlePage ? 'content' : ''}`}>
-                    <div className=' container-xxl'>
-                        {
-                            isDimensions && titlePage && <PageTitle titlePage={titlePage} />
-                        }
-                        {children}
-                    </div>
-                </div>
-                <Footer />
-            </div>
-            <div className={`scrolltop ${isScroll ? style.on : ''}`}>
-                <span className='svg-icon'>
-                    <ScrollTopIcon size={24} />
-                </span>
-            </div>
+            <Header iconMenuRef={iconMenuRef}>
+                <PageTitle />
+            </Header>
+            <main>
+                {
+                    isDimensions && <PageTitle />
+                }
+                {children}
+            </main>
         </>
     )
 }
 
-Wrapper.propTypes = {
-    children: PropTypes.element.isRequired,
-    titlePage: PropTypes.object,
-}
-
-export default Wrapper;
+export default Wrapper

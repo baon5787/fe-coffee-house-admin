@@ -1,7 +1,7 @@
-import { success, warning } from "~/components/swal/Swal";
-import { warningTitle } from "./StringConcatention";
 import Swal from "sweetalert2";
+import { success, warning } from "~/components/swal/Swal";
 import { isValueFunction, isValueString } from "./CheckValue";
+import { warningTitle } from "./StringConcatention";
 
 export const getAction = (api, pathVariable, option, title, dispatch, navigate, axiosJwt,
     accessToken) => {

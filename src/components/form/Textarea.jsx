@@ -1,31 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types';
+import React from 'react'
 
-const Textarea = ({ className, values, ...inputProps }) => {
-
-    const [value, setValue] = useState(values);
-
-    const handleInputChange = (e) => {
-        setValue(e.target.value)
-    }
-
-    useEffect(() => {
-        setValue(values);
-    }, [values])
-
+const Textarea = ({ className, register, ...inputProps }) => {
     return (
         <textarea
             className={`form-control ${className}`}
-            value={value}
-            onChange={handleInputChange}
             {...inputProps}
+            {...register}
         />
     )
 }
 
-Textarea.propTypes = {
-    className: PropTypes.string,
-    values: PropTypes.string,
-}
-
-export default Textarea;
+export default Textarea

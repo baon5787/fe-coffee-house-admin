@@ -1,1 +1,5 @@
-export { default as Actions } from './Actions'
+import Actions from "./Actions";
+
+export {
+    Actions
+}

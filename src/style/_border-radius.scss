@@ -1,5 +1,0 @@
-@if $enable-border-radius-classes {
-    @include make-border-hover-colors();
-    @include make-border-active-colors();
-    @include make-border-dashed();
-}

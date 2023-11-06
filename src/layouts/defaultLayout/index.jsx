@@ -1,18 +1,32 @@
-import React, { useRef } from 'react'
-import { Sidebar } from '../components';
+import React, { useLayoutEffect, useRef } from 'react'
+import Aside from '../components/aside'
+import Footer from '../components/footer'
 import { Outlet } from 'react-router-dom';
 
 const DefaultLayout = () => {
-    const sidebarRef = useRef();
+    const asideRef = useRef();
+
+    useLayoutEffect(() => {
+
+        document.body.removeAttribute('class');
+
+        const root = document.getElementById('root');
+
+        if (root?.className === 'page') return;
+
+        root.removeAttribute('class');
+        root.classList.add('page');
+    }, [])
 
     return (
         <>
-            <div className="page d-flex flex-row flex-column-fluid">
-                <Sidebar ref={sidebarRef} />
-                <Outlet context={{ sidebarRef: sidebarRef }} />
-            </div>
+            <Aside
+                asideRef={asideRef}
+            />
+            <Outlet context={{ asideRef: asideRef }} />
+            <Footer />
         </>
     )
 }
 
-export default DefaultLayout;
+export default DefaultLayout

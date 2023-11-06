@@ -1,22 +1,20 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-export const CardHeader = ({ children, name }) => {
+const CardHeader = ({ name, children, className }) => {
     return (
-        <>
-            <div className='card-header'>
-                <div className='card-title'>
-                    <h2>{name}</h2>
-                </div>
-                {children}
-            </div>
-        </>
+        <div className={`card-header ${className ? className : null}`}>
+            {
+                name && <div className='card-title'><h2>{name}</h2></div>
+            }
+            {children}
+        </div>
     )
 }
 
 CardHeader.propTypes = {
-    name: PropTypes.string.isRequired,
-    children: PropTypes.element,
+    className: PropTypes.string,
+    name: PropTypes.string,
 }
 
-export default CardHeader;
+export default CardHeader

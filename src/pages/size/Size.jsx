@@ -1,62 +1,55 @@
-import React, { useRef } from 'react'
-import { useSelector } from 'react-redux';
-import { Card, CardFilter } from '~/components/card';
+import React from 'react'
+import { Card, CardBody, CardHeader, CardToolbar } from '~/components/card';
 import { SearchText } from '~/components/filters';
 import { OPTION_PAGE } from '~/constants/AppConstant';
-import { DeleteSelectedSize, ModalFormSize, SizeList } from '~/features/size';
-import { getErrorSize, isSelectedSizeSelector } from '~/redux/selectors';
+import { DeleteSelectedSize, SizeList, TableSize, useSize } from '~/features/size';
 
 const Size = () => {
 
-    const refModal = useRef();
-
-    const handleAdd = () => {
-        refModal.current.addSize();
-    }
-
-    const handleEdit = (code) => {
-        refModal.current.editSize(code);
-    }
-
-    const error = useSelector(getErrorSize);
-
-    const isSelected = useSelector(isSelectedSizeSelector);
+    const { error, isSelected } = useSize();
 
     return (
         <>
             <Card
-                className={error?.isError ? 'h-md-100' : ''}
+                className={error ? '' : 'md:h-full'}
             >
-                <CardFilter
-                    isError={error?.isError}
-                >
-                    <SearchText
-                        placeholder={"Search Size Name"}
-                    />
-                    <div className='card-toolbar flex-row-fluid justify-content-end gap-5'>
-                        {
-                            isSelected ? (
-                                <DeleteSelectedSize
-                                    option={OPTION_PAGE.ENABLED}
-                                />
-                            ) : (
-                                <div className='btn btn-primary'
-                                    onClick={() => handleAdd()}
-                                >Add Size</div>
-                            )
-                        }
-                    </div>
-                </CardFilter>
-                <SizeList
-                    option={OPTION_PAGE.ENABLED}
-                    onUpdate={handleEdit}
-                />
+                {
+                    !error && (
+                        <CardHeader className={'!text-center !py-5 md:gap-5 gap-2 !border-bottom-card-none'}>
+                            <SearchText
+                                placeholder='Tìm kiếm tên danh mục con'
+                            />
+                            <CardToolbar className={'gap-5 justify-end flex-[1_auto] min-w-0'}>
+                                {
+                                    isSelected
+                                        ? (<DeleteSelectedSize
+                                            option={OPTION_PAGE.ENABLED}
+                                        />)
+                                        : (
+                                            <button className='btn btn-primary'
+                                            // onClick={() => handleAddSubCategory()}
+                                            >
+                                                Thêm danh mục con
+                                            </button>
+                                        )
+                                }
+                            </CardToolbar>
+                        </CardHeader>
+                    )
+                }
+                <CardBody className={'!pt-0'}>
+                    <SizeList
+                        option={OPTION_PAGE.ENABLED}
+                    >
+                        <TableSize
+                            option={OPTION_PAGE.ENABLED}
+                        // onUpdate={handleEdit}
+                        />
+                    </SizeList>
+                </CardBody>
             </Card>
-            {
-                error?.isError ? '' : <ModalFormSize ref={refModal} />
-            }
         </>
     )
 }
 
-export default Size;
+export default Size

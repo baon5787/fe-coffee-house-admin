@@ -11,7 +11,7 @@ import { getAction } from '~/utils/HandleAction';
 import { deleteChangeSelectSizes } from '~/redux/slice/SizeSlice';
 import { CheckboxTable, NotData, Table, Tbody, Thead } from '~/components/table';
 import { conversionNumberToVND, getTitleAction, isLengthChecked, ordinalNumbers } from '~/utils/HandleTable';
-import { Actions } from '~/components/actions';
+import Actions from '~/components/actions/Actions';
 
 const TableSize = ({ option, onUpdate }) => {
 

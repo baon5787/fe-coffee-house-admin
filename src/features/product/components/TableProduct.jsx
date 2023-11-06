@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Actions } from '~/components/actions'
+import Actions from '~/components/actions/Actions'
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2'
 import { CheckboxTable, NotData, Tbody, Thead } from '~/components/table'
